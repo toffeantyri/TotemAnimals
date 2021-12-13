@@ -1,0 +1,5 @@
+<resources>
+    <string name="application_id_name" translatable="false">com.google.android.gms.ads.APPLICATION_ID</string>
+    <string name="my_app_id_value" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="app_name">totemanimals</string>
+</resources>
