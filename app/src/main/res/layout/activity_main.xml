@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
     <FrameLayout
@@ -13,8 +14,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="1dp"
-        android:background="@color/common_google_signin_btn_text_light_default"
-        android:visibility="gone"
+        android:background="@drawable/button_menu_corner"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -22,6 +23,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/button_menu_corner"
             android:gravity="center">
 
             <TableRow
@@ -36,9 +38,10 @@
 
                 <ImageButton
                     android:id="@+id/im_element1"
+                    style="@style/ButtonStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_dialog" />
+                    app:srcCompat="@drawable/ic_touch_app_black_32dp" />
 
                 <ImageButton
                     android:id="@+id/imageButton8"
@@ -48,9 +51,10 @@
 
                 <ImageButton
                     android:id="@+id/im_element2"
+                    style="@style/ButtonStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_dialog" />
+                    app:srcCompat="@drawable/ic_search_black_32dp" />
 
                 <ImageButton
                     android:id="@+id/imageButton3"
@@ -60,9 +64,10 @@
 
                 <ImageButton
                     android:id="@+id/im_element3"
+                    style="@style/ButtonStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_dialog" />
+                    app:srcCompat="@drawable/ic_folder_shared_black_32dp" />
 
                 <ImageButton
                     android:id="@+id/imageButton6"
@@ -72,9 +77,10 @@
 
                 <ImageButton
                     android:id="@+id/im_element4"
+                    style="@style/ButtonStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/btn_dialog" />
+                    app:srcCompat="@drawable/ic_exit_to_app_black_32dp" />
 
                 <ImageButton
                     android:id="@+id/imageButton11"
@@ -89,11 +95,12 @@
 
     <ImageButton
         android:id="@+id/btn_open_menu"
+        style="@style/ButtonStyle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onClickOpenMenu"
         app:layout_constraintBottom_toTopOf="@+id/frame_menu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/arrow_up_float" />
+        app:srcCompat="@drawable/ic_expand_less_black_32dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         val menuOpenClose = Animations()
         //val frameMenu = findViewById<View>(R.id.frame_menu)
         menuOpenClose.anim_menu_up_down(frame_menu)
-        if (frame_menu.visibility==View.VISIBLE) {btn_open_menu.setImageResource(android.R.drawable.arrow_down_float)}
-        else {btn_open_menu.setImageResource(android.R.drawable.arrow_up_float)}
+        if (frame_menu.visibility==View.VISIBLE) {btn_open_menu.setImageResource(R.drawable.ic_expand_less_black_32dp)}
+        else {btn_open_menu.setImageResource(R.drawable.ic_expand_more_black_32dp)}
     }
 }
 

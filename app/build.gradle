@@ -9,7 +9,7 @@ android {
     buildToolsVersion "31.0.0"
     defaultConfig {
         applicationId "com.example.totemanimals"
-        minSdkVersion 24
+        minSdkVersion 28
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
