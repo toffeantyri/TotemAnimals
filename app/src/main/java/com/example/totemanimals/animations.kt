@@ -8,7 +8,7 @@ import android.view.animation.Animation.AnimationListener
 class Animations {
 
 
-    fun anim_menu_up_down(view1:View){
+    fun anim_menu_up_down(view1:View,view2:View){
         val menuState = view1.visibility
         if (menuState==View.GONE) {
             view1.animate().apply {
