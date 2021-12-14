@@ -1,11 +1,17 @@
 package com.example.totemanimals
 
+import android.app.Activity
+import android.app.Dialog
+import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageButton
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -13,10 +19,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
     }
-
-
-
 
 
     fun onClickOpenMenu(view: View) {
@@ -43,8 +48,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun onClickExitButton (view: View) {
+        buttonEffectonClick(menu_bt_exit)
+        finishAndRemoveTask()
+                    }
 
+    fun onClickInfo(view: View){
+        buttonEffectonClick(menu_bt_info)
+    }
 
+    fun onClickSearchList(view: View){
+        buttonEffectonClick(menu_bt_searchlist)
+    }
 
+    fun onClickMyTest(view: View){
+        buttonEffectonClick(menu_bt_my_test)
+    }
 }
 

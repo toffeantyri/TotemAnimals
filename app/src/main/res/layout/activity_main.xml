@@ -14,7 +14,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="1dp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -36,10 +36,11 @@
                     android:visibility="invisible" />
 
                 <ImageButton
-                    android:id="@+id/im_element1"
+                    android:id="@+id/menu_bt_my_test"
                     style="@style/ButtonStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="onClickMyTest"
                     app:srcCompat="@drawable/ic_adb_black_32dp" />
 
                 <ImageButton
@@ -49,10 +50,11 @@
                     android:visibility="invisible" />
 
                 <ImageButton
-                    android:id="@+id/im_element2"
+                    android:id="@+id/menu_bt_searchlist"
                     style="@style/ButtonStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="onClickSearchList"
                     app:srcCompat="@drawable/ic_search_black_32dp" />
 
                 <ImageButton
@@ -62,10 +64,11 @@
                     android:visibility="invisible" />
 
                 <ImageButton
-                    android:id="@+id/im_element3"
+                    android:id="@+id/menu_bt_info"
                     style="@style/ButtonStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="onClickInfo"
                     app:srcCompat="@drawable/ic_info_outline_black_32dp" />
 
                 <ImageButton
@@ -75,10 +78,11 @@
                     android:visibility="invisible" />
 
                 <ImageButton
-                    android:id="@+id/im_element4"
+                    android:id="@+id/menu_bt_exit"
                     style="@style/ButtonStyle1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="onClickExitButton"
                     app:srcCompat="@drawable/ic_exit_to_app_black_32dp" />
 
                 <ImageButton
@@ -103,12 +107,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_expand_less_black_32dp" />
 
-    <FrameLayout
-        android:id="@+id/frame_list_anim"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

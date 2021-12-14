@@ -1,5 +1,9 @@
 <resources>
     <string name="application_id_name" translatable="false">com.google.android.gms.ads.APPLICATION_ID</string>
     <string name="my_app_id_value" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="app_name">totemanimals</string>
+    <string name="app_name">totem animals</string>
+    <string name="Alert_title_exit">Exit</string>
+    <string name="Alert_message_exit">Close application?</string>
+    <string name="Alert_yes">Yes</string>
+    <string name="Alert_no">No</string>
 </resources>

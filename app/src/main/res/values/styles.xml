@@ -10,7 +10,7 @@
 
     <style name="ButtonStyle1" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">fill_parent</item>
-        <item name="android:textColor">@color/common_google_signin_btn_text_dark_focused</item>
+
         <item name="android:textSize">15sp</item>
         <item name="android:padding">10sp</item>
         <item name="android:textStyle">normal</item>
