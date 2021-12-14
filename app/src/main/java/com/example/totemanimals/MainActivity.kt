@@ -19,7 +19,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        buttonEffectonClick(menu_bt_my_test)
+        buttonEffectonClick(menu_bt_info)
+        buttonEffectonClick(menu_bt_searchlist)
+        buttonEffectonClick(menu_bt_exit)
 
     }
 
