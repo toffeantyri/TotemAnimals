@@ -11,11 +11,16 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.DialogFragment
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var mAdView: AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +31,13 @@ class MainActivity : AppCompatActivity() {
         buttonEffectonClick(menu_bt_searchlist)
         buttonEffectonClick(menu_bt_exit)
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // Отключение ночной темы для этого активити
+
+
+        MobileAds.initialize(this) {}
+        mAdView=findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
 
     }
 
