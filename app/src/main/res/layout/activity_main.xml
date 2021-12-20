@@ -118,4 +118,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_expand_less_black_32dp" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcView_AnList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_open_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
