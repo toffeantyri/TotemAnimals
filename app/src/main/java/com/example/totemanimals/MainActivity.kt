@@ -9,23 +9,32 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.widget.GridLayout
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
     lateinit var mAdView: AdView
+    private val adapter1 = AnimalsAdaptList()
+    private val imIdList = listOf(R.drawable.smallbelka,R.drawable.smallbober,R.drawable.smallezh,
+        R.drawable.smallfilin,R.drawable.smallkon,R.drawable.smalllebed,R.drawable.smalllisa,
+        R.drawable.smallmedved,R.drawable.smallolen,R.drawable.smallorel,R.drawable.smallpetuh,
+        R.drawable.smallslon,R.drawable.smalltur,R.drawable.smalluzh,R.drawable.smallvolk,)
+private var indexImList = 0
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        init()
         buttonEffectonClick(menu_bt_my_test)
         buttonEffectonClick(menu_bt_info)
         buttonEffectonClick(menu_bt_searchlist)
@@ -33,11 +42,11 @@ class MainActivity : AppCompatActivity() {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // Отключение ночной темы для этого активити
 
-
         MobileAds.initialize(this) {}
         mAdView=findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
+
 
     }
 
@@ -77,11 +86,25 @@ class MainActivity : AppCompatActivity() {
 
     fun onClickSearchList(view: View){
         buttonEffectonClick(menu_bt_searchlist)
+
     }
 
     fun onClickMyTest(view: View){
         buttonEffectonClick(menu_bt_my_test)
     }
 
+
+
+
+private fun init() {
+    rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity,3)
+    rcView_AnList.adapter = adapter1
+    menu_bt_searchlist.setOnClickListener {
+        if(indexImList > imIdList.size-1) indexImList = 0
+        val animal = Animal(imIdList[indexImList],"Животное $indexImList")
+        adapter1.addAnimal(animal)
+        indexImList++
+    }
+}
 }
 
