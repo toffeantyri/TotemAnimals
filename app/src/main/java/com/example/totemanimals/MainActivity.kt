@@ -2,6 +2,7 @@ package com.example.totemanimals
 
 import android.app.Activity
 import android.app.Dialog
+import android.app.Instrumentation
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.PorterDuff
@@ -20,15 +21,12 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.contracts.ContractBuilder
 
 class MainActivity : AppCompatActivity() {
     lateinit var mAdView: AdView
     private val adapter1 = AnimalsAdaptList()
-    private val imIdList = listOf(R.drawable.smallbelka,R.drawable.smallbober,R.drawable.smallezh,
-        R.drawable.smallfilin,R.drawable.smallkon,R.drawable.smalllebed,R.drawable.smalllisa,
-        R.drawable.smallmedved,R.drawable.smallolen,R.drawable.smallorel,R.drawable.smallpetuh,
-        R.drawable.smallslon,R.drawable.smalltur,R.drawable.smalluzh,R.drawable.smallvolk,)
-private var indexImList = 0
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,8 +46,10 @@ private var indexImList = 0
         mAdView.loadAd(adRequest)
 
 
-    }
+init()
 
+
+    }
 
     fun onClickOpenMenu(view: View) {
         buttonEffectonClick(btn_open_menu)
@@ -94,16 +94,20 @@ private var indexImList = 0
     }
 
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode== Activity.RESULT_OK) {
+            adapter1.addAnimal(data?.getSerializableExtra("animal") as Animal)
+        }
+    }
 
 private fun init() {
     rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity,3)
     rcView_AnList.adapter = adapter1
     menu_bt_searchlist.setOnClickListener {
-        if(indexImList > imIdList.size-1) indexImList = 0
-        val animal = Animal(imIdList[indexImList],"Животное $indexImList")
-        adapter1.addAnimal(animal)
-        indexImList++
+        val intent = Intent(this, animal_editor_activity::class.java)
+        //intent.putExtra("add","add")
+        startActivityForResult(intent,100)
     }
 }
 }

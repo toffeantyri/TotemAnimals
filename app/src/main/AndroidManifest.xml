@@ -11,10 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".animal_editor_activity"></activity>
+
         <meta-data
             android:name="@string/application_id_name_test"
-            android:value="@string/my_app_id_value_test" >
-        </meta-data>
+            android:value="@string/my_app_id_value_test"></meta-data>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
