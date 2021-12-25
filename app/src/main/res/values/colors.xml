@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="disable_button">#4D5E5E5E</color>
+
+    <color name="nav_menu_checke_on">#000000</color>
+    <color name="nav_menu_checke_off">#2C2C2C</color>
+    <color name="white">#FFFFFF</color>
+
 </resources>

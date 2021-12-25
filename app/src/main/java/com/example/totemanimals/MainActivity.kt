@@ -28,87 +28,66 @@ class MainActivity : AppCompatActivity() {
     private val adapter1 = AnimalsAdaptList()
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
-        buttonEffectonClick(menu_bt_my_test)
-        buttonEffectonClick(menu_bt_info)
-        buttonEffectonClick(menu_bt_searchlist)
-        buttonEffectonClick(menu_bt_exit)
+
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // Отключение ночной темы для этого активити
 
         MobileAds.initialize(this) {}
-        mAdView=findViewById(R.id.adView)
+        mAdView = findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
+        init()
 
-
-init()
-
-
-    }
-
-    fun onClickOpenMenu(view: View) {
-        buttonEffectonClick(btn_open_menu)
-        val menuOpenClose = Animations()
-        menuOpenClose.anim_menu_up_down(frame_menu,btn_open_menu)
-        if (frame_menu.visibility==View.VISIBLE) {btn_open_menu.setImageResource(R.drawable.ic_expand_more_black_32dp)}
-        else {btn_open_menu.setImageResource(R.drawable.ic_expand_less_black_32dp)}
-    }
-
-    fun buttonEffectonClick(imageButton: View) {
-        imageButton.setOnTouchListener{
-            v, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {v.background.setColorFilter(-0x1f0b8adf, PorterDuff.Mode.SRC_ATOP)
-                v.invalidate()
+        nav_bottom_menu.setOnNavigationItemSelectedListener {
+            when(it.itemId) {
+                R.id.home_menu_id -> {}
+                R.id.search_menu_id -> {
+                    val intent = Intent(this, animal_editor_activity::class.java)
+                    intent.putExtra("add","add")
+                    startActivityForResult(intent, 100)
                 }
-                MotionEvent.ACTION_UP -> {
-                    v.background.clearColorFilter()
-                    v.invalidate()
-                }
+                R.id.info_menu_id -> {}
+                R.id.exit_menu_id -> { finish() }
             }
-            false
+
+            true
         }
     }
 
-    fun onClickExitButton (view: View) {
-        buttonEffectonClick(menu_bt_exit)
-        finishAndRemoveTask()
-                    }
 
-    fun onClickInfo(view: View){
-        buttonEffectonClick(menu_bt_info)
+    fun onClickExitButton(view: View) {
+
+        finish()
     }
 
-    fun onClickSearchList(view: View){
-        buttonEffectonClick(menu_bt_searchlist)
+    fun onClickInfo(view: View) {
 
     }
 
-    fun onClickMyTest(view: View){
-        buttonEffectonClick(menu_bt_my_test)
+    fun onClickSearchList(view: View) {
+
+
+    }
+
+    fun onClickMyTest(view: View) {
+
     }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode== Activity.RESULT_OK) {
+        if (resultCode == Activity.RESULT_OK) {
             adapter1.addAnimal(data?.getSerializableExtra("animal") as Animal)
         }
     }
 
-private fun init() {
-    rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity,3)
-    rcView_AnList.adapter = adapter1
-    menu_bt_searchlist.setOnClickListener {
-        val intent = Intent(this, animal_editor_activity::class.java)
-        //intent.putExtra("add","add")
-        startActivityForResult(intent,100)
+    private fun init() {
+        rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity, 3)
+        rcView_AnList.adapter = adapter1
     }
-}
 }
 

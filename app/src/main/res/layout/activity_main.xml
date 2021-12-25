@@ -4,8 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:visibilyty="visible">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcView_AnList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/nav_bottom_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
@@ -13,118 +25,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:visibility="visible"
         app:adSize="BANNER"
         app:adUnitId="@string/banner_id_test"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/frame_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="75dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:visibility="gone"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D5D5D5"
+        app:itemIconTint="@drawable/nav_menu_selector"
+        app:itemTextColor="#000000"
         app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/button_menu_corner"
-            android:gravity="center">
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageButton
-                    android:id="@+id/imageButton10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="invisible" />
-
-                <ImageButton
-                    android:id="@+id/menu_bt_my_test"
-                    style="@style/ButtonStyle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickMyTest"
-                    app:srcCompat="@drawable/ic_adb_black_32dp" />
-
-                <ImageButton
-                    android:id="@+id/imageButton8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="invisible" />
-
-                <ImageButton
-                    android:id="@+id/menu_bt_searchlist"
-                    style="@style/ButtonStyle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickSearchList"
-                    app:srcCompat="@drawable/ic_search_black_32dp" />
-
-                <ImageButton
-                    android:id="@+id/imageButton3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="invisible" />
-
-                <ImageButton
-                    android:id="@+id/menu_bt_info"
-                    style="@style/ButtonStyle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickInfo"
-                    app:srcCompat="@drawable/ic_info_outline_black_32dp" />
-
-                <ImageButton
-                    android:id="@+id/imageButton6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="invisible" />
-
-                <ImageButton
-                    android:id="@+id/menu_bt_exit"
-                    style="@style/ButtonStyle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onClickExitButton"
-                    app:srcCompat="@drawable/ic_exit_to_app_black_32dp" />
-
-                <ImageButton
-                    android:id="@+id/imageButton11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="invisible" />
-
-            </TableRow>
-
-        </TableLayout>
-    </FrameLayout>
-
-    <ImageButton
-        android:id="@+id/btn_open_menu"
-        style="@style/ButtonStyle1"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:onClick="onClickOpenMenu"
-        app:layout_constraintBottom_toTopOf="@+id/frame_menu"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_expand_less_black_32dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcView_AnList"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_open_menu"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:menu="@menu/nav_bottom_menu_xml"
+         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
