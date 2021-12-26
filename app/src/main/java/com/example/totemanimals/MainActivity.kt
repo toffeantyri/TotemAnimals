@@ -26,13 +26,19 @@ import kotlin.contracts.ContractBuilder
 class MainActivity : AppCompatActivity() {
     lateinit var mAdView: AdView
     private val adapter1 = AnimalsAdaptList()
+    val imIdList = listOf(R.drawable.smallbelka,R.drawable.smallbober,R.drawable.smallezh,
+        R.drawable.smallfilin,R.drawable.smallkon,R.drawable.smalllebed,R.drawable.smalllisa,
+        R.drawable.smallmedved,R.drawable.smallolen,R.drawable.smallorel,R.drawable.smallpetuh,
+        R.drawable.smallslon,R.drawable.smalltur,R.drawable.smalluzh,R.drawable.smallvolk,)
+    val nameIdList = listOf("Белка","Бобёр","Ёж","Филин","Конь","Лебедь","Лисица","Медведь","Олень","Орёл","Петух","Слон","Тур","Уж","Волк",)
+    val descriptIdList = listOf("one", "two", "three","four", "five","six","seven", "eigth", "nine","ten","eleven","twelf", "1three", "1four","1five",)
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         init()
-
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // Отключение ночной темы для этого активити
 
@@ -46,9 +52,11 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.home_menu_id -> {}
                 R.id.search_menu_id -> {
-                    val intent = Intent(this, animal_editor_activity::class.java)
-                    intent.putExtra("add","add")
-                    startActivityForResult(intent, 100)
+                    //val intent = Intent(this, animal_editor_activity::class.java)
+                    //intent.putExtra("add","add")
+                    //startActivityForResult(intent, 100)
+
+                    addAllAnimalOnRecylerView ()
                 }
                 R.id.info_menu_id -> {}
                 R.id.exit_menu_id -> { finish() }
@@ -60,7 +68,6 @@ class MainActivity : AppCompatActivity() {
 
 
     fun onClickExitButton(view: View) {
-
         finish()
     }
 
@@ -78,10 +85,20 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            adapter1.addAnimal(data?.getSerializableExtra("animal") as Animal)
+    fun addAllAnimalOnRecylerView () {
+        rcView_AnList.visibility=View.VISIBLE
+        var index = 0
+        var a : Int
+        var b: String
+        var c: String
+        var animalAdd : Animal
+        for (i in imIdList) {
+            a = imIdList[index]
+            b = nameIdList[index]
+            c = descriptIdList[index]
+            animalAdd = Animal(a,b,c)
+            adapter1.addAnimal(animalAdd)
+            index++
         }
     }
 
