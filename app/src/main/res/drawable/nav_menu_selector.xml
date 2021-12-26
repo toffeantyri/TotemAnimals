@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_checked="true" android:drawable="@color/nav_menu_checke_on"/>
-    <item android:state_checked="false" android:drawable="@color/nav_menu_checke_off"/>
+    <item android:state_checked="true" android:drawable="@color/nav_menu_checked_on"/>
+    <item android:state_checked="false" android:drawable="@color/nav_menu_checked_off"/>
+    <item android:color="@color/nav_menu_checked_off"/>
 </selector>

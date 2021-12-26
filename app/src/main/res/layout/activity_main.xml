@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#98FFCF"
     tools:context=".MainActivity"
     tools:visibilyty="visible">
 
@@ -36,13 +37,11 @@
         android:id="@+id/nav_bottom_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#D5D5D5"
-        app:itemIconTint="@drawable/nav_menu_selector"
-        app:itemTextColor="#000000"
+        android:background="@color/white"
+        android:theme="@style/Nav_menu_theme"
         app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/nav_bottom_menu_xml"
-         />
+        app:menu="@menu/nav_bottom_menu_xml" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,13 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/button_menu_corner.xml" value="0.175" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_adb_black_32dp.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_exit_to_app_black_32dp.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_expand_less_black_32dp.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_expand_more_black_32dp.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_info_outline_black_32dp.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/nav_menu_selector.xml" value="0.2125" />
-        <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/layout/animal_shablon_xml.xml" value="0.2" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/menu/nav_bottom_menu_xml.xml" value="0.2" />
       </map>
