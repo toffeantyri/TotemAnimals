@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.animal_shablon_xml.view.*
 
-class AnimalsAdaptList(): RecyclerView.Adapter<AnimalsAdaptList.AnimalHolder>() { // Адаптер с Вью Хольдером
+class AnimalsAdaptList(var onItemClick: ((Animal)->Unit)?=null): RecyclerView.Adapter<AnimalsAdaptList.AnimalHolder>() { // Адаптер с Вью Хольдером
 
 
     val animalList = ArrayList<Animal>()
@@ -27,8 +27,10 @@ class AnimalsAdaptList(): RecyclerView.Adapter<AnimalsAdaptList.AnimalHolder>() 
                 tv0.text=shablonAnimal.title_animal
                 im0.setImageResource(shablonAnimal.im_animal)
                     }
-
+            init {animal_item.setOnClickListener { onItemClick?.invoke(animalList[adapterPosition]) }
+            } // в AnimalAdaptList пришло onItemClick
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.animal_shablon_xml,parent,false)

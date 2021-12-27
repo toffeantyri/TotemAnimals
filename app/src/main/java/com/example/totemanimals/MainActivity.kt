@@ -13,6 +13,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.GridLayout
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.DialogFragment
@@ -117,8 +118,12 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity, 3)
         rcView_AnList.adapter = adapter1
+        adapter1.onItemClick = {Animal ->
+            //Log.d("MyLog",Animal.title_animal)
+            Toast.makeText(this@MainActivity,Animal.title_animal + Animal.disc, Toast.LENGTH_SHORT).show()
 
 
+            }
     }
 }
 
