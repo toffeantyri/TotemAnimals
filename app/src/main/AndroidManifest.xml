@@ -4,6 +4,7 @@
     package="com.example.totemanimals">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,12 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Animal_descpt_view"></activity>
 
         <meta-data
             android:name="@string/application_id_name_test"
             android:value="@string/my_app_id_value_test" />
 
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
