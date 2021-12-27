@@ -8,6 +8,7 @@ import android.content.Intent
 import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.GridLayout
@@ -50,18 +51,19 @@ class MainActivity : AppCompatActivity() {
 
         nav_bottom_menu.setOnNavigationItemSelectedListener {
             when(it.itemId) {
-                R.id.home_menu_id -> {}
-                R.id.search_menu_id -> {
-                    //val intent = Intent(this, animal_editor_activity::class.java)
-                    //intent.putExtra("add","add")
-                    //startActivityForResult(intent, 100)
-
-                    addAllAnimalOnRecylerView ()
+                R.id.home_menu_id -> {
+                    rcView_AnList.visibility=View.INVISIBLE
                 }
-                R.id.info_menu_id -> {}
+                R.id.search_menu_id -> {
+                    rcView_AnList.visibility=View.VISIBLE
+                    addAllAnimalOnRV ()
+                }
+                R.id.info_menu_id -> {
+                    rcView_AnList.visibility=View.INVISIBLE
+                    Log.d("MyLog","count:${imIdList.count()} Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   ")
+                }
                 R.id.exit_menu_id -> { finish() }
             }
-
             true
         }
     }
@@ -85,22 +87,24 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun addAllAnimalOnRecylerView () {
-        rcView_AnList.visibility=View.VISIBLE
-        var index = 0
-        var a : Int
-        var b: String
-        var c: String
-        var animalAdd : Animal
-        for (i in imIdList) {
-            a = imIdList[index]
-            b = nameIdList[index]
-            c = descriptIdList[index]
-            animalAdd = Animal(a,b,c)
-            adapter1.addAnimal(animalAdd)
-            index++
+    fun addAllAnimalOnRV () {
+        if(imIdList.count()!=rcView_AnList.layoutManager?.itemCount){
+            var index = 0
+            var a : Int
+            var b: String
+            var c: String
+            var animalAdd : Animal
+            for (i in imIdList) {
+                a = imIdList[index]
+                b = nameIdList[index]
+                c = descriptIdList[index]
+                animalAdd = Animal(a, b, c)
+                adapter1.addAnimal(animalAdd)
+                index++
+            }
         }
-    }
+        }
+
 
     private fun init() {
         rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity, 3)
