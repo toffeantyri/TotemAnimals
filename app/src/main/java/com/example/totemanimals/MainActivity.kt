@@ -28,17 +28,17 @@ import kotlin.contracts.ContractBuilder
 class MainActivity : AppCompatActivity() {
     lateinit var mAdView: AdView
     private val adapter1 = AnimalsAdaptList()
-    val imIdList = listOf(R.drawable.smallbelka,R.drawable.smallbober,R.drawable.smallezh,
-        R.drawable.smallfilin,R.drawable.smallkon,R.drawable.smalllebed,R.drawable.smalllisa,
-        R.drawable.smallmedved,R.drawable.smallolen,R.drawable.smallorel,R.drawable.smallpetuh,
-        R.drawable.smallslon,R.drawable.smalltur,R.drawable.smalluzh,R.drawable.smallvolk,)
-    val big_imIdList = listOf(R.drawable.smallbelka,R.drawable.smallbober,R.drawable.smallezh,
-        R.drawable.smallfilin,R.drawable.smallkon,R.drawable.smalllebed,R.drawable.smalllisa,
-        R.drawable.smallmedved,R.drawable.smallolen,R.drawable.smallorel,R.drawable.smallpetuh,
-        R.drawable.smallslon,R.drawable.smalltur,R.drawable.smalluzh,R.drawable.smallvolk,)
-
-    val nameIdList = listOf("Белка","Бобёр","Ёж","Филин","Конь","Лебедь","Лисица","Медведь","Олень","Орёл","Петух","Слон","Тур","Уж","Волк",)
-    val descriptIdList = listOf("one", "two", "three","four", "five","six","seven", "eigth", "nine","ten","eleven","twelf", "1three", "1four","1five",)
+//    val imIdList = listOf(R.drawable.smallbelka,R.drawable.smallbober,R.drawable.smallezh,
+//        R.drawable.smallfilin,R.drawable.smallkon,R.drawable.smalllebed,R.drawable.smalllisa,
+//        R.drawable.smallmedved,R.drawable.smallolen,R.drawable.smallorel,R.drawable.smallpetuh,
+//        R.drawable.smallslon,R.drawable.smalltur,R.drawable.smalluzh,R.drawable.smallvolk,)
+//    val big_imIdList = listOf(R.drawable.smallbelka,R.drawable.smallbober,R.drawable.smallezh,
+//        R.drawable.smallfilin,R.drawable.smallkon,R.drawable.smalllebed,R.drawable.smalllisa,
+//        R.drawable.smallmedved,R.drawable.smallolen,R.drawable.smallorel,R.drawable.smallpetuh,
+//        R.drawable.smallslon,R.drawable.smalltur,R.drawable.smalluzh,R.drawable.smallvolk,)
+//
+//    val nameIdList = listOf("Белка","Бобёр","Ёж","Филин","Конь","Лебедь","Лисица","Медведь","Олень","Орёл","Петух","Слон","Тур","Уж","Волк",)
+//    val descriptIdList = listOf("one", "two", "three","four", "five","six","seven", "eigth", "nine","ten","eleven","twelf", "1three", "1four","1five",)
 
 
 
@@ -54,7 +54,6 @@ class MainActivity : AppCompatActivity() {
         mAdView = findViewById(R.id.adView)
         val adRequest = AdRequest.Builder().build()
         mAdView.loadAd(adRequest)
-        init()
 
         nav_bottom_menu.setOnNavigationItemSelectedListener {
             when(it.itemId) {
@@ -66,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                                     }
                 R.id.info_menu_id -> {
                     rcView_AnList.visibility=View.GONE
-                    Log.d("MyLog","count:${imIdList.count()} Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   ")
+                    Log.d("MyLog","count:${list_resours.imIdList.count()} Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   ")
                 }
                 R.id.exit_menu_id -> { finish() }
             }
@@ -95,18 +94,18 @@ class MainActivity : AppCompatActivity() {
 
 
     fun addAllAnimalOnRV () {
-        if(imIdList.count()!=rcView_AnList.layoutManager?.itemCount){
+        if(list_resours.imIdList.count()!=rcView_AnList.layoutManager?.itemCount){
             var index = 0
             var a : Int
             var a1: Int
             var b: String
             var c: String
             var animalAdd : Animal
-            for (i in imIdList) {
-                a = imIdList[index]
-                a1 = big_imIdList[index]
-                b = nameIdList[index]
-                c = descriptIdList[index]
+            for (i in list_resours.imIdList) {
+                a = list_resours.imIdList[index]
+                a1 = list_resours.big_imIdList[index]
+                b = list_resours.nameIdList[index]
+                c = list_resours.descriptIdList[index]
                 animalAdd = Animal(a, a1, b, c)
                 adapter1.addAnimal(animalAdd)
                 index++
@@ -119,9 +118,9 @@ class MainActivity : AppCompatActivity() {
         rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity, 3)
         rcView_AnList.adapter = adapter1
         adapter1.onItemClick = {Animal ->
-            //Log.d("MyLog",Animal.title_animal)
-            Toast.makeText(this@MainActivity,Animal.title_animal + Animal.disc, Toast.LENGTH_SHORT).show()
-
+            val intent = Intent(this, Animal_descpt_view::class.java)
+            intent.putExtra("description_search",Animal)
+            startActivity(intent)
 
             }
     }

@@ -6,14 +6,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
+        <item name="android:forceDarkAllowed">false</item>
     </style>
 
-    <style name="Nav_menu_theme" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+    <style name="Nav_menu_theme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/nav_menu_checked_on</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/nav_menu_checked_off</item>
-
+        <item name="android:forceDarkAllowed">false</item>
 
     </style>
 

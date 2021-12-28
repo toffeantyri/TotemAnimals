@@ -14,5 +14,7 @@
     <string name="nav_menu_info">Info</string>
     <string name="nav_menu_exit">Exit</string>
 
+    <string name="desc_act_btn_close">Close</string>
+
 
 </resources>
