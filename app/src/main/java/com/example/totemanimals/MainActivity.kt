@@ -23,6 +23,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlin.contracts.ContractBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -57,9 +58,7 @@ class MainActivity : AppCompatActivity() {
                         .replace(R.id.my_testResult_frame, fragment_testResult()).commit()
                     my_testResult_frame.visibility = View.VISIBLE
 
-//                    val intent = Intent(this, StartTest_activity::class.java)
-//                    intent.putExtra("start_test", "start")
-//                    startActivityForResult(intent, 2)
+
                 }
                 R.id.search_menu_id -> {
                     rcView_AnList.visibility = View.VISIBLE
@@ -69,7 +68,10 @@ class MainActivity : AppCompatActivity() {
                 R.id.info_menu_id -> {
                     my_testResult_frame.visibility = View.GONE
                     rcView_AnList.visibility = View.GONE
-                    Log.d("MyLog","count:${list_resours.imIdList.count()} Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   ")
+                    Log.d(
+                        "MyLog",
+                        "count:${list_resours.imIdList.count()} Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   "
+                    )
 
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.my_info_frame, fragment_info()).commit()
@@ -84,46 +86,38 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-        fun addAllAnimalOnRV() {
-            if (list_resours.imIdList.count() != rcView_AnList.layoutManager?.itemCount) {
-                var index = 0
-                var a: Int
-                var a1: Int
-                var b: String
-                var c: String
-                var animalAdd: Animal
-                for (i in list_resours.imIdList) {
-                    a = list_resours.imIdList[index]
-                    a1 = list_resours.big_imIdList[index]
-                    b = list_resours.nameIdList[index]
-                    c = list_resours.descriptIdList[index]
-                    animalAdd = Animal(a, a1, b, c)
-                    adapter1.addAnimal(animalAdd)
-                    index++
-                }
+    fun addAllAnimalOnRV() {
+        if (list_resours.imIdList.count() != rcView_AnList.layoutManager?.itemCount) {
+            var index = 0
+            var a: Int
+            var a1: Int
+            var b: String
+            var c: String
+            var animalAdd: Animal
+            for (i in list_resours.imIdList) {
+                a = list_resours.imIdList[index]
+                a1 = list_resours.big_imIdList[index]
+                b = list_resours.nameIdList[index]
+                c = list_resours.descriptIdList[index]
+                animalAdd = Animal(a, a1, b, c)
+                adapter1.addAnimal(animalAdd)
+                index++
             }
         }
+    }
 
 
-        private fun init() {
-            rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity, 3)
-            rcView_AnList.adapter = adapter1
-            adapter1.onItemClick = { Animal ->
-                val intent = Intent(this, Animal_descpt_view::class.java)
-                intent.putExtra("description_search", Animal)
-                startActivity(intent)
-
-            }
-        }
-
-        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-            super.onActivityResult(requestCode, resultCode, data)
-            if (requestCode == 2 && resultCode == Activity.RESULT_CANCELED && data != null) {
-                val myIntent1 = data.getStringExtra("123")
-                Toast.makeText(this@MainActivity, "вернулся с резульаттом: $myIntent1", Toast.LENGTH_SHORT).show()
-            }
+    private fun init() {
+        rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity, 3)
+        rcView_AnList.adapter = adapter1
+        adapter1.onItemClick = { Animal ->
+            val intent = Intent(this, Animal_descpt_view::class.java)
+            intent.putExtra("description_search", Animal)
+            startActivity(intent)
 
         }
     }
+
+}
 
 
