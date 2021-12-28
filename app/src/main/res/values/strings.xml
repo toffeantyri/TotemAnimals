@@ -9,12 +9,15 @@
     <string name="Alert_yes">Yes</string>
     <string name="Alert_no">No</string>
 
-    <string name="nav_menu_home">Home</string>
+    <string name="nav_menu_test">Test</string>
     <string name="nav_menu_search">Search</string>
     <string name="nav_menu_info">Info</string>
     <string name="nav_menu_exit">Exit</string>
 
-    <string name="desc_act_btn_close">Close</string>
+    <string name="desc_act_btn_back">back</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="my_btn_my_userBlog">More</string>
 
 
 </resources>

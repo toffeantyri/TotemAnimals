@@ -59,13 +59,19 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.home_menu_id -> {
                     rcView_AnList.visibility=View.GONE
+                    my_info_frame.visibility=View.GONE
                 }
                 R.id.search_menu_id -> {
                     rcView_AnList.visibility=View.VISIBLE
+                    my_info_frame.visibility=View.GONE
                                     }
                 R.id.info_menu_id -> {
+
                     rcView_AnList.visibility=View.GONE
                     Log.d("MyLog","count:${list_resours.imIdList.count()} Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   ")
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.my_info_frame,fragment_info()).commit()
+                    my_info_frame.visibility=View.VISIBLE
                 }
                 R.id.exit_menu_id -> { finish() }
             }
@@ -73,22 +79,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
-    }
-
-    fun onClickExitButton(view: View) {
-        finish()
-    }
-
-    fun onClickInfo(view: View) {
-
-    }
-
-    fun onClickSearchList(view: View) {
-
-    }
-
-    fun onClickMyTest(view: View) {
 
     }
 
