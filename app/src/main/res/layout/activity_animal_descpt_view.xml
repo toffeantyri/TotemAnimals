@@ -31,7 +31,7 @@
                 android:cropToPadding="false"
                 android:padding="2dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/bigbelka" />
+                app:srcCompat="@drawable/smallbelka" />
 
             <TextView
                 android:id="@+id/desc_act_tv_title"

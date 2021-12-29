@@ -26,64 +26,24 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlin.contracts.ContractBuilder
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity_ApComAct() {
     lateinit var mAdView: AdView
     private val adapter1 = AnimalsAdaptList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        init()
+        var pref0 = setUpPreference()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        initRV()
         addAllAnimalOnRV()
         rcView_AnList.visibility = View.GONE
         my_info_frame.visibility = View.GONE
         supportFragmentManager.beginTransaction()
-            .replace(R.id.my_testResult_frame, fragment_testResult()).commit()
+            .replace(R.id.my_testResult_frame, fragment_testResult.newInstance(setUpPreference())).commit()
         my_testResult_frame.visibility = View.VISIBLE
-
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO) // Отключение ночной темы для этого активити
-
-        MobileAds.initialize(this) {}
-        mAdView = findViewById(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
-
-        nav_bottom_menu.setOnNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.home_menu_id -> {
-                    rcView_AnList.visibility = View.GONE
-                    my_info_frame.visibility = View.GONE
-
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.my_testResult_frame, fragment_testResult()).commit()
-                    my_testResult_frame.visibility = View.VISIBLE
-
-
-                }
-                R.id.search_menu_id -> {
-                    rcView_AnList.visibility = View.VISIBLE
-                    my_info_frame.visibility = View.GONE
-                    my_testResult_frame.visibility = View.GONE
-                }
-                R.id.info_menu_id -> {
-                    my_testResult_frame.visibility = View.GONE
-                    rcView_AnList.visibility = View.GONE
-                    Log.d(
-                        "MyLog",
-                        "count:${list_resours.imIdList.count()} Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   "
-                    )
-
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.my_info_frame, fragment_info()).commit()
-                    my_info_frame.visibility = View.VISIBLE
-                }
-                R.id.exit_menu_id -> {
-                    finish()
-                }
-            }
-            true
-        }
-
+        initAd()
+        setUpBottomNavigationMenu()
     }
 
     fun addAllAnimalOnRV() {
@@ -106,8 +66,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-    private fun init() {
+    private fun initRV() {
         rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity, 3)
         rcView_AnList.adapter = adapter1
         adapter1.onItemClick = { Animal ->
@@ -118,6 +77,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun initAd() {
+        MobileAds.initialize(this) {}
+        mAdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        mAdView.loadAd(adRequest)
+    }
 }
 
 

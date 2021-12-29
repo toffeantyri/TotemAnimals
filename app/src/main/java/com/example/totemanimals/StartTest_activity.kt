@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 
-class StartTest_activity : AppCompatActivity() {
+class StartTest_activity : BaseActivity_ApComAct() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

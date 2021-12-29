@@ -6,7 +6,7 @@ import android.util.Log
 import kotlinx.android.synthetic.main.activity_animal_descpt_view.*
 import java.io.Serializable
 
-class Animal_descpt_view : AppCompatActivity() {
+class Animal_descpt_view : BaseActivity_ApComAct() {
 
     lateinit var descAnimal_data: Animal
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,9 +16,7 @@ class Animal_descpt_view : AppCompatActivity() {
         bindingViewLyout()
         desc_act_btn_back.setOnClickListener{
         finish()
-    }
-
-
+        }
 
     }
 
