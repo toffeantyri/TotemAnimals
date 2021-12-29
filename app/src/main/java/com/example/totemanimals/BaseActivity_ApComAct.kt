@@ -9,7 +9,8 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
 
     fun setUpPreference(): String {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val pref0 = pref.getString("last_test_result", "nobody")?: "nobody"
+        val pref0 = pref.getString("last_test_result", "nobodyGet")!!
+        //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
         return pref0
     }
     fun setUpBottomNavigationMenu() {
@@ -31,9 +32,9 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
                 R.id.info_menu_id -> {
                     my_testResult_frame.visibility = View.GONE
                     rcView_AnList.visibility = View.GONE
-                    Log.d(
-                        "MyLog",
-                        "count:${list_resours.imIdList.count()} Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   "
+                    Log.d("MyLog",
+                        "count:${list_resours.imIdList.count()} " +
+                                "Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   "
                     )
 
                     supportFragmentManager.beginTransaction()

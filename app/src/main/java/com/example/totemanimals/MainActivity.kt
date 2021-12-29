@@ -33,7 +33,6 @@ class MainActivity : BaseActivity_ApComAct() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        var pref0 = setUpPreference()
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         initRV()
         addAllAnimalOnRV()
@@ -44,6 +43,7 @@ class MainActivity : BaseActivity_ApComAct() {
         my_testResult_frame.visibility = View.VISIBLE
         initAd()
         setUpBottomNavigationMenu()
+        Log.d("MyLog", "OnCreate MainActivity")
     }
 
     fun addAllAnimalOnRV() {

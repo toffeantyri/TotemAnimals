@@ -42,6 +42,24 @@
                 android:layout_height="wrap_content"
                 android:text="Close Test" />
 
+            <Button
+                android:id="@+id/result1_test_btnh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="резултат 1" />
+
+            <Button
+                android:id="@+id/result2_test_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="результ 2" />
+
+            <Button
+                android:id="@+id/result3_test_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="результ 3" />
+
         </LinearLayout>
     </ScrollView>
 

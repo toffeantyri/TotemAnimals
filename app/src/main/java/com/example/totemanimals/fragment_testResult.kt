@@ -11,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.preference.PreferenceManager
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
@@ -25,10 +27,14 @@ class fragment_testResult : Fragment() {
         view0.tv_pref_result.text=i.toString()
 
         view0.btn_start_test.setOnClickListener {
-                        Log.d("MyLog", "$i")        }
+            val intent = Intent(activity,StartTest_activity::class.java)
+            intent.putExtra("newtest", "newtest")
+            startActivityForResult(intent,100)
+        }
 
-
+        Log.d("MyLog", "OnCreateView Fragment_testResult " +  i)
         return view0
+
     }
 
 
@@ -47,7 +53,18 @@ class fragment_testResult : Fragment() {
             return fragment}
     }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val pref = PreferenceManager.getDefaultSharedPreferences(context)
+        if (requestCode==100 && resultCode==Activity.RESULT_OK && data!=null) {
+            pref.edit().putString("last_test_result",data.getStringExtra("result_test")).apply()
+            tv_pref_result.text=data.getStringExtra("result_test")
+        }
+        else {
+            val i = arguments?.getString("pref0") //!! из прошлого аргумента переданного newInstance параметром
+            tv_pref_result.text=i.toString()
+        }
+    }
 
 }
 
