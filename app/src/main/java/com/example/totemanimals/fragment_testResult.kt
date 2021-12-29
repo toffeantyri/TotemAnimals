@@ -61,8 +61,8 @@ class fragment_testResult : Fragment() {
             tv_pref_result.text=data.getStringExtra("result_test")
         }
         else {
-            val i = arguments?.getString("pref0") //!! из прошлого аргумента переданного newInstance параметром
-            tv_pref_result.text=i.toString()
+            val pref = PreferenceManager.getDefaultSharedPreferences(context)
+            tv_pref_result.text=pref.getString("last_test_result","closeNull")
         }
     }
 
