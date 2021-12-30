@@ -50,16 +50,14 @@ class MainActivity : BaseActivity_ApComAct() {
         if (list_resours.imIdList.count() != rcView_AnList.layoutManager?.itemCount) {
             var index = 0
             var a: Int
-            var a1: Int
             var b: String
             var c: String
             var animalAdd: Animal
             for (i in list_resours.imIdList) {
                 a = list_resours.imIdList[index]
-                a1 = list_resours.big_imIdList[index]
                 b = list_resours.nameIdList[index]
                 c = list_resours.descriptIdList[index]
-                animalAdd = Animal(a, a1, b, c)
+                animalAdd = Animal(a, b, c)
                 adapter1.addAnimal(animalAdd)
                 index++
             }

@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
+import com.example.totemanimals.list_resours.imIdList
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
@@ -28,7 +29,7 @@ class fragment_testResult : Fragment() {
 
         view0.btn_start_test.setOnClickListener {
             val intent = Intent(activity,StartTest_activity::class.java)
-            intent.putExtra("newtest", "newtest")
+            intent.putExtra("newtest", "BTNnewtest")
             startActivityForResult(intent,100)
         }
 
@@ -59,13 +60,30 @@ class fragment_testResult : Fragment() {
         if (requestCode==100 && resultCode==Activity.RESULT_OK && data!=null) {
             pref.edit().putString("last_test_result",data.getStringExtra("result_test")).apply()
             tv_pref_result.text=data.getStringExtra("result_test")
+            val animal_construct_result : Animal = animal_construct(data.getIntExtra("result_test_int",-1))
+            Log.d("MyLog", animal_construct_result.toString())
+
+
         }
-        else {
-            val pref = PreferenceManager.getDefaultSharedPreferences(context)
-            tv_pref_result.text=pref.getString("last_test_result","closeNull")
+        else { Log.d("MyLog", " Старый результат?: " + tv_pref_result.text.toString())
+            //tv_pref_result.text=pref.getString("last_test_result","closeNull")
         }
     }
 
+    fun bindingNewResult(animal_constructor_res: Animal) {
+
+
+
+    }
+
+    fun animal_construct(number_animal_index: Int) :Animal   //создание обьекта(экземпляра) класса Animal
+    {      if(number_animal_index!=(-1)&&number_animal_index<=imIdList.size){
+                val animalRes = Animal(
+                list_resours.imIdList[number_animal_index], list_resours.nameIdList[number_animal_index],
+                list_resours.descriptIdList[number_animal_index])
+                return animalRes}
+        else return Animal(0,"null_construct", "null_construct")
+    }
 }
 
 

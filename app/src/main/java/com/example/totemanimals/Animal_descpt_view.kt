@@ -9,6 +9,7 @@ import java.io.Serializable
 class Animal_descpt_view : BaseActivity_ApComAct() {
 
     lateinit var descAnimal_data: Animal
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animal_descpt_view)
@@ -21,7 +22,7 @@ class Animal_descpt_view : BaseActivity_ApComAct() {
     }
 
     fun bindingViewLyout () {
-        desc_act_imTitle.setImageResource(descAnimal_data.im_animal_big)
+        desc_act_imTitle.setImageResource(descAnimal_data.im_animal)
         desc_act_tv_title.text = descAnimal_data.title_animal
         desc_act_tv_desc.text = descAnimal_data.disc
     }
