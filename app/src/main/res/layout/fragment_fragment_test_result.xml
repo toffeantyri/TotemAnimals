@@ -18,14 +18,18 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/LinearLayout_result1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/shape_rectangle_r10"
-                android:backgroundTint="#80CDFFCD"
+                android:backgroundTint="#66FF66"
+                android:clickable="true"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/im_testresult_n1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="2dp"
@@ -40,7 +44,163 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tv_testresult_title_n1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Белка"
+                        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/testres_your_type"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_testresult_perc_n1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="@color/result_green"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_separator" />
+
+                <ImageButton
+                    android:id="@+id/imageButton1"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_rectangle_right_r15"
+                    android:backgroundTint="#4CAF50"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_result2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rectangle_r10"
+                android:backgroundTint="#B266FF66"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/im_testresult_n2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/smallbelka" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_testresult_title_n2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Белка"
+                        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
                         android:id="@+id/textView2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/testres_your_type"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tv_testresult_perc_n2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="@color/result_green"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_separator" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_rectangle_right_r15"
+                    android:backgroundTint="#4CAF50"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_result3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rectangle_r10"
+                android:backgroundTint="#B2FFED72"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/im_testresult_n3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/smallbelka" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_testresult_title_n3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="5dp"
@@ -58,10 +218,11 @@
                         android:layout_marginVertical="5dp"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Подходит вам на:" />
+                        android:text="@string/testres_your_type"
+                        android:textColor="@color/black" />
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/tv_testresult_perc_n3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -74,13 +235,85 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_separator" />
+
                 <ImageButton
-                    android:id="@+id/imageButton"
+                    android:id="@+id/imageButton3"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:background="@drawable/shape_round"
-                    android:backgroundTintMode="add"
+                    android:background="@drawable/shape_rectangle_right_r15"
+                    android:backgroundTint="#AFA54C"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_result4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/shape_rectangle_r10"
+                android:backgroundTint="#BFFF6666"
+                android:clickable="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/im_testresult_n4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/smallbelka" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_testresult_title_n4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Белка"
+                        android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="5dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/testres_antipode"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="3dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/shape_separator" />
+
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@drawable/shape_rectangle_right_r15"
+                    android:backgroundTint="#AF4C4C"
                     android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
 
             </LinearLayout>
@@ -94,9 +327,14 @@
 
             <Button
                 android:id="@+id/btn_start_test"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Start test" />
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/shape_rectangle_r10"
+                android:backgroundTint="@color/green_style_btn"
+                android:paddingHorizontal="20dp"
+                android:text="@string/start_new_test" />
 
         </LinearLayout>
     </ScrollView>

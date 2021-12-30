@@ -11,7 +11,7 @@
     <FrameLayout
         android:id="@+id/my_testResult_frame"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:isScrollContainer="false"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/nav_bottom_menu"
