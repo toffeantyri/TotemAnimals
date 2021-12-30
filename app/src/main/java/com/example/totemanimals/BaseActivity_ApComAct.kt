@@ -7,11 +7,13 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseActivity_ApComAct : AppCompatActivity() {
 
-    fun setUpPreference(): String {
+    fun setUpPreference(): List<Any> {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val pref0 = pref.getString("last_test_result", "nobodyGet")!!
+        val pref0 = pref.getString("last_test_result", "nobodyGetName")!!
+        val pref1 = pref.getInt("last_test_result_n", -1)
+        val pref2 = pref.getInt("last_test_result_volume", 0)
         //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
-        return pref0
+        return listOf(pref0,pref1,pref2)
     }
     fun setUpBottomNavigationMenu() {
         nav_bottom_menu.setOnNavigationItemSelectedListener {
@@ -32,10 +34,6 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
                 R.id.info_menu_id -> {
                     my_testResult_frame.visibility = View.GONE
                     rcView_AnList.visibility = View.GONE
-                    Log.d("MyLog",
-                        "count:${list_resours.imIdList.count()} " +
-                                "Количество итемов: ${rcView_AnList.layoutManager?.itemCount}   "
-                    )
 
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.my_info_frame, fragment_info()).commit()

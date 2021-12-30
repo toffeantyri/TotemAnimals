@@ -13,27 +13,31 @@ class StartTest_activity : BaseActivity_ApComAct() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_test_activity)
         var result_Test_Num: Int
+        Log.d("MyLog", "OnCreate StartTest_activity")
 
-        val butText = intent.getStringExtra("newtest")!!
-        Log.d("MyLog",butText)
+        val butText = intent.getStringExtra("newtest")
+
 
         result1_test_btnh.setOnClickListener{
-                intent.putExtra("result_test", "Хорек" )
+                intent.putExtra("result_test", "Белочка" )
                 intent.putExtra("result_test_int", 0 )
+                intent.putExtra("result_test_volume", 0 )
             setResult(Activity.RESULT_OK,intent)
             finish()
         }
 
         result2_test_btn.setOnClickListener{
-                intent.putExtra("result_test", "Жук")
+                intent.putExtra("result_test", "Боберчик")
                 intent.putExtra("result_test_int", 1 )
+            intent.putExtra("result_test_volume", 0 )
             setResult(Activity.RESULT_OK,intent)
             finish()
         }
 
         result3_test_btn.setOnClickListener{
-                intent.putExtra("result_test", "Козочка")
+                intent.putExtra("result_test", "Йожик")
                 intent.putExtra("result_test_int", 2 )
+            intent.putExtra("result_test_volume", 0 )
             setResult(Activity.RESULT_OK,intent)
             finish()
         }

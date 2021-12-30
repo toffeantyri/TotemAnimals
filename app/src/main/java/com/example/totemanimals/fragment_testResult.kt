@@ -29,8 +29,9 @@ class fragment_testResult : Fragment() {
 
         view0.btn_start_test.setOnClickListener {
             val intent = Intent(activity,StartTest_activity::class.java)
-            intent.putExtra("newtest", "BTNnewtest")
-            startActivityForResult(intent,100)
+            intent.putExtra("newtest", "newtest")
+            activity?.startActivityForResult(intent,100)
+
         }
 
         Log.d("MyLog", "OnCreateView Fragment_testResult " +  i)
@@ -43,47 +44,27 @@ class fragment_testResult : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+   // Log.d("MyLog","fragm testresult onAttach")
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+       // Log.d("MyLog","fragm testresult onDetach")
+    }
+
 
     companion object {
         @JvmStatic
-        fun newInstance(pref0: String) : fragment_testResult {
+        fun newInstance(pref0: List<Any>) : fragment_testResult {
             val fragment = fragment_testResult()
             val args = Bundle()
-            args.putString("pref0", pref0)
+            args.putString("pref0", pref0[0].toString())
             fragment.arguments=args
             return fragment}
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        val pref = PreferenceManager.getDefaultSharedPreferences(context)
-        if (requestCode==100 && resultCode==Activity.RESULT_OK && data!=null) {
-            pref.edit().putString("last_test_result",data.getStringExtra("result_test")).apply()
-            tv_pref_result.text=data.getStringExtra("result_test")
-            val animal_construct_result : Animal = animal_construct(data.getIntExtra("result_test_int",-1))
-            Log.d("MyLog", animal_construct_result.toString())
-
-
-        }
-        else { Log.d("MyLog", " Старый результат?: " + tv_pref_result.text.toString())
-            //tv_pref_result.text=pref.getString("last_test_result","closeNull")
-        }
-    }
-
-    fun bindingNewResult(animal_constructor_res: Animal) {
-
-
-
-    }
-
-    fun animal_construct(number_animal_index: Int) :Animal   //создание обьекта(экземпляра) класса Animal
-    {      if(number_animal_index!=(-1)&&number_animal_index<=imIdList.size){
-                val animalRes = Animal(
-                list_resours.imIdList[number_animal_index], list_resours.nameIdList[number_animal_index],
-                list_resours.descriptIdList[number_animal_index])
-                return animalRes}
-        else return Animal(0,"null_construct", "null_construct")
-    }
 }
 
 
