@@ -27,6 +27,8 @@ class fragment_testResult : Fragment() {
         val i = arguments?.getString("pref0")
         view0.tv_pref_result.text=i.toString()
 
+
+
         view0.btn_start_test.setOnClickListener {
             val intent = Intent(activity,StartTest_activity::class.java)
             intent.putExtra("newtest", "newtest")
