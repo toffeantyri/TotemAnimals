@@ -68,7 +68,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="3dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <Button
                         android:id="@+id/btn_ans1"
@@ -76,7 +77,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans2"
@@ -84,7 +86,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans3"
@@ -92,7 +95,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans4"
@@ -100,7 +104,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans5"
@@ -108,7 +113,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -117,7 +123,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="3dp"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <Button
                         android:id="@+id/btn_ans6"
@@ -125,7 +132,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans7"
@@ -133,7 +141,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans8"
@@ -141,7 +150,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans9"
@@ -149,7 +159,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans10"
@@ -157,7 +168,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
                         android:background="@drawable/shape_rectangle_r10"
-                        android:text="Button" />
+                        android:text="Button"
+                        android:visibility="visible" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -167,7 +179,7 @@
                     android:layout_marginHorizontal="3dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <Button
                         android:id="@+id/btn_ans11"
@@ -198,6 +210,15 @@
 
                     <Button
                         android:id="@+id/btn_ans14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/btn_ans15"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
