@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_night"
     tools:context=".StartTest_activity">
 
     <ScrollView
@@ -17,46 +18,228 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="5dp"
+            android:layout_marginVertical="3dp"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/tv_num_quest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/shape_rectangle_r10"
+                android:padding="10dp"
+                android:text="номер вопроса"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                app:srcCompat="@drawable/shape_separator_hor" />
+
+            <TextView
+                android:id="@+id/tv_text_quest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/shape_rectangle_r10"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="10dp"
+                android:text="текст вопроса"
+                android:textColor="@color/black" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                app:srcCompat="@drawable/shape_separator_hor" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:background="@drawable/shape_rectangle_r10"
-                android:elevation="10dp">
+                android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/btn_column1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"
-                    android:text="текст вопроса" />
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-            </androidx.cardview.widget.CardView>
+                    <Button
+                        android:id="@+id/btn_ans1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/btn_ans2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/btn_ans3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/btn_ans4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/btn_ans5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_column2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_ans6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/btn_ans7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/btn_ans8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/btn_ans9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/btn_ans10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btn_column3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <Button
+                        android:id="@+id/btn_ans11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/btn_ans12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/btn_ans13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:id="@+id/btn_ans14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="3dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:text="Button"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                app:srcCompat="@drawable/shape_separator_hor" />
 
             <Button
                 android:id="@+id/btn_close_test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/shape_rectangle_r10"
+                android:backgroundTint="@color/red_btn"
+                android:padding="8dp"
+                android:paddingHorizontal="10dp"
                 android:text="Close Test" />
 
             <Button
                 android:id="@+id/result1_test_btnh"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="резултат 1" />
 
             <Button
                 android:id="@+id/result2_test_btn"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="результ 2" />
 
             <Button
                 android:id="@+id/result3_test_btn"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="результ 3" />
 

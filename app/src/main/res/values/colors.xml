@@ -16,5 +16,6 @@
     <color name="result_red">#920000</color>
 
     <color name="black">#000000</color>
+    <color name="red_btn">#FF8585</color>
 
 </resources>
