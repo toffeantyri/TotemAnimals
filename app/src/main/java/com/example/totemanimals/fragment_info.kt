@@ -18,7 +18,7 @@ class fragment_info : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_info,container,false)
-        return inflater.inflate(R.layout.fragment_fragment_info, container, false)
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

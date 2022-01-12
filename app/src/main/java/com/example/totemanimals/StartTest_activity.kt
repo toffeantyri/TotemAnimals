@@ -18,7 +18,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
         var result_Test_Num: Int
 
 
-        val butText = intent.getStringExtra("newtest")
+        //val butText = intent.getStringExtra("newtest") // надо ли получить что бы request code был правильный
         addCountAnimallist()
         // добавляем в test_res_list - количество желементов равное количеству элементов массива в list_resours
         Log.d("MyLog", "OnCreate StartTest_activity \n" + test_res_list.toString())
