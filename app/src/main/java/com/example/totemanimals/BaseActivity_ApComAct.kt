@@ -1,7 +1,9 @@
 package com.example.totemanimals
+import android.content.DialogInterface
 import androidx.preference.PreferenceManager
 import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -40,7 +42,15 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
                     my_info_frame.visibility = View.VISIBLE
                 }
                 R.id.exit_menu_id -> {
-                    finish()
+                    val aDialog = AlertDialog.Builder(this)
+
+                    aDialog.setMessage(R.string.Alert_message_exit)
+                        .setCancelable(false)
+                        .setNegativeButton(R.string.Alert_no,DialogInterface.OnClickListener{dialog, id -> dialog.cancel()  })
+                        .setPositiveButton(R.string.Alert_yes,DialogInterface.OnClickListener { dialog, id -> finish() })
+
+                    val alert = aDialog.create()
+                    alert.show()
                 }
             }
             true
