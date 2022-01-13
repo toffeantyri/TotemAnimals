@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.internal.NavigationMenu
 import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseActivity_ApComAct : AppCompatActivity() {
@@ -51,6 +52,7 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
 
                     val alert = aDialog.create()
                     alert.show()
+
                 }
             }
             true

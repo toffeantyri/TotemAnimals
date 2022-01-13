@@ -16,10 +16,21 @@ class StartTest_activity : BaseActivity_ApComAct() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_test_activity)
-        //val butText = intent.getStringExtra("newtest") // надо ли получить что бы request code был правильный
-        addCountAnimallist()
-        // добавляем в test_res_list - количество желементов равное количеству элементов массива в list_resours
-        Log.d("MyLog", "OnCreate StartTest_activity \n лист результатов" + test_res_list.toString())
+
+        addCountAnimallist(imIdList)
+        // добавляем в test_res_list - количество элементов (нулей) равное количеству элементов массива в list_resours
+
+        Log.d("MyLog", "OnCreate StartTest_activity \n лист результатов" + test_res_list.toString()
+                + "\n Count =" + test_res_list.count())
+
+
+        testStart()
+
+
+
+
+
+
 
         result1_test_btnh.setOnClickListener{
                 intent.putExtra("result_test", "Белочка" )
@@ -51,93 +62,43 @@ class StartTest_activity : BaseActivity_ApComAct() {
             finish()
         }
 
-
-        bindViewTest(2,13)
     }
 
-    fun addCountAnimallist() {
-        val num = imIdList.count()
+    fun addCountAnimallist(list_q: List<Int>) {
+        val num = list_q.count()
         var i = 0
         while (i<num) {
             test_res_list.add(0)
             i++     }
             }
 
-    fun bindViewTest(index:Int, nums: Int) {
-        val index0 = (index +1).toString()
-        val nums0 = nums.toString()
+    fun constructorQuestObj (index: Int, list_quest: List<String>, list_nums_ans: List<Int>, list_right_answer: List<List<Int>>) : questionsBindShablon {
+        val number_q: Int = index+1
+        val text_q: String = list_quest[index]
+        val numbers_ans: Int = list_nums_ans[index]
+        val numbers_q: Int = list_quest.count()
+        val right_answer_act = list_right_answer[index]
+        return questionsBindShablon(number_q, text_q, numbers_ans,numbers_q,right_answer_act)
+    }
 
-        tv_num_quest.text = index0 + "/" + nums0
-        tv_text_quest.text = questionListsTotemAnimal.quest_totem_animal[index]
-        when(questionListsTotemAnimal.answer_num[index]) {
-            in 11..15 -> {btn_column1.visibility =View.VISIBLE
-                         btn_column2.visibility =View.VISIBLE
-                         btn_column3.visibility =View.VISIBLE
-                when(questionListsTotemAnimal.answer_num[index]){
-                    11 -> {btn_ans12.visibility = View.GONE
-                        btn_ans13.visibility = View.GONE
-                        btn_ans14.visibility = View.GONE
-                        btn_ans15.visibility = View.GONE}
-                    12 -> {btn_ans13.visibility = View.GONE
-                        btn_ans14.visibility = View.GONE
-                        btn_ans15.visibility = View.GONE}
-                    13 -> {btn_ans14.visibility = View.GONE
-                            btn_ans15.visibility = View.GONE}
-                    14 -> {btn_ans15.visibility = View.GONE}
-                    15 -> {}
-                }
-            }
-
-            in 6..10 -> {btn_column1.visibility =View.VISIBLE
-                        btn_column2.visibility =View.VISIBLE
-                        btn_column3.visibility =View.GONE
-                when(questionListsTotemAnimal.answer_num[index]) {
-                    6 -> {btn_ans7.visibility = View.GONE
-                            btn_ans8.visibility = View.GONE
-                            btn_ans9.visibility = View.GONE
-                            btn_ans10.visibility = View.GONE}
-                    7 -> {btn_ans8.visibility = View.GONE
-                        btn_ans9.visibility = View.GONE
-                        btn_ans10.visibility = View.GONE }
-                    8 -> {btn_ans9.visibility = View.GONE
-                            btn_ans10.visibility = View.GONE}
-                    9 -> {btn_ans10.visibility = View.GONE}
-                    10 -> {}
-                }
-            }
-
-            in 1..5 -> {btn_column1.visibility =View.VISIBLE
-                when(questionListsTotemAnimal.answer_num[index]) {
-                    1 -> {  btn_ans2.visibility = View.GONE
-                            btn_ans3.visibility = View.GONE
-                            btn_ans4.visibility = View.GONE
-                            btn_ans5.visibility = View.GONE}
-
-                    2 -> {   btn_ans3.visibility = View.GONE
-                             btn_ans4.visibility = View.GONE
-                             btn_ans5.visibility = View.GONE }
-
-                    3 -> {btn_ans4.visibility = View.GONE
-                        btn_ans5.visibility = View.GONE}
-
-                    4 -> {btn_ans5.visibility = View.GONE}
-
-                    5 -> {}
-                }
+    fun testStart () {
+        val view : View = findViewById(R.id.layout_test)
+        var i = 0
+        val list_of_quest = questionListsTotemAnimal.quest_totem_animal
+        val list_of_nums_answer = questionListsTotemAnimal.answer_num
+        val list_right_answer = questionListsTotemAnimal.answer_right_check
+        while (i < questionListsTotemAnimal.quest_totem_animal.count()) {
+            val shablon = constructorQuestObj(i,list_of_quest,list_of_nums_answer,list_right_answer)
+            shablon.resetBindView(view)
+            shablon.bindingView(view)
+            shablon.bindAnsAction(view) // в процессе написания
 
 
-                        btn_column2.visibility =View.GONE
-                        btn_column3.visibility =View.GONE
-            }
 
-            else -> {btn_column1.visibility =View.GONE
-                     btn_column2.visibility =View.GONE
-                     btn_column3.visibility =View.GONE}
 
+            i++
         }
-
-
-        }
+    }
 
 }
 
