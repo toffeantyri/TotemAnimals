@@ -144,13 +144,14 @@ class StartTest_activity : BaseActivity_ApComAct() {
             i++     }
             }
 
-    fun constructorQuestObj (index: Int, list_quest: List<String>, list_nums_ans: List<Int>, list_right_answer: List<List<Int>>) : questionsBindShablon {
+    fun constructorQuestObj (index: Int, list_quest: List<String>, list_nums_ans: List<Int>,list_right_answer: List<List<Int>>, list_name_btn: List<List<String>>) : questionsBindShablon {
         val number_q: Int = index
         val text_q: String = list_quest[index]
         val numbers_ans: Int = list_nums_ans[index]
         val numbers_q: Int = list_quest.count()
         val right_answer_act = list_right_answer[index]
-        return questionsBindShablon(number_q, text_q, numbers_ans,numbers_q,right_answer_act)
+        val name_btn: List<String> = list_name_btn[index]
+        return questionsBindShablon(number_q, text_q, numbers_ans,numbers_q,right_answer_act, name_btn)
     }
 
     fun testNextQuestion (index: Int) {
@@ -159,10 +160,14 @@ class StartTest_activity : BaseActivity_ApComAct() {
         val list_of_quest = questionListsTotemAnimal.quest_totem_animal
         val list_of_nums_answer = questionListsTotemAnimal.answer_num
         val list_right_answer = questionListsTotemAnimal.answer_right_check
+        val list_butt_name = questionListsTotemAnimal.button_name_list
+
         if (index < questionListsTotemAnimal.quest_totem_animal.count()) {
-            val shablon = constructorQuestObj(index,list_of_quest,list_of_nums_answer,list_right_answer)
+            val shablon = constructorQuestObj(index,list_of_quest,list_of_nums_answer,list_right_answer,list_butt_name)
             shablon.resetBindView(view)
             shablon.bindingView(view)
+            //TODO ФУНКЦИЯ БИНД ИМЕН КНОПОК
+
                         }
         else {
             Log.d("MyLog", "End test no view bind")

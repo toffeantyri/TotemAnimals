@@ -5,7 +5,8 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
-data class questionsBindShablon(val number_q:Int, val text_q: String, val numbers_ans:Int, val numbers_q: Int, val right_answer_act: List<Int>) {
+data class questionsBindShablon(val number_q:Int, val text_q: String, val numbers_ans:Int,
+                                val numbers_q: Int, val right_answer_act: List<Int>, val name_buttons: List<String>,) {
 
     fun bindingView (view: View) {
         val index0 = (number_q+1).toString()
@@ -109,10 +110,10 @@ data class questionsBindShablon(val number_q:Int, val text_q: String, val number
     fun bindNameBtn(view: View) {
         val index = number_q
         val n_ans = numbers_ans
-        val right_action: List<Int> = right_answer_act
-        when(n_ans) {
-            //бинд кнопок ответов
-        }
+        val name_btn: List<String> = name_buttons
+
+
+
 
     }
 
