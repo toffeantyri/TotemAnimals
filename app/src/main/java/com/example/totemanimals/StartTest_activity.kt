@@ -16,16 +16,88 @@ class StartTest_activity : BaseActivity_ApComAct() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_test_activity)
-
+        Log.d("MyLog", "OnCreate StartTest_activity")
         addCountAnimallist(imIdList)
         // добавляем в test_res_list - количество элементов (нулей) равное количеству элементов массива в list_resours
 
-        Log.d("MyLog", "OnCreate StartTest_activity \n лист результатов" + test_res_list.toString()
-                + "\n Count =" + test_res_list.count())
+        var index = 0
+        testNextQuestion(index)
 
-
-        testStart()
-
+        btn_ans1.setOnClickListener {
+            Log.d("MyLog", "btn1")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans2.setOnClickListener {
+            Log.d("MyLog", "btn2")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans3.setOnClickListener {
+            Log.d("MyLog", "btn3")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans4.setOnClickListener {
+            Log.d("MyLog", "btn4")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans5.setOnClickListener {
+            Log.d("MyLog", "btn5")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans6.setOnClickListener {
+            Log.d("MyLog", "btn6")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans7.setOnClickListener {
+            Log.d("MyLog", "btn7")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans8.setOnClickListener {
+            Log.d("MyLog", "btn8")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans9.setOnClickListener {
+            Log.d("MyLog", "btn9")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans10.setOnClickListener {
+            Log.d("MyLog", "btn10")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans11.setOnClickListener {
+            Log.d("MyLog", "btn11")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans12.setOnClickListener {
+            Log.d("MyLog", "btn12")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans13.setOnClickListener {
+            Log.d("MyLog", "btn13")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans14.setOnClickListener {
+            Log.d("MyLog", "btn14")
+            index++
+            testNextQuestion(index)
+        }
+        btn_ans15.setOnClickListener {
+            Log.d("MyLog", "btn15")
+            index++
+            testNextQuestion(index)
+        }
 
 
 
@@ -73,7 +145,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             }
 
     fun constructorQuestObj (index: Int, list_quest: List<String>, list_nums_ans: List<Int>, list_right_answer: List<List<Int>>) : questionsBindShablon {
-        val number_q: Int = index+1
+        val number_q: Int = index
         val text_q: String = list_quest[index]
         val numbers_ans: Int = list_nums_ans[index]
         val numbers_q: Int = list_quest.count()
@@ -81,23 +153,20 @@ class StartTest_activity : BaseActivity_ApComAct() {
         return questionsBindShablon(number_q, text_q, numbers_ans,numbers_q,right_answer_act)
     }
 
-    fun testStart () {
+    fun testNextQuestion (index: Int) {
+        Log.d("MyLog","$index")
         val view : View = findViewById(R.id.layout_test)
-        var i = 0
         val list_of_quest = questionListsTotemAnimal.quest_totem_animal
         val list_of_nums_answer = questionListsTotemAnimal.answer_num
         val list_right_answer = questionListsTotemAnimal.answer_right_check
-        while (i < questionListsTotemAnimal.quest_totem_animal.count()) {
-            val shablon = constructorQuestObj(i,list_of_quest,list_of_nums_answer,list_right_answer)
+        if (index < questionListsTotemAnimal.quest_totem_animal.count()) {
+            val shablon = constructorQuestObj(index,list_of_quest,list_of_nums_answer,list_right_answer)
             shablon.resetBindView(view)
             shablon.bindingView(view)
-            shablon.bindAnsAction(view) // в процессе написания
-
-
-
-
-            i++
-        }
+                        }
+        else {
+            Log.d("MyLog", "End test no view bind")
+            }
     }
 
 }
