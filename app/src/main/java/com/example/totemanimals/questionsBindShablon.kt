@@ -108,13 +108,25 @@ data class questionsBindShablon(val number_q:Int, val text_q: String, val number
     }
 
     fun bindNameBtn(view: View) {
-        val index = number_q
-        val n_ans = numbers_ans
+        //val index = number_q
+        //val n_ans = numbers_ans
         val name_btn: List<String> = name_buttons
 
-
-
-
+        view.btn_ans1.text = name_btn[0]
+        view.btn_ans2.text = name_btn[1]
+        view.btn_ans3.text = name_btn[2]
+        view.btn_ans4.text = name_btn[3]
+        view.btn_ans5.text = name_btn[4]
+        view.btn_ans6.text = name_btn[5]
+        view.btn_ans7.text = name_btn[6]
+        view.btn_ans8.text = name_btn[7]
+        view.btn_ans9.text = name_btn[8]
+        view.btn_ans10.text = name_btn[9]
+        view.btn_ans11.text = name_btn[10]
+        view.btn_ans12.text = name_btn[11]
+        view.btn_ans13.text = name_btn[12]
+        view.btn_ans14.text = name_btn[13]
+        view.btn_ans15.text = name_btn[14]
     }
 
 

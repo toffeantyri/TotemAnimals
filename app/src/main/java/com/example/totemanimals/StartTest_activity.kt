@@ -27,6 +27,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             Log.d("MyLog", "btn1")
             index++
             testNextQuestion(index)
+
         }
         btn_ans2.setOnClickListener {
             Log.d("MyLog", "btn2")
@@ -166,7 +167,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             val shablon = constructorQuestObj(index,list_of_quest,list_of_nums_answer,list_right_answer,list_butt_name)
             shablon.resetBindView(view)
             shablon.bindingView(view)
-            //TODO ФУНКЦИЯ БИНД ИМЕН КНОПОК
+            shablon.bindNameBtn(view)
 
                         }
         else {
