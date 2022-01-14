@@ -129,5 +129,13 @@ data class questionsBindShablon(val number_q:Int, val text_q: String, val number
         view.btn_ans15.text = name_btn[14]
     }
 
+    fun bindAction(id_btn:Int, list_result: List<Int>,): List<Int> {
+        //TODO ВЗЯТЬ ЗНАЧЕНИЕ RIGHT_ANSW_ACT ПРИСВОИТЬ КАЖДОМУ СЛУШАТЕЛЮ,
+        // TODO ВЗАТЬ ID ИЗ ПАРАМЕТРОВ f, ВЗЯТЬ ЛИСТ РЕЗУЛЬТ ИЗ ПАРАМЕТРОВ, СЛОЖИТЬ РЕЗУЛЬТАТ ЛИСТОВ, ВЕРНУТЬ ID И ОБНОВЛЕННЫЙ ЛИСТ РЕЗУЛЬТАТОВ
+    val list_result_new : List<Int> = right_answer_act
+        //TODO ЛОГИКА ОБЬЕДИНЕНИЯ ЗНАЧЕНИЙ ДВУХ ЛИСТОВ
+
+    return list_result_new
+    }
 
 }
