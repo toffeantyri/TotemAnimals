@@ -5,7 +5,7 @@
     android:id="@+id/layout_test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_night"
+    android:background="@drawable/background_test1"
     tools:context=".StartTest_activity">
 
     <ScrollView
@@ -37,13 +37,13 @@
                 android:padding="10dp"
                 android:text="номер вопроса 0"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:textStyle="normal|bold" />
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="3dp"
                 app:srcCompat="@drawable/shape_separator_hor" />
 
             <TextView
@@ -53,6 +53,7 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="5dp"
                 android:background="@drawable/shape_rectangle_r10"
+                android:minHeight="100dp"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp"
                 android:text="текст вопроса"
@@ -62,7 +63,7 @@
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="3dp"
                 app:srcCompat="@drawable/shape_separator_hor" />
 
             <LinearLayout
@@ -77,50 +78,50 @@
                     android:layout_marginHorizontal="3dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <Button
                         android:id="@+id/btn_ans1"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans2"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans3"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans4"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans5"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
                 </LinearLayout>
@@ -132,50 +133,50 @@
                     android:layout_marginHorizontal="3dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <Button
                         android:id="@+id/btn_ans6"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans7"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans8"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans9"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans10"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
                 </LinearLayout>
@@ -187,50 +188,50 @@
                     android:layout_marginHorizontal="3dp"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:visibility="visible">
 
                     <Button
                         android:id="@+id/btn_ans11"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans12"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans13"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans14"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
 
                     <Button
                         android:id="@+id/btn_ans15"
+                        style="@style/Button_Style"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:background="@drawable/shape_rectangle_r10"
                         android:text="Button"
                         android:visibility="visible" />
                 </LinearLayout>
@@ -240,7 +241,7 @@
             <ImageView
                 android:id="@+id/imageView5"
                 android:layout_width="match_parent"
-                android:layout_height="5dp"
+                android:layout_height="3dp"
                 app:srcCompat="@drawable/shape_separator_hor" />
 
             <Button
