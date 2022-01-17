@@ -142,7 +142,8 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
 
 
-    fun constructorQuestObj (index: Int, list_quest: Array<String>, list_nums_ans: Array<Int>,list_right_answer: Array<Array<Int>>, list_name_btn: Array<Array<String>>) : questionsBindShablon {
+    fun constructorQuestObj (index: Int, list_quest: Array<String>, list_nums_ans: Array<Int>,
+                             list_right_answer: Array<Array<Array<Int>>>, list_name_btn: Array<Array<String>>) : questionsBindShablon {
         val number_q: Int = index
         val text_q: String = list_quest[index]
         val numbers_ans: Int = list_nums_ans[index]
