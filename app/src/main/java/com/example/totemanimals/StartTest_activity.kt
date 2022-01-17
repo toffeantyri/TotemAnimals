@@ -152,6 +152,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
         return questionsBindShablon(number_q, text_q, numbers_ans,numbers_q,right_answer_act, name_btn)
     }
 
+
     fun testNextQuestion (index: Int) {
         Log.d("MyLog","$index")
         val view : View = findViewById(R.id.layout_test)
