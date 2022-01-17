@@ -6,7 +6,7 @@ import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 data class questionsBindShablon(val number_q:Int, val text_q: String, val numbers_ans:Int,
-                                val numbers_q: Int, val right_answer_act: List<Int>, val name_buttons: List<String>,) {
+                                val numbers_q: Int, val right_answer_act: Array<Int>, val name_buttons: Array<String>,) {
 
     fun bindingView (view: View) {
         val index0 = (number_q+1).toString()
@@ -110,7 +110,7 @@ data class questionsBindShablon(val number_q:Int, val text_q: String, val number
     fun bindNameBtn(view: View) {
         //val index = number_q
         //val n_ans = numbers_ans
-        val name_btn: List<String> = name_buttons
+        val name_btn: Array<String> = name_buttons
 
         view.btn_ans1.text = name_btn[0]
         view.btn_ans2.text = name_btn[1]
@@ -129,10 +129,10 @@ data class questionsBindShablon(val number_q:Int, val text_q: String, val number
         view.btn_ans15.text = name_btn[14]
     }
 
-    fun bindAction(id_btn:Int, list_result: List<Int>,): List<Int> {
+    fun bindAction(id_btn:Int, list_result: Array<Int>,): Array<Int> {
         //TODO ВЗЯТЬ ЗНАЧЕНИЕ RIGHT_ANSW_ACT ПРИСВОИТЬ КАЖДОМУ СЛУШАТЕЛЮ,
         // TODO ВЗАТЬ ID ИЗ ПАРАМЕТРОВ f, ВЗЯТЬ ЛИСТ РЕЗУЛЬТ ИЗ ПАРАМЕТРОВ, СЛОЖИТЬ РЕЗУЛЬТАТ ЛИСТОВ, ВЕРНУТЬ ID И ОБНОВЛЕННЫЙ ЛИСТ РЕЗУЛЬТАТОВ
-    val list_result_new : List<Int> = right_answer_act
+    val list_result_new : Array<Int> = right_answer_act
         //TODO ЛОГИКА ОБЬЕДИНЕНИЯ ЗНАЧЕНИЙ ДВУХ ЛИСТОВ
 
     return list_result_new

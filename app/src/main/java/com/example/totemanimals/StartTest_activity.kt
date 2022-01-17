@@ -11,14 +11,17 @@ import kotlinx.android.synthetic.main.activity_start_test_activity.*
 
 class StartTest_activity : BaseActivity_ApComAct() {
 
-    var test_res_list = arrayListOf<Int>()
+    lateinit var test_res_list: Array<Int>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_test_activity)
         Log.d("MyLog", "OnCreate StartTest_activity")
-        addCountAnimallist(imIdList)
-        // добавляем в test_res_list - количество элементов (нулей) равное количеству элементов массива в list_resours
+
+        test_res_list = Array<Int>(imIdList.count(),{0})
+        Log.d("MyLog","Список для результатов"+test_res_list.contentToString())
+        //создаем массив наполненый колчеством 0 равный размеру вариантов результата теста(количество животных)
+
 
         var index = 0
         testNextQuestion(index)
@@ -137,21 +140,15 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
     }
 
-    fun addCountAnimallist(list_q: List<Int>) {
-        val num = list_q.count()
-        var i = 0
-        while (i<num) {
-            test_res_list.add(0)
-            i++     }
-            }
 
-    fun constructorQuestObj (index: Int, list_quest: List<String>, list_nums_ans: List<Int>,list_right_answer: List<List<Int>>, list_name_btn: List<List<String>>) : questionsBindShablon {
+
+    fun constructorQuestObj (index: Int, list_quest: Array<String>, list_nums_ans: Array<Int>,list_right_answer: Array<Array<Int>>, list_name_btn: Array<Array<String>>) : questionsBindShablon {
         val number_q: Int = index
         val text_q: String = list_quest[index]
         val numbers_ans: Int = list_nums_ans[index]
         val numbers_q: Int = list_quest.count()
         val right_answer_act = list_right_answer[index]
-        val name_btn: List<String> = list_name_btn[index]
+        val name_btn = list_name_btn[index]
         return questionsBindShablon(number_q, text_q, numbers_ans,numbers_q,right_answer_act, name_btn)
     }
 
