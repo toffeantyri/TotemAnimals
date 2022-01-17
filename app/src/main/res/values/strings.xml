@@ -22,4 +22,6 @@
     <string name="testres_antipode">Your antipode</string>
     <string name="testres_your_type">Your type is</string>
 
+    <string name="close_get_result_test">Calculate Totem Animal</string>
+    <string name="measuring_result">Calculation will take no more than 30 seconds</string>
 </resources>

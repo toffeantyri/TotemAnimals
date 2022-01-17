@@ -1,13 +1,16 @@
 package com.example.totemanimals
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import com.example.totemanimals.list_resours.imIdList
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
+import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 class StartTest_activity : BaseActivity_ApComAct() {
 
@@ -28,77 +31,92 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         btn_ans1.setOnClickListener {
             Log.d("MyLog", "btn1")
+            resultUpdate(1,index)
             index++
             testNextQuestion(index)
 
         }
         btn_ans2.setOnClickListener {
             Log.d("MyLog", "btn2")
+            resultUpdate(2,index)
             index++
             testNextQuestion(index)
         }
         btn_ans3.setOnClickListener {
+            resultUpdate(3,index)
             Log.d("MyLog", "btn3")
             index++
             testNextQuestion(index)
         }
         btn_ans4.setOnClickListener {
             Log.d("MyLog", "btn4")
+            resultUpdate(4,index)
             index++
             testNextQuestion(index)
         }
         btn_ans5.setOnClickListener {
             Log.d("MyLog", "btn5")
+            resultUpdate(5,index)
             index++
             testNextQuestion(index)
         }
         btn_ans6.setOnClickListener {
             Log.d("MyLog", "btn6")
+            resultUpdate(6,index)
             index++
             testNextQuestion(index)
         }
         btn_ans7.setOnClickListener {
             Log.d("MyLog", "btn7")
+            resultUpdate(7,index)
             index++
             testNextQuestion(index)
         }
         btn_ans8.setOnClickListener {
             Log.d("MyLog", "btn8")
+            resultUpdate(8,index)
             index++
             testNextQuestion(index)
         }
         btn_ans9.setOnClickListener {
             Log.d("MyLog", "btn9")
+            resultUpdate(9,index)
             index++
             testNextQuestion(index)
         }
         btn_ans10.setOnClickListener {
             Log.d("MyLog", "btn10")
+            resultUpdate(10,index)
             index++
             testNextQuestion(index)
         }
         btn_ans11.setOnClickListener {
             Log.d("MyLog", "btn11")
+            resultUpdate(11,index)
             index++
             testNextQuestion(index)
         }
         btn_ans12.setOnClickListener {
             Log.d("MyLog", "btn12")
+            resultUpdate(12,index)
             index++
             testNextQuestion(index)
         }
         btn_ans13.setOnClickListener {
             Log.d("MyLog", "btn13")
+            resultUpdate(13,index)
             index++
             testNextQuestion(index)
         }
         btn_ans14.setOnClickListener {
             Log.d("MyLog", "btn14")
+            resultUpdate(14,index)
             index++
             testNextQuestion(index)
         }
         btn_ans15.setOnClickListener {
             Log.d("MyLog", "btn15")
+            resultUpdate(15,index)
             index++
             testNextQuestion(index)
         }
@@ -153,9 +171,12 @@ class StartTest_activity : BaseActivity_ApComAct() {
         return questionsBindShablon(number_q, text_q, numbers_ans,numbers_q,right_answer_act, name_btn)
     }
 
+    fun constructorResultBindShablon (index: Int, list_right_answer: Array<Array<Array<Int>>>,) : resultBindShablon {
+        return resultBindShablon(index, list_right_answer[index])
+    }
+
 
     fun testNextQuestion (index: Int) {
-        Log.d("MyLog","$index")
         val view : View = findViewById(R.id.layout_test)
         val list_of_quest = questionListsTotemAnimal.quest_totem_animal
         val list_of_nums_answer = questionListsTotemAnimal.answer_num
@@ -171,8 +192,28 @@ class StartTest_activity : BaseActivity_ApComAct() {
                         }
         else {
             Log.d("MyLog", "End test no view bind")
+            view.btn_close_testfor_result.visibility=View.VISIBLE
+            view.btn_column1.visibility=View.GONE
+            view.btn_column2.visibility=View.GONE
+            view.btn_column3.visibility=View.GONE
+            view.btn_close_test.visibility=View.GONE
+            view.tv_text_quest.text=getString(R.string.measuring_result)
+
             }
     }
 
+
+    fun resultUpdate (btn_id:Int, index: Int){
+        val list_right_answer = questionListsTotemAnimal.answer_right_check
+        if(index < questionListsTotemAnimal.quest_totem_animal.count()-1) {
+            val shablonResultUpdater = constructorResultBindShablon(index,list_right_answer)
+            test_res_list = shablonResultUpdater.bindAction(btn_id,test_res_list)
+                    }
+        else {Log.d("MyLog", "End Result \n" + test_res_list.contentToString() )
+
+
+        }
+
+    }
 }
 
