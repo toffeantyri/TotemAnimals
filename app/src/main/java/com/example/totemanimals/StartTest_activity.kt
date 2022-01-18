@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.preference.PreferenceManager
 import com.example.totemanimals.list_resours.imIdList
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
@@ -33,123 +34,117 @@ class StartTest_activity : BaseActivity_ApComAct() {
             Log.d("MyLog", "btn1")
             resultUpdate(1,index)
             index++
-            testNextQuestion(index)
+            testNextQuestion(index)        }
 
-        }
         btn_ans2.setOnClickListener {
             Log.d("MyLog", "btn2")
             resultUpdate(2,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans3.setOnClickListener {
             resultUpdate(3,index)
             Log.d("MyLog", "btn3")
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans4.setOnClickListener {
             Log.d("MyLog", "btn4")
             resultUpdate(4,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans5.setOnClickListener {
             Log.d("MyLog", "btn5")
             resultUpdate(5,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans6.setOnClickListener {
             Log.d("MyLog", "btn6")
             resultUpdate(6,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans7.setOnClickListener {
             Log.d("MyLog", "btn7")
             resultUpdate(7,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans8.setOnClickListener {
             Log.d("MyLog", "btn8")
             resultUpdate(8,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans9.setOnClickListener {
             Log.d("MyLog", "btn9")
             resultUpdate(9,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans10.setOnClickListener {
             Log.d("MyLog", "btn10")
             resultUpdate(10,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans11.setOnClickListener {
             Log.d("MyLog", "btn11")
             resultUpdate(11,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans12.setOnClickListener {
             Log.d("MyLog", "btn12")
             resultUpdate(12,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans13.setOnClickListener {
             Log.d("MyLog", "btn13")
             resultUpdate(13,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans14.setOnClickListener {
             Log.d("MyLog", "btn14")
             resultUpdate(14,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
+
         btn_ans15.setOnClickListener {
             Log.d("MyLog", "btn15")
             resultUpdate(15,index)
             index++
-            testNextQuestion(index)
-        }
+            testNextQuestion(index)        }
 
+        btn_close_testfor_result.setOnClickListener {
+            val last_min_name =1
+            val last_min_volume = 2
+            val first_max_name = 3
+            val first_max_volume = 4
+            val second_max_name =5
+            val second_max_volume = 6
 
+            val pref = PreferenceManager.getDefaultSharedPreferences(this)
+            pref.edit().putInt("first_name",first_max_name).apply()
+            pref.edit().putInt("first_volume",first_max_volume).apply()
+            pref.edit().putInt("second_name",second_max_name).apply()
+            pref.edit().putInt("second_volume",second_max_volume).apply()
+            pref.edit().putInt("last_name",last_min_name).apply()
+            pref.edit().putInt("last_volume",last_min_name).apply()
 
-
-
-
-        result1_test_btnh.setOnClickListener{
-                intent.putExtra("result_test", "Белочка" )
-                intent.putExtra("result_test_int", 0 )
-                intent.putExtra("result_test_volume", test_res_list[0] )
+            intent.putExtra("first_name", first_max_name )
+            intent.putExtra("first_volume", first_max_volume)
+            intent.putExtra("second_name", second_max_name)
+            intent.putExtra("second_volume", second_max_volume)
+            intent.putExtra("last_name", last_min_name)
+            intent.putExtra("last_volume", last_min_volume)
             setResult(Activity.RESULT_OK,intent)
-            finish()
+        finish()
         }
-
-        result2_test_btn.setOnClickListener{
-                intent.putExtra("result_test", "Боберчик")
-                intent.putExtra("result_test_int", 1 )
-            intent.putExtra("result_test_volume", test_res_list[1] )
-            setResult(Activity.RESULT_OK,intent)
-            finish()
-        }
-
-        result3_test_btn.setOnClickListener{
-                intent.putExtra("result_test", "Йожик")
-                intent.putExtra("result_test_int", 2 )
-            intent.putExtra("result_test_volume", test_res_list[2] )
-            setResult(Activity.RESULT_OK,intent)
-            finish()
-        }
-
 
         btn_close_test.setOnClickListener{
             setResult(Activity.RESULT_CANCELED)
@@ -214,6 +209,19 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         }
 
+    }
+
+    fun lastMinResult () {
+        //todo функция находит в массиве индекс и значение минимального элемента
+    }
+
+    fun FirstMaxResult () {
+        //todo функция находит в массиве индекс и значение минимального элемента
+        // берет его и затем обнуляет для работы следущей функции
+    }
+
+    fun SecondMaxResult () {
+        //todo функция находит в массиве индекс и значение второго максимального элемента
     }
 }
 

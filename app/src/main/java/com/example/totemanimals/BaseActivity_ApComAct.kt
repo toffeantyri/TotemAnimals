@@ -10,13 +10,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseActivity_ApComAct : AppCompatActivity() {
 
-    fun setUpPreference(): List<Any> {
+    fun setUpPreference(): List<Int> {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val pref0 = pref.getString("last_test_result", "nobodyGetName")!!
-        val pref1 = pref.getInt("last_test_result_n", -1)
-        val pref2 = pref.getInt("last_test_result_volume", 0)
+        val pref0 = pref.getInt("first_name", -1)
+        val pref1 = pref.getInt("first_volume", -1)
+        val pref2 = pref.getInt("second_name", -1)
+        val pref3 = pref.getInt("second_volume", -1)
+        val pref4 = pref.getInt("last_name", -1)
+        val pref5 = pref.getInt("last_volume", -1)
         //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
-        return listOf(pref0,pref1,pref2)
+        return listOf(pref0,pref1,pref2,pref3,pref4,pref5)
     }
     fun setUpBottomNavigationMenu() {
         nav_bottom_menu.setOnNavigationItemSelectedListener {

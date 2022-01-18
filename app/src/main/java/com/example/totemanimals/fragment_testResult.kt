@@ -24,8 +24,13 @@ class fragment_testResult : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view0 = LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result,container,false)
-        val i = arguments?.getString("pref0")
-        view0.tv_pref_result.text=i.toString()
+        val first_name = arguments?.getInt("first_name")
+        val first_volume = arguments?.getInt("first_volume")
+        val second_name = arguments?.getInt("second_name")
+        val second_volume = arguments?.getInt("second_volume")
+        val last_name = arguments?.getInt("last_name")
+        val last_volume = arguments?.getInt("last_volume")
+        view0.tv_pref_result.text=first_name.toString()
 
 
 
@@ -33,10 +38,8 @@ class fragment_testResult : Fragment() {
             val intent = Intent(activity,StartTest_activity::class.java)
             intent.putExtra("newtest", "newtest")
             activity?.startActivityForResult(intent,100)
-
         }
-
-        Log.d("MyLog", "OnCreateView Fragment_testResult " +  i)
+        Log.d("MyLog", "OnCreateView Fragment_testResult " )
         return view0
 
     }
@@ -59,10 +62,15 @@ class fragment_testResult : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(pref0: List<Any>) : fragment_testResult {
+        fun newInstance(pref0: List<Int>) : fragment_testResult {
             val fragment = fragment_testResult()
             val args = Bundle()
-            args.putString("pref0", pref0[0].toString())
+            args.putInt("first_name", pref0[0])
+            args.putInt("first_volume", pref0[1])
+            args.putInt("second_name", pref0[2])
+            args.putInt("second_volume", pref0[3])
+            args.putInt("last_name", pref0[4])
+            args.putInt("last_volume", pref0[5])
             fragment.arguments=args
             return fragment}
     }
