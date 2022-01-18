@@ -13,26 +13,36 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".SplashActivity"
+            android:theme="@style/SplashStyle"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
-            android:screenOrientation="portrait"
-            android:name=".StartTest_activity"/>
+            android:name=".StartTest_activity"
+            android:screenOrientation="portrait" />
         <activity
-            android:screenOrientation="portrait"
-            android:name=".Animal_descpt_view" />
+            android:name=".Animal_descpt_view"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="@string/application_id_name_test"
             android:value="@string/my_app_id_value_test" />
 
         <activity
-            android:screenOrientation="portrait"
             android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <!--intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter!-->
         </activity>
     </application>
 
