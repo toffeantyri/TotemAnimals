@@ -28,8 +28,8 @@
     </style>
 
     <style name="SplashStyle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/background_night</item>
     </style>
 
 </resources>
