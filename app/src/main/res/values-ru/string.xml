@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Тотемные животные</string>
+    <string name="Alert_title_exit">Выход</string>
+    <string name="Alert_message_exit">Закрыть приложение?</string>
+    <string name="Alert_yes">Да</string>
+    <string name="Alert_no">Нет</string>
+
+    <string name="nav_menu_test">Тесты</string>
+    <string name="nav_menu_search">Поиск</string>
+    <string name="nav_menu_info">Инфо</string>
+    <string name="nav_menu_exit">Выход</string>
+
+    <string name="desc_act_btn_back">назад</string>
+    <string name="my_btn_my_userBlog">Подробнее</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="start_new_test">Начать тест</string>
+    <string name="testres_antipode">Ваша противоположность</string>
+    <string name="testres_your_type">Подходит вам на</string>
+    <string name="char_from">из</string>
+
+    <string name="close_get_result_test">Расчитать Тотемное животное</string>
+    <string name="measuring_result">Расчёт займет не более 30 секунд, пожалуйста поблагодарите разработчика просмотрев рекламу :)</string>
+    <string name="close_test">Закрыть тест</string>
+
+</resources>

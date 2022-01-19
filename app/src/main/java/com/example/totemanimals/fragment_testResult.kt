@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
+import com.example.totemanimals.list_resours.descriptIdList
 import com.example.totemanimals.list_resours.imIdList
 import com.example.totemanimals.list_resours.nameIdList
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
@@ -25,23 +26,45 @@ class fragment_testResult : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view0 = LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result,container,false)
-        val first_name = arguments?.getInt("first_name") ?: -1
-        val first_volume = arguments?.getInt("first_volume")?: -1
-        val second_name = arguments?.getInt("second_name")?: -1
-        val second_volume = arguments?.getInt("second_volume")?: -1
-        val last_name = arguments?.getInt("last_name")?: -1
-        val all_volume = arguments?.getInt("all_volume")?: -1
+        val first_name:Int = arguments?.getInt("first_name") ?: -1
+        val first_volume:Int = arguments?.getInt("first_volume")?: -1
+        val second_name:Int = arguments?.getInt("second_name")?: -1
+        val second_volume:Int = arguments?.getInt("second_volume")?: -1
+        val last_name:Int = arguments?.getInt("last_name")?: -1
+        val all_volume:Int = arguments?.getInt("all_volume")?: -1
         view0.tv_pref_result.text=first_name.toString()
-        Log.d("MyLog", "$first_name $first_volume $second_name $second_volume $last_name $all_volume")
 
         viewBindResultFromBungle(view0,first_name,first_volume,second_name,second_volume,last_name,all_volume)
 
         view0.btn_start_test.setOnClickListener {
             val intent = Intent(activity,StartTest_activity::class.java)
-            intent.putExtra("newtest", "new_animaltotem_test")
+            intent.putExtra("new_test", "new_animaltotem_test")
             activity?.startActivityForResult(intent,100)
         }
         Log.d("MyLog", "OnCreateView Fragment_testResult " )
+        view0.LinearLayout_result1.setOnClickListener {
+
+        val first_animal = animal_construct(first_name)
+            val intent = Intent(activity, Animal_descpt_view::class.java)
+            intent.putExtra("description_search", first_animal)
+            startActivity(intent)
+        }
+
+
+        view0.LinearLayout_result2.setOnClickListener {
+        val second_animal = animal_construct(second_name)
+            val intent = Intent(activity, Animal_descpt_view::class.java)
+            intent.putExtra("description_search", second_animal)
+            startActivity(intent)
+        }
+
+        view0.LinearLayout_result3.setOnClickListener {
+        val last_animal = animal_construct(last_name)
+            val intent = Intent(activity, Animal_descpt_view::class.java)
+            intent.putExtra("description_search", last_animal)
+            startActivity(intent)
+        }
+
         return view0
 
     }
@@ -49,6 +72,7 @@ class fragment_testResult : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 
     override fun onAttach(context: Context) {
@@ -61,7 +85,14 @@ class fragment_testResult : Fragment() {
        // Log.d("MyLog","fragm testresult onDetach")
     }
 
-
+    fun animal_construct(number_animal_index: Int) :Animal   {
+        if(number_animal_index!=(-1)&&number_animal_index<= imIdList.size){
+            val animalRes = Animal(
+                imIdList[number_animal_index], nameIdList[number_animal_index],
+                descriptIdList[number_animal_index])
+            return animalRes}
+        else return Animal(0,"null_construct", "null_construct")
+    }
 
 
     fun viewBindResultFromBungle(view: View,f_n:Int,f_v:Int,s_n:Int,s_v:Int,l_n:Int,a_v:Int) {

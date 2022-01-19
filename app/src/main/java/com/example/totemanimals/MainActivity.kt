@@ -110,14 +110,6 @@ class MainActivity : BaseActivity_ApComAct() {
         mAdView.loadAd(adRequest)
     }
 
-    fun animal_construct(number_animal_index: Int) :Animal   {
-        if(number_animal_index!=(-1)&&number_animal_index<= list_resours.imIdList.size){ //todo проверить! должно быть size -1?
-        val animalRes = Animal(
-            list_resours.imIdList[number_animal_index], list_resours.nameIdList[number_animal_index],
-            list_resours.descriptIdList[number_animal_index])
-        return animalRes}
-        else return Animal(0,"null_construct", "null_construct")
-    }
 
 }
 

@@ -102,7 +102,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/shape_separator" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/imageButton1"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
@@ -180,7 +180,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/shape_separator" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/imageButton3"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
@@ -247,7 +247,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/shape_separator" />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/imageButton4"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
