@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseActivity_ApComAct : AppCompatActivity() {
 
-    fun setUpPreference(): List<Int> {
+    fun setUpPreference(): Array<Int> {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val pref0 = pref.getInt("first_name", -1)
         val pref1 = pref.getInt("first_volume", -1)
@@ -19,7 +19,7 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         val pref4 = pref.getInt("last_name", -1)
         val pref5 = pref.getInt("last_volume", -1)
         //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
-        return listOf(pref0,pref1,pref2,pref3,pref4,pref5)
+        return arrayOf(pref0,pref1,pref2,pref3,pref4,pref5)
     }
     fun setUpBottomNavigationMenu() {
         nav_bottom_menu.setOnNavigationItemSelectedListener {

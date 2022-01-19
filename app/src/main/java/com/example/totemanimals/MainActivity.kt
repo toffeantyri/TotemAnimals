@@ -53,23 +53,21 @@ class MainActivity : BaseActivity_ApComAct() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("MyLog", "OnActivityResult MainActivity")
-        //val pref = PreferenceManager.getDefaultSharedPreferences(this)
         if (requestCode==100 && resultCode==Activity.RESULT_OK && data!=null) {
 
-            tv_pref_result.text=data.getStringExtra("first_name")
-            //val animal_construct_result : Animal = animal_construct(data.getIntExtra("first_name",-1))
-            //тут нужен ли вызов конструктора?
-            //Log.d("MyLog", "Результат преобразовани" + animal_construct_result.toString())
-
-            Log.d("MyLog",
-                "В результат пришло" + data.getStringExtra("result_test") +
-                        " " + data.getIntExtra("first_name",-1) +
-                        " " + data.getIntExtra("first_volume",0) )
+            val f_n = data.getIntExtra("first_name",-1 )
+            val f_v = data.getIntExtra("first_volume",-1)
+            val s_n = data.getIntExtra("second_name",-1)
+            val s_v = data.getIntExtra("second_volume",-1)
+            val l_n = data.getIntExtra("last_name",-1)
+            val l_v = data.getIntExtra("last_volume",-1)
+        val result_array = arrayOf(f_n,f_v,s_n,s_v,l_n,l_v)
 
 
+            Log.d("MyLog","result array : \n" + result_array.contentToString())
 
             supportFragmentManager.beginTransaction()
-                .replace(R.id.my_testResult_frame, fragment_testResult.newInstance(setUpPreference())).commit()
+                .replace(R.id.my_testResult_frame, fragment_testResult.newInstance(result_array)).commit()
         }
         else { Log.d("MyLog", " Старый результат?: " + tv_pref_result.text.toString())
 
@@ -120,6 +118,7 @@ class MainActivity : BaseActivity_ApComAct() {
         return animalRes}
         else return Animal(0,"null_construct", "null_construct")
     }
+
 }
 
 

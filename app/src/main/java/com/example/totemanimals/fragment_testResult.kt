@@ -24,19 +24,22 @@ class fragment_testResult : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view0 = LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result,container,false)
-        val first_name = arguments?.getInt("first_name")
-        val first_volume = arguments?.getInt("first_volume")
-        val second_name = arguments?.getInt("second_name")
-        val second_volume = arguments?.getInt("second_volume")
-        val last_name = arguments?.getInt("last_name")
-        val last_volume = arguments?.getInt("last_volume")
+        val first_name = arguments?.getInt("first_name") ?: -1
+        val first_volume = arguments?.getInt("first_volume")?: -1
+        val second_name = arguments?.getInt("second_name")?: -1
+        val second_volume = arguments?.getInt("second_volume")?: -1
+        val last_name = arguments?.getInt("last_name")?: -1
+        val last_volume = arguments?.getInt("last_volume")?: -1
         view0.tv_pref_result.text=first_name.toString()
+        Log.d("MyLog", "$first_name $first_volume $second_name $second_volume $last_name $last_volume")
 
+        resetViewFragmentTestResult(view0)
+        viewBindResultOneFromBungle(view0,first_name,first_volume,second_name,second_volume,last_name,last_volume)
 
 
         view0.btn_start_test.setOnClickListener {
             val intent = Intent(activity,StartTest_activity::class.java)
-            intent.putExtra("newtest", "newtest")
+            intent.putExtra("newtest", "new_animaltotem_test")
             activity?.startActivityForResult(intent,100)
         }
         Log.d("MyLog", "OnCreateView Fragment_testResult " )
@@ -62,7 +65,7 @@ class fragment_testResult : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(pref0: List<Int>) : fragment_testResult {
+        fun newInstance(pref0: Array<Int>) : fragment_testResult {
             val fragment = fragment_testResult()
             val args = Bundle()
             args.putInt("first_name", pref0[0])
@@ -73,6 +76,15 @@ class fragment_testResult : Fragment() {
             args.putInt("last_volume", pref0[5])
             fragment.arguments=args
             return fragment}
+    }
+    fun resetViewFragmentTestResult(view:View) {
+        view.LinearLayout_result1.visibility=View.GONE
+        view.LinearLayout_result2.visibility=View.GONE
+        view.LinearLayout_result3.visibility=View.GONE
+    }
+    fun viewBindResultOneFromBungle(view: View,f_n:Int,f_v:Int,s_n:Int,s_v:Int,l_n:Int,l_v:Int) {
+
+
     }
 
 }
