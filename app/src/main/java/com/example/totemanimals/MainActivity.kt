@@ -62,16 +62,11 @@ class MainActivity : BaseActivity_ApComAct() {
             val l_n = data.getIntExtra("last_name",-1)
             val a_v = data.getIntExtra("all_volume",-1)
         val result_array = arrayOf(f_n,f_v,s_n,s_v,l_n,a_v)
-
-
-            Log.d("MyLog","result array : \n" + result_array.contentToString())
-
+            //Log.d("MyLog","result array : \n" + result_array.contentToString())
             supportFragmentManager.beginTransaction()
                 .replace(R.id.my_testResult_frame, fragment_testResult.newInstance(result_array)).commit()
         }
-        else { Log.d("MyLog", " Старый результат?: " + tv_pref_result.text.toString())
-
-        }
+        else { Log.d("MyLog", " Старый результат?: ")        }
     }
 
     fun addAllAnimalOnRV() {

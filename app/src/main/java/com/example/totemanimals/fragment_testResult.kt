@@ -32,7 +32,7 @@ class fragment_testResult : Fragment() {
         val second_volume:Int = arguments?.getInt("second_volume")?: -1
         val last_name:Int = arguments?.getInt("last_name")?: -1
         val all_volume:Int = arguments?.getInt("all_volume")?: -1
-        view0.tv_pref_result.text=first_name.toString()
+
 
         viewBindResultFromBungle(view0,first_name,first_volume,second_name,second_volume,last_name,all_volume)
 
