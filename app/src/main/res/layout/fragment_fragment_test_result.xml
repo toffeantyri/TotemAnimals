@@ -8,7 +8,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +47,7 @@
             <LinearLayout
                 android:id="@+id/LinearLayout_result1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_rectangle_r10"
@@ -58,7 +59,7 @@
                     android:id="@+id/im_testresult_n1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
                     android:src="@drawable/smallbelka" />
 
@@ -136,7 +137,7 @@
                     android:id="@+id/im_testresult_n2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
                     android:src="@drawable/smallbelka" />
 
@@ -202,7 +203,7 @@
             <LinearLayout
                 android:id="@+id/LinearLayout_result3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:layout_weight="1"
                 android:background="@drawable/shape_rectangle_r10"
@@ -214,7 +215,7 @@
                     android:id="@+id/im_testresult_n3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
+                    android:layout_marginHorizontal="2dp"
                     android:layout_weight="1"
                     android:src="@drawable/smallbelka" />
 
