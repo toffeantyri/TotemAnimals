@@ -121,6 +121,8 @@ class StartTest_activity : BaseActivity_ApComAct() {
             testNextQuestion(index)        }
 
         btn_close_testfor_result.setOnClickListener {
+
+            //todo присваиваем из функции расчета результатов
             val last_min_name =1
             val last_min_volume = 2
             val first_max_name = 3
@@ -149,6 +151,13 @@ class StartTest_activity : BaseActivity_ApComAct() {
         btn_close_test.setOnClickListener{
             setResult(Activity.RESULT_CANCELED)
             finish()
+        }
+
+        result1_test_btnh.setOnClickListener {
+            //todo тест приема
+            val new_results = MinMaxMaxTwoResult()
+
+
         }
 
     }
@@ -211,17 +220,18 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
     }
 
-    fun lastMinResult () {
-        //todo функция находит в массиве индекс и значение минимального элемента
+    fun MinMaxMaxTwoResult () : Array<Int> { // находит из массива результатов
+
+        val min_volume : Int = test_res_list.minByOrNull{it} ?: -1
+        val min_name : Int = if(min_volume>=0) test_res_list.indexOf(min_volume) else -1
+        val max_volume : Int = test_res_list.maxByOrNull{it} ?: -1
+        val max_name : Int = if(max_volume>=0) test_res_list.indexOf(max_volume) else -1
+        test_res_list[max_name] = -1
+
+        val s_max_volume : Int = test_res_list.maxByOrNull{it} ?: -1
+        val s_max_name : Int = if(s_max_volume>=0) test_res_list.indexOf(s_max_volume) else -1
+        return arrayOf(max_name,max_volume,s_max_name,s_max_volume,min_name,min_volume)
     }
 
-    fun FirstMaxResult () {
-        //todo функция находит в массиве индекс и значение минимального элемента
-        // берет его и затем обнуляет для работы следущей функции
-    }
-
-    fun SecondMaxResult () {
-        //todo функция находит в массиве индекс и значение второго максимального элемента
-    }
 }
 

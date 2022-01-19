@@ -53,7 +53,7 @@ class MainActivity : BaseActivity_ApComAct() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("MyLog", "OnActivityResult MainActivity")
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        //val pref = PreferenceManager.getDefaultSharedPreferences(this)
         if (requestCode==100 && resultCode==Activity.RESULT_OK && data!=null) {
 
             tv_pref_result.text=data.getStringExtra("first_name")
@@ -113,7 +113,7 @@ class MainActivity : BaseActivity_ApComAct() {
     }
 
     fun animal_construct(number_animal_index: Int) :Animal   {
-        if(number_animal_index!=(-1)&&number_animal_index<= list_resours.imIdList.size){
+        if(number_animal_index!=(-1)&&number_animal_index<= list_resours.imIdList.size){ //todo проверить! должно быть size -1?
         val animalRes = Animal(
             list_resours.imIdList[number_animal_index], list_resours.nameIdList[number_animal_index],
             list_resours.descriptIdList[number_animal_index])

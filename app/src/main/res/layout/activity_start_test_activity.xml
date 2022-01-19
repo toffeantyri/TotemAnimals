@@ -275,19 +275,19 @@
                 android:id="@+id/result1_test_btnh"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="резултат 1" />
+                android:text="min" />
 
             <Button
                 android:id="@+id/result2_test_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="результ 2" />
+                android:text="max" />
 
             <Button
                 android:id="@+id/result3_test_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="результ 3" />
+                android:text="max2" />
 
         </LinearLayout>
     </ScrollView>
