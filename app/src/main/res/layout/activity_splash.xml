@@ -8,9 +8,9 @@
 
     <ImageView
         android:id="@+id/im_logo"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        app:srcCompat="@mipmap/ic_launcher_foreground" />
+        app:srcCompat="@drawable/logo_text_splash" />
 
         </RelativeLayout>
