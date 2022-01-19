@@ -17,7 +17,7 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         val pref2 = pref.getInt("second_name", -1)
         val pref3 = pref.getInt("second_volume", -1)
         val pref4 = pref.getInt("last_name", -1)
-        val pref5 = pref.getInt("last_volume", -1)
+        val pref5 = pref.getInt("all_volume", -1)
         //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
         return arrayOf(pref0,pref1,pref2,pref3,pref4,pref5)
     }

@@ -126,7 +126,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             val second_max_name = MinMaxMaxTwoResult()[2]
             val second_max_volume = MinMaxMaxTwoResult()[3]
             val last_min_name = MinMaxMaxTwoResult()[4]
-            val last_min_volume = MinMaxMaxTwoResult()[5]
+            val all_volume = MinMaxMaxTwoResult()[5]
 
             val pref = PreferenceManager.getDefaultSharedPreferences(this)
             pref.edit().putInt("first_name",first_max_name).apply()
@@ -134,14 +134,14 @@ class StartTest_activity : BaseActivity_ApComAct() {
             pref.edit().putInt("second_name",second_max_name).apply()
             pref.edit().putInt("second_volume",second_max_volume).apply()
             pref.edit().putInt("last_name",last_min_name).apply()
-            pref.edit().putInt("last_volume",last_min_volume).apply()
+            pref.edit().putInt("all_volume",all_volume).apply()
 
             intent.putExtra("first_name", first_max_name )
             intent.putExtra("first_volume", first_max_volume)
             intent.putExtra("second_name", second_max_name)
             intent.putExtra("second_volume", second_max_volume)
             intent.putExtra("last_name", last_min_name)
-            intent.putExtra("last_volume", last_min_volume)
+            intent.putExtra("all_volume", all_volume)
             setResult(Activity.RESULT_OK,intent)
         finish()
         }
@@ -153,7 +153,6 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         result1_test_btnh.setOnClickListener {
             //todo тест приема
-            //test_res_list = arrayOf(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14)
             val new_results = MinMaxMaxTwoResult()
             Log.d("MyLog", new_results.contentToString())
             Log.d("MyLog", test_res_list.contentToString())
@@ -222,7 +221,6 @@ class StartTest_activity : BaseActivity_ApComAct() {
     }
 
     fun MinMaxMaxTwoResult () : Array<Int> { // находит из массива результатов
-
         val min_volume : Int = test_res_list.minByOrNull{it} ?: -1
         val min_name : Int = if(min_volume>=0) test_res_list.indexOf(min_volume) else -1
         val max_volume : Int = test_res_list.maxByOrNull{it} ?: -1
@@ -231,7 +229,8 @@ class StartTest_activity : BaseActivity_ApComAct() {
         val s_max_volume : Int = test_res_list.maxByOrNull{it} ?: -1
         val s_max_name : Int = if(s_max_volume>=0) test_res_list.indexOf(s_max_volume) else -1
         test_res_list[max_name]=max_volume
-        return arrayOf(max_name,max_volume,s_max_name,s_max_volume,min_name,min_volume)
+        val all_volume = test_res_list.sum()
+        return arrayOf(max_name,max_volume,s_max_name,s_max_volume,min_name,all_volume)
 
     }
 

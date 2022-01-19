@@ -60,8 +60,8 @@ class MainActivity : BaseActivity_ApComAct() {
             val s_n = data.getIntExtra("second_name",-1)
             val s_v = data.getIntExtra("second_volume",-1)
             val l_n = data.getIntExtra("last_name",-1)
-            val l_v = data.getIntExtra("last_volume",-1)
-        val result_array = arrayOf(f_n,f_v,s_n,s_v,l_n,l_v)
+            val a_v = data.getIntExtra("all_volume",-1)
+        val result_array = arrayOf(f_n,f_v,s_n,s_v,l_n,a_v)
 
 
             Log.d("MyLog","result array : \n" + result_array.contentToString())

@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
 import com.example.totemanimals.list_resours.imIdList
+import com.example.totemanimals.list_resours.nameIdList
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
@@ -29,13 +30,11 @@ class fragment_testResult : Fragment() {
         val second_name = arguments?.getInt("second_name")?: -1
         val second_volume = arguments?.getInt("second_volume")?: -1
         val last_name = arguments?.getInt("last_name")?: -1
-        val last_volume = arguments?.getInt("last_volume")?: -1
+        val all_volume = arguments?.getInt("all_volume")?: -1
         view0.tv_pref_result.text=first_name.toString()
-        Log.d("MyLog", "$first_name $first_volume $second_name $second_volume $last_name $last_volume")
+        Log.d("MyLog", "$first_name $first_volume $second_name $second_volume $last_name $all_volume")
 
-        resetViewFragmentTestResult(view0)
-        viewBindResultOneFromBungle(view0,first_name,first_volume,second_name,second_volume,last_name,last_volume)
-
+        viewBindResultFromBungle(view0,first_name,first_volume,second_name,second_volume,last_name,all_volume)
 
         view0.btn_start_test.setOnClickListener {
             val intent = Intent(activity,StartTest_activity::class.java)
@@ -63,6 +62,36 @@ class fragment_testResult : Fragment() {
     }
 
 
+
+
+    fun viewBindResultFromBungle(view: View,f_n:Int,f_v:Int,s_n:Int,s_v:Int,l_n:Int,a_v:Int) {
+        val f_vol_meas = (a_v/imIdList.size*f_v).toString()
+        val s_vol_meas = (a_v/imIdList.size*s_v).toString()
+        val f_vol: String = f_vol_meas + "/" + a_v
+        val s_vol: String = s_vol_meas + "/" + a_v
+
+        if (f_n>=0) {
+            view.im_testresult_n1.setImageResource(imIdList[f_n])
+            view.tv_testresult_title_n1.text = nameIdList[f_n]
+            view.tv_testresult_perc_n1.text = f_vol
+            view.LinearLayout_result1.visibility = View.VISIBLE        }
+        else view.LinearLayout_result1.visibility = View.GONE
+
+        if (s_n>=0) {
+            view.im_testresult_n2.setImageResource(imIdList[s_n])
+            view.tv_testresult_title_n2.text = nameIdList[s_n]
+            view.tv_testresult_perc_n2.text = s_vol
+            view.LinearLayout_result2.visibility = View.VISIBLE        }
+        else view.LinearLayout_result2.visibility = View.GONE
+
+        if (l_n>=0) {
+            view.im_testresult_n3.setImageResource(imIdList[l_n])
+            view.tv_testresult_title_n3.text = nameIdList[l_n]
+            view.LinearLayout_result3.visibility = View.VISIBLE            }
+        else view.LinearLayout_result3.visibility = View.GONE
+
+    }
+
     companion object {
         @JvmStatic
         fun newInstance(pref0: Array<Int>) : fragment_testResult {
@@ -73,20 +102,10 @@ class fragment_testResult : Fragment() {
             args.putInt("second_name", pref0[2])
             args.putInt("second_volume", pref0[3])
             args.putInt("last_name", pref0[4])
-            args.putInt("last_volume", pref0[5])
+            args.putInt("all_volume", pref0[5])
             fragment.arguments=args
             return fragment}
     }
-    fun resetViewFragmentTestResult(view:View) {
-        view.LinearLayout_result1.visibility=View.GONE
-        view.LinearLayout_result2.visibility=View.GONE
-        view.LinearLayout_result3.visibility=View.GONE
-    }
-    fun viewBindResultOneFromBungle(view: View,f_n:Int,f_v:Int,s_n:Int,s_v:Int,l_n:Int,l_v:Int) {
-
-
-    }
-
 }
 
 
