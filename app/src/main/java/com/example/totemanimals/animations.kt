@@ -13,14 +13,14 @@ class Animations {
      fun anim_btn_ans(view: View) { //Анимация для кнопок ответа
 
          view.animate().apply {
-             duration = 1000
-             scaleX(1.5f)
-             scaleY(1.5f)
+             duration = 800
+             scaleX(1.4f)
+             scaleY(1.4f)
 
              alpha(0.1f)
          }.withEndAction {
              view.animate().apply {
-                 duration = 0
+                 duration = 200
                  scaleX(1f)
                  scaleY(1f)
                  alpha(1f)
