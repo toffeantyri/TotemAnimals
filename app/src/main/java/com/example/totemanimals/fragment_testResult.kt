@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,6 +22,11 @@ import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
 class fragment_testResult : Fragment() {
 
+    lateinit var animat_var: Animations
+    lateinit var handler: Handler
+
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +39,9 @@ class fragment_testResult : Fragment() {
         val last_name:Int = arguments?.getInt("last_name")?: -1
         val all_volume:Int = arguments?.getInt("all_volume")?: -1
 
+        animat_var = Animations()
+        handler = Handler()
+
 
         viewBindResultFromBungle(view0,first_name,first_volume,second_name,second_volume,last_name,all_volume)
 
@@ -42,27 +51,28 @@ class fragment_testResult : Fragment() {
             activity?.startActivityForResult(intent,100)
         }
         Log.d("MyLog", "OnCreateView Fragment_testResult " )
-        view0.LinearLayout_result1.setOnClickListener {
 
+
+        view0.LinearLayout_result1.setOnClickListener {
+            animat_var.anim_Testresult(im_testresult_n1)
         val first_animal = animal_construct(first_name)
             val intent = Intent(activity, Animal_descpt_view::class.java)
             intent.putExtra("description_search", first_animal)
-            startActivity(intent)
+            handler.postDelayed({startActivity(intent)},300)
         }
-
-
         view0.LinearLayout_result2.setOnClickListener {
+            animat_var.anim_Testresult(im_testresult_n2)
         val second_animal = animal_construct(second_name)
             val intent = Intent(activity, Animal_descpt_view::class.java)
             intent.putExtra("description_search", second_animal)
-            startActivity(intent)
+            handler.postDelayed({startActivity(intent)},300)
         }
-
         view0.LinearLayout_result3.setOnClickListener {
+            animat_var.anim_Testresult(im_testresult_n3)
         val last_animal = animal_construct(last_name)
             val intent = Intent(activity, Animal_descpt_view::class.java)
             intent.putExtra("description_search", last_animal)
-            startActivity(intent)
+            handler.postDelayed({startActivity(intent)},300)
         }
 
         return view0

@@ -1,7 +1,10 @@
 package com.example.totemanimals
 
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.view.View
+import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
 
 class Animations {
@@ -25,4 +28,22 @@ class Animations {
          }
      }
 
-}
+    fun anim_Testresult(view: View) {
+        view.animate().apply {
+            duration = 150
+            scaleY(1.3f)
+            scaleX(1.3f)
+
+            rotationY(45f)
+        }.withEndAction {
+            view.animate().apply {
+                duration=100
+                scaleX(1f)
+                scaleY(1f)
+
+                rotationY(0f)
+            }
+        }
+        }
+    }
+
