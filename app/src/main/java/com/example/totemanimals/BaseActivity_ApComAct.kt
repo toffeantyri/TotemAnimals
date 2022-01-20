@@ -22,6 +22,8 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         return arrayOf(pref0,pref1,pref2,pref3,pref4,pref5)
     }
     fun setUpBottomNavigationMenu() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.my_info_frame, fragment_info())
         nav_bottom_menu.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home_menu_id -> {

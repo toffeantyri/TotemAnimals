@@ -47,8 +47,7 @@ class MainActivity : BaseActivity_ApComAct() {
         initAd()
         setUpBottomNavigationMenu()
         Log.d("MyLog", "OnCreate MainActivity")
-
-            }
+    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -71,11 +70,11 @@ class MainActivity : BaseActivity_ApComAct() {
 
     fun addAllAnimalOnRV() {
         if (list_resours.imIdList.count() != rcView_AnList.layoutManager?.itemCount) {
-            var index = 0
             var a: Int
             var b: String
             var c: String
             var animalAdd: Animal
+            var index = 0
             for (i in list_resours.imIdList) {
                 a = list_resours.imIdList[index]
                 b = list_resours.nameIdList[index]

@@ -6,6 +6,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import androidx.preference.PreferenceManager
@@ -26,99 +27,106 @@ class StartTest_activity : BaseActivity_ApComAct() {
         Log.d("MyLog","Список для результатов"+test_res_list.contentToString())
         //создаем массив наполненый колчеством 0 равный размеру вариантов результата теста(количество животных)
 
+        val animat_var = Animations()
+        var index = 0 // индекс 1 вопроса
+        testNextQuestion(index)//Добавляем первый вопрос во вью
 
-        var index = 0
-        testNextQuestion(index)
+        val handler = Handler() // создаем обьект Handlera
+        val r = Runnable {  // создаем запускающийся код
+            index++
+            testNextQuestion(index)
+        }
+
 
         btn_ans1.setOnClickListener {
             Log.d("MyLog", "btn1")
+            animat_var.anim_btn_ans(btn_ans1)
             resultUpdate(1,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)        }
 
         btn_ans2.setOnClickListener {
             Log.d("MyLog", "btn2")
+            animat_var.anim_btn_ans(btn_ans2)
             resultUpdate(2,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)       }
 
         btn_ans3.setOnClickListener {
-            resultUpdate(3,index)
             Log.d("MyLog", "btn3")
-            index++
-            testNextQuestion(index)        }
+            resultUpdate(3,index)
+            animat_var.anim_btn_ans(btn_ans3)
+            handler.postDelayed(r,1000)         }
 
         btn_ans4.setOnClickListener {
             Log.d("MyLog", "btn4")
+            animat_var.anim_btn_ans(btn_ans4)
             resultUpdate(4,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)        }
 
         btn_ans5.setOnClickListener {
             Log.d("MyLog", "btn5")
+            animat_var.anim_btn_ans(btn_ans5)
             resultUpdate(5,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)         }
 
         btn_ans6.setOnClickListener {
             Log.d("MyLog", "btn6")
+            animat_var.anim_btn_ans(btn_ans6)
             resultUpdate(6,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)         }
 
         btn_ans7.setOnClickListener {
             Log.d("MyLog", "btn7")
+            animat_var.anim_btn_ans(btn_ans7)
             resultUpdate(7,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)        }
 
         btn_ans8.setOnClickListener {
             Log.d("MyLog", "btn8")
+            animat_var.anim_btn_ans(btn_ans8)
             resultUpdate(8,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)        }
 
         btn_ans9.setOnClickListener {
             Log.d("MyLog", "btn9")
+            animat_var.anim_btn_ans(btn_ans9)
             resultUpdate(9,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)         }
 
         btn_ans10.setOnClickListener {
             Log.d("MyLog", "btn10")
+            animat_var.anim_btn_ans(btn_ans10)
             resultUpdate(10,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)         }
 
         btn_ans11.setOnClickListener {
             Log.d("MyLog", "btn11")
+            animat_var.anim_btn_ans(btn_ans11)
             resultUpdate(11,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)         }
 
         btn_ans12.setOnClickListener {
             Log.d("MyLog", "btn12")
+            animat_var.anim_btn_ans(btn_ans12)
             resultUpdate(12,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)         }
 
         btn_ans13.setOnClickListener {
             Log.d("MyLog", "btn13")
+            animat_var.anim_btn_ans(btn_ans13)
             resultUpdate(13,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)         }
 
         btn_ans14.setOnClickListener {
             Log.d("MyLog", "btn14")
+            animat_var.anim_btn_ans(btn_ans14)
             resultUpdate(14,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)         }
 
         btn_ans15.setOnClickListener {
             Log.d("MyLog", "btn15")
+            animat_var.anim_btn_ans(btn_ans15)
             resultUpdate(15,index)
-            index++
-            testNextQuestion(index)        }
+            handler.postDelayed(r,1000)         }
 
         btn_close_testfor_result.setOnClickListener {
             val first_max_name = MinMaxMaxTwoResult()[0]
@@ -149,15 +157,6 @@ class StartTest_activity : BaseActivity_ApComAct() {
         btn_close_test.setOnClickListener{
             setResult(Activity.RESULT_CANCELED)
             finish()
-        }
-
-        result1_test_btnh.setOnClickListener {
-            //todo тест приема
-            val new_results = MinMaxMaxTwoResult()
-            Log.d("MyLog", new_results.contentToString())
-            Log.d("MyLog", test_res_list.contentToString())
-
-
         }
 
     }
@@ -231,6 +230,11 @@ class StartTest_activity : BaseActivity_ApComAct() {
         test_res_list[max_name]=max_volume
         val all_volume = test_res_list.sum()
         return arrayOf(max_name,max_volume,s_max_name,s_max_volume,min_name,all_volume)
+
+    }
+
+    fun anim_test(view: View) {
+
 
     }
 
