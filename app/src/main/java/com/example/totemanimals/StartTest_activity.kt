@@ -10,6 +10,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.example.totemanimals.list_resours.imIdList
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
@@ -120,7 +121,8 @@ class StartTest_activity : BaseActivity_ApComAct() {
             Log.d("MyLog", "btn1")
             animat_var.anim_btn_ans(btn_ans1)
             resultUpdate(1,index)
-            handler.postDelayed(r,1000)        }
+            handler.postDelayed(r,1000)
+               }
 
         btn_ans2.setOnClickListener {
             Log.d("MyLog", "btn2")

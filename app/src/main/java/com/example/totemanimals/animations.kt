@@ -1,13 +1,13 @@
 package com.example.totemanimals
 
+
 import android.view.View
+
 
 class Animations {
 
 
-     fun anim_btn_ans(view: View) {
-
-
+     fun anim_btn_ans(view: View) { //Анимация для кнопок ответа
 
          view.animate().apply {
              duration = 1000
