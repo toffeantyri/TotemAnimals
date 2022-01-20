@@ -7,6 +7,8 @@ class Animations {
 
      fun anim_btn_ans(view: View) {
 
+
+
          view.animate().apply {
              duration = 1000
              scaleX(1.5f)
