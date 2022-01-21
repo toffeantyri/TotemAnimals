@@ -9,6 +9,7 @@
     <string name="Alert_yes">Yes</string>
     <string name="Alert_no">No</string>
 
+    <string name="close_test_alert">Close test?</string>
     <string name="close_test">Close test</string>
     <string name="nav_menu_test">Tests</string>
     <string name="nav_menu_search">Search</string>

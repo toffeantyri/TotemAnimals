@@ -2,6 +2,7 @@ package com.example.totemanimals
 
 import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build.VERSION_CODES.M
@@ -12,6 +13,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.example.totemanimals.list_resours.imIdList
@@ -268,7 +270,16 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         btn_close_test.setOnClickListener{
             setResult(Activity.RESULT_CANCELED)
-            finish()
+            val aDialog = AlertDialog.Builder(this)
+            aDialog.setMessage(R.string.close_test_alert)
+                    .setCancelable(false)
+                    .setPositiveButton(
+                        R.string.Alert_yes,
+                        DialogInterface.OnClickListener { dialog, id -> finish() })
+                        aDialog.setNegativeButton(R.string.Alert_no, DialogInterface.OnClickListener{ dialog, id -> dialog.cancel()  })
+            val alert = aDialog.create()
+            alert.show()
+
         }
     }
 

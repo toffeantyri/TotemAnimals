@@ -245,18 +245,6 @@
                 app:srcCompat="@drawable/shape_separator_hor" />
 
             <Button
-                android:id="@+id/btn_close_test"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_marginHorizontal="10dp"
-                android:background="@drawable/shape_rectangle_r10"
-                android:backgroundTint="@color/red_btn"
-                android:padding="8dp"
-                android:paddingHorizontal="10dp"
-                android:text="@string/stop_test" />
-
-            <Button
                 android:id="@+id/btn_close_testfor_result"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -270,6 +258,18 @@
                 android:textSize="18sp"
                 android:textStyle="normal|bold"
                 android:visibility="visible" />
+
+            <Button
+                android:id="@+id/btn_close_test"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/shape_rectangle_r10"
+                android:backgroundTint="@color/red_btn"
+                android:padding="8dp"
+                android:paddingHorizontal="10dp"
+                android:text="@string/stop_test" />
 
             <Button
                 android:id="@+id/result1_test_btnh"

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="result_no_found">Ошибка результата</string>
+    <string name="close_test_alert">Прервать тест?</string>
 </resources>
