@@ -6,12 +6,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
 import com.example.totemanimals.list_resours.descriptIdList
@@ -73,6 +76,11 @@ class fragment_testResult : Fragment() {
             val intent = Intent(activity, Animal_descpt_view::class.java)
             intent.putExtra("description_search", last_animal)
             handler.postDelayed({startActivity(intent)},300)
+        }
+        view0.im_arrow_down_an_result.setOnClickListener{
+            val context = context ?: requireActivity()
+            TransitionManager.beginDelayedTransition(CardView(context),AutoTransition())
+            if(view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE) {view0.ContainerLayout_Res_Animal.visibility = View.GONE} else {view0.ContainerLayout_Res_Animal.visibility = View.VISIBLE}
         }
 
         return view0

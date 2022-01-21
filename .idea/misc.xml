@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/button_menu_corner.xml" value="0.175" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_adb_black_32dp.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_baseline_assessment_24.xml" value="0.1824074074074074" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_exit_to_app_black_32dp.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/ic_expand_less_black_32dp.xml" value="0.21614583333333334" />
@@ -14,6 +15,9 @@
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/nav_menu_selector.xml" value="0.2125" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/shape_rectangle_green_r10.xml" value="0.1712962962962963" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/shape_rectangle_r10.xml" value="0.17222222222222222" />
+        <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/shape_rectangle_r10_down.xml" value="0.18888888888888888" />
+        <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/shape_rectangle_r10_up.xml" value="0.18888888888888888" />
+        <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/shape_rectangle_right_r15.xml" value="0.18888888888888888" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/drawable/shape_separator_hor.xml" value="0.1712962962962963" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/layout/activity_animal_descpt_view.xml" value="0.25" />
         <entry key="..\:/Users/Adm/AndroidStudioProjects/totem1/app/src/main/res/layout/activity_main.xml" value="0.22" />
