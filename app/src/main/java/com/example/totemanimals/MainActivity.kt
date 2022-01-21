@@ -104,6 +104,21 @@ class MainActivity : BaseActivity_ApComAct() {
         mAdView.loadAd(adRequest)
     }
 
+    override fun onBackPressed() {
+        val aDialog = AlertDialog.Builder(this)
+
+        aDialog.apply {
+            setMessage(R.string.Alert_message_exit)
+                .setCancelable(false)
+                .setPositiveButton(
+                    R.string.Alert_yes,
+                    DialogInterface.OnClickListener { dialog, id -> super.onBackPressed() })
+        }
+            aDialog.setNegativeButton(R.string.Alert_no,DialogInterface.OnClickListener{dialog, id -> dialog.cancel()  })
+        val alert = aDialog.create()
+        alert.show()
+    }
+
 
 }
 
