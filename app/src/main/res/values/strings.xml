@@ -26,6 +26,7 @@
     <string name="char_from">from</string>
     <string name="begin_test_totem_animal">To determine your totem animal, take the test:</string>
     <string name="Test_no_found">Test_not_found</string>
+    <string name="result_no_found">Error Result</string>
 
     <string name="close_get_result_test">Calculate Totem Animal</string>
     <string name="measuring_result">Calculation will take no more than 30 seconds, please reward the developer and watch ads :) </string>

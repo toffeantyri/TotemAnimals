@@ -39,12 +39,13 @@ class StartTest_activity : BaseActivity_ApComAct() {
     //для контента количества результатов (Лист животных например)
     lateinit var list_results_counts: Array<Int>
     lateinit var btn : View
+    var what_the_test: String = ""
 
     override  fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_test_activity)
         Log.d("MyLog", "OnCreate StartTest_activity")
-        val what_the_test = intent.getStringExtra("new_test") ?: ""
+        what_the_test = intent.getStringExtra("new_test") ?: ""
         checkBind_WhatTheTest(what_the_test)
         test_res_list = Array<Int>(list_results_counts.count(),{0})
         //создаем массив наполненый колчеством 0 равный размеру вариантов результата теста(количество животных)
@@ -259,30 +260,11 @@ class StartTest_activity : BaseActivity_ApComAct() {
                 handler.postDelayed(r,1000)    }        }
 
         btn_close_testfor_result.setOnClickListener {
-            val first_max_name = MinMaxMaxTwoResult()[0]
-            val first_max_volume = MinMaxMaxTwoResult()[1]
-            val second_max_name = MinMaxMaxTwoResult()[2]
-            val second_max_volume = MinMaxMaxTwoResult()[3]
-            val last_min_name = MinMaxMaxTwoResult()[4]
-            val all_volume = MinMaxMaxTwoResult()[5]
-
-            val pref = PreferenceManager.getDefaultSharedPreferences(this)
-            pref.edit().putInt("first_name",first_max_name).apply()
-            pref.edit().putInt("first_volume",first_max_volume).apply()
-            pref.edit().putInt("second_name",second_max_name).apply()
-            pref.edit().putInt("second_volume",second_max_volume).apply()
-            pref.edit().putInt("last_name",last_min_name).apply()
-            pref.edit().putInt("all_volume",all_volume).apply()
-
-            intent.putExtra("first_name", first_max_name )
-            intent.putExtra("first_volume", first_max_volume)
-            intent.putExtra("second_name", second_max_name)
-            intent.putExtra("second_volume", second_max_volume)
-            intent.putExtra("last_name", last_min_name)
-            intent.putExtra("all_volume", all_volume)
-            setResult(Activity.RESULT_OK,intent)
-            finish()
-        }
+            when(what_the_test) {
+                "new_animaltotem_test" -> {prepareSavePutResAnimalTest()}
+                else -> { Toast.makeText(this,R.string.result_no_found,Toast.LENGTH_SHORT).show()}
+                            }
+                  }
 
         btn_close_test.setOnClickListener{
             setResult(Activity.RESULT_CANCELED)
@@ -290,5 +272,30 @@ class StartTest_activity : BaseActivity_ApComAct() {
         }
     }
 
+    fun prepareSavePutResAnimalTest(){
+        val first_max_name = MinMaxMaxTwoResult()[0]
+        val first_max_volume = MinMaxMaxTwoResult()[1]
+        val second_max_name = MinMaxMaxTwoResult()[2]
+        val second_max_volume = MinMaxMaxTwoResult()[3]
+        val last_min_name = MinMaxMaxTwoResult()[4]
+        val all_volume = MinMaxMaxTwoResult()[5]
+
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        pref.edit().putInt("first_name",first_max_name).apply()
+        pref.edit().putInt("first_volume",first_max_volume).apply()
+        pref.edit().putInt("second_name",second_max_name).apply()
+        pref.edit().putInt("second_volume",second_max_volume).apply()
+        pref.edit().putInt("last_name",last_min_name).apply()
+        pref.edit().putInt("all_volume",all_volume).apply()
+
+        intent.putExtra("first_name", first_max_name )
+        intent.putExtra("first_volume", first_max_volume)
+        intent.putExtra("second_name", second_max_name)
+        intent.putExtra("second_volume", second_max_volume)
+        intent.putExtra("last_name", last_min_name)
+        intent.putExtra("all_volume", all_volume)
+        setResult(Activity.RESULT_OK,intent)
+        finish()
+    }
 }
 
