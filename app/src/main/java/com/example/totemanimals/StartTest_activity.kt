@@ -4,80 +4,94 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build.VERSION_CODES.M
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.example.totemanimals.list_resours.imIdList
+import com.example.totemanimals.questionListsTotemAnimal.min_nums_ans
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 class StartTest_activity : BaseActivity_ApComAct() {
 
+    //для анимации и работы теста
     lateinit var test_res_list: Array<Int>
     lateinit var animat_var: Animations
     lateinit var handler: Handler
     lateinit var r: Runnable
-    var index = 0
+
+    var index = 0 // индекс номер вопроса
+    var n_q_index = 0// индекс номера количества ответов
+    //для контента теста
+    lateinit var quests : Array<String>
+    lateinit var minimum_answ: Array<Int>
+    lateinit var numbers_buttons: Array<Int>
+    lateinit var lists_result_add: Array<Array<Array<Int>>>
+    lateinit var name_button_list: Array<Array<String>>
+    private var nums_max_quests = 0
+    //для контента количества результатов (Лист животных например)
+    lateinit var list_results_counts: Array<Int>
 
     override  fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_test_activity)
         Log.d("MyLog", "OnCreate StartTest_activity")
-
-        test_res_list = Array<Int>(imIdList.count(),{0})
-        Log.d("MyLog","Список для результатов"+test_res_list.contentToString())
+        val what_the_test = intent.getStringExtra("new_test") ?: ""
+        checkBind_WhatTheTest(what_the_test)
+        test_res_list = Array<Int>(list_results_counts.count(),{0})
         //создаем массив наполненый колчеством 0 равный размеру вариантов результата теста(количество животных)
-
-        index = 0 // индекс 1 вопроса
+        index = 0 // индекс (number_q номер)вопроса
+        n_q_index = 0 // индекс номера количества ответов
         testNextQuestion(index)//Добавляем первый вопрос во вью
-
          animat_var = Animations() // создаем обьект класса анимации
          handler = Handler() // создаем обьект Handlera
+
          r = Runnable {  // создаем запускающийся код
             index++ // типа добалвение индекса и смена вопроса для вью
-            testNextQuestion(index)        }
+            testNextQuestion(index)        } // код - переключающий вопрос на следующий
 
-        bindingButtonsView()
+        bindingButtonsListeners() // биндит слушатели кнопок
 
     }
 
-
-
-    fun constructorQuestObj (index: Int, list_quest: Array<String>, list_nums_ans: Array<Int>,
-                             list_right_answer: Array<Array<Array<Int>>>, list_name_btn: Array<Array<String>>) : questionsBindShablon {
-        val number_q: Int = index
-        val text_q: String = list_quest[index]
-        val numbers_ans: Int = list_nums_ans[index]
-        val numbers_q: Int = list_quest.count()
-        val right_answer_act = list_right_answer[index]
-        val name_btn = list_name_btn[index]
-        return questionsBindShablon(number_q, text_q, numbers_ans,numbers_q,right_answer_act, name_btn)
+    fun checkBind_WhatTheTest(intent: String) {
+        if (intent == "new_animaltotem_test") {
+            list_results_counts = imIdList
+            quests = questionListsTotemAnimal.quest_totem_animal
+            minimum_answ = questionListsTotemAnimal.min_nums_ans
+            numbers_buttons = questionListsTotemAnimal.answer_nums
+            lists_result_add = questionListsTotemAnimal.answer_right_check
+            name_button_list = questionListsTotemAnimal.button_name_list
+            nums_max_quests = quests.count()
+        }
+        else {Toast.makeText(this,R.string.Test_no_found,Toast.LENGTH_SHORT).show()
+        finish()}
     }
 
-    fun constructorResultBindShablon (index: Int, list_right_answer: Array<Array<Array<Int>>>,) : resultBindShablon {
-        return resultBindShablon(index, list_right_answer[index])
+    fun constructorQuestObj(index:Int, quests:Array<String>, numbers_buttons:Array<Int>, nums_max_quests: Int, lists_result_add: Array<Array<Array<Int>>>,name_button_list: Array<Array<String>>,minimum_answ:Array<Int>) : questionsBindShablon {
+        return questionsBindShablon(index,     quests[index],        numbers_buttons[index],     nums_max_quests,      lists_result_add[index],                   name_button_list[index],               minimum_answ[index])
+    }
+
+    fun constructorResultBindShablon (index: Int, lists_result_add: Array<Array<Array<Int>>>,min_nums_ans: Array<Int>) : resultBindShablon {
+        return resultBindShablon(index, lists_result_add[index],min_nums_ans[index])
     }
 
     fun testNextQuestion (index: Int) {
         val view : View = findViewById(R.id.layout_test)
-        val list_of_quest = questionListsTotemAnimal.quest_totem_animal
-        val list_of_nums_answer = questionListsTotemAnimal.answer_num
-        val list_right_answer = questionListsTotemAnimal.answer_right_check
-        val list_butt_name = questionListsTotemAnimal.button_name_list
-
-        if (index < questionListsTotemAnimal.quest_totem_animal.count()) {
-            val shablon = constructorQuestObj(index,list_of_quest,list_of_nums_answer,list_right_answer,list_butt_name)
+        if (index < nums_max_quests) {
+            val shablon = constructorQuestObj(index,quests,numbers_buttons,nums_max_quests,lists_result_add,name_button_list,minimum_answ)
             shablon.resetBindView(view)
             shablon.bindingView(view)
             shablon.bindNameBtn(view)                        }
-
         else {
-            Log.d("MyLog", "End test no view bind")
+            Log.d("MyLog", "End test. Дальше не будет биндинга вью вопросника")
             view.btn_close_testfor_result.visibility=View.VISIBLE
             view.btn_column1.visibility=View.GONE
             view.btn_column2.visibility=View.GONE
@@ -89,12 +103,22 @@ class StartTest_activity : BaseActivity_ApComAct() {
     }
 
     fun resultUpdate (btn_id:Int, index: Int){
-        val list_right_answer = questionListsTotemAnimal.answer_right_check
-        if(index < questionListsTotemAnimal.quest_totem_animal.count()-1) {
-            val shablonResultUpdater = constructorResultBindShablon(index,list_right_answer)
+        if(index < nums_max_quests) {
+            val shablonResultUpdater = constructorResultBindShablon(index,lists_result_add,minimum_answ)
             test_res_list = shablonResultUpdater.bindAction(btn_id,test_res_list)
-                    }
-        else {Log.d("MyLog", "End Result \n" + test_res_list.contentToString() )
+            Log.d("MyLog", "$index индекс вопроса затем будет еще ш++ )") }
+        if (index == nums_max_quests-1 ) {Log.d("MyLog", "$index End Result \n" + test_res_list.contentToString() )
+        }
+
+    }
+
+    fun counterAnswer (n_q_index: Int){
+        if(n_q_index==minimum_answ[index]) {
+
+
+
+        }
+        else {Log.d("MyLog", "End answers" )
 
 
         }
@@ -115,12 +139,13 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
     }
 
-    fun bindingButtonsView(){
+    fun bindingButtonsListeners(){
 
         btn_ans1.setOnClickListener {
             Log.d("MyLog", "btn1")
             animat_var.anim_btn_ans(btn_ans1)
             resultUpdate(1,index)
+            //todo тут добавить if(internal index = количество ответов) то доделать ->
             handler.postDelayed(r,1000)
                }
 

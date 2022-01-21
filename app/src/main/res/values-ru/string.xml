@@ -16,9 +16,11 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="start_new_test">Начать тест</string>
+    <string name="stop_test">Закрыть тест</string>
     <string name="testres_antipode">Ваша противоположность</string>
     <string name="testres_your_type">Подходит вам на</string>
     <string name="char_from">из</string>
+    <string name="Test_no_found">Тест не найден</string>
 
     <string name="close_get_result_test">Расчитать Тотемное животное</string>
     <string name="measuring_result">Расчёт займет не более 30 секунд, пожалуйста поблагодарите разработчика просмотрев рекламу :)</string>

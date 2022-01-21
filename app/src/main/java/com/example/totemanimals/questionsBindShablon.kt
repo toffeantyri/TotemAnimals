@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 data class questionsBindShablon(val number_q:Int, val text_q: String, val numbers_ans:Int,
-                                val numbers_q: Int, val right_answer_act: Array<Array<Int>>, val name_buttons: Array<String>,) {
+                                val numbers_q: Int, val right_answer_act: Array<Array<Int>>, val name_buttons: Array<String>,val min_nums_ans: Int) {
 
     fun bindingView (view: View) {
         val index0 = (number_q+1).toString()
@@ -106,12 +106,9 @@ data class questionsBindShablon(val number_q:Int, val text_q: String, val number
         view.btn_ans13.visibility=View.VISIBLE
         view.btn_ans14.visibility=View.VISIBLE
         view.btn_ans15.visibility=View.VISIBLE
-
     }
 
     fun bindNameBtn(view: View) {
-        //val index = number_q
-        //val n_ans = numbers_ans
         val name_btn: Array<String> = name_buttons
 
         view.btn_ans1.text = name_btn[0]
@@ -134,14 +131,14 @@ data class questionsBindShablon(val number_q:Int, val text_q: String, val number
 
 }
 
-data class resultBindShablon (val index: Int, val right_answer_act: Array<Array<Int>>) {
+data class resultBindShablon (val index: Int, val right_answer_act: Array<Array<Int>>,val min_nums_answ: Int) {
 
     fun bindAction(id_btn:Int, list_result: Array<Int>,): Array<Int> {
-        Log.d("MyLog", "входящий результат \n" + list_result.contentToString())
+        Log.d("MyLog", "  in res " + list_result.contentToString())
 
         val list_result0 = list_result
         val right_answer_list = right_answer_act[id_btn-1]
-        Log.d("MyLog", "\n список ответов \n " + right_answer_list.contentToString())
+        Log.d("MyLog", "\n mid res " + right_answer_list.contentToString())
 
             var num = 0
             for (i in right_answer_list) {
@@ -149,7 +146,7 @@ data class resultBindShablon (val index: Int, val right_answer_act: Array<Array<
                 num++
             }
 
-        Log.d("MyLog", "\n результат сложения списков \n" + list_result0.contentToString() )
+        Log.d("MyLog", "\n res res " + list_result0.contentToString() )
         return list_result0
     }
 

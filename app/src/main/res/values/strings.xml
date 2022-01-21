@@ -20,10 +20,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="start_new_test">Start test</string>
+    <string name="stop_test">Close test</string>
     <string name="testres_antipode">Your antipode</string>
     <string name="testres_your_type">Your type is</string>
     <string name="char_from">from</string>
     <string name="begin_test_totem_animal">To determine your totem animal, take the test:</string>
+    <string name="Test_no_found">Test_not_found</string>
 
     <string name="close_get_result_test">Calculate Totem Animal</string>
     <string name="measuring_result">Calculation will take no more than 30 seconds, please reward the developer and watch ads :) </string>

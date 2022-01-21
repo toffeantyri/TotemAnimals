@@ -254,7 +254,7 @@
                 android:backgroundTint="@color/red_btn"
                 android:padding="8dp"
                 android:paddingHorizontal="10dp"
-                android:text="Close Test" />
+                android:text="@string/stop_test" />
 
             <Button
                 android:id="@+id/btn_close_testfor_result"
