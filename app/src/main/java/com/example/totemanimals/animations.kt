@@ -10,23 +10,26 @@ import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 class Animations {
 
 
-     fun anim_btn_ans(view: View) { //Анимация для кнопок ответа
+    fun anim_btn_ans(view: View) { //Анимация для кнопок ответа
 
-         view.animate().apply {
-             duration = 800
-             scaleX(1.4f)
-             scaleY(1.4f)
+        view.animate().apply {
+            duration = 800
+            scaleX(0.4f)
+            scaleY(0.4f)
+            alpha(0.5f)
+            view.isClickable = false
+        }.start()
+    }
 
-             alpha(0.1f)
-         }.withEndAction {
-             view.animate().apply {
-                 duration = 200
-                 scaleX(1f)
-                 scaleY(1f)
-                 alpha(1f)
-             }.start()
-         }
-     }
+    fun reset_anim_btn_ans(view: View) { //Анимация для кнопок ответа
+        view.animate().apply {
+            duration = 0
+            scaleX(1f)
+            scaleY(1f)
+            alpha(1f)
+            view.isClickable = true
+        }.start()
+    }
 
     fun anim_Testresult(view: View) {
         view.animate().apply {
@@ -37,13 +40,14 @@ class Animations {
             rotationY(45f)
         }.withEndAction {
             view.animate().apply {
-                duration=100
+                duration = 100
                 scaleX(1f)
                 scaleY(1f)
 
                 rotationY(0f)
             }
         }
-        }
     }
+}
+
 

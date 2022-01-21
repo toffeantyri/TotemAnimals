@@ -38,6 +38,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
     private var nums_max_quests = 0
     //для контента количества результатов (Лист животных например)
     lateinit var list_results_counts: Array<Int>
+    lateinit var btn : View
 
     override  fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,14 +53,20 @@ class StartTest_activity : BaseActivity_ApComAct() {
         testNextQuestion(index)//Добавляем первый вопрос во вью
          animat_var = Animations() // создаем обьект класса анимации
          handler = Handler() // создаем обьект Handlera
+        btn = findViewById(R.id.btn_close_test)
 
          r = Runnable {  // создаем запускающийся код
+             Log.d("MyLog", "ИНДЕКС КОЛ-ВА $n_q_index")
             index++ // типа добалвение индекса и смена вопроса для вью
-            testNextQuestion(index)        } // код - переключающий вопрос на следующий
+            testNextQuestion(index)
+             n_q_index = 0
+
+         } // код - переключающий вопрос на следующий
 
         bindingButtonsListeners() // биндит слушатели кнопок
 
     }
+
 
     fun checkBind_WhatTheTest(intent: String) {
         if (intent == "new_animaltotem_test") {
@@ -112,19 +119,6 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
     }
 
-    fun counterAnswer (n_q_index: Int){
-        if(n_q_index==minimum_answ[index]) {
-
-
-
-        }
-        else {Log.d("MyLog", "End answers" )
-
-
-        }
-
-    }
-
     fun MinMaxMaxTwoResult () : Array<Int> { // находит из массива результатов
         val min_volume : Int = test_res_list.minByOrNull{it} ?: -1
         val min_name : Int = if(min_volume>=0) test_res_list.indexOf(min_volume) else -1
@@ -143,95 +137,126 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         btn_ans1.setOnClickListener {
             Log.d("MyLog", "btn1")
-            animat_var.anim_btn_ans(btn_ans1)
+            btn = findViewById(R.id.btn_ans1)
+            animat_var.anim_btn_ans(btn)
             resultUpdate(1,index)
-            //todo тут добавить if(internal index = количество ответов) то доделать ->
-            handler.postDelayed(r,1000)
-               }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }
+        }
 
         btn_ans2.setOnClickListener {
             Log.d("MyLog", "btn2")
             animat_var.anim_btn_ans(btn_ans2)
             resultUpdate(2,index)
-            handler.postDelayed(r,1000)       }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }
+        }
 
         btn_ans3.setOnClickListener {
             Log.d("MyLog", "btn3")
             resultUpdate(3,index)
             animat_var.anim_btn_ans(btn_ans3)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }      }
 
         btn_ans4.setOnClickListener {
             Log.d("MyLog", "btn4")
             animat_var.anim_btn_ans(btn_ans4)
             resultUpdate(4,index)
-            handler.postDelayed(r,1000)        }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }       }
 
         btn_ans5.setOnClickListener {
             Log.d("MyLog", "btn5")
             animat_var.anim_btn_ans(btn_ans5)
             resultUpdate(5,index)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }        }
 
         btn_ans6.setOnClickListener {
             Log.d("MyLog", "btn6")
             animat_var.anim_btn_ans(btn_ans6)
             resultUpdate(6,index)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }        }
 
         btn_ans7.setOnClickListener {
             Log.d("MyLog", "btn7")
             animat_var.anim_btn_ans(btn_ans7)
             resultUpdate(7,index)
-            handler.postDelayed(r,1000)        }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }       }
 
         btn_ans8.setOnClickListener {
             Log.d("MyLog", "btn8")
             animat_var.anim_btn_ans(btn_ans8)
             resultUpdate(8,index)
-            handler.postDelayed(r,1000)        }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }        }
 
         btn_ans9.setOnClickListener {
             Log.d("MyLog", "btn9")
             animat_var.anim_btn_ans(btn_ans9)
             resultUpdate(9,index)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }        }
 
         btn_ans10.setOnClickListener {
             Log.d("MyLog", "btn10")
             animat_var.anim_btn_ans(btn_ans10)
             resultUpdate(10,index)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }        }
 
         btn_ans11.setOnClickListener {
             Log.d("MyLog", "btn11")
             animat_var.anim_btn_ans(btn_ans11)
             resultUpdate(11,index)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }         }
 
         btn_ans12.setOnClickListener {
             Log.d("MyLog", "btn12")
             animat_var.anim_btn_ans(btn_ans12)
             resultUpdate(12,index)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }         }
 
         btn_ans13.setOnClickListener {
             Log.d("MyLog", "btn13")
             animat_var.anim_btn_ans(btn_ans13)
             resultUpdate(13,index)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }        }
 
         btn_ans14.setOnClickListener {
             Log.d("MyLog", "btn14")
             animat_var.anim_btn_ans(btn_ans14)
             resultUpdate(14,index)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }         }
 
         btn_ans15.setOnClickListener {
             Log.d("MyLog", "btn15")
             animat_var.anim_btn_ans(btn_ans15)
             resultUpdate(15,index)
-            handler.postDelayed(r,1000)         }
+            n_q_index++
+            if(n_q_index==minimum_answ[index]){
+                handler.postDelayed(r,1000)    }        }
 
         btn_close_testfor_result.setOnClickListener {
             val first_max_name = MinMaxMaxTwoResult()[0]

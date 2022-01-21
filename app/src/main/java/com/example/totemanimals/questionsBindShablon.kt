@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 data class questionsBindShablon(val number_q:Int, val text_q: String, val numbers_ans:Int,
                                 val numbers_q: Int, val right_answer_act: Array<Array<Int>>, val name_buttons: Array<String>,val min_nums_ans: Int) {
+val anim_var = Animations()
 
     fun bindingView (view: View) {
         val index0 = (number_q+1).toString()
@@ -106,6 +107,23 @@ data class questionsBindShablon(val number_q:Int, val text_q: String, val number
         view.btn_ans13.visibility=View.VISIBLE
         view.btn_ans14.visibility=View.VISIBLE
         view.btn_ans15.visibility=View.VISIBLE
+
+        anim_var.reset_anim_btn_ans(view.btn_ans1)
+        anim_var.reset_anim_btn_ans(view.btn_ans2)
+        anim_var.reset_anim_btn_ans(view.btn_ans3)
+        anim_var.reset_anim_btn_ans(view.btn_ans4)
+        anim_var.reset_anim_btn_ans(view.btn_ans5)
+        anim_var.reset_anim_btn_ans(view.btn_ans6)
+        anim_var.reset_anim_btn_ans(view.btn_ans7)
+        anim_var.reset_anim_btn_ans(view.btn_ans8)
+        anim_var.reset_anim_btn_ans(view.btn_ans9)
+        anim_var.reset_anim_btn_ans(view.btn_ans10)
+        anim_var.reset_anim_btn_ans(view.btn_ans11)
+        anim_var.reset_anim_btn_ans(view.btn_ans12)
+        anim_var.reset_anim_btn_ans(view.btn_ans13)
+        anim_var.reset_anim_btn_ans(view.btn_ans14)
+        anim_var.reset_anim_btn_ans(view.btn_ans15)
+
     }
 
     fun bindNameBtn(view: View) {
