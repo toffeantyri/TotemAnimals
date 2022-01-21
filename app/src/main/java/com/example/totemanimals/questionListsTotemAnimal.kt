@@ -1,6 +1,7 @@
 package com.example.totemanimals
 
 object questionListsTotemAnimal {
+    val im_background = R.drawable.background_test1
         //лист с текстом вопросов
     val quest_totem_animal = arrayOf("Какой чувственный аспект вам ближе?",
             "В какое время дня вы чувствуете наибольшую активность?",

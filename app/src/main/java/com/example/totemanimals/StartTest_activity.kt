@@ -38,6 +38,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
     lateinit var lists_result_add: Array<Array<Array<Int>>>
     lateinit var name_button_list: Array<Array<String>>
     private var nums_max_quests = 0
+    var im_background = -1
     //для контента количества результатов (Лист животных например)
     lateinit var list_results_counts: Array<Int>
     lateinit var btn : View
@@ -57,14 +58,11 @@ class StartTest_activity : BaseActivity_ApComAct() {
          animat_var = Animations() // создаем обьект класса анимации
          handler = Handler() // создаем обьект Handlera
         btn = findViewById(R.id.btn_close_test)
-
          r = Runnable {  // создаем запускающийся код
              Log.d("MyLog", "ИНДЕКС КОЛ-ВА $n_q_index")
             index++ // типа добалвение индекса и смена вопроса для вью
             testNextQuestion(index)
-             n_q_index = 0
-
-         } // код - переключающий вопрос на следующий
+             n_q_index = 0         } // код - переключающий вопрос на следующий
 
         bindingButtonsListeners() // биндит слушатели кнопок
 
@@ -73,6 +71,11 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
     fun checkBind_WhatTheTest(intent: String) {
         if (intent == "new_animaltotem_test") {
+
+            when(questionListsTotemAnimal.im_background) {
+                null, 0 -> {im_background = R.drawable.background_night}
+                else -> im_background = questionListsTotemAnimal.im_background           }
+            layout_test.setBackgroundResource(im_background)
             list_results_counts = imIdList
             quests = questionListsTotemAnimal.quest_totem_animal
             minimum_answ = questionListsTotemAnimal.min_nums_ans
@@ -80,6 +83,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             lists_result_add = questionListsTotemAnimal.answer_right_check
             name_button_list = questionListsTotemAnimal.button_name_list
             nums_max_quests = quests.count()
+
         }
         else {Toast.makeText(this,R.string.Test_no_found,Toast.LENGTH_SHORT).show()
         finish()}
