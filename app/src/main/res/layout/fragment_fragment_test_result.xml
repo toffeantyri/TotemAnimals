@@ -8,15 +8,16 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="5dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:background="@drawable/shape_rectangle_r10"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingVertical="5dp">
 
             <TextView
                 android:id="@+id/tv_pref_result"
@@ -65,11 +66,11 @@
                         android:layout_width="15dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="0.5"
+                        android:layout_weight="1"
                         android:gravity="center"
                         android:paddingHorizontal="5dp"
                         android:paddingVertical="10dp"
-                        android:text="Look your \n totem animal"
+                        android:text="@string/look_totem_blank"
                         android:textColor="@color/black" />
 
                     <ImageView
@@ -77,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_weight="1"
+                        android:layout_weight="0.5"
                         android:src="@drawable/button_an_test" />
 
                     <ImageButton
@@ -85,12 +86,22 @@
                         android:layout_width="32dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center"
-                        android:layout_weight="0.5"
-                        android:background="@drawable/shape_rectangle_r10"
-                        android:backgroundTint="@color/blue"
-                        android:src="@drawable/ic_expand_more_black_32dp"
+                        android:layout_weight="0.2"
+                        android:background="@drawable/shape_rectangle_r10_up"
+                        android:backgroundTint="@color/green_style_btn"
+                        android:src="@drawable/ic_expand_less_black_32dp"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_no_results"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/no_totem_animals"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
                 <LinearLayout
                     android:id="@+id/ContainerLayout_Res_Animal"
@@ -171,7 +182,7 @@
                             android:layout_width="40dp"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
-                            android:background="@drawable/shape_rectangle_right_r15"
+                            android:background="@drawable/shape_rectangle_right_bottom_r15"
                             android:backgroundTint="#4CAF50"
                             android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
 

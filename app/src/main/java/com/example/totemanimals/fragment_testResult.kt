@@ -42,6 +42,7 @@ class fragment_testResult : Fragment() {
         val last_name:Int = arguments?.getInt("last_name")?: -1
         val all_volume:Int = arguments?.getInt("all_volume")?: -1
 
+        view0.tv_no_results.visibility = if(first_name==-1) {View.VISIBLE} else {View.GONE}
         animat_var = Animations()
         handler = Handler()
 
@@ -77,15 +78,29 @@ class fragment_testResult : Fragment() {
             intent.putExtra("description_search", last_animal)
             handler.postDelayed({startActivity(intent)},300)
         }
+
         view0.im_arrow_down_an_result.setOnClickListener{
             val context = context ?: requireActivity()
-            TransitionManager.beginDelayedTransition(CardView(context),AutoTransition())
-            if(view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE) {view0.ContainerLayout_Res_Animal.visibility = View.GONE} else {view0.ContainerLayout_Res_Animal.visibility = View.VISIBLE}
+            if(view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE ){
+                view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
+                view0.ContainerLayout_Res_Animal.visibility = View.GONE
+                view0.tv_no_results.visibility = View.GONE
+
+
+            }
+            else if (view0.ContainerLayout_Res_Animal.visibility == View.GONE) {
+                view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
+                view0.ContainerLayout_Res_Animal.visibility = View.VISIBLE
+                animat_var.down_result(view0.ContainerLayout_Res_Animal)
+                if(first_name==-1) view0.tv_no_results.visibility = View.VISIBLE
+            }
         }
 
         return view0
 
     }
+
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -34,20 +34,39 @@ class Animations {
     fun anim_Testresult(view: View) {
         view.animate().apply {
             duration = 150
-            scaleY(1.3f)
-            scaleX(1.3f)
-
+            scaleY(1.4f)
+            scaleX(1.4f)
             rotationY(45f)
         }.withEndAction {
             view.animate().apply {
                 duration = 100
                 scaleX(1f)
                 scaleY(1f)
-
                 rotationY(0f)
             }
         }
     }
+
+    fun down_result (view: View) {
+        view.animate().apply {
+            duration = 0
+            scaleY(0f)
+            translationY(-600f)
+        }.withEndAction {
+            view.animate().apply {
+                duration = 150
+                scaleY(1f)
+                translationY(0f)
+            }
+        }
+    }
+
+    fun up_result (view: View) {
+
+    }
+
 }
+
+
 
 
