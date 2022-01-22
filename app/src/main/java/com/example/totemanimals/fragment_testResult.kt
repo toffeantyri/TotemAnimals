@@ -3,6 +3,7 @@ package com.example.totemanimals
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -27,6 +28,8 @@ class fragment_testResult : Fragment() {
 
     lateinit var animat_var: Animations
     lateinit var handler: Handler
+    lateinit var rect_r10_all : Drawable
+    lateinit var rect_r10_up : Drawable
 
 
 
@@ -41,6 +44,9 @@ class fragment_testResult : Fragment() {
         val second_volume:Int = arguments?.getInt("second_volume")?: -1
         val last_name:Int = arguments?.getInt("last_name")?: -1
         val all_volume:Int = arguments?.getInt("all_volume")?: -1
+
+        rect_r10_all = resources.getDrawable(R.drawable.shape_rectangle_r10)
+        rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
 
         view0.tv_no_results.visibility = if(first_name==-1) {View.VISIBLE} else {View.GONE}
         animat_var = Animations()
@@ -81,17 +87,23 @@ class fragment_testResult : Fragment() {
 
         view0.im_arrow_down_an_result.setOnClickListener{
             val context = context ?: requireActivity()
-            if(view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE ){
+            if(view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE || view0.tv_no_results.visibility == View.VISIBLE){
                 view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
                 view0.ContainerLayout_Res_Animal.visibility = View.GONE
                 view0.tv_no_results.visibility = View.GONE
+                view0.im_arrow_down_an_result.background = rect_r10_all
+
 
 
             }
-            else if (view0.ContainerLayout_Res_Animal.visibility == View.GONE) {
+            else if (view0.ContainerLayout_Res_Animal.visibility == View.GONE || view0.tv_no_results.visibility == View.GONE) {
                 view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
                 view0.ContainerLayout_Res_Animal.visibility = View.VISIBLE
+                view0.im_arrow_down_an_result.background = rect_r10_up
+
+
                 animat_var.down_result(view0.ContainerLayout_Res_Animal)
+
                 if(first_name==-1) view0.tv_no_results.visibility = View.VISIBLE
             }
         }
