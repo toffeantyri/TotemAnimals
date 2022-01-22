@@ -6,6 +6,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
+// номер(индекс) вопроса, текст опроса, количесто кнопок для ответа, количество вопросов в тесте - всего, Лист с правильными отетами, Лист с именами кнопок, минимальное количество ответов в вопросе
 data class questionsBindShablon(val number_q:Int, val text_q: String, val numbers_ans:Int,
                                 val numbers_q: Int, val right_answer_act: Array<Array<Int>>, val name_buttons: Array<String>,val min_nums_ans: Int) {
 val anim_var = Animations()
