@@ -149,7 +149,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(1,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }
+                handler.postDelayed(r,800)    }
         }
 
         btn_ans2.setOnClickListener {
@@ -158,7 +158,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(2,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }
+                handler.postDelayed(r,800)    }
         }
 
         btn_ans3.setOnClickListener {
@@ -167,7 +167,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             animat_var.anim_btn_ans(btn_ans3)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }      }
+                handler.postDelayed(r,800)    }      }
 
         btn_ans4.setOnClickListener {
             Log.d("MyLog", "btn4")
@@ -175,7 +175,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(4,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }       }
+                handler.postDelayed(r,800)    }       }
 
         btn_ans5.setOnClickListener {
             Log.d("MyLog", "btn5")
@@ -183,7 +183,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(5,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }        }
+                handler.postDelayed(r,800)    }        }
 
         btn_ans6.setOnClickListener {
             Log.d("MyLog", "btn6")
@@ -191,7 +191,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(6,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }        }
+                handler.postDelayed(r,800)    }        }
 
         btn_ans7.setOnClickListener {
             Log.d("MyLog", "btn7")
@@ -199,7 +199,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(7,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }       }
+                handler.postDelayed(r,800)    }       }
 
         btn_ans8.setOnClickListener {
             Log.d("MyLog", "btn8")
@@ -215,7 +215,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(9,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }        }
+                handler.postDelayed(r,800)    }        }
 
         btn_ans10.setOnClickListener {
             Log.d("MyLog", "btn10")
@@ -223,7 +223,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(10,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }        }
+                handler.postDelayed(r,800)    }        }
 
         btn_ans11.setOnClickListener {
             Log.d("MyLog", "btn11")
@@ -231,7 +231,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(11,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }         }
+                handler.postDelayed(r,800)    }         }
 
         btn_ans12.setOnClickListener {
             Log.d("MyLog", "btn12")
@@ -239,7 +239,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(12,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }         }
+                handler.postDelayed(r,800)    }         }
 
         btn_ans13.setOnClickListener {
             Log.d("MyLog", "btn13")
@@ -247,7 +247,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(13,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }        }
+                handler.postDelayed(r,800)    }        }
 
         btn_ans14.setOnClickListener {
             Log.d("MyLog", "btn14")
@@ -255,7 +255,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(14,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }         }
+                handler.postDelayed(r,800)    }         }
 
         btn_ans15.setOnClickListener {
             Log.d("MyLog", "btn15")
@@ -263,7 +263,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             resultUpdate(15,index)
             n_q_index++
             if(n_q_index==minimum_answ[index]){
-                handler.postDelayed(r,1000)    }        }
+                handler.postDelayed(r,800)    }        }
 
         btn_close_testfor_result.setOnClickListener {
             when(what_the_test) {
