@@ -43,9 +43,11 @@
                 android:background="@drawable/shape_rectangle_r10"
                 android:backgroundTint="@color/green_style_btn"
                 android:drawableLeft="@drawable/image_btn_selector"
-                android:drawablePadding="5dp"
+                android:drawablePadding="10dp"
                 android:gravity="right|center_vertical"
+                android:padding="5dp"
                 android:paddingHorizontal="20dp"
+                android:paddingEnd="20dp"
                 android:text="@string/start_new_test" />
 
             <LinearLayout
