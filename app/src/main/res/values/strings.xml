@@ -33,4 +33,15 @@
 
     <string name="close_get_result_test">Calculate Totem Animal</string>
     <string name="measuring_result">Calculation will take no more than 30 seconds, please reward the developer and watch ads :) </string>
+
+    <string name="Text_righter" translatable="false">Text about totem animals, partially taken from the site:</string>
+    <string name="www_osebe" translatable="false">www.o-sebe.com</string>
+
+    <string name="instagramm_owner">Our instagramm: Foxy &amp; Antoffy</string>
+    <string name="our_inst_descript_1">Building a bridge between mind and spirituality. \n
+    Exploring totem practices. \n
+    We live inseparably 24/7</string>
+
 </resources>
+
+

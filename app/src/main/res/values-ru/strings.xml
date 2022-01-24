@@ -2,7 +2,10 @@
 <resources>
     <string name="result_no_found">Ошибка результата</string>
     <string name="close_test_alert">Прервать тест?</string>
-    <string name="looking_totem_blank">Просмотр своих тотемных животных</string>
     <string name="look_totem_blank">Посмотреть своих тотемных животных</string>
     <string name="no_totem_animals">Тест не завершён. Пройдите тест</string>
+    <string name="instagramm_owner">Наш инстаграмм: Foxy &amp; Antoffy</string>
+    <string name="our_inst_descript_1">Строим мост между разумом и духовностью.
+        \n Исследуем тотемные практики.
+        \n Живём неразлучно 24/7.</string>
 </resources>
