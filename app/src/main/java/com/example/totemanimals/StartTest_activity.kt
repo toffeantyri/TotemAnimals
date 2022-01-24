@@ -367,7 +367,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
                 super.onBackPressed()
             }
             double_back_press = true
-            handler.postDelayed({ double_back_press = false }, 2000)
+            handler.postDelayed({ double_back_press = false }, 700)
 
             val aDialog = AlertDialog.Builder(this)
             aDialog.setMessage(R.string.close_test_alert)
