@@ -25,11 +25,13 @@
         <item name="android:background">@drawable/shape_separator_hor</item>
         <item name="backgroundTint">@color/green_style_btn</item>
         <item name="android:gravity">center</item>
+        <item name="android:forceDarkAllowed">false</item>
     </style>
 
     <style name="SplashStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowBackground">@drawable/background_night</item>
+        <item name="android:forceDarkAllowed">false</item>
     </style>
 
 </resources>
