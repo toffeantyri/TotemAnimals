@@ -89,6 +89,7 @@ val anim_var = Animations()
 
     fun resetBindView (view: View){
         view.btn_close_testfor_result.visibility=View.GONE
+
         view.btn_column1.visibility=View.GONE
         view.btn_column1.visibility=View.GONE
         view.btn_column1.visibility=View.GONE

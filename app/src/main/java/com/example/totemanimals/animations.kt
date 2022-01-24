@@ -61,9 +61,6 @@ class Animations {
         }
     }
 
-    fun up_result (view: View) {
-
-    }
 
 }
 
