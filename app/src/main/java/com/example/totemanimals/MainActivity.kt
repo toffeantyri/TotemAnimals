@@ -8,12 +8,14 @@ import android.content.Intent
 import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.DialogFragment
@@ -30,6 +32,7 @@ import kotlin.contracts.ContractBuilder
 class MainActivity : BaseActivity_ApComAct() {
     lateinit var mAdView: AdView
     private val adapter1 = AnimalsAdaptList()
+    lateinit var handler: Handler
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,6 +49,8 @@ class MainActivity : BaseActivity_ApComAct() {
 
         initAd()
         setUpBottomNavigationMenu()
+
+        handler = Handler()
         Log.d("MyLog", "OnCreate MainActivity")
     }
 
@@ -103,20 +108,35 @@ class MainActivity : BaseActivity_ApComAct() {
         mAdView.loadAd(adRequest)
     }
 
-    override fun onBackPressed() {
-        val aDialog = AlertDialog.Builder(this)
 
+    var double_back_press = false
+    override fun onBackPressed() {
+
+        if(double_back_press==true) {
+            super.onBackPressed()        }
+        double_back_press=true
+        handler.postDelayed({double_back_press=false},2000)
+
+        val aDialog = AlertDialog.Builder(this)
         aDialog.apply {
             setMessage(R.string.Alert_message_exit)
-                .setCancelable(false)
+                .setCancelable(true)
                 .setPositiveButton(
                     R.string.Alert_yes,
                     DialogInterface.OnClickListener { dialog, id -> super.onBackPressed() })
         }
             aDialog.setNegativeButton(R.string.Alert_no,DialogInterface.OnClickListener{dialog, id -> dialog.cancel()  })
+
         val alert = aDialog.create()
         alert.show()
+
+
+
+
+
     }
+
+
 
 
 }
