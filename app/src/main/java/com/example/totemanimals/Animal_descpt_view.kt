@@ -18,7 +18,12 @@ class Animal_descpt_view : BaseActivity_ApComAct() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animal_descpt_view)
-        descAnimal_data = intent.getSerializableExtra("description_search") as Animal
+        val descAnimal_data1 = intent.getSerializableExtra("description_search") ?: intent.getSerializableExtra("description_result")
+
+        descAnimal_data = descAnimal_data1 as Animal
+
+        Log.d("MyLog", descAnimal_data.toString())
+
         bindingViewLyout()
         desc_act_btn_back.setOnClickListener{
         finish()

@@ -67,21 +67,21 @@ class fragment_testResult : Fragment() {
             animat_var.anim_Testresult(im_testresult_n1)
         val first_animal = animal_construct(first_name)
             val intent = Intent(activity, Animal_descpt_view::class.java)
-            intent.putExtra("description_search", first_animal)
+            intent.putExtra("description_result", first_animal)
             handler.postDelayed({startActivity(intent)},300)
         }
         view0.LinearLayout_result2.setOnClickListener {
             animat_var.anim_Testresult(im_testresult_n2)
         val second_animal = animal_construct(second_name)
             val intent = Intent(activity, Animal_descpt_view::class.java)
-            intent.putExtra("description_search", second_animal)
+            intent.putExtra("description_result", second_animal)
             handler.postDelayed({startActivity(intent)},300)
         }
         view0.LinearLayout_result3.setOnClickListener {
             animat_var.anim_Testresult(im_testresult_n3)
         val last_animal = animal_construct(last_name)
             val intent = Intent(activity, Animal_descpt_view::class.java)
-            intent.putExtra("description_search", last_animal)
+            intent.putExtra("description_result", last_animal)
             handler.postDelayed({startActivity(intent)},300)
         }
 
