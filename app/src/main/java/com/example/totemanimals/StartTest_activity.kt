@@ -18,11 +18,18 @@ import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
 import com.example.totemanimals.list_resours.imIdList
 import com.example.totemanimals.questionListsTotemAnimal.min_nums_ans
+import com.google.android.gms.ads.AdError
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.FullScreenContentCallback
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 class StartTest_activity : BaseActivity_ApComAct() {
 
+    var interAd: InterstitialAd? = null
     //для анимации и работы теста
     lateinit var test_res_list: Array<Int>
     lateinit var animat_var: Animations
@@ -71,6 +78,11 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        loadInterAd() // загрузка межстраничной рекламы
+    }
+
 
     fun checkBind_WhatTheTest(intent: String) {
         if (intent == "new_animaltotem_test") {
@@ -96,13 +108,9 @@ class StartTest_activity : BaseActivity_ApComAct() {
         }
     }
 
-    fun constructorQuestObj(
-        index: Int,
-        quests: Array<String>,
-        numbers_buttons: Array<Int>,
-        nums_max_quests: Int,
-        lists_result_add: Array<Array<Array<Int>>>,
-        name_button_list: Array<Array<String>>,
+    fun constructorQuestObj(index: Int,quests: Array<String>,numbers_buttons: Array<Int>,
+                            nums_max_quests: Int,lists_result_add: Array<Array<Array<Int>>>,
+                            name_button_list: Array<Array<String>>,
         minimum_answ: Array<Int>
     ): questionsBindShablon {
         return questionsBindShablon(
@@ -348,7 +356,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
         btn_close_testfor_result.setOnClickListener {
             when (what_the_test) {
                 "new_animaltotem_test" -> {
-                    prepareSavePutResAnimalTest()
+                    showInterAd()
                 }
                 else -> {
                     Toast.makeText(this, R.string.result_no_found, Toast.LENGTH_SHORT).show()
@@ -432,5 +440,55 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         }
 
+
+    private fun loadInterAd() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this,getString(R.string.reques_id),adRequest, object :
+            InterstitialAdLoadCallback(){
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                interAd = null
+                Log.d("MyLog", "ad error load")
+            }
+
+            override fun onAdLoaded(p0: InterstitialAd) {
+                interAd = p0
+                Log.d("MyLog", "ad loaded")
+            }
+        })
+    }
+
+    private fun showInterAd () {
+        if(interAd != null) {
+            interAd?.fullScreenContentCallback = object : FullScreenContentCallback(){
+                override fun onAdDismissedFullScreenContent() {
+                    if(what_the_test=="new_animaltotem_test") {
+                        prepareSavePutResAnimalTest()
+                    }
+                    interAd = null
+                    loadInterAd()                }
+
+                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
+                    if(what_the_test=="new_animaltotem_test") {
+                        prepareSavePutResAnimalTest()
+                    }
+                    interAd = null
+                    loadInterAd()
+                }
+
+                override fun onAdShowedFullScreenContent() {
+                    interAd = null
+                    loadInterAd()
+                }
+            }
+            interAd?.show(this)
+        }
+        else {
+            Log.d("MyLog", "ad = null")
+            if(what_the_test=="new_animaltotem_test") {
+                prepareSavePutResAnimalTest()
+            }
+
+        }
+    }
 }
 

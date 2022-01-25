@@ -2,6 +2,7 @@
     <string name="application_id_name_test" translatable="false">com.google.android.gms.ads.APPLICATION_ID</string>
     <string name="my_app_id_value_test" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
     <string name="banner_id_test" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="reques_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
 
     <string name="app_name">totem animals</string>
     <string name="Alert_title_exit">Exit</string>
