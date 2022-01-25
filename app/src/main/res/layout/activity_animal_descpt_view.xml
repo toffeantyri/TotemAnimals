@@ -66,16 +66,36 @@
                 android:textColor="#030000"
                 android:textSize="14sp" />
 
-            <Button
-                android:id="@+id/desc_act_btn_back"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/shape_rectangle_r10"
-                android:backgroundTint="@color/green_style_btn"
-                android:elegantTextHeight="true"
-                android:elevation="10dp"
-                android:text="@string/desc_act_btn_back" />
+                android:layout_margin="5dp">
+
+                <Button
+                    android:id="@+id/desc_act_btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_rectangle_r10"
+                    android:backgroundTint="@color/green_style_btn"
+                    android:elegantTextHeight="true"
+                    android:elevation="10dp"
+                    android:text="@string/desc_act_btn_back"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btn_share_desc_animal"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_round"
+                    android:backgroundTint="#284AF8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/desc_act_btn_back"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_share_black_24dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
     </ScrollView>
 
