@@ -104,7 +104,7 @@
                     android:layout_margin="5dp"
                     android:elevation="10dp"
                     android:padding="10dp"
-                    android:text="Здесь еще описнаие и тп тра ла ла тру лу лу где что кудfng mkkd fgdgj klsrg slrjgtsk sk rjgkls skl rjgksj s gjsk sk jgksj lk rjtklt rgjk ssj kls jrkglskj gskj dgjsdjfk sjef ksjekj fskjekfjesklf jsekfjsejfk sjkelfjskej fklsjekfjsefjkl sjekfjeklf sklejfk jsesl gkls skj gklsjtа"
+                    android:text="@string/descr_info_2"
                     android:textColor="#000000" />
             </androidx.cardview.widget.CardView>
 
