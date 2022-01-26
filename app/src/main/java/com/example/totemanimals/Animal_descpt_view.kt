@@ -44,19 +44,17 @@ class Animal_descpt_view : BaseActivity_ApComAct() {
 
     fun shareDescAnimal(){
         val link = getString(R.string.link_on_my_app_for_share)
-        val pic = imageToUri(descAnimal_data.im_animal)
-        val my_totem = getString(R.string.my_totem_text)
+        val my_totem = if(intent.getSerializableExtra("description_search")==null) {getString(R.string.my_totem_text_result)} else {getString(R.string.my_totem_text_search)}
         val title = descAnimal_data.title_animal + "\n"
         val descr = descAnimal_data.disc
 
 
         val intent = Intent()
         intent.setAction(Intent.ACTION_SEND)
-        intent.putExtra(Intent.EXTRA_STREAM, pic )
         intent.putExtra(Intent.EXTRA_TEXT, link + "\n" + my_totem +  title + "\n" + descr )
-        intent.setType("image/*")
-        Log.d("MyLog", link +"\n " + pic +"\n " + my_totem + title +"\n " + descr)
-        startActivity(Intent.createChooser(intent, "Рассказать о своём тотемном животном:"))
+        intent.setType("text/plain")
+        Log.d("MyLog", link  + "\n " + my_totem + title +"\n " + descr)
+        startActivity(Intent.createChooser(intent, getString(R.string.share_totem)))
 
     }
 

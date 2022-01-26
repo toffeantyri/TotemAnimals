@@ -5,7 +5,9 @@
     <string name="reques_id" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
 
     <string name="link_on_my_app_for_share" >Do you want to know your totem animal? \n Take the app test:\n http:googleplay \n</string>
-    <string name="my_totem_text">My totem animal: </string>
+    <string name="my_totem_text_result">My totem animal: </string>
+    <string name="my_totem_text_search">Description totem animal: </string>
+    <string name="share_totem"> Share: </string>
 
     <string name="app_name">totem animals</string>
     <string name="Alert_title_exit">Exit</string>
