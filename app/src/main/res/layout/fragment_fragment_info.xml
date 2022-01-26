@@ -89,7 +89,8 @@
                 android:padding="5dp"
                 android:paddingHorizontal="20dp"
                 android:paddingStart="20dp"
-                android:text="@string/my_btn_my_userBlog" />
+                android:text="@string/my_btn_my_userBlog"
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

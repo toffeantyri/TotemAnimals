@@ -84,6 +84,7 @@
                     android:elegantTextHeight="true"
                     android:elevation="10dp"
                     android:text="@string/desc_act_btn_back"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

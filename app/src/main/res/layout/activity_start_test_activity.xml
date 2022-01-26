@@ -272,7 +272,8 @@
                 android:backgroundTint="@color/red_btn"
                 android:padding="8dp"
                 android:paddingHorizontal="10dp"
-                android:text="@string/stop_test" />
+                android:text="@string/stop_test"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/result1_test_btnh"
