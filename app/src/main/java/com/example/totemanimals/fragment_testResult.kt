@@ -62,7 +62,11 @@ class fragment_testResult : Fragment() {
 
 
         viewBindResultFromBungle(view0,first_name,first_volume,second_name,second_volume,last_name,all_volume)
-        view0.ContainerLayout_Res_Animal.visibility = if(state_op_close_res==1){View.VISIBLE} else {View.GONE}
+        view0.ContainerLayout_Res_Animal.visibility = if(state_op_close_res==1) {View.VISIBLE} else {View.GONE}
+
+        if(state_op_close_res==1) {view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_less_black_32dp)}
+        else {view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)}
+
 
         view0.btn_start_test.setOnClickListener {
             val intent = Intent(activity,StartTest_activity::class.java)
@@ -90,7 +94,7 @@ class fragment_testResult : Fragment() {
             animat_var.anim_Testresult(im_testresult_n3)
         val last_animal = animal_construct(last_name)
             val intent = Intent(activity, Animal_descpt_view::class.java)
-            intent.putExtra("description_result", last_animal)
+            intent.putExtra("description_search", last_animal)
             handler.postDelayed({startActivity(intent)},300)
         }
 
