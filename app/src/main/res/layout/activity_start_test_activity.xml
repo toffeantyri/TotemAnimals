@@ -247,6 +247,7 @@
 
             <Button
                 android:id="@+id/btn_close_testfor_result"
+                style="@style/Button_Style_other"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -262,6 +263,7 @@
 
             <Button
                 android:id="@+id/btn_close_test"
+                style="@style/Button_Style_other"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"

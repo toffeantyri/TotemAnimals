@@ -75,6 +75,7 @@
 
                 <Button
                     android:id="@+id/desc_act_btn_back"
+                    style="@style/Button_Style"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:background="@drawable/shape_rectangle_r10"
