@@ -26,7 +26,7 @@
         <item name="backgroundTint">@color/green_style_btn</item>
         <item name="android:gravity">center</item>
         <item name="android:forceDarkAllowed">false</item>
-        <item name="android:fontFamily">@font/bronova_bold</item>
+        <item name="android:fontFamily">@font/romic</item>
 
     </style>
 
@@ -38,7 +38,7 @@
         <item name="android:background">@drawable/shape_separator_hor</item>
         <item name="android:gravity">center</item>
         <item name="android:forceDarkAllowed">false</item>
-        <item name="android:fontFamily">@font/bronova_reg</item>
+        <item name="android:fontFamily">@font/decor_initial</item>
 
     </style>
 

@@ -76,7 +76,7 @@
 
             <Button
                 android:id="@+id/btn_my_inst"
-                style="@style/Button_Style"
+                style="@style/Button_Style_other"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="10dp"
