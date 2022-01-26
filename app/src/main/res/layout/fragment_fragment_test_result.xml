@@ -92,7 +92,7 @@
                         android:layout_weight="0.2"
                         android:background="@drawable/shape_rectangle_r10_up"
                         android:backgroundTint="@color/green_style_btn"
-                        android:src="@drawable/ic_expand_less_black_32dp"
+                        android:src="@drawable/ic_expand_more_black_32dp"
                         tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
 
@@ -104,14 +104,15 @@
                     android:gravity="center"
                     android:text="@string/no_totem_animals"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/ContainerLayout_Res_Animal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <LinearLayout
                         android:id="@+id/LinearLayout_result1"

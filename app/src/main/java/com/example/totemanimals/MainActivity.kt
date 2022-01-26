@@ -64,7 +64,7 @@ class MainActivity : BaseActivity_ApComAct() {
             val s_v = data.getIntExtra("second_volume",-1)
             val l_n = data.getIntExtra("last_name",-1)
             val a_v = data.getIntExtra("all_volume",-1)
-        val result_array = arrayOf(f_n,f_v,s_n,s_v,l_n,a_v)
+        val result_array = arrayOf(1,f_n,f_v,s_n,s_v,l_n,a_v)
             Log.d("MyLog","onActivityResult $f_n $f_v $s_n $s_v $l_n $a_v " )
             supportFragmentManager.beginTransaction()
                 .replace(R.id.my_testResult_frame, fragment_testResult.newInstance(result_array)).commit()

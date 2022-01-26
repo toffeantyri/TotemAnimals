@@ -12,15 +12,20 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
 
     fun setUpPreference(): Array<Int> {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val pref_state = 0 // состояние фрагмента тест результ. 0 - все результаты закрыты, 1 - результат AnimalResult - Открыт
+        //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
+        //префы для теста Тотемное животное
         val pref0 = pref.getInt("first_name", -1)
         val pref1 = pref.getInt("first_volume", -1)
         val pref2 = pref.getInt("second_name", -1)
         val pref3 = pref.getInt("second_volume", -1)
         val pref4 = pref.getInt("last_name", -1)
         val pref5 = pref.getInt("all_volume", -1)
-        //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
-        return arrayOf(pref0,pref1,pref2,pref3,pref4,pref5)
+        //
+        return arrayOf(pref_state,pref0,pref1,pref2,pref3,pref4,pref5)
     }
+
+    //установка действия для кнопок боттом меню
     fun setUpBottomNavigationMenu() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.my_info_frame, fragment_info())

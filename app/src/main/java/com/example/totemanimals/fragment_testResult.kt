@@ -38,6 +38,7 @@ class fragment_testResult : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view0 = LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result,container,false)
+        val state_op_close_res = arguments?.getInt("state_open_close_res") ?: 0
         val first_name:Int = arguments?.getInt("first_name") ?: -1
         val first_volume:Int = arguments?.getInt("first_volume")?: -1
         val second_name:Int = arguments?.getInt("second_name")?: -1
@@ -48,12 +49,20 @@ class fragment_testResult : Fragment() {
         rect_r10_all = resources.getDrawable(R.drawable.shape_rectangle_r10)
         rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
 
-        view0.tv_no_results.visibility = if(first_name==-1) {View.VISIBLE} else {View.GONE}
+
+        view0.tv_no_results.visibility = if(first_name==-1)
+                    {if(state_op_close_res==1) {View.VISIBLE}
+                     else{View.GONE}        }
+        else {View.GONE}
+
+
+
         animat_var = Animations()
         handler = Handler()
 
 
         viewBindResultFromBungle(view0,first_name,first_volume,second_name,second_volume,last_name,all_volume)
+        view0.ContainerLayout_Res_Animal.visibility = if(state_op_close_res==1){View.VISIBLE} else {View.GONE}
 
         view0.btn_start_test.setOnClickListener {
             val intent = Intent(activity,StartTest_activity::class.java)
@@ -173,12 +182,13 @@ class fragment_testResult : Fragment() {
         fun newInstance(pref0: Array<Int>) : fragment_testResult {
             val fragment = fragment_testResult()
             val args = Bundle()
-            args.putInt("first_name", pref0[0])
-            args.putInt("first_volume", pref0[1])
-            args.putInt("second_name", pref0[2])
-            args.putInt("second_volume", pref0[3])
-            args.putInt("last_name", pref0[4])
-            args.putInt("all_volume", pref0[5])
+            args.putInt("state_open_close_res",pref0[0]) // состояние теста - откр/закрыты подробнее в BaseActivity
+            args.putInt("first_name", pref0[1])
+            args.putInt("first_volume", pref0[2])
+            args.putInt("second_name", pref0[3])
+            args.putInt("second_volume", pref0[4])
+            args.putInt("last_name", pref0[5])
+            args.putInt("all_volume", pref0[6])
             fragment.arguments=args
             return fragment}
     }
