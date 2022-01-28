@@ -1,4 +1,4 @@
-package com.example.totemanimals
+package com.totems.totemanimals
 
 import android.app.Activity
 import android.app.Dialog
@@ -44,7 +44,11 @@ class MainActivity : BaseActivity_ApComAct() {
         my_info_frame.visibility = View.GONE
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.my_testResult_frame, fragment_testResult.newInstance(setUpPreference())).commit()
+            .replace(R.id.my_testResult_frame,
+                fragment_testResult.newInstance(
+                    setUpPreference()
+                )
+            ).commit()
         my_testResult_frame.visibility = View.VISIBLE
 
         initAd()
@@ -67,7 +71,11 @@ class MainActivity : BaseActivity_ApComAct() {
         val result_array = arrayOf(1,f_n,f_v,s_n,s_v,l_n,a_v)
             Log.d("MyLog","onActivityResult $f_n $f_v $s_n $s_v $l_n $a_v " )
             supportFragmentManager.beginTransaction()
-                .replace(R.id.my_testResult_frame, fragment_testResult.newInstance(result_array)).commit()
+                .replace(R.id.my_testResult_frame,
+                    fragment_testResult.newInstance(
+                        result_array
+                    )
+                ).commit()
         }
         else { Log.d("MyLog", " OnActivityResult : НЕ requestCode==100 && resultCode==Activity.RESULT_OK && data!=null ")        }
     }
@@ -101,6 +109,7 @@ class MainActivity : BaseActivity_ApComAct() {
         }
     }
 
+    //TODO изменить в activity_main.xml
     fun initAd() {
         MobileAds.initialize(this) {}
         mAdView = findViewById(R.id.adView)

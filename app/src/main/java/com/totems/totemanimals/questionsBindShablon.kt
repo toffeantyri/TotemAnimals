@@ -1,4 +1,4 @@
-package com.example.totemanimals
+package com.totems.totemanimals
 
 import android.text.Layout
 import android.util.Log

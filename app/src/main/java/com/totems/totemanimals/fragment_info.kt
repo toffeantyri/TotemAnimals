@@ -1,4 +1,4 @@
-package com.example.totemanimals
+package com.totems.totemanimals
 
 import android.content.Context
 import android.content.Intent

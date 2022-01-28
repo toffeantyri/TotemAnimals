@@ -1,4 +1,4 @@
-package com.example.totemanimals
+package com.totems.totemanimals
 
 import android.app.Activity
 import android.content.Context
@@ -16,8 +16,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
-import com.example.totemanimals.list_resours.imIdList
-import com.example.totemanimals.questionListsTotemAnimal.min_nums_ans
+import com.totems.totemanimals.list_resours.imIdList
+import com.totems.totemanimals.questionListsTotemAnimal.min_nums_ans
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -64,7 +64,8 @@ class StartTest_activity : BaseActivity_ApComAct() {
         index = 0 // индекс (number_q номер)вопроса
         n_q_index = 0 // индекс номера количества ответов
         testNextQuestion(index)//Добавляем первый вопрос во вью
-        animat_var = Animations() // создаем обьект класса анимации
+        animat_var =
+            Animations() // создаем обьект класса анимации
         handler = Handler() // создаем обьект Handlera
         btn = findViewById(R.id.btn_close_test)
         r = Runnable {  // создаем запускающийся код
@@ -91,15 +92,20 @@ class StartTest_activity : BaseActivity_ApComAct() {
                 null, 0 -> {
                     im_background = R.drawable.background_night
                 }
-                else -> im_background = questionListsTotemAnimal.im_background
+                else -> im_background =
+                    questionListsTotemAnimal.im_background
             }
             layout_test.setBackgroundResource(im_background)
             list_results_counts = imIdList
-            quests = questionListsTotemAnimal.quest_totem_animal
+            quests =
+                questionListsTotemAnimal.quest_totem_animal
             minimum_answ = questionListsTotemAnimal.min_nums_ans
-            numbers_buttons = questionListsTotemAnimal.answer_nums
-            lists_result_add = questionListsTotemAnimal.answer_right_check
-            name_button_list = questionListsTotemAnimal.button_name_list
+            numbers_buttons =
+                questionListsTotemAnimal.answer_nums
+            lists_result_add =
+                questionListsTotemAnimal.answer_right_check
+            name_button_list =
+                questionListsTotemAnimal.button_name_list
             nums_max_quests = quests.count()
 
         } else {
@@ -129,7 +135,11 @@ class StartTest_activity : BaseActivity_ApComAct() {
         lists_result_add: Array<Array<Array<Int>>>,
         min_nums_ans: Array<Int>
     ): resultBindShablon {
-        return resultBindShablon(index, lists_result_add[index], min_nums_ans[index])
+        return resultBindShablon(
+            index,
+            lists_result_add[index],
+            min_nums_ans[index]
+        )
     }
 
     fun testNextQuestion(index: Int) {
@@ -441,9 +451,10 @@ class StartTest_activity : BaseActivity_ApComAct() {
         }
 
 
+    // TODO заменить request_id_test без _test
     private fun loadInterAd() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,getString(R.string.reques_id),adRequest, object :
+        InterstitialAd.load(this,getString(R.string.reques_id_test),adRequest, object :
             InterstitialAdLoadCallback(){
             override fun onAdFailedToLoad(p0: LoadAdError) {
                 interAd = null

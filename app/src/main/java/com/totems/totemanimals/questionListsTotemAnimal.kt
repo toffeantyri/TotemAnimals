@@ -1,4 +1,4 @@
-package com.example.totemanimals
+package com.totems.totemanimals
 
 object questionListsTotemAnimal {
     val im_background = R.drawable.background_test1

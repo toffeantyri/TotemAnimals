@@ -1,4 +1,4 @@
-package com.example.totemanimals
+package com.totems.totemanimals
 import android.content.DialogInterface
 import androidx.preference.PreferenceManager
 import android.util.Log
@@ -36,7 +36,11 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
                     my_info_frame.visibility = View.GONE
 
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.my_testResult_frame, fragment_testResult.newInstance(setUpPreference())).commit()
+                        .replace(R.id.my_testResult_frame,
+                            fragment_testResult.newInstance(
+                                setUpPreference()
+                            )
+                        ).commit()
                     my_testResult_frame.visibility = View.VISIBLE
                 }
                 R.id.search_menu_id -> {
@@ -49,7 +53,9 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
                     rcView_AnList.visibility = View.GONE
 
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.my_info_frame, fragment_info()).commit()
+                        .replace(R.id.my_info_frame,
+                            fragment_info()
+                        ).commit()
                     my_info_frame.visibility = View.VISIBLE
                 }
                 R.id.exit_menu_id -> {

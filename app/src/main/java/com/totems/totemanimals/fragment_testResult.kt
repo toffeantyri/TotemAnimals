@@ -1,4 +1,4 @@
-package com.example.totemanimals
+package com.totems.totemanimals
 
 import android.app.Activity
 import android.content.Context
@@ -18,9 +18,9 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.fragment.app.FragmentManager
 import androidx.preference.PreferenceManager
-import com.example.totemanimals.list_resours.descriptIdList
-import com.example.totemanimals.list_resours.imIdList
-import com.example.totemanimals.list_resours.nameIdList
+import com.totems.totemanimals.list_resours.descriptIdList
+import com.totems.totemanimals.list_resours.imIdList
+import com.totems.totemanimals.list_resours.nameIdList
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
@@ -69,7 +69,8 @@ class fragment_testResult : Fragment() {
 
 
         view0.btn_start_test.setOnClickListener {
-            val intent = Intent(activity,StartTest_activity::class.java)
+            val intent = Intent(activity,
+                StartTest_activity::class.java)
             intent.putExtra("new_test", "new_animaltotem_test")
             activity?.startActivityForResult(intent,100)
         }
@@ -143,13 +144,18 @@ class fragment_testResult : Fragment() {
        // Log.d("MyLog","fragm testresult onDetach")
     }
 
-    fun animal_construct(number_animal_index: Int) :Animal   {
+    fun animal_construct(number_animal_index: Int) : Animal {
         if(number_animal_index!=(-1)&&number_animal_index<= imIdList.size){
             val animalRes = Animal(
                 imIdList[number_animal_index], nameIdList[number_animal_index],
-                descriptIdList[number_animal_index])
+                descriptIdList[number_animal_index]
+            )
             return animalRes}
-        else return Animal(0,"null_construct", "null_construct")
+        else return Animal(
+            0,
+            "null_construct",
+            "null_construct"
+        )
     }
 
 

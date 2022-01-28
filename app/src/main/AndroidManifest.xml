@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.totemanimals">
+    package="com.totems.totemanimals">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -32,8 +32,9 @@
             android:screenOrientation="portrait" />
 
         <meta-data
-            android:name="@string/application_id_name_test"
+            android:name="@string/application_id_name"
             android:value="@string/my_app_id_value_test" />
+        <!-- TODO value_test еа value!-->
 
         <activity
             android:name=".MainActivity"
