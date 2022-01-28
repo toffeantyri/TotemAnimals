@@ -81,8 +81,6 @@
                 android:layout_height="50dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="10dp"
-                android:background="@drawable/shape_rectangle_r10"
-                android:backgroundTint="@color/green_style_btn"
                 android:drawableRight="@drawable/image_btn_selector_inst"
                 android:elevation="10dp"
                 android:gravity="left|center_vertical"

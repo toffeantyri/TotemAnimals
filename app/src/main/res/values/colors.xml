@@ -10,6 +10,7 @@
     <color name="white">#FFFFFF</color>
 
     <color name="green_style_btn">#77FFF4</color>
+    <color name="green_style_btn_press">#E877E4FF</color>
 
     <color name="result_green">#004400</color>
     <color name="result_yellow">#928100</color>

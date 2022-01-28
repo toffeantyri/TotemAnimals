@@ -35,7 +35,7 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">15sp</item>
         <item name="android:padding">10dp</item>
-        <item name="android:background">@drawable/shape_separator_hor</item>
+        <item name="android:background">@drawable/sel_shape_rect_separ_hor_r15</item>
         <item name="android:gravity">center</item>
         <item name="android:forceDarkAllowed">false</item>
         <item name="android:fontFamily">@font/decor_initial</item>

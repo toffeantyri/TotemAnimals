@@ -79,8 +79,6 @@
                     style="@style/Button_Style_other"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:background="@drawable/shape_rectangle_r10"
-                    android:backgroundTint="@color/green_style_btn"
                     android:elegantTextHeight="true"
                     android:elevation="10dp"
                     android:text="@string/desc_act_btn_back"
