@@ -454,7 +454,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
     // TODO заменить request_id_test без _test
     private fun loadInterAd() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,getString(R.string.reques_id_test),adRequest, object :
+        InterstitialAd.load(this,getString(R.string.reques_id),adRequest, object :
             InterstitialAdLoadCallback(){
             override fun onAdFailedToLoad(p0: LoadAdError) {
                 interAd = null

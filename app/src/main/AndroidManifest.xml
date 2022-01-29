@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.totems.totemanimals">
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -16,7 +15,8 @@
         <activity android:name=".SplashActivity"
             android:theme="@style/SplashStyle"
             android:screenOrientation="portrait"
-            android:launchMode="singleTask">
+            android:launchMode="singleTask"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,8 +33,7 @@
 
         <meta-data
             android:name="@string/application_id_name"
-            android:value="@string/my_app_id_value_test" />
-        <!-- TODO value_test еа value!-->
+            android:value="@string/my_app_id_value" />
 
         <activity
             android:name=".MainActivity"
