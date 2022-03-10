@@ -13,11 +13,14 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
 import com.totems.totemanimals.resoursesTests.list_resours
-import com.totems.totemanimals.view.mainFragments.fragment_testResult
 import com.totems.totemanimals.view.mainAdapters.Animal
 import com.totems.totemanimals.view.mainAdapters.AnimalsAdaptList
+import com.totems.totemanimals.view.mainFragments.fragment_testResult
+import com.yandex.mobile.ads.common.InitializationListener
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : BaseActivity_ApComAct() {
     lateinit var mAdView: AdView
@@ -34,12 +37,15 @@ class MainActivity : BaseActivity_ApComAct() {
         my_info_frame.visibility = View.GONE
 
         supportFragmentManager.beginTransaction()
-            .replace(R.id.my_testResult_frame,
+            .replace(
+                R.id.my_testResult_frame,
                 fragment_testResult.newInstance(
                     setUpPreference()
                 )
             ).commit()
         my_testResult_frame.visibility = View.VISIBLE
+
+        initMobileAdsYandex()
 
         initAd()
         setUpBottomNavigationMenu()
@@ -52,22 +58,26 @@ class MainActivity : BaseActivity_ApComAct() {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("MyLog", "OnActivityResult MainActivity")
         if (requestCode==100 && resultCode==Activity.RESULT_OK && data!=null) {
-            val f_n = data.getIntExtra("first_name",-1 )
-            val f_v = data.getIntExtra("first_volume",-1)
-            val s_n = data.getIntExtra("second_name",-1)
-            val s_v = data.getIntExtra("second_volume",-1)
-            val l_n = data.getIntExtra("last_name",-1)
-            val a_v = data.getIntExtra("all_volume",-1)
-        val result_array = arrayOf(1,f_n,f_v,s_n,s_v,l_n,a_v)
-            Log.d("MyLog","onActivityResult $f_n $f_v $s_n $s_v $l_n $a_v " )
+            val f_n = data.getIntExtra("first_name", -1)
+            val f_v = data.getIntExtra("first_volume", -1)
+            val s_n = data.getIntExtra("second_name", -1)
+            val s_v = data.getIntExtra("second_volume", -1)
+            val l_n = data.getIntExtra("last_name", -1)
+            val a_v = data.getIntExtra("all_volume", -1)
+        val result_array = arrayOf(1, f_n, f_v, s_n, s_v, l_n, a_v)
+            Log.d("MyLog", "onActivityResult $f_n $f_v $s_n $s_v $l_n $a_v ")
             supportFragmentManager.beginTransaction()
-                .replace(R.id.my_testResult_frame,
+                .replace(
+                    R.id.my_testResult_frame,
                     fragment_testResult.newInstance(
                         result_array
                     )
                 ).commit()
         }
-        else { Log.d("MyLog", " OnActivityResult : НЕ requestCode==100 && resultCode==Activity.RESULT_OK && data!=null ")        }
+        else { Log.d(
+            "MyLog",
+            " OnActivityResult : НЕ requestCode==100 && resultCode==Activity.RESULT_OK && data!=null "
+        )        }
     }
 
     fun addAllAnimalOnRV() {
@@ -114,7 +124,7 @@ class MainActivity : BaseActivity_ApComAct() {
         if(double_back_press==true) {
             super.onBackPressed()        }
         double_back_press=true
-        handler.postDelayed({double_back_press=false},2000)
+        handler.postDelayed({ double_back_press = false }, 2000)
 
         val aDialog = AlertDialog.Builder(this)
         aDialog.apply {
@@ -124,7 +134,9 @@ class MainActivity : BaseActivity_ApComAct() {
                     R.string.Alert_yes,
                     DialogInterface.OnClickListener { dialog, id -> super.onBackPressed() })
         }
-            aDialog.setNegativeButton(R.string.Alert_no,DialogInterface.OnClickListener{dialog, id -> dialog.cancel()  })
+            aDialog.setNegativeButton(
+                R.string.Alert_no,
+                DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
 
         val alert = aDialog.create()
         alert.show()
@@ -137,6 +149,9 @@ class MainActivity : BaseActivity_ApComAct() {
 
 
 
+    fun initMobileAdsYandex(){
+        MobileAds.initialize(this, OnInitializationCompleteListener { Log.d("MyLog", "SDK Initialised OK" ) })
+    }
 
 }
 
