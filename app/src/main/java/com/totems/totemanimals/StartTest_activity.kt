@@ -1,29 +1,25 @@
 package com.totems.totemanimals
 
 import android.app.Activity
-import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
-import android.graphics.Color
-import android.os.Build.VERSION_CODES.M
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.content.ContextCompat
 import androidx.preference.PreferenceManager
-import com.totems.totemanimals.list_resours.imIdList
-import com.totems.totemanimals.questionListsTotemAnimal.min_nums_ans
+import com.totems.totemanimals.resoursesTests.list_resours.imIdList
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.totems.totemanimals.resoursesTests.questionListsTotemAnimal
+import com.totems.totemanimals.view.Animations
+import com.totems.totemanimals.view.questionsBindShablon
+import com.totems.totemanimals.view.resultBindShablon
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
@@ -454,7 +450,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
     // TODO заменить request_id_test без _test
     private fun loadInterAd() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,getString(R.string.reques_id),adRequest, object :
+        InterstitialAd.load(this,getString(R.string.reques_id_test),adRequest, object :
             InterstitialAdLoadCallback(){
             override fun onAdFailedToLoad(p0: LoadAdError) {
                 interAd = null

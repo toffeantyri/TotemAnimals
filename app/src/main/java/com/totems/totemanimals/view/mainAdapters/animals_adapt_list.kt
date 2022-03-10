@@ -1,17 +1,12 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view.mainAdapters
 
-import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.animal_shablon_xml.view.*
+import com.totems.totemanimals.R
 
 class AnimalsAdaptList(var onItemClick: ((Animal)->Unit)?=null): RecyclerView.Adapter<AnimalsAdaptList.AnimalHolder>() { // Адаптер с Вью Хольдером
 

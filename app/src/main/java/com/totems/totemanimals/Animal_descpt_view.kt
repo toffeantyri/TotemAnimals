@@ -3,13 +3,10 @@ package com.totems.totemanimals
 import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.Log
-import com.google.android.material.internal.ParcelableSparseArray
+import com.totems.totemanimals.view.mainAdapters.Animal
 import kotlinx.android.synthetic.main.activity_animal_descpt_view.*
-import java.io.Serializable
 
 class Animal_descpt_view : BaseActivity_ApComAct() {
 

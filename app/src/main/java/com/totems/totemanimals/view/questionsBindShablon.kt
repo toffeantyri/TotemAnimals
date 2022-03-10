@@ -1,9 +1,7 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view
 
-import android.text.Layout
 import android.util.Log
 import android.view.View
-import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 // номер(индекс) вопроса, текст опроса, количесто кнопок для ответа, количество вопросов в тесте - всего, Лист с правильными отетами, Лист с именами кнопок, минимальное количество ответов в вопросе

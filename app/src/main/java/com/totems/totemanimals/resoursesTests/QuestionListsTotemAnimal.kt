@@ -1,4 +1,6 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.resoursesTests
+
+import com.totems.totemanimals.R
 
 object questionListsTotemAnimal {
     val im_background = R.drawable.background_test1

@@ -1,11 +1,11 @@
 package com.totems.totemanimals
 import android.content.DialogInterface
 import androidx.preference.PreferenceManager
-import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.internal.NavigationMenu
+import com.totems.totemanimals.view.mainFragments.fragment_info
+import com.totems.totemanimals.view.mainFragments.fragment_testResult
 import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseActivity_ApComAct : AppCompatActivity() {

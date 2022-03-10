@@ -1,33 +1,23 @@
 package com.totems.totemanimals
 
 import android.app.Activity
-import android.app.Dialog
-import android.app.Instrumentation
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.PorterDuff
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
-import android.widget.GridLayout
-import android.widget.ImageButton
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.fragment.app.DialogFragment
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
+import com.totems.totemanimals.resoursesTests.list_resours
+import com.totems.totemanimals.view.mainFragments.fragment_testResult
+import com.totems.totemanimals.view.mainAdapters.Animal
+import com.totems.totemanimals.view.mainAdapters.AnimalsAdaptList
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
-import kotlin.contracts.ContractBuilder
 
 class MainActivity : BaseActivity_ApComAct() {
     lateinit var mAdView: AdView

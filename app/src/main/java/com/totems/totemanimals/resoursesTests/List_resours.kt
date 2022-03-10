@@ -1,11 +1,14 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.resoursesTests
+
+import com.totems.totemanimals.R
 
 object list_resours {
 
-    val imIdList = arrayOf<Int>(R.drawable.smallbelka,R.drawable.smallbober,R.drawable.smallezh,
-        R.drawable.smallfilin,R.drawable.smallkon,R.drawable.smalllebed,R.drawable.smalllisa,
-        R.drawable.smallmedved,R.drawable.smallolen,R.drawable.smallorel,R.drawable.smallpetuh,
-        R.drawable.smallslon,R.drawable.smalltur,R.drawable.smalluzh,R.drawable.smallvolk,)
+    val imIdList = arrayOf<Int>(
+        R.drawable.smallbelka, R.drawable.smallbober, R.drawable.smallezh,
+        R.drawable.smallfilin, R.drawable.smallkon, R.drawable.smalllebed, R.drawable.smalllisa,
+        R.drawable.smallmedved, R.drawable.smallolen, R.drawable.smallorel, R.drawable.smallpetuh,
+        R.drawable.smallslon, R.drawable.smalltur, R.drawable.smalluzh, R.drawable.smallvolk,)
 
 
     val nameIdList = arrayOf("Белка","Бобёр","Ёж","Филин","Конь","Лебедь","Лисица","Медведь","Олень","Орёл","Петух","Слон","Тур","Уж","Волк",)

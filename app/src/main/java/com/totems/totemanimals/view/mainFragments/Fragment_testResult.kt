@@ -1,26 +1,23 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view.mainFragments
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
-import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.transition.AutoTransition
-import android.transition.TransitionManager
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.fragment.app.FragmentManager
-import androidx.preference.PreferenceManager
-import com.totems.totemanimals.list_resours.descriptIdList
-import com.totems.totemanimals.list_resours.imIdList
-import com.totems.totemanimals.list_resours.nameIdList
+import com.totems.totemanimals.view.mainAdapters.Animal
+import com.totems.totemanimals.Animal_descpt_view
+import com.totems.totemanimals.R
+import com.totems.totemanimals.StartTest_activity
+import com.totems.totemanimals.resoursesTests.list_resours.descriptIdList
+import com.totems.totemanimals.resoursesTests.list_resours.imIdList
+import com.totems.totemanimals.resoursesTests.list_resours.nameIdList
+import com.totems.totemanimals.view.Animations
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 

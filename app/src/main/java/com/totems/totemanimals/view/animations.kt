@@ -1,10 +1,7 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view
 
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.view.View
-import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
 
 class Animations {

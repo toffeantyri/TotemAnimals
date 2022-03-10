@@ -33,7 +33,7 @@
 
         <meta-data
             android:name="@string/application_id_name"
-            android:value="@string/my_app_id_value" />
+            android:value="@string/my_app_id_value_test" />
 
         <activity
             android:name=".MainActivity"

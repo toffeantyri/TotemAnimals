@@ -1,4 +1,4 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view.mainAdapters
 
 import java.io.Serializable
 
