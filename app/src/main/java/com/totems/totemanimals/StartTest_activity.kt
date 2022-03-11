@@ -87,7 +87,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
     override fun onResume() {
         super.onResume()
-        //loadInterAdYandex() // загрузка межстраничной рекламы
+        // загрузка межстраничной рекламы
         loadRewardAdYandex()
     }
 
@@ -383,7 +383,6 @@ class StartTest_activity : BaseActivity_ApComAct() {
         }
 
         btn_close_test.setOnClickListener {
-            showRewardAdYandex()
             onBackPressed()
         }
     }
