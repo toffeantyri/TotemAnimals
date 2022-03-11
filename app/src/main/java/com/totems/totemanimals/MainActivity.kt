@@ -10,20 +10,20 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.GridLayoutManager
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener
 import com.totems.totemanimals.resoursesTests.list_resours
 import com.totems.totemanimals.view.mainAdapters.Animal
 import com.totems.totemanimals.view.mainAdapters.AnimalsAdaptList
 import com.totems.totemanimals.view.mainFragments.fragment_testResult
-import com.yandex.mobile.ads.common.InitializationListener
+import com.yandex.mobile.ads.banner.AdSize
+import com.yandex.mobile.ads.banner.BannerAdEventListener
+import com.yandex.mobile.ads.common.AdRequest
+import com.yandex.mobile.ads.common.AdRequestError
+import com.yandex.mobile.ads.common.ImpressionData
+import com.yandex.mobile.ads.common.MobileAds
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity_ApComAct() {
-    lateinit var mAdView: AdView
     private val adapter1 = AnimalsAdaptList()
     lateinit var handler: Handler
 
@@ -46,8 +46,9 @@ class MainActivity : BaseActivity_ApComAct() {
         my_testResult_frame.visibility = View.VISIBLE
 
         initMobileAdsYandex()
+        loadAndShowBanner()
 
-        initAd()
+
         setUpBottomNavigationMenu()
 
         handler = Handler()
@@ -57,14 +58,14 @@ class MainActivity : BaseActivity_ApComAct() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("MyLog", "OnActivityResult MainActivity")
-        if (requestCode==100 && resultCode==Activity.RESULT_OK && data!=null) {
+        if (requestCode == 100 && resultCode == Activity.RESULT_OK && data != null) {
             val f_n = data.getIntExtra("first_name", -1)
             val f_v = data.getIntExtra("first_volume", -1)
             val s_n = data.getIntExtra("second_name", -1)
             val s_v = data.getIntExtra("second_volume", -1)
             val l_n = data.getIntExtra("last_name", -1)
             val a_v = data.getIntExtra("all_volume", -1)
-        val result_array = arrayOf(1, f_n, f_v, s_n, s_v, l_n, a_v)
+            val result_array = arrayOf(1, f_n, f_v, s_n, s_v, l_n, a_v)
             Log.d("MyLog", "onActivityResult $f_n $f_v $s_n $s_v $l_n $a_v ")
             supportFragmentManager.beginTransaction()
                 .replace(
@@ -73,11 +74,12 @@ class MainActivity : BaseActivity_ApComAct() {
                         result_array
                     )
                 ).commit()
+        } else {
+            Log.d(
+                "MyLog",
+                " OnActivityResult : НЕ requestCode==100 && resultCode==Activity.RESULT_OK && data!=null "
+            )
         }
-        else { Log.d(
-            "MyLog",
-            " OnActivityResult : НЕ requestCode==100 && resultCode==Activity.RESULT_OK && data!=null "
-        )        }
     }
 
     fun addAllAnimalOnRV() {
@@ -109,21 +111,13 @@ class MainActivity : BaseActivity_ApComAct() {
         }
     }
 
-    //TODO изменить в activity_main.xml
-    fun initAd() {
-        MobileAds.initialize(this) {}
-        mAdView = findViewById(R.id.adView)
-        val adRequest = AdRequest.Builder().build()
-        mAdView.loadAd(adRequest)
-    }
-
-
     var double_back_press = false
     override fun onBackPressed() {
 
-        if(double_back_press==true) {
-            super.onBackPressed()        }
-        double_back_press=true
+        if (double_back_press == true) {
+            super.onBackPressed()
+        }
+        double_back_press = true
         handler.postDelayed({ double_back_press = false }, 2000)
 
         val aDialog = AlertDialog.Builder(this)
@@ -134,23 +128,51 @@ class MainActivity : BaseActivity_ApComAct() {
                     R.string.Alert_yes,
                     DialogInterface.OnClickListener { dialog, id -> super.onBackPressed() })
         }
-            aDialog.setNegativeButton(
-                R.string.Alert_no,
-                DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+        aDialog.setNegativeButton(
+            R.string.Alert_no,
+            DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
 
         val alert = aDialog.create()
         alert.show()
 
 
-
-
-
     }
 
 
+    fun initMobileAdsYandex() {
+        MobileAds.initialize(this) { Log.d("MyLog", "SDK Initialised OK") }
+    }
 
-    fun initMobileAdsYandex(){
-        MobileAds.initialize(this, OnInitializationCompleteListener { Log.d("MyLog", "SDK Initialised OK" ) })
+    fun loadAndShowBanner() {
+        adViewYandex.apply {
+            setAdUnitId(getString(R.string.yandex_banner_id_test))
+            setAdSize(AdSize.BANNER_320x50)
+        }
+        val adRequest = AdRequest.Builder().build()
+
+        adViewYandex.setBannerAdEventListener(object : BannerAdEventListener {
+            override fun onAdLoaded() {
+                Log.d("MyLog", "Ad Loaded Ok")
+            }
+
+            override fun onAdFailedToLoad(p0: AdRequestError) {
+                Log.d("MyLog", "Banner Ad Load Fail")
+            }
+
+            override fun onAdClicked() {
+                Log.d("MyLog", "Ad Clicked")
+            }
+
+            override fun onLeftApplication() {
+            }
+
+            override fun onReturnedToApplication() {
+            }
+
+            override fun onImpression(p0: ImpressionData?) {
+            }
+        })
+        adViewYandex.loadAd(adRequest)
     }
 
 }

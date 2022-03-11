@@ -45,19 +45,14 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="0dp"
+    <com.yandex.mobile.ads.banner.BannerAdView
+        android:id="@+id/adViewYandex"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/white"
-        android:visibility="visible"
-        app:adSize="BANNER"
-        app:adUnitId="@string/banner_id_test"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_bottom_menu"
@@ -66,7 +61,7 @@
         android:background="@color/white"
         android:theme="@style/Nav_menu_theme"
         app:elevation="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintBottom_toTopOf="@+id/adViewYandex"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/nav_bottom_menu_xml" >

@@ -10,22 +10,25 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.preference.PreferenceManager
 import com.totems.totemanimals.resoursesTests.list_resours.imIdList
-import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.totems.totemanimals.resoursesTests.questionListsTotemAnimal
 import com.totems.totemanimals.view.Animations
 import com.totems.totemanimals.view.questionsBindShablon
 import com.totems.totemanimals.view.resultBindShablon
+import com.yandex.mobile.ads.banner.AdSize
+import com.yandex.mobile.ads.banner.BannerAdEventListener
+import com.yandex.mobile.ads.common.AdRequest
+import com.yandex.mobile.ads.common.AdRequestError
+import com.yandex.mobile.ads.common.ImpressionData
+import com.yandex.mobile.ads.interstitial.InterstitialAd
+import com.yandex.mobile.ads.interstitial.InterstitialAdEventListener
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 class StartTest_activity : BaseActivity_ApComAct() {
 
-    var interAd: InterstitialAd? = null
+    lateinit var yandexInterstitialAd: InterstitialAd
+
     //для анимации и работы теста
     lateinit var test_res_list: Array<Int>
     lateinit var animat_var: Animations
@@ -73,11 +76,12 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         bindingButtonsListeners() // биндит слушатели кнопок
 
+        loadAndShowBanner()
     }
 
     override fun onResume() {
         super.onResume()
-        loadInterAd() // загрузка межстраничной рекламы
+        loadInterAdYandex() // загрузка межстраничной рекламы
     }
 
 
@@ -110,9 +114,10 @@ class StartTest_activity : BaseActivity_ApComAct() {
         }
     }
 
-    fun constructorQuestObj(index: Int,quests: Array<String>,numbers_buttons: Array<Int>,
-                            nums_max_quests: Int,lists_result_add: Array<Array<Array<Int>>>,
-                            name_button_list: Array<Array<String>>,
+    fun constructorQuestObj(
+        index: Int, quests: Array<String>, numbers_buttons: Array<Int>,
+        nums_max_quests: Int, lists_result_add: Array<Array<Array<Int>>>,
+        name_button_list: Array<Array<String>>,
         minimum_answ: Array<Int>
     ): questionsBindShablon {
         return questionsBindShablon(
@@ -362,7 +367,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
         btn_close_testfor_result.setOnClickListener {
             when (what_the_test) {
                 "new_animaltotem_test" -> {
-                    showInterAd()
+                    showInterstitialAdYandex()
                 }
                 else -> {
                     Toast.makeText(this, R.string.result_no_found, Toast.LENGTH_SHORT).show()
@@ -375,83 +380,113 @@ class StartTest_activity : BaseActivity_ApComAct() {
         }
     }
 
-        var double_back_press = false
-        override fun onBackPressed() {
-            if (double_back_press == true) {
-                super.onBackPressed()
-            }
-            double_back_press = true
-            handler.postDelayed({ double_back_press = false }, 700)
-
-            val aDialog = AlertDialog.Builder(this)
-            aDialog.setMessage(R.string.close_test_alert)
-                .setCancelable(true)
-                .setPositiveButton(
-                    R.string.Alert_yes,
-                    DialogInterface.OnClickListener { dialog, id ->
-                        setResult(Activity.RESULT_CANCELED)
-                        finish()
-                    })
-            aDialog.setNegativeButton(
-                R.string.Alert_no,
-                DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
-            val alert = aDialog.create()
-            alert.show()
-
+    var double_back_press = false
+    override fun onBackPressed() {
+        if (double_back_press == true) {
+            super.onBackPressed()
         }
+        double_back_press = true
+        handler.postDelayed({ double_back_press = false }, 700)
 
-        fun prepareSavePutResAnimalTest() {
-            val first_max_name = MinMaxMaxTwoResult()[0]
-            val first_max_volume = MinMaxMaxTwoResult()[1]
-            val second_max_name = MinMaxMaxTwoResult()[2]
-            val second_max_volume = MinMaxMaxTwoResult()[3]
-            val last_min_name = MinMaxMaxTwoResult()[4]
-            val all_volume = MinMaxMaxTwoResult()[5]
+        val aDialog = AlertDialog.Builder(this)
+        aDialog.setMessage(R.string.close_test_alert)
+            .setCancelable(true)
+            .setPositiveButton(
+                R.string.Alert_yes,
+                DialogInterface.OnClickListener { dialog, id ->
+                    setResult(Activity.RESULT_CANCELED)
+                    finish()
+                })
+        aDialog.setNegativeButton(
+            R.string.Alert_no,
+            DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+        val alert = aDialog.create()
+        alert.show()
 
-            val pref = PreferenceManager.getDefaultSharedPreferences(this)
-            pref.edit().putInt("first_name", first_max_name).apply()
-            pref.edit().putInt("first_volume", first_max_volume).apply()
-            pref.edit().putInt("second_name", second_max_name).apply()
-            pref.edit().putInt("second_volume", second_max_volume).apply()
-            pref.edit().putInt("last_name", last_min_name).apply()
-            pref.edit().putInt("all_volume", all_volume).apply()
+    }
 
-            intent.putExtra("first_name", first_max_name)
-            intent.putExtra("first_volume", first_max_volume)
-            intent.putExtra("second_name", second_max_name)
-            intent.putExtra("second_volume", second_max_volume)
-            intent.putExtra("last_name", last_min_name)
-            intent.putExtra("all_volume", all_volume)
-            setResult(Activity.RESULT_OK, intent)
-            finish()
+    fun prepareSavePutResAnimalTest() {
+        val first_max_name = MinMaxMaxTwoResult()[0]
+        val first_max_volume = MinMaxMaxTwoResult()[1]
+        val second_max_name = MinMaxMaxTwoResult()[2]
+        val second_max_volume = MinMaxMaxTwoResult()[3]
+        val last_min_name = MinMaxMaxTwoResult()[4]
+        val all_volume = MinMaxMaxTwoResult()[5]
+
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        pref.edit().putInt("first_name", first_max_name).apply()
+        pref.edit().putInt("first_volume", first_max_volume).apply()
+        pref.edit().putInt("second_name", second_max_name).apply()
+        pref.edit().putInt("second_volume", second_max_volume).apply()
+        pref.edit().putInt("last_name", last_min_name).apply()
+        pref.edit().putInt("all_volume", all_volume).apply()
+
+        intent.putExtra("first_name", first_max_name)
+        intent.putExtra("first_volume", first_max_volume)
+        intent.putExtra("second_name", second_max_name)
+        intent.putExtra("second_volume", second_max_volume)
+        intent.putExtra("last_name", last_min_name)
+        intent.putExtra("all_volume", all_volume)
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+    }
+
+    fun stopClickForButtons() {
+        btn_ans1.isClickable = false
+        btn_ans2.isClickable = false
+        btn_ans3.isClickable = false
+        btn_ans4.isClickable = false
+        btn_ans5.isClickable = false
+        btn_ans6.isClickable = false
+        btn_ans7.isClickable = false
+        btn_ans8.isClickable = false
+        btn_ans9.isClickable = false
+        btn_ans10.isClickable = false
+        btn_ans11.isClickable = false
+        btn_ans12.isClickable = false
+        btn_ans13.isClickable = false
+        btn_ans14.isClickable = false
+        btn_ans15.isClickable = false
+
+
+    }
+
+    fun loadAndShowBanner() {
+        starttest_banner_yandex.apply {
+            setAdUnitId(getString(R.string.yandex_banner_id_test))
+            setAdSize(AdSize.BANNER_320x50)
         }
-
-        fun stopClickForButtons() {
-            btn_ans1.isClickable = false
-            btn_ans2.isClickable = false
-            btn_ans3.isClickable = false
-            btn_ans4.isClickable = false
-            btn_ans5.isClickable = false
-            btn_ans6.isClickable = false
-            btn_ans7.isClickable = false
-            btn_ans8.isClickable = false
-            btn_ans9.isClickable = false
-            btn_ans10.isClickable = false
-            btn_ans11.isClickable = false
-            btn_ans12.isClickable = false
-            btn_ans13.isClickable = false
-            btn_ans14.isClickable = false
-            btn_ans15.isClickable = false
-
-
-        }
-
-
-    // TODO заменить request_id_test без _test
-    private fun loadInterAd() {
         val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this,getString(R.string.reques_id_test),adRequest, object :
-            InterstitialAdLoadCallback(){
+
+        starttest_banner_yandex.setBannerAdEventListener(object : BannerAdEventListener {
+            override fun onAdLoaded() {
+                Log.d("MyLog", "Ad Loaded Ok")
+            }
+
+            override fun onAdFailedToLoad(p0: AdRequestError) {
+                Log.d("MyLog", "Banner Ad Load Fail")
+            }
+
+            override fun onAdClicked() {
+                Log.d("MyLog", "Ad Clicked")
+            }
+
+            override fun onLeftApplication() {
+            }
+
+            override fun onReturnedToApplication() {
+            }
+
+            override fun onImpression(p0: ImpressionData?) {
+            }
+        })
+        starttest_banner_yandex.loadAd(adRequest)
+    }
+
+    /*  private fun loadInterAd() {
+        val adRequest = AdRequest.Builder().build()
+        InterstitialAd.load(this, getString(R.string.reques_id_test), adRequest, object :
+            InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(p0: LoadAdError) {
                 interAd = null
                 Log.d("MyLog", "ad error load")
@@ -463,19 +498,21 @@ class StartTest_activity : BaseActivity_ApComAct() {
             }
         })
     }
+    */
 
-    private fun showInterAd () {
-        if(interAd != null) {
-            interAd?.fullScreenContentCallback = object : FullScreenContentCallback(){
+    /* private fun showInterAd() {
+        if (interAd != null) {
+            interAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
-                    if(what_the_test=="new_animaltotem_test") {
+                    if (what_the_test == "new_animaltotem_test") {
                         prepareSavePutResAnimalTest()
                     }
                     interAd = null
-                    loadInterAd()                }
+                    loadInterAd()
+                }
 
                 override fun onAdFailedToShowFullScreenContent(p0: AdError) {
-                    if(what_the_test=="new_animaltotem_test") {
+                    if (what_the_test == "new_animaltotem_test") {
                         prepareSavePutResAnimalTest()
                     }
                     interAd = null
@@ -488,12 +525,58 @@ class StartTest_activity : BaseActivity_ApComAct() {
                 }
             }
             interAd?.show(this)
-        }
-        else {
+        } else {
             Log.d("MyLog", "ad = null")
-            if(what_the_test=="new_animaltotem_test") {
+            if (what_the_test == "new_animaltotem_test") {
                 prepareSavePutResAnimalTest()
             }
+
+        }
+    }*/
+
+    private fun loadInterAdYandex() {
+        yandexInterstitialAd = InterstitialAd(this)
+        yandexInterstitialAd.setAdUnitId(getString(R.string.yandex_interstitial_id_test))
+        val adRequest : AdRequest = AdRequest.Builder().build()
+        yandexInterstitialAd.loadAd(adRequest)
+        Log.d("MyLogAd", "AdInterstitial  Loading")
+        yandexInterstitialAd.setInterstitialAdEventListener(object : InterstitialAdEventListener {
+            override fun onAdLoaded() {
+                Log.d("MyLogAd", "AdInterstitial is Loaded OK")
+            }
+
+            override fun onAdFailedToLoad(p0: AdRequestError) {
+                Log.d("MyLogAd", "AdInterstitial fail Load\n" + p0.toString())
+            }
+
+            override fun onAdShown() {}
+            override fun onAdDismissed() {}
+            override fun onAdClicked() {}
+            override fun onLeftApplication() {
+                loadInterAdYandex()
+                Log.d("MyLogAd", "AdInterstitial  reLoad")
+            }
+
+            override fun onReturnedToApplication() {}
+            override fun onImpression(p0: ImpressionData?) {}
+
+        })
+
+
+
+    }
+
+    private fun showInterstitialAdYandex() {
+        if (yandexInterstitialAd.isLoaded) {
+            if (what_the_test == "new_animaltotem_test") {
+                yandexInterstitialAd.show()
+                prepareSavePutResAnimalTest()
+            }
+        } else {
+            if (what_the_test == "new_animaltotem_test") {
+                prepareSavePutResAnimalTest()
+            }
+
 
         }
     }

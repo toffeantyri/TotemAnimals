@@ -11,7 +11,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/starttest_banner_yandex"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -35,7 +35,7 @@
                 android:freezesText="false"
                 android:gravity="center_horizontal"
                 android:padding="10dp"
-                android:text="номер вопроса 0"
+                tools:text="номер вопроса 0"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="normal|bold" />
@@ -56,7 +56,7 @@
                 android:minHeight="100dp"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="10dp"
-                android:text="текст вопроса"
+                tools:text="текст вопроса"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -87,7 +87,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -96,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -105,7 +105,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -114,7 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -123,7 +123,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
                 </LinearLayout>
 
@@ -142,7 +142,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -151,7 +151,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -160,7 +160,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -169,7 +169,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -178,7 +178,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
                 </LinearLayout>
 
@@ -197,7 +197,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -206,7 +206,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -215,7 +215,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -224,7 +224,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
 
                     <Button
@@ -233,7 +233,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"
-                        android:text="Button"
+                        tools:text="Button"
                         android:visibility="visible" />
                 </LinearLayout>
 
@@ -275,14 +275,16 @@
                 android:text="@string/stop_test"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/result1_test_btnh"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="test_result_log"
-                android:visibility="invisible" />
-
         </LinearLayout>
     </ScrollView>
+
+
+    <com.yandex.mobile.ads.banner.BannerAdView
+        android:id="@+id/starttest_banner_yandex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

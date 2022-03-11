@@ -6,7 +6,13 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import com.totems.totemanimals.view.mainAdapters.Animal
+import com.yandex.mobile.ads.banner.AdSize
+import com.yandex.mobile.ads.banner.BannerAdEventListener
+import com.yandex.mobile.ads.common.AdRequest
+import com.yandex.mobile.ads.common.AdRequestError
+import com.yandex.mobile.ads.common.ImpressionData
 import kotlinx.android.synthetic.main.activity_animal_descpt_view.*
+import kotlinx.android.synthetic.main.activity_main.*
 
 class Animal_descpt_view : BaseActivity_ApComAct() {
 
@@ -31,6 +37,7 @@ class Animal_descpt_view : BaseActivity_ApComAct() {
             shareDescAnimal()
         }
 
+        loadAndShowBanner()
     }
 
     fun bindingViewLyout () {
@@ -62,6 +69,38 @@ class Animal_descpt_view : BaseActivity_ApComAct() {
                 "/" + resources.getResourceTypeName(imId) +
                 "/" + resources.getResourceEntryName(imId))
         return image_uri
+    }
+
+    fun loadAndShowBanner() {
+        descr_banner_yandex.apply {
+            setAdUnitId(getString(R.string.yandex_banner_id_test))
+            setAdSize(AdSize.BANNER_320x50)
+        }
+        val adRequest = AdRequest.Builder().build()
+
+        descr_banner_yandex.setBannerAdEventListener(object : BannerAdEventListener {
+            override fun onAdLoaded() {
+                Log.d("MyLog", "Ad Loaded Ok")
+            }
+
+            override fun onAdFailedToLoad(p0: AdRequestError) {
+                Log.d("MyLog", "Banner Ad Load Fail")
+            }
+
+            override fun onAdClicked() {
+                Log.d("MyLog", "Ad Clicked")
+            }
+
+            override fun onLeftApplication() {
+            }
+
+            override fun onReturnedToApplication() {
+            }
+
+            override fun onImpression(p0: ImpressionData?) {
+            }
+        })
+        descr_banner_yandex.loadAd(adRequest)
     }
 }
 
