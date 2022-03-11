@@ -19,8 +19,12 @@ import com.yandex.mobile.ads.banner.BannerAdEventListener
 import com.yandex.mobile.ads.common.AdRequest
 import com.yandex.mobile.ads.common.AdRequestError
 import com.yandex.mobile.ads.common.ImpressionData
+import com.yandex.mobile.ads.common.MobileAds
 import com.yandex.mobile.ads.interstitial.InterstitialAd
 import com.yandex.mobile.ads.interstitial.InterstitialAdEventListener
+import com.yandex.mobile.ads.rewarded.Reward
+import com.yandex.mobile.ads.rewarded.RewardedAd
+import com.yandex.mobile.ads.rewarded.RewardedAdEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
@@ -28,6 +32,7 @@ import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 class StartTest_activity : BaseActivity_ApComAct() {
 
     lateinit var yandexInterstitialAd: InterstitialAd
+    lateinit var yandexRewardAd: RewardedAd
 
     //для анимации и работы теста
     lateinit var test_res_list: Array<Int>
@@ -76,12 +81,14 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         bindingButtonsListeners() // биндит слушатели кнопок
 
+        initMobileAdsYandex()
         loadAndShowBanner()
     }
 
     override fun onResume() {
         super.onResume()
-        loadInterAdYandex() // загрузка межстраничной рекламы
+        //loadInterAdYandex() // загрузка межстраничной рекламы
+        loadRewardAdYandex()
     }
 
 
@@ -367,7 +374,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
         btn_close_testfor_result.setOnClickListener {
             when (what_the_test) {
                 "new_animaltotem_test" -> {
-                    showInterstitialAdYandex()
+                    showRewardAdYandex()
                 }
                 else -> {
                     Toast.makeText(this, R.string.result_no_found, Toast.LENGTH_SHORT).show()
@@ -376,6 +383,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
         }
 
         btn_close_test.setOnClickListener {
+            showRewardAdYandex()
             onBackPressed()
         }
     }
@@ -483,62 +491,14 @@ class StartTest_activity : BaseActivity_ApComAct() {
         starttest_banner_yandex.loadAd(adRequest)
     }
 
-    /*  private fun loadInterAd() {
-        val adRequest = AdRequest.Builder().build()
-        InterstitialAd.load(this, getString(R.string.reques_id_test), adRequest, object :
-            InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(p0: LoadAdError) {
-                interAd = null
-                Log.d("MyLog", "ad error load")
-            }
-
-            override fun onAdLoaded(p0: InterstitialAd) {
-                interAd = p0
-                Log.d("MyLog", "ad loaded")
-            }
-        })
+    fun initMobileAdsYandex() {
+        MobileAds.initialize(this) { Log.d("MyLog", "SDK Initialised OK") }
     }
-    */
-
-    /* private fun showInterAd() {
-        if (interAd != null) {
-            interAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
-                override fun onAdDismissedFullScreenContent() {
-                    if (what_the_test == "new_animaltotem_test") {
-                        prepareSavePutResAnimalTest()
-                    }
-                    interAd = null
-                    loadInterAd()
-                }
-
-                override fun onAdFailedToShowFullScreenContent(p0: AdError) {
-                    if (what_the_test == "new_animaltotem_test") {
-                        prepareSavePutResAnimalTest()
-                    }
-                    interAd = null
-                    loadInterAd()
-                }
-
-                override fun onAdShowedFullScreenContent() {
-                    interAd = null
-                    loadInterAd()
-                }
-            }
-            interAd?.show(this)
-        } else {
-            Log.d("MyLog", "ad = null")
-            if (what_the_test == "new_animaltotem_test") {
-                prepareSavePutResAnimalTest()
-            }
-
-        }
-    }*/
 
     private fun loadInterAdYandex() {
         yandexInterstitialAd = InterstitialAd(this)
         yandexInterstitialAd.setAdUnitId(getString(R.string.yandex_interstitial_id_test))
         val adRequest : AdRequest = AdRequest.Builder().build()
-        yandexInterstitialAd.loadAd(adRequest)
         Log.d("MyLogAd", "AdInterstitial  Loading")
         yandexInterstitialAd.setInterstitialAdEventListener(object : InterstitialAdEventListener {
             override fun onAdLoaded() {
@@ -561,6 +521,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
             override fun onImpression(p0: ImpressionData?) {}
 
         })
+        yandexInterstitialAd.loadAd(adRequest)
 
 
 
@@ -570,6 +531,68 @@ class StartTest_activity : BaseActivity_ApComAct() {
         if (yandexInterstitialAd.isLoaded) {
             if (what_the_test == "new_animaltotem_test") {
                 yandexInterstitialAd.show()
+                prepareSavePutResAnimalTest()
+            }
+        } else {
+            if (what_the_test == "new_animaltotem_test") {
+                prepareSavePutResAnimalTest()
+            }
+
+
+        }
+    }
+
+
+    private fun loadRewardAdYandex(){
+        yandexRewardAd = RewardedAd(this)
+        yandexRewardAd.setAdUnitId(getString(R.string.yandex_reward_id_test))
+        val adRequest : AdRequest = AdRequest.Builder().build()
+        yandexRewardAd.setRewardedAdEventListener(object : RewardedAdEventListener{
+            override fun onAdLoaded() {
+                Log.d("MyLogAd", "Ad Reward is Loaded")
+            }
+
+            override fun onAdFailedToLoad(p0: AdRequestError) {
+                Log.d("MyLogAd", p0.toString())
+            }
+
+            override fun onAdShown() {
+
+            }
+
+            override fun onAdDismissed() {
+
+            }
+
+            override fun onRewarded(p0: Reward) {
+
+            }
+
+            override fun onAdClicked() {
+
+            }
+
+            override fun onLeftApplication() {
+
+            }
+
+            override fun onReturnedToApplication() {
+
+            }
+
+            override fun onImpression(p0: ImpressionData?) {
+
+            }
+
+        })
+        yandexRewardAd.loadAd(adRequest)
+        Log.d("MyLogAd", "reward ad Loading")
+    }
+
+    private fun showRewardAdYandex(){
+        if (yandexRewardAd.isLoaded) {
+            if (what_the_test == "new_animaltotem_test") {
+                yandexRewardAd.show()
                 prepareSavePutResAnimalTest()
             }
         } else {
