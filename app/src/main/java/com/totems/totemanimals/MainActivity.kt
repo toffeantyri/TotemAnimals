@@ -145,7 +145,7 @@ class MainActivity : BaseActivity_ApComAct() {
 
     fun loadAndShowBanner() {
         adViewYandex.apply {
-            setAdUnitId(getString(R.string.yandex_banner_id))
+            setAdUnitId(getString(R.string.yandex_banner_id_test))
             setAdSize(AdSize.BANNER_320x50)
         }
         val adRequest = AdRequest.Builder().build()

@@ -494,57 +494,10 @@ class StartTest_activity : BaseActivity_ApComAct() {
         MobileAds.initialize(this) { Log.d("MyLog", "SDK Initialised OK") }
     }
 
-    private fun loadInterAdYandex() {
-        yandexInterstitialAd = InterstitialAd(this)
-        yandexInterstitialAd.setAdUnitId(getString(R.string.yandex_interstitial_id_test))
-        val adRequest : AdRequest = AdRequest.Builder().build()
-        Log.d("MyLogAd", "AdInterstitial  Loading")
-        yandexInterstitialAd.setInterstitialAdEventListener(object : InterstitialAdEventListener {
-            override fun onAdLoaded() {
-                Log.d("MyLogAd", "AdInterstitial is Loaded OK")
-            }
-
-            override fun onAdFailedToLoad(p0: AdRequestError) {
-                Log.d("MyLogAd", "AdInterstitial fail Load\n" + p0.toString())
-            }
-
-            override fun onAdShown() {}
-            override fun onAdDismissed() {}
-            override fun onAdClicked() {}
-            override fun onLeftApplication() {
-                loadInterAdYandex()
-                Log.d("MyLogAd", "AdInterstitial  reLoad")
-            }
-
-            override fun onReturnedToApplication() {}
-            override fun onImpression(p0: ImpressionData?) {}
-
-        })
-        yandexInterstitialAd.loadAd(adRequest)
-
-
-
-    }
-
-    private fun showInterstitialAdYandex() {
-        if (yandexInterstitialAd.isLoaded) {
-            if (what_the_test == "new_animaltotem_test") {
-                yandexInterstitialAd.show()
-                prepareSavePutResAnimalTest()
-            }
-        } else {
-            if (what_the_test == "new_animaltotem_test") {
-                prepareSavePutResAnimalTest()
-            }
-
-
-        }
-    }
-
 
     private fun loadRewardAdYandex(){
         yandexRewardAd = RewardedAd(this)
-        yandexRewardAd.setAdUnitId(getString(R.string.yandex_reward_id))
+        yandexRewardAd.setAdUnitId(getString(R.string.yandex_reward_id_test))
         val adRequest : AdRequest = AdRequest.Builder().build()
         yandexRewardAd.setRewardedAdEventListener(object : RewardedAdEventListener{
             override fun onAdLoaded() {

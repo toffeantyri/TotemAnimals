@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/doshi_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/iv_desc_dosha"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="1dp"
+                android:cropToPadding="false"
+                android:padding="2dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/smallbelka" />
+
+            <TextView
+                android:id="@+id/tv_title_dosha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/shape_rectangle_r10"
+                android:fontFamily="@font/decor_initial"
+                android:gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingTop="1dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="2dp"
+                android:text="TextView"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_descr_dosha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:background="@drawable/shape_rectangle_r10"
+                android:paddingVertical="5dp"
+                android:paddingLeft="6dp"
+                android:paddingTop="1dp"
+                android:paddingRight="6dp"
+                android:paddingBottom="1dp"
+                android:text="TextView"
+                android:textColor="#030000"
+                android:textSize="14sp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp">
+
+                <Button
+                    android:id="@+id/desc_act_btn_back_dosha"
+                    style="@style/Button_Style_other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:elegantTextHeight="true"
+                    android:elevation="10dp"
+                    android:text="@string/desc_act_btn_back"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btn_share_desc_dosha"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/shape_round"
+                    android:backgroundTint="#284AF8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/desc_act_btn_back_dosha"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_share_black_24dp" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.yandex.mobile.ads.banner.BannerAdView
+        android:id="@+id/tv_descr_dosha_banner_yandex2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

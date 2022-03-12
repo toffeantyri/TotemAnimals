@@ -16,5 +16,6 @@
     <string name="my_totem_text_result">"Моё тотемное животное :  "</string>
     <string name="my_totem_text_search">"Описание тотемного животного : "</string>
     <string name="share_totem">"Поделиться: "</string>
+    <string name="my_dosha_is">"Моя доша по Аюрведе: "</string>
 
 </resources>
