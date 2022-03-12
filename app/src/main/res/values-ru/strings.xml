@@ -17,5 +17,7 @@
     <string name="my_totem_text_search">"Описание тотемного животного : "</string>
     <string name="share_totem">"Поделиться: "</string>
     <string name="my_dosha_is">"Моя доша по Аюрведе: "</string>
+    <string name="dosha_pretest_desc">Хочешь узнать свой Доша-тип по Аюрведе?</string>
+    <string name="start_new_dosha_test">Доша Тест</string>
 
 </resources>
