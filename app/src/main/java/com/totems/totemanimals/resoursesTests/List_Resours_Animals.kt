@@ -2,18 +2,18 @@ package com.totems.totemanimals.resoursesTests
 
 import com.totems.totemanimals.R
 
-object list_resours {
+object list_resours : ListResourseClass() {
 
-    val imIdList = arrayOf<Int>(
+    override val imIdList = arrayOf<Int>(
         R.drawable.smallbelka, R.drawable.smallbober, R.drawable.smallezh,
         R.drawable.smallfilin, R.drawable.smallkon, R.drawable.smalllebed, R.drawable.smalllisa,
         R.drawable.smallmedved, R.drawable.smallolen, R.drawable.smallorel, R.drawable.smallpetuh,
         R.drawable.smallslon, R.drawable.smalltur, R.drawable.smalluzh, R.drawable.smallvolk,)
 
 
-    val nameIdList = arrayOf("Белка","Бобёр","Ёж","Филин","Конь","Лебедь","Лисица","Медведь","Олень","Орёл","Петух","Слон","Тур","Уж","Волк",)
+    override val nameIdList = arrayOf("Белка","Бобёр","Ёж","Филин","Конь","Лебедь","Лисица","Медведь","Олень","Орёл","Петух","Слон","Тур","Уж","Волк",)
 
-    val descriptIdList = arrayOf(
+    override val descriptIdList = arrayOf(
         /*Белка*/"Покровителем этого тотема является – вера.\n" +
                 "\n" +
                 "Белка верткая, юркая, постоянно словно бы что–то ищет. Необычайно работоспособна, экономна, бережлива. Обожает запасаться всем впрок. Очень трудолюбива, все время «крутится в колесе». Часто забывает об осторожности, будучи чрезвычайно доверчивой; любит брать корм «с рук», образно выражаясь, – и не всегда видит в этом опасность. Белка деловита, очень организованна, необычайно привлекательна своими душевными качествами: мягкосердечна, отзывчива, нежна, милосердна. Но в то же время Белка свое не отдаст, во всяком случае пока вы ее не приручите. Очень любит детей, ценит семью, дорожит дружбой и любовью. Разговорчива, обаятельна, всегда имеет множество друзей, знакомых, часто им покровительствует, но ждет и ответных чувств. Обожает казаться беззащитной и трогательной. \n" +

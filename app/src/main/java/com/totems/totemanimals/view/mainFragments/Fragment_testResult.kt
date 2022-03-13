@@ -34,7 +34,7 @@ class fragment_testResult : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view0 = LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result,container,false)
+        val view0 : View = LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result,container,false)
         val state_op_close_res = arguments?.getInt("state_open_close_res") ?: 0
         val first_name:Int = arguments?.getInt("first_name") ?: -1
         val first_volume:Int = arguments?.getInt("first_volume")?: -1
@@ -95,7 +95,6 @@ class fragment_testResult : Fragment() {
             intent.putExtra(last_animal.INTENT_KEY_RESULT, last_animal)
             handler.postDelayed({startActivity(intent)},300)
         }
-
         view0.im_arrow_down_an_result.setOnClickListener{
             val context = context ?: requireActivity()
             if(view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE || view0.tv_no_results.visibility == View.VISIBLE){
@@ -122,8 +121,6 @@ class fragment_testResult : Fragment() {
         return view0
 
     }
-
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
