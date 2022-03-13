@@ -11,7 +11,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.GridLayoutManager
 import com.totems.totemanimals.resoursesTests.list_resours
-import com.totems.totemanimals.view.mainAdapters.Animal
+import com.totems.totemanimals.view.mainAdapters.ShablonAnimalDataClass
 import com.totems.totemanimals.view.mainAdapters.AnimalsAdaptList
 import com.totems.totemanimals.view.mainFragments.fragment_testResult
 import com.yandex.mobile.ads.banner.AdSize
@@ -87,13 +87,13 @@ class MainActivity : BaseActivity_ApComAct() {
             var a: Int
             var b: String
             var c: String
-            var animalAdd: Animal
+            var animalAdd: ShablonAnimalDataClass
             var index = 0
             for (i in list_resours.imIdList) {
                 a = list_resours.imIdList[index]
                 b = list_resours.nameIdList[index]
                 c = list_resours.descriptIdList[index]
-                animalAdd = Animal(a, b, c)
+                animalAdd = ShablonAnimalDataClass(a, b, c)
                 adapter1.addAnimal(animalAdd)
                 index++
             }
@@ -103,9 +103,9 @@ class MainActivity : BaseActivity_ApComAct() {
     private fun initRV() {
         rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity, 3)
         rcView_AnList.adapter = adapter1
-        adapter1.onItemClick = { Animal ->
-            val intent = Intent(this, Animal_descpt_view::class.java)
-            intent.putExtra("description_search", Animal)
+        adapter1.onItemClick = { Animal : ShablonAnimalDataClass ->
+            val intent = Intent(this, ActivityDescptView::class.java)
+            intent.putExtra(Animal.INTENT_KEY_SEARCH, Animal)
             startActivity(intent)
 
         }

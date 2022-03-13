@@ -5,7 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import com.totems.totemanimals.view.mainAdapters.Animal
+import com.totems.totemanimals.view.mainAdapters.ShablonClassDescription
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdEventListener
 import com.yandex.mobile.ads.common.AdRequest
@@ -14,18 +14,18 @@ import com.yandex.mobile.ads.common.ImpressionData
 import kotlinx.android.synthetic.main.activity_animal_descpt_view.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-class Animal_descpt_view : BaseActivity_ApComAct() {
+class ActivityDescptView : BaseActivity_ApComAct() {
 
-    lateinit var descAnimal_data: Animal
+    var description_data: ShablonClassDescription = ShablonClassDescription()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animal_descpt_view)
-        val descAnimal_data1 = intent.getSerializableExtra("description_search") ?: intent.getSerializableExtra("description_result")
+        val desc_data0 = intent.getSerializableExtra(description_data.INTENT_KEY_SEARCH) ?: intent.getSerializableExtra(description_data.INTENT_KEY_RESULT)
 
-        descAnimal_data = descAnimal_data1 as Animal
+        description_data = desc_data0 as ShablonClassDescription
 
-        Log.d("MyLog", descAnimal_data.toString())
+        Log.d("MyLog", description_data.toString())
 
         bindingViewLyout()
         desc_act_btn_back.setOnClickListener{
@@ -34,23 +34,23 @@ class Animal_descpt_view : BaseActivity_ApComAct() {
 
 
         btn_share_desc_animal.setOnClickListener {
-            shareDescAnimal()
+            shareDescAnyClass()
         }
 
         loadAndShowBanner()
     }
 
     fun bindingViewLyout () {
-        desc_act_imTitle.setImageResource(descAnimal_data.im_animal)
-        desc_act_tv_title.text = descAnimal_data.title_animal
-        desc_act_tv_desc.text = descAnimal_data.disc
+        desc_act_imTitle.setImageResource(description_data.image)
+        desc_act_tv_title.text = description_data.title
+        desc_act_tv_desc.text = description_data.description
     }
 
-    fun shareDescAnimal(){
+    fun shareDescAnyClass(){
         val link = getString(R.string.link_on_my_app_for_share)
-        val my_totem = if(intent.getSerializableExtra("description_search")==null) {getString(R.string.my_totem_text_result)} else {getString(R.string.my_totem_text_search)}
-        val title = descAnimal_data.title_animal + "\n"
-        val descr = descAnimal_data.disc
+        val my_totem = if(intent.getSerializableExtra(description_data.INTENT_KEY_RESULT)==null) {getString(R.string.my_totem_text_result)} else {getString(R.string.my_totem_text_search)}
+        val title = description_data.title + "\n"
+        val descr = description_data.description
 
 
         val intent = Intent()

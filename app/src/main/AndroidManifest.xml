@@ -33,7 +33,7 @@
             android:name=".StartTest_activity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Animal_descpt_view"
+            android:name=".ActivityDescptView"
             android:screenOrientation="portrait" />
 
         <meta-data

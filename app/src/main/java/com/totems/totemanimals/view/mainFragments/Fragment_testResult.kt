@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.totems.totemanimals.view.mainAdapters.Animal
-import com.totems.totemanimals.Animal_descpt_view
+import com.totems.totemanimals.view.mainAdapters.ShablonAnimalDataClass
+import com.totems.totemanimals.ActivityDescptView
 import com.totems.totemanimals.R
 import com.totems.totemanimals.StartTest_activity
 import com.totems.totemanimals.resoursesTests.list_resours.descriptIdList
@@ -76,23 +76,23 @@ class fragment_testResult : Fragment() {
 
         view0.LinearLayout_result1.setOnClickListener {
             animat_var.anim_Testresult(im_testresult_n1)
-        val first_animal = animal_construct(first_name)
-            val intent = Intent(activity, Animal_descpt_view::class.java)
-            intent.putExtra("description_result", first_animal)
+        val first_animal : ShablonAnimalDataClass = animal_construct(first_name)
+            val intent = Intent(activity, ActivityDescptView::class.java)
+            intent.putExtra(first_animal.INTENT_KEY_RESULT, first_animal)
             handler.postDelayed({startActivity(intent)},300)
         }
         view0.LinearLayout_result2.setOnClickListener {
             animat_var.anim_Testresult(im_testresult_n2)
         val second_animal = animal_construct(second_name)
-            val intent = Intent(activity, Animal_descpt_view::class.java)
-            intent.putExtra("description_result", second_animal)
+            val intent = Intent(activity, ActivityDescptView::class.java)
+            intent.putExtra(second_animal.INTENT_KEY_RESULT, second_animal)
             handler.postDelayed({startActivity(intent)},300)
         }
         view0.LinearLayout_result3.setOnClickListener {
             animat_var.anim_Testresult(im_testresult_n3)
         val last_animal = animal_construct(last_name)
-            val intent = Intent(activity, Animal_descpt_view::class.java)
-            intent.putExtra("description_search", last_animal)
+            val intent = Intent(activity, ActivityDescptView::class.java)
+            intent.putExtra(last_animal.INTENT_KEY_RESULT, last_animal)
             handler.postDelayed({startActivity(intent)},300)
         }
 
@@ -141,14 +141,14 @@ class fragment_testResult : Fragment() {
        // Log.d("MyLog","fragm testresult onDetach")
     }
 
-    fun animal_construct(number_animal_index: Int) : Animal {
+    fun animal_construct(number_animal_index: Int) : ShablonAnimalDataClass {
         if(number_animal_index!=(-1)&&number_animal_index<= imIdList.size){
-            val animalRes = Animal(
+            val animalRes = ShablonAnimalDataClass(
                 imIdList[number_animal_index], nameIdList[number_animal_index],
                 descriptIdList[number_animal_index]
             )
             return animalRes}
-        else return Animal(
+        else return ShablonAnimalDataClass(
             0,
             "null_construct",
             "null_construct"
