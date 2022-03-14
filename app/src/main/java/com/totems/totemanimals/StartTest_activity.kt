@@ -11,9 +11,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.preference.PreferenceManager
 import com.totems.totemanimals.resoursesTests.list_resours.imIdList
 import com.totems.totemanimals.resoursesTests.questionListsTotemAnimal
-import com.totems.totemanimals.view.Animations
-import com.totems.totemanimals.view.questionsBindShablon
-import com.totems.totemanimals.view.resultBindShablon
+import com.totems.totemanimals.view.mainQuestion.Animations
+import com.totems.totemanimals.view.mainQuestion.questionsBindShablon
+import com.totems.totemanimals.view.mainQuestion.resultBindShablon
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdEventListener
 import com.yandex.mobile.ads.common.AdRequest
@@ -21,11 +21,9 @@ import com.yandex.mobile.ads.common.AdRequestError
 import com.yandex.mobile.ads.common.ImpressionData
 import com.yandex.mobile.ads.common.MobileAds
 import com.yandex.mobile.ads.interstitial.InterstitialAd
-import com.yandex.mobile.ads.interstitial.InterstitialAdEventListener
 import com.yandex.mobile.ads.rewarded.Reward
 import com.yandex.mobile.ads.rewarded.RewardedAd
 import com.yandex.mobile.ads.rewarded.RewardedAdEventListener
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.*
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 

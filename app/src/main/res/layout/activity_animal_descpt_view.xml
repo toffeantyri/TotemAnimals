@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center_horizontal"
-    android:background="@drawable/background_night"
-    tools:context=".ActivityDescptView">
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:id="@+id/const_layout_main_cont_descr"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:layout_gravity="center_horizontal"
+                                                   android:background="@drawable/background_night"
+                                                   tools:context=".ActivityDescptView">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -33,7 +34,7 @@
                 android:cropToPadding="false"
                 android:padding="2dp"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/smallbelka" />
+                app:srcCompat="@drawable/smallbelka"/>
 
             <TextView
                 android:id="@+id/desc_act_tv_title"
@@ -51,7 +52,7 @@
                 android:text="TextView"
                 android:textColor="#000000"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/desc_act_tv_desc"
@@ -67,7 +68,7 @@
                 android:paddingBottom="1dp"
                 android:text="TextView"
                 android:textColor="#030000"
-                android:textSize="14sp" />
+                android:textSize="14sp"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -85,7 +86,7 @@
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <ImageButton
                     android:id="@+id/btn_share_desc_animal"
@@ -96,7 +97,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/desc_act_btn_back"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_share_black_24dp" />
+                    app:srcCompat="@drawable/ic_share_black_24dp"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
@@ -108,6 +109,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

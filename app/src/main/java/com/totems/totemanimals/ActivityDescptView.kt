@@ -25,6 +25,7 @@ class ActivityDescptView : BaseActivity_ApComAct() {
 
         description_data = desc_data0 as ShablonClassDescription
 
+        const_layout_main_cont_descr.background = getDrawable(description_data.backgroundImage)
         Log.d("MyLog", description_data.toString())
 
         bindingViewLyout()

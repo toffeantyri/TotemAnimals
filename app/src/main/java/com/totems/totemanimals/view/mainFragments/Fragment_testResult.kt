@@ -17,7 +17,7 @@ import com.totems.totemanimals.StartTest_activity
 import com.totems.totemanimals.resoursesTests.list_resours.descriptIdList
 import com.totems.totemanimals.resoursesTests.list_resours.imIdList
 import com.totems.totemanimals.resoursesTests.list_resours.nameIdList
-import com.totems.totemanimals.view.Animations
+import com.totems.totemanimals.view.mainQuestion.Animations
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 

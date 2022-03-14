@@ -1,4 +1,4 @@
-package com.totems.totemanimals.view
+package com.totems.totemanimals.view.mainQuestion
 
 import android.util.Log
 import android.view.View
