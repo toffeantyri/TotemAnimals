@@ -13,6 +13,7 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
     fun setUpPreference(): Array<Int> {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         val pref_state = 0 // состояние фрагмента тест результ. 0 - все результаты закрыты, 1 - результат AnimalResult - Открыт
+        //2- результат теста дош открыт
         //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
         //префы для теста Тотемное животное
         val pref0 = pref.getInt("first_name", -1)
