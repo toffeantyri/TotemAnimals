@@ -1,4 +1,4 @@
-package com.totems.totemanimals.view.mainFragments
+package com.totems.totemanimals.view.mainActivityFragments
 
 import android.content.Context
 import android.content.Intent

@@ -4,8 +4,8 @@ import androidx.preference.PreferenceManager
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.totems.totemanimals.view.mainFragments.fragment_info
-import com.totems.totemanimals.view.mainFragments.fragment_testResult
+import com.totems.totemanimals.view.mainActivityFragments.fragment_info
+import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
 import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseActivity_ApComAct : AppCompatActivity() {
@@ -28,7 +28,15 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
     //установка действия для кнопок боттом меню
     fun setUpBottomNavigationMenu() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.my_info_frame, fragment_info())
+            .replace(R.id.my_info_frame, fragment_info()) // это для прогрузки фрагмент инфо до загрузки
+        supportFragmentManager.beginTransaction()
+            .replace(
+                R.id.my_testResult_frame,               // сначала грузим тест_результ
+                fragment_testResult.newInstance(
+                    setUpPreference()
+                )
+            ).commit()
+
         nav_bottom_menu.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home_menu_id -> {

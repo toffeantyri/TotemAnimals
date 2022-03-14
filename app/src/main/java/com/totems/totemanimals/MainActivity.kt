@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.totems.totemanimals.resoursesTests.list_resours
 import com.totems.totemanimals.view.mainAdapters.ShablonAnimalDataClass
 import com.totems.totemanimals.view.mainAdapters.AnimalsAdaptList
-import com.totems.totemanimals.view.mainFragments.fragment_testResult
+import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdEventListener
 import com.yandex.mobile.ads.common.AdRequest
@@ -36,20 +36,21 @@ class MainActivity : BaseActivity_ApComAct() {
         rcView_AnList.visibility = View.GONE
         my_info_frame.visibility = View.GONE
 
-        supportFragmentManager.beginTransaction()
-            .replace(
-                R.id.my_testResult_frame,
-                fragment_testResult.newInstance(
-                    setUpPreference()
-                )
-            ).commit()
+        setUpBottomNavigationMenu()
+//        supportFragmentManager.beginTransaction()
+//            .replace(
+//                R.id.my_testResult_frame,
+//                fragment_testResult.newInstance(
+//                    setUpPreference()
+//                )
+//            ).commit()
         my_testResult_frame.visibility = View.VISIBLE
 
         initMobileAdsYandex()
         loadAndShowBanner()
 
 
-        setUpBottomNavigationMenu()
+
 
         handler = Handler()
         Log.d("MyLog", "OnCreate MainActivity")
@@ -65,7 +66,7 @@ class MainActivity : BaseActivity_ApComAct() {
             val s_v = data.getIntExtra("second_volume", -1)
             val l_n = data.getIntExtra("last_name", -1)
             val a_v = data.getIntExtra("all_volume", -1)
-            val result_array = arrayOf(1, f_n, f_v, s_n, s_v, l_n, a_v)
+            val result_array = arrayOf(1, f_n, f_v, s_n, s_v, l_n, a_v)                 //первая цифра - состояние открытости закрытости результатов теста (подробнее в Base_activity)
             Log.d("MyLog", "onActivityResult $f_n $f_v $s_n $s_v $l_n $a_v ")
             supportFragmentManager.beginTransaction()
                 .replace(

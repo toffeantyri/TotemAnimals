@@ -1,4 +1,4 @@
-package com.totems.totemanimals.view.mainFragments
+package com.totems.totemanimals.view.mainActivityFragments
 
 import android.content.Intent
 import android.net.Uri
@@ -20,17 +20,9 @@ class fragment_info : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_info,container,false)
+        view.bindingButtons()
 
 
-        view.btn_my_inst.setOnClickListener {
-            val br_intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/foxy_antoffy"))
-            startActivity(br_intent)
-        }
-
-        view.tv_site_righter_text.setOnClickListener {
-            val br_intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://o-sebe.com"))
-            startActivity(br_intent)
-        }
 
 
 
@@ -42,12 +34,30 @@ class fragment_info : Fragment() {
         Log.d("MyLog", "onViewCreated")
     }
 
+    fun View.bindingButtons(){
+        this.apply {
+            btn_my_inst.setOnClickListener {
+                val br_intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://instagram.com/foxy_antoffy"))
+                startActivity(br_intent)
+            }
+
+            tv_site_righter_text.setOnClickListener {
+                val br_intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://o-sebe.com"))
+                startActivity(br_intent)
+            }
+            btn_estimate.setOnClickListener {
+                val br_intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.totems.totemanimals"))
+                startActivity(br_intent)
+            }
+        }
+    }
+
     companion object {
         @JvmStatic
         fun newInstance() = fragment_info()
-
-
-
     }
+
+
+
 }
 
