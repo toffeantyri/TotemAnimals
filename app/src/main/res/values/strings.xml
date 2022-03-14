@@ -50,6 +50,7 @@
     <string name="Test_no_found">Test_not_found</string>
     <string name="result_no_found">Error Result</string>
     <string name="look_totem_blank">Look yours totem Animals</string>
+    <string name="look_dosha_blank">Look yours Dosha-type</string>
     <string name="no_totem_animals">Test is not complete. Take the test</string>
 
     <string name="close_get_result_test">Calculate Totem Animal</string>

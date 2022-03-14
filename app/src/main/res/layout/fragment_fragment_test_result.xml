@@ -387,6 +387,68 @@
                     android:paddingEnd="20dp"
                     android:text="@string/start_new_dosha_test"
                     android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/explainer_custom_linear_doshi"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_rectangle_r10"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView_doshilook"
+                        android:layout_width="15dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingHorizontal="5dp"
+                        android:paddingVertical="10dp"
+                        android:text="@string/look_dosha_blank"
+                        android:textColor="@color/black" />
+
+                    <ImageView
+                        android:id="@+id/imageView_doshi_look"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/image_btn_selector_om" />
+
+                    <ImageButton
+                        android:id="@+id/im_arrow_down_dosh_result"
+                        android:layout_width="32dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="0.2"
+                        android:background="@drawable/shape_rectangle_r10_up"
+                        android:backgroundTint="@color/green_style_btn"
+                        android:src="@drawable/ic_expand_more_black_32dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_no_results_dosha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/no_totem_animals"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:visibility="visible" />
+
+                <LinearLayout
+                    android:id="@+id/ContainerLayout_Res_Doshi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+
+
+                    </LinearLayout>
+
 
             </LinearLayout>
 

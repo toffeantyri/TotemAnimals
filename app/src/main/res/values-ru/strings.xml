@@ -47,4 +47,5 @@
     <string name="dosha_pretest_desc">Хочешь узнать свой Доша-тип по Аюрведе?</string>
     <string name="start_new_dosha_test">Доша Тест</string>
     <string name="btn_estimate_gp">Оценить приложение</string>
+    <string name="look_dosha_blank">Посмотри свой Доша-тип</string>
 </resources>
