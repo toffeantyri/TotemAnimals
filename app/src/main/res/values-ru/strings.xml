@@ -48,4 +48,5 @@
     <string name="start_new_dosha_test">Доша Тест</string>
     <string name="btn_estimate_gp">Оценить приложение</string>
     <string name="look_dosha_blank">Посмотри свой Доша-тип</string>
+    <string name="name_diagramm">Баланс \n дош</string>
 </resources>
