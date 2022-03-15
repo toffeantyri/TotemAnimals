@@ -11,7 +11,8 @@ import com.github.mikephil.charting.listener.ChartTouchListener
 import com.github.mikephil.charting.listener.OnChartGestureListener
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 
-class PieChartTouchListener() : OnChartGestureListener {
+class PieChartTouchListener(valueListener: OnChartValueSelectedListener) : OnChartGestureListener {
+
 
     override fun onChartGestureStart(p0: MotionEvent?, p1: ChartTouchListener.ChartGesture?) {
 

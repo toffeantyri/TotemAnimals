@@ -41,8 +41,9 @@ class fragment_testResult : Fragment() {
     lateinit var rect_r10_all: Drawable
     lateinit var rect_r10_up: Drawable
 
-    val myChartListener = PieChartTouchListener()
+
     val myValueListener = PieValueSelect()
+    val myChartListener = PieChartTouchListener(myValueListener)
 
 
     override fun onCreateView(
@@ -194,7 +195,7 @@ class fragment_testResult : Fragment() {
         viewBindResultDoshaFromBungle(chart)
         chart.onChartGestureListener = myChartListener
         chart.setOnChartValueSelectedListener(myValueListener)
-
+        val werwe = myValueListener.enteryValue
 
     }
 
@@ -302,9 +303,6 @@ class fragment_testResult : Fragment() {
             return fragment
         }
     }
-
-
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
