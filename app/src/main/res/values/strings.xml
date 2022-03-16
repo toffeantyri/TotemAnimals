@@ -75,6 +75,10 @@
     <string name="dosha_pretest_desc">Do you want to know your Dosha type according to Ayurveda?</string>
 
     <string name="name_diagramm">Balance \n Dosh</string>
+
+    <string name="dosha_title_vata">Vata</string>
+    <string name="dosha_title_pitta">Pitta</string>
+    <string name="dosha_title_kapha">Kapha</string>
 </resources>
 
 

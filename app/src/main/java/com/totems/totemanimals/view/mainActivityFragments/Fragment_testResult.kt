@@ -23,7 +23,6 @@ import com.totems.totemanimals.StartTest_activity
 import com.totems.totemanimals.resoursesTests.list_resours.descriptIdList
 import com.totems.totemanimals.resoursesTests.list_resours.imIdList
 import com.totems.totemanimals.resoursesTests.list_resours.nameIdList
-import com.totems.totemanimals.view.mainAdapters.MyPieEntry
 import com.totems.totemanimals.view.mainAdapters.PieValueSelect
 import com.totems.totemanimals.view.mainAdapters.ShablonAnimalDataClass
 
@@ -59,10 +58,17 @@ class fragment_testResult : Fragment() {
         val all_volume: Int = arguments?.getInt("all_volume") ?: -1
 
         //TODO defaul value на 0
-        val vataResult: Float = arguments?.getFloat("vata_result") ?: 10f
-        val pittaResult: Float = arguments?.getFloat("pitta_result") ?: 20f
-        val kaphaResult: Float = arguments?.getFloat("kapha_result") ?: 30f
-        listResultDoshi = arrayListOf(PieEntry(10f,"Вата"),PieEntry(20f,"Питта"),PieEntry(15f,"Капха"))
+        val vataResult: Float = arguments?.getFloat("dosha_vata") ?: 10f
+        val pittaResult: Float = arguments?.getFloat("dosha_pitta") ?: 20f
+        val kaphaResult: Float = arguments?.getFloat("dosha_kapha") ?: 30f
+        Log.d("MyLog", vataResult.toString())
+
+        listResultDoshi = arrayListOf(
+            PieEntry(vataResult,getString(R.string.dosha_title_vata)),
+            PieEntry(pittaResult,getString(R.string.dosha_title_pitta)),
+            PieEntry(kaphaResult,getString(R.string.dosha_title_kapha))
+        )
+
         myValueListener = PieValueSelect(listResultDoshi)
         myChartListener = myValueListener.PieChartTouchListener()
 
@@ -293,16 +299,25 @@ class fragment_testResult : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(pref0: Array<Int>): fragment_testResult {
+        fun newInstance(pref0: Array<Int>, pref1 : Array<Float>): fragment_testResult {
             val fragment = fragment_testResult()
             val args = Bundle()
-            args.putInt("state_open_close_res", pref0[0]) // состояние теста - откр/закрыты подробнее в BaseActivity
-            args.putInt("first_name", pref0[1])
-            args.putInt("first_volume", pref0[2])
-            args.putInt("second_name", pref0[3])
-            args.putInt("second_volume", pref0[4])
-            args.putInt("last_name", pref0[5])
-            args.putInt("all_volume", pref0[6])
+            args.putInt("state_open_close_res", pref0[0].toInt()) // состояние теста - откр/закрыты подробнее в BaseActivity
+            args.putInt("first_name", pref0[1].toInt())
+            args.putInt("first_volume", pref0[2].toInt())
+            args.putInt("second_name", pref0[3].toInt())
+            args.putInt("second_volume", pref0[4].toInt())
+            args.putInt("last_name", pref0[5].toInt())
+            args.putInt("all_volume", pref0[6].toInt())
+
+
+            args.putFloat("dosha_vata", pref1[0])
+            args.putFloat("dosha_pitta", pref1[1])
+            args.putFloat("dosha_kapha", pref1[2])
+
+        Log.d("MyLog", pref0.contentToString())
+        Log.d("MyLog", pref1.contentToString())
+
             fragment.arguments = args
             return fragment
         }

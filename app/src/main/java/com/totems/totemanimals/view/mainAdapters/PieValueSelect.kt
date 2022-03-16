@@ -20,10 +20,10 @@ class PieValueSelect(entryList: ArrayList<PieEntry>) : OnChartValueSelectedListe
     val list = entryList
 
     override fun onValueSelected(p0: Entry?, p1: Highlight?) {
-        Log.d("MyLog", "OnValueSelectedEntry: x: ${p0?.x.toString()}    y:  ${p0?.y.toString()}")
+        Log.d("MyLog", "OnValueSelectedEntry: LastEntryValue ==  y:  ${p0?.y.toString()}")
         enteryValue = p0?.y
         getIndexOfClickedElement(list)
-        Log.d("MyLog", getIndexOfClickedElement(list).toString())
+        Log.d("MyLog", "index: " + getIndexOfClickedElement(list).toString())
 
     }
 

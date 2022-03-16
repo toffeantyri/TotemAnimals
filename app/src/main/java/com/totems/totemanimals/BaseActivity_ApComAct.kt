@@ -26,6 +26,19 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         return arrayOf(pref_state,pref0,pref1,pref2,pref3,pref4,pref5)
     }
 
+    fun setUpPreferenceTwo(): Array<Float> {
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        //состояние открытости закрытости результатов теста - в SetUpPreference()
+        //префы для теста Доши
+        val pref1 = pref.getFloat("dosha_vata", 1.0001f)
+        val pref2 = pref.getFloat("dosha_pitta", 1.0002f)
+        val pref3 = pref.getFloat("dosha_kapha", 1.0003f)
+        //
+        return arrayOf(pref1,pref2,pref3)
+    }
+
+
+
     //установка действия для кнопок боттом меню
     fun setUpBottomNavigationMenu() {
         supportFragmentManager.beginTransaction()
@@ -34,7 +47,7 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
             .replace(
                 R.id.my_testResult_frame,               // сначала грузим тест_результ
                 fragment_testResult.newInstance(
-                    setUpPreference()
+                    setUpPreference(), setUpPreferenceTwo()
                 )
             ).commit()
 
@@ -47,7 +60,7 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.my_testResult_frame,
                             fragment_testResult.newInstance(
-                                setUpPreference()
+                                setUpPreference(), setUpPreferenceTwo()
                             )
                         ).commit()
                     my_testResult_frame.visibility = View.VISIBLE

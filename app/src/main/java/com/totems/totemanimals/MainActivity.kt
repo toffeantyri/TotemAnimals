@@ -59,6 +59,7 @@ class MainActivity : BaseActivity_ApComAct() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("MyLog", "OnActivityResult MainActivity")
+        val listDoshPref = setUpPreferenceTwo()
         if (requestCode == 100 && resultCode == Activity.RESULT_OK && data != null) {
             val f_n = data.getIntExtra("first_name", -1)
             val f_v = data.getIntExtra("first_volume", -1)
@@ -72,7 +73,7 @@ class MainActivity : BaseActivity_ApComAct() {
                 .replace(
                     R.id.my_testResult_frame,
                     fragment_testResult.newInstance(
-                        result_array
+                        result_array, listDoshPref
                     )
                 ).commit()
         } else {
