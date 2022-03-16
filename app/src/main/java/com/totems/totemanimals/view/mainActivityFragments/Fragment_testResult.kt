@@ -1,36 +1,34 @@
 package com.totems.totemanimals.view.mainActivityFragments
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.ColorSpace
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
-import android.icu.lang.UCharacter
 import android.os.Bundle
 import android.os.Handler
-import android.util.DisplayMetrics
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.constraintlayout.motion.utils.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.utils.ColorTemplate
-import com.totems.totemanimals.view.mainAdapters.ShablonAnimalDataClass
 import com.totems.totemanimals.ActivityDescptView
 import com.totems.totemanimals.R
 import com.totems.totemanimals.StartTest_activity
 import com.totems.totemanimals.resoursesTests.list_resours.descriptIdList
 import com.totems.totemanimals.resoursesTests.list_resours.imIdList
 import com.totems.totemanimals.resoursesTests.list_resours.nameIdList
-import com.totems.totemanimals.view.mainAdapters.PieChartTouchListener
+import com.totems.totemanimals.view.mainAdapters.MyPieEntry
 import com.totems.totemanimals.view.mainAdapters.PieValueSelect
+import com.totems.totemanimals.view.mainAdapters.ShablonAnimalDataClass
+
 import com.totems.totemanimals.view.mainQuestion.Animations
+import com.yandex.metrica.impl.ob.F
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
@@ -41,10 +39,10 @@ class fragment_testResult : Fragment() {
     lateinit var rect_r10_all: Drawable
     lateinit var rect_r10_up: Drawable
 
+    lateinit var myValueListener :PieValueSelect
+    lateinit var myChartListener : PieValueSelect.PieChartTouchListener
 
-    val myValueListener = PieValueSelect()
-    val myChartListener = PieChartTouchListener(myValueListener)
-
+    lateinit var listResultDoshi : ArrayList<PieEntry>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,6 +58,13 @@ class fragment_testResult : Fragment() {
         val last_name: Int = arguments?.getInt("last_name") ?: -1
         val all_volume: Int = arguments?.getInt("all_volume") ?: -1
 
+        //TODO defaul value на 0
+        val vataResult: Float = arguments?.getFloat("vata_result") ?: 10f
+        val pittaResult: Float = arguments?.getFloat("pitta_result") ?: 20f
+        val kaphaResult: Float = arguments?.getFloat("kapha_result") ?: 30f
+        listResultDoshi = arrayListOf(PieEntry(10f,"Вата"),PieEntry(20f,"Питта"),PieEntry(15f,"Капха"))
+        myValueListener = PieValueSelect(listResultDoshi)
+        myChartListener = myValueListener.PieChartTouchListener()
 
         animat_var = Animations()
         handler = Handler()
@@ -246,15 +251,14 @@ class fragment_testResult : Fragment() {
 
 
     fun viewBindResultDoshaFromBungle(pieChart: PieChart){
-        val arrayListPie = arrayListOf<PieEntry>(PieEntry(10f,"Вата"),PieEntry(20f,"Питта"),PieEntry(40f,"Капха"))
-        val pieDataSet = PieDataSet(arrayListPie,"")
-        val colors = intArrayOf(
+        val pieDataSet = PieDataSet(listResultDoshi,"")
+        val colors = mutableListOf<Int>(
             resources.getColor(R.color.dosha_vata_blue),
             resources.getColor(R.color.dosha_pitta_red),
             resources.getColor(R.color.dosha_kapha_green))
 
-        val pieChart : PieChart = pieChart
-            pieChart.apply {
+        val mypieChart : PieChart = pieChart
+            mypieChart.apply {
             setUsePercentValues(true)
                 description.isEnabled = false
             val legend : Legend = pieChart.legend
@@ -273,14 +277,14 @@ class fragment_testResult : Fragment() {
         pieDataSet.apply {
             sliceSpace = 3f
             selectionShift = 5f
-            setColors(colors,100)
+            setColors(colors)
         }
         val pieData = PieData(pieDataSet)
         pieData.apply {
             setValueTextSize(16f)
             setValueTextColor(Color.BLACK)
         }
-        pieChart.data = pieData
+        mypieChart.data = pieData
 
 
 

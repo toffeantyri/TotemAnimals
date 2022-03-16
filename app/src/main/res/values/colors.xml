@@ -21,10 +21,11 @@
 
     <color name="blue">#99BAFF</color>
 
-    <color name="dosha_vata_blue">#B32E2EFF</color>
-    <color name="dosha_pitta_red">#B2E70F43</color>
-    <color name="dosha_kapha_green">#B2005A0D</color>
+    <color name="dosha_vata_blue">#E66767FF</color>
+    <color name="dosha_pitta_red">#E6E70F43</color>
+    <color name="dosha_kapha_green">#E6005A0D</color>
     <color name="dosha_kapha_brown">#B291590B</color>
+
     <color name="hole_white_alpha">#80FFFFFF</color>
 
 
