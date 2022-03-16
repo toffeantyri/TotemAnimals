@@ -1,4 +1,4 @@
-package com.totems.totemanimals.view.mainAdapters
+package com.totems.totemanimals.view.mainAdapters.doshi_adapters
 
 import android.util.Log
 import android.view.MotionEvent
@@ -8,7 +8,6 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.ChartTouchListener
 import com.github.mikephil.charting.listener.OnChartGestureListener
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
-import com.github.mikephil.charting.utils.Utils.init
 
 class PieValueSelect(entryList: ArrayList<PieEntry>) : OnChartValueSelectedListener, DiagramListener {
     override var enteryValue: Float? = 0.0F

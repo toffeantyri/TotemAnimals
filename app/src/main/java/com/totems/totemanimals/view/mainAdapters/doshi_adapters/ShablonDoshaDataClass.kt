@@ -1,7 +1,8 @@
-package com.totems.totemanimals.view.mainAdapters
+package com.totems.totemanimals.view.mainAdapters.doshi_adapters
 
 import java.io.Serializable
 import com.totems.totemanimals.R
+import com.totems.totemanimals.view.mainAdapters.ShablonClassDescription
 
 data class ShablonDoshaDataClass(
     override val image: Int,

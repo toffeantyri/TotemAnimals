@@ -1,4 +1,4 @@
-package com.totems.totemanimals.view.mainAdapters
+package com.totems.totemanimals.view.mainAdapters.totemanimaladapters
 
 import android.view.LayoutInflater
 import android.view.View

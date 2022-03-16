@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="10dp"
+    app:cardCornerRadius="15dp"
+    android:alpha="0.85">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_rectangle_r10_lineout"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvMarkerViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="test1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ivMarkerView_image"
+            android:src="@drawable/ic_keyboard_arrow_right_black_24dp"
+            android:layout_marginBottom="5dp"/>
+        <TextView
+            android:id="@+id/tvMarkerViewLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Сбалансированый \n уровень"
+            android:textColor="@color/black"
+            android:textSize="8sp"
+            android:layout_marginBottom="5dp"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

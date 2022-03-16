@@ -20,6 +20,7 @@
     <color name="red_btn">#FF8585</color>
 
     <color name="blue">#99BAFF</color>
+    <color name="darkblue">#3F51B5</color>
 
     <color name="dosha_vata_blue">#E66767FF</color>
     <color name="dosha_pitta_red">#E6E70F43</color>
@@ -27,6 +28,7 @@
     <color name="dosha_kapha_brown">#B291590B</color>
 
     <color name="hole_white_alpha">#80FFFFFF</color>
+    <color name="markerview_white_alpha">#32FFFFFF</color>
 
 
 </resources>

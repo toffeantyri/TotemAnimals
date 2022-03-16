@@ -1,4 +1,4 @@
-package com.totems.totemanimals.view.mainAdapters
+package com.totems.totemanimals.view.mainAdapters.doshi_adapters
 
 import android.util.Log
 import android.view.GestureDetector

@@ -13,7 +13,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -23,11 +23,11 @@ import com.totems.totemanimals.StartTest_activity
 import com.totems.totemanimals.resoursesTests.list_resours.descriptIdList
 import com.totems.totemanimals.resoursesTests.list_resours.imIdList
 import com.totems.totemanimals.resoursesTests.list_resours.nameIdList
-import com.totems.totemanimals.view.mainAdapters.PieValueSelect
-import com.totems.totemanimals.view.mainAdapters.ShablonAnimalDataClass
+import com.totems.totemanimals.view.mainAdapters.doshi_adapters.DiagramMarkerView
+import com.totems.totemanimals.view.mainAdapters.doshi_adapters.PieValueSelect
+import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
 
 import com.totems.totemanimals.view.mainQuestion.Animations
-import com.yandex.metrica.impl.ob.F
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
@@ -38,8 +38,9 @@ class fragment_testResult : Fragment() {
     lateinit var rect_r10_all: Drawable
     lateinit var rect_r10_up: Drawable
 
-    lateinit var myValueListener :PieValueSelect
+    lateinit var myValueListener : PieValueSelect
     lateinit var myChartListener : PieValueSelect.PieChartTouchListener
+    lateinit var myMarkerView : MarkerView
 
     lateinit var listResultDoshi : ArrayList<PieEntry>
 
@@ -71,6 +72,7 @@ class fragment_testResult : Fragment() {
 
         myValueListener = PieValueSelect(listResultDoshi)
         myChartListener = myValueListener.PieChartTouchListener()
+        myMarkerView = DiagramMarkerView(context!!, R.layout.marker_view_diagram)
 
         animat_var = Animations()
         handler = Handler()
@@ -290,6 +292,8 @@ class fragment_testResult : Fragment() {
             setValueTextSize(16f)
             setValueTextColor(Color.BLACK)
         }
+        mypieChart.setDrawMarkers(true)
+        mypieChart.markerView = myMarkerView
         mypieChart.data = pieData
 
 
