@@ -26,13 +26,13 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         return arrayOf(pref_state,pref0,pref1,pref2,pref3,pref4,pref5)
     }
 
-    fun setUpPreferenceTwo(): Array<Float> {
+    fun setUpPreferenceTwo(): Array<Int> {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         //состояние открытости закрытости результатов теста - в SetUpPreference()
         //префы для теста Доши
-        val pref1 = pref.getFloat("dosha_vata", 0.999f)
-        val pref2 = pref.getFloat("dosha_pitta", 0.998f)
-        val pref3 = pref.getFloat("dosha_kapha", 0.997f)
+        val pref1 = pref.getInt("dosha_vata", -1)
+        val pref2 = pref.getInt("dosha_pitta", -1)
+        val pref3 = pref.getInt("dosha_kapha", -1)
         //
         return arrayOf(pref1,pref2,pref3)
     }

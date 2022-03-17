@@ -57,15 +57,15 @@ class fragment_testResult : Fragment() {
         val all_volume: Int = arguments?.getInt("all_volume") ?: -1
 
 
-        val vataResult: Float = arguments?.getFloat("dosha_vata")   ?: -(1f)
-        val pittaResult: Float = arguments?.getFloat("dosha_pitta") ?: -(1f)
-        val kaphaResult: Float = arguments?.getFloat("dosha_kapha") ?: -(1f)
+        val vataResult = arguments?.getInt("dosha_vata")   ?: -1
+        val pittaResult = arguments?.getInt("dosha_pitta") ?: -1
+        val kaphaResult = arguments?.getInt("dosha_kapha") ?: -1
 
 
         listResultDoshi = arrayListOf(
-            PieEntry(vataResult, getString(R.string.dosha_title_vata)),
-            PieEntry(pittaResult, getString(R.string.dosha_title_pitta)),
-            PieEntry(kaphaResult, getString(R.string.dosha_title_kapha))
+            PieEntry(vataResult.toFloat(), getString(R.string.dosha_title_vata)),
+            PieEntry(pittaResult.toFloat(), getString(R.string.dosha_title_pitta)),
+            PieEntry(kaphaResult.toFloat(), getString(R.string.dosha_title_kapha))
         )
 
         myValueListener = PieValueSelect(listResultDoshi)
@@ -78,7 +78,7 @@ class fragment_testResult : Fragment() {
         rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
 
         //TODO TEST
-        state_op_close_res = 2
+        //state_op_close_res = 2
 
         view0.tv_no_results.visibility = if (first_name == -1) {
             if (state_op_close_res == 1) {
@@ -308,7 +308,7 @@ class fragment_testResult : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(pref0: Array<Int>, pref1: Array<Float>): fragment_testResult {
+        fun newInstance(pref0: Array<Int>, pref1: Array<Int>): fragment_testResult {
             val fragment = fragment_testResult()
             val args = Bundle()
             args.putInt(
@@ -323,9 +323,9 @@ class fragment_testResult : Fragment() {
             args.putInt("all_volume", pref0[6].toInt())
 
 
-            args.putFloat("dosha_vata", pref1[0])
-            args.putFloat("dosha_pitta", pref1[1])
-            args.putFloat("dosha_kapha", pref1[2])
+            args.putInt("dosha_vata", pref1[0])
+            args.putInt("dosha_pitta", pref1[1])
+            args.putInt("dosha_kapha", pref1[2])
 
             Log.d("MyLog", pref0.contentToString())
             Log.d("MyLog", pref1.contentToString())

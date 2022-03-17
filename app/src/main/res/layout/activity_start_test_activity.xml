@@ -275,8 +275,17 @@
                 android:text="@string/stop_test"
                 android:textStyle="bold" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_end_test"
+                android:text="test end test"
+                android:visibility="visible"
+                />
+
         </LinearLayout>
     </ScrollView>
+
 
 
     <com.yandex.mobile.ads.banner.BannerAdView

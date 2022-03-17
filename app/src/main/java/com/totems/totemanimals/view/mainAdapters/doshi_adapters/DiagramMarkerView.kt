@@ -20,8 +20,7 @@ class DiagramMarkerView(context: Context, layoutResours : Int) : MarkerView(cont
 
 
     override fun refreshContent(e: Entry?, highlight: Highlight?) {
-        //todo перевести значнеие в проценты
-        titleView.text = e?.y.toString() + "%"
+        titleView.text = "points: "+e?.y.toString()
 
         //todo рассчитать если меньше больше в пределах, установить картинку low, high, balance и установать текст
         image.setImageResource(R.drawable.image_btn_selector_om)

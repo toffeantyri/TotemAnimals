@@ -31,11 +31,11 @@ import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 class StartTest_activity : BaseActivity_ApComAct() {
 
-    lateinit var yandexInterstitialAd: InterstitialAd
+    //lateinit var yandexInterstitialAd: InterstitialAd
     lateinit var yandexRewardAd: RewardedAd
 
     //для анимации и работы теста
-    lateinit var test_res_list: Array<Int>
+    lateinit var test_res_list : Array<Int>
     lateinit var animat_var: Animations
     lateinit var handler: Handler
     lateinit var r: Runnable
@@ -64,6 +64,8 @@ class StartTest_activity : BaseActivity_ApComAct() {
         what_the_test = intent.getStringExtra("new_test") ?: ""
         checkBind_WhatTheTest(what_the_test)
         test_res_list = Array<Int>(list_results_counts.count(), { 0 })
+
+
         //создаем массив наполненый колчеством 0 равный размеру вариантов результата теста(количество животных)
         index = 0 // индекс (number_q номер)вопроса
         n_q_index = 0 // индекс номера количества ответов
@@ -381,9 +383,8 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         btn_close_testfor_result.setOnClickListener {
             when (what_the_test) {
-                "new_animaltotem_test" -> {
-                    showRewardAdYandex()
-                }
+                "new_animaltotem_test" ->  showRewardAdYandex()
+                "new_dosha_test" -> showRewardAdYandex()
                 else -> {
                     Toast.makeText(this, R.string.result_no_found, Toast.LENGTH_SHORT).show()
                 }
@@ -392,6 +393,15 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
         btn_close_test.setOnClickListener {
             onBackPressed()
+        }
+        btn_end_test.setOnClickListener {
+            when (what_the_test) {
+                "new_animaltotem_test" ->  showRewardAdYandex()
+                "new_dosha_test" -> showRewardAdYandex()
+                else -> {
+                    Toast.makeText(this, R.string.result_no_found, Toast.LENGTH_SHORT).show()
+                }
+            }
         }
     }
 
@@ -445,6 +455,28 @@ class StartTest_activity : BaseActivity_ApComAct() {
         setResult(Activity.RESULT_OK, intent)
         finish()
     }
+
+    fun prepareSavePutResDoshaTest() {
+        val vataValue = test_res_list[0]
+        val pittaValue = test_res_list[1]
+        val kaphaValue = test_res_list[2]
+        Log.d("MyLog","prepareSavePutResDoshaTest : $vataValue, $pittaValue, $kaphaValue" +
+                "" )
+
+        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        pref.edit().putInt("dosha_vata", vataValue).apply()
+        pref.edit().putInt("dosha_pitta", pittaValue).apply()
+        pref.edit().putInt("dosha_kapha", kaphaValue).apply()
+
+        intent.putExtra("dosha_vata", vataValue)
+        intent.putExtra("dosha_pitta", pittaValue)
+        intent.putExtra("dosha_kapha", kaphaValue)
+
+        setResult(Activity.RESULT_OK, intent)
+        finish()
+    }
+
+
 
     fun stopClickForButtons() {
         btn_ans1.isClickable = false
@@ -554,10 +586,15 @@ class StartTest_activity : BaseActivity_ApComAct() {
             if (what_the_test == "new_animaltotem_test") {
                 yandexRewardAd.show()
                 prepareSavePutResAnimalTest()
+            } else if (what_the_test == "new_dosha_test") {
+                yandexRewardAd.show()
+                prepareSavePutResDoshaTest()
             }
         } else {
             if (what_the_test == "new_animaltotem_test") {
                 prepareSavePutResAnimalTest()
+            } else if (what_the_test == "new_dosha_test") {
+                prepareSavePutResDoshaTest()
             }
 
 

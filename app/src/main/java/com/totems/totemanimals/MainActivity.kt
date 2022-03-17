@@ -55,6 +55,7 @@ class MainActivity : BaseActivity_ApComAct() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("MyLog", "OnActivityResult MainActivity")
+        val lAP = setUpPreference()
         val listDoshPref = setUpPreferenceTwo()
         if (requestCode == 100 && resultCode == Activity.RESULT_OK && data != null) {
             val f_n = data.getIntExtra("first_name", -1)
@@ -72,10 +73,22 @@ class MainActivity : BaseActivity_ApComAct() {
                         result_array, listDoshPref
                     )
                 ).commit()
+        } else if (requestCode == 200 && resultCode == Activity.RESULT_OK && data != null) {
+            val vataValue = data.getIntExtra("dosha_vata", 1)
+            val pittaValue = data.getIntExtra("dosha_pitta", 1)
+            val kaphaValue = data.getIntExtra("dosha_kapha", 1)
+
+            val result_array2 = arrayOf(vataValue,pittaValue,kaphaValue)
+            Log.d("MyLog", "onActivityResult $vataValue , $pittaValue , $kaphaValue ")
+            supportFragmentManager.beginTransaction()
+                .replace(
+                    R.id.my_testResult_frame,
+                    fragment_testResult.newInstance( arrayOf(2,lAP[1],lAP[2],lAP[3],lAP[4],lAP[5],lAP[6],)   ,result_array2)
+                ).commit()
         } else {
             Log.d(
                 "MyLog",
-                " OnActivityResult : НЕ requestCode==100 && resultCode==Activity.RESULT_OK && data!=null "
+                " OnActivityResult : НЕ requestCode==100 200 && resultCode==Activity.RESULT_OK && data!=null "
             )
         }
     }
