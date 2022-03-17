@@ -2,6 +2,7 @@ package com.totems.totemanimals.view.mainQuestion
 
 import android.util.Log
 import android.view.View
+import com.totems.totemanimals.R
 import kotlinx.android.synthetic.main.activity_start_test_activity.view.*
 
 // номер(индекс) вопроса, текст опроса, количесто кнопок для ответа, количество вопросов в тесте - всего, Лист с правильными отетами, Лист с именами кнопок, минимальное количество ответов в вопросе
@@ -9,16 +10,20 @@ data class questionsBindShablon(val number_q:Int, val text_q: String, val number
                                 val numbers_q: Int, val right_answer_act: Array<Array<Int>>, val name_buttons: Array<String>,val min_nums_ans: Int) {
 val anim_var = Animations()
 
-    fun bindingView (view: View) {
+    fun bindingView (view: View, testId: String) {
         val index0 = (number_q+1).toString()
         val nums0 = numbers_q.toString()
 
         view.tv_num_quest.text = index0 + "/" + nums0
         view.tv_text_quest.text = text_q
+
+        view.setButtonColorElseTest(testId)
+
         when(numbers_ans) {
             in 11..15 -> {view.btn_column1.visibility =View.VISIBLE
                 view.btn_column2.visibility =View.VISIBLE
                 view.btn_column3.visibility =View.VISIBLE
+
                 when(numbers_ans){
                     11 -> {view.btn_ans12.visibility = View.GONE
                         view.btn_ans13.visibility = View.GONE
@@ -146,17 +151,42 @@ val anim_var = Animations()
         view.btn_ans15.text = name_btn[14]
     }
 
+    fun View.setButtonColorElseTest(testId: String){
+        if(testId == "new_dosha_test") {
+            this.apply {
+                btn_ans1.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans2.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans3.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans4.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans5.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans6.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans7.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans8.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans9.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans10.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans11.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans12.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans13.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans14.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                btn_ans15.background = resources.getDrawable(R.drawable.shape_separator_hor_green)
+                iv_separator1.setImageResource(R.drawable.shape_separator_hor_green)
+                iv_separator2.setImageResource(R.drawable.shape_separator_hor_green)
+                iv_separator3.setImageResource(R.drawable.shape_separator_hor_green)
+
+            }
+        }
+    }
 
 }
 
 data class resultBindShablon (val index: Int, val right_answer_act: Array<Array<Int>>,val min_nums_answ: Int) {
 
     fun bindAction(id_btn:Int, list_result: Array<Int>,): Array<Int> {
-        Log.d("MyLog", "  in res " + list_result.contentToString())
+        Log.d("MyLog", "  in result " + list_result.contentToString())
 
         val list_result0 = list_result
         val right_answer_list = right_answer_act[id_btn-1]
-        Log.d("MyLog", "\n mid res " + right_answer_list.contentToString())
+        Log.d("MyLog", "\n mid result " + right_answer_list.contentToString())
 
             var num = 0
             for (i in right_answer_list) {

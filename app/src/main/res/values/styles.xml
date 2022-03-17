@@ -23,12 +23,12 @@
         <item name="android:textSize">15sp</item>
         <item name="android:padding">10dp</item>
         <item name="android:background">@drawable/shape_separator_hor</item>
-        <item name="backgroundTint">@color/green_style_btn</item>
+        <!--item name="backgroundTint">@color/green_style_btn</item-->
         <item name="android:gravity">center</item>
         <item name="android:forceDarkAllowed">false</item>
         <item name="android:fontFamily">@font/romic</item>
-
     </style>
+
 
     <style name="Button_Style_other" parent="Widget.AppCompat.Button">
         <item name="android:layout_width">fill_parent</item>

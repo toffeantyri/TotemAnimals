@@ -53,7 +53,7 @@
     <string name="look_dosha_blank">Look yours Dosha-type</string>
     <string name="no_totem_animals">Test is not complete. Take the test</string>
 
-    <string name="close_get_result_test">Calculate Totem Animal</string>
+    <string name="close_get_result_test">Calculate test result</string>
     <string name="measuring_result">Calculation will take no more than 30 seconds, please reward the developer and watch ads :) </string>
 
     <string name="Text_righter" translatable="false">Text about totem animals, partially taken from the site:</string>

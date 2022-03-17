@@ -74,7 +74,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
         handler = Handler() // создаем обьект Handlera
         btn = findViewById(R.id.btn_close_test)
         r = Runnable {  // создаем запускающийся код
-            Log.d("MyLog", "ИНДЕКС КОЛ-ВА $n_q_index")
+            //Log.d("MyLog", "ИНДЕКС КОЛ-ВА ответов $n_q_index")
             index++ // типа добалвение индекса и смена вопроса для вью
             testNextQuestion(index)
             n_q_index = 0
@@ -173,7 +173,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
                 minimum_answ
             )
             shablon.resetBindView(view)
-            shablon.bindingView(view)
+            shablon.bindingView(view,what_the_test)
             shablon.bindNameBtn(view)
         } else {
             Log.d("MyLog", "End test. Дальше не будет биндинга вью вопросника")
