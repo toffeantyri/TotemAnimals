@@ -20,9 +20,7 @@ import com.github.mikephil.charting.data.PieEntry
 import com.totems.totemanimals.ActivityDescptView
 import com.totems.totemanimals.R
 import com.totems.totemanimals.StartTest_activity
-import com.totems.totemanimals.resoursesTests.list_resours.descriptIdList
-import com.totems.totemanimals.resoursesTests.list_resours.imIdList
-import com.totems.totemanimals.resoursesTests.list_resours.nameIdList
+import com.totems.totemanimals.resoursesTests.List_resours_an_totem
 import com.totems.totemanimals.view.mainAdapters.doshi_adapters.DiagramMarkerView
 import com.totems.totemanimals.view.mainAdapters.doshi_adapters.PieValueSelect
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
@@ -38,11 +36,11 @@ class fragment_testResult : Fragment() {
     lateinit var rect_r10_all: Drawable
     lateinit var rect_r10_up: Drawable
 
-    lateinit var myValueListener : PieValueSelect
-    lateinit var myChartListener : PieValueSelect.PieChartTouchListener
-    lateinit var myMarkerView : MarkerView
+    lateinit var myValueListener: PieValueSelect
+    lateinit var myChartListener: PieValueSelect.PieChartTouchListener
+    lateinit var myMarkerView: MarkerView
 
-    lateinit var listResultDoshi : ArrayList<PieEntry>
+    lateinit var listResultDoshi: ArrayList<PieEntry>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,16 +56,16 @@ class fragment_testResult : Fragment() {
         val last_name: Int = arguments?.getInt("last_name") ?: -1
         val all_volume: Int = arguments?.getInt("all_volume") ?: -1
 
-        //TODO defaul value на 0
-        val vataResult: Float = arguments?.getFloat("dosha_vata") ?: 10f
-        val pittaResult: Float = arguments?.getFloat("dosha_pitta") ?: 20f
-        val kaphaResult: Float = arguments?.getFloat("dosha_kapha") ?: 30f
-        Log.d("MyLog", vataResult.toString())
+
+        val vataResult: Float = arguments?.getFloat("dosha_vata")   ?: -(1f)
+        val pittaResult: Float = arguments?.getFloat("dosha_pitta") ?: -(1f)
+        val kaphaResult: Float = arguments?.getFloat("dosha_kapha") ?: -(1f)
+
 
         listResultDoshi = arrayListOf(
-            PieEntry(vataResult,getString(R.string.dosha_title_vata)),
-            PieEntry(pittaResult,getString(R.string.dosha_title_pitta)),
-            PieEntry(kaphaResult,getString(R.string.dosha_title_kapha))
+            PieEntry(vataResult, getString(R.string.dosha_title_vata)),
+            PieEntry(pittaResult, getString(R.string.dosha_title_pitta)),
+            PieEntry(kaphaResult, getString(R.string.dosha_title_kapha))
         )
 
         myValueListener = PieValueSelect(listResultDoshi)
@@ -92,8 +90,7 @@ class fragment_testResult : Fragment() {
             View.GONE
         }
 
-        //TODO сдесь first_name заменить на приходящий результат доша теста (если его нет то показывает нет результата)
-        view0.tv_no_results_dosha.visibility = if (first_name == -1) {
+        view0.tv_no_results_dosha.visibility = if (vataResult < 1f && pittaResult < 1f && kaphaResult < 1f ) {
             if (state_op_close_res == 2) {
                 View.VISIBLE
             } else {
@@ -119,27 +116,19 @@ class fragment_testResult : Fragment() {
         viewBindResultFromBungle(view0, first_name, first_volume, second_name, second_volume, last_name, all_volume)
 
 
-
+        //в зависимости от состояния прохождения теста - те или иные результаты открыты
         view0.ContainerLayout_Res_Animal.visibility = if (state_op_close_res == 1) {
             View.VISIBLE
-        } else { View.GONE        }
-
+        } else {
+            View.GONE
+        }
         view0.ContainerLayout_Res_Doshi.visibility = if (state_op_close_res == 2) {
             View.VISIBLE
-        } else { View.GONE   }
-
-
-
-
-        view0.btn_start_test.setOnClickListener {
-            val intent = Intent(
-                activity,
-                StartTest_activity::class.java
-            )
-            intent.putExtra("new_test", "new_animaltotem_test")
-            activity?.startActivityForResult(intent, 100)
+        } else {
+            View.GONE
         }
 
+        allButtonStartTest(view0)
 
         view0.LinearLayout_result1.setOnClickListener {
             animat_var.anim_Testresult(im_testresult_n1)
@@ -201,7 +190,6 @@ class fragment_testResult : Fragment() {
     }
 
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val chart = view.findViewById<PieChart>(R.id.dosha_result_diagram)
@@ -212,13 +200,31 @@ class fragment_testResult : Fragment() {
 
     }
 
-
+    fun allButtonStartTest(view: View){
+        view.btn_start_test.setOnClickListener {
+            val intent = Intent(
+                activity,
+                StartTest_activity::class.java
+            )
+            intent.putExtra("new_test", "new_animaltotem_test")
+            activity?.startActivityForResult(intent, 100)
+        }
+        view.btn_start_test_dosha.setOnClickListener {
+            val intent = Intent(
+                activity,
+                StartTest_activity::class.java
+            )
+            intent.putExtra("new_test", "new_dosha_test")
+            activity?.startActivityForResult(intent, 200)
+        }
+    }
 
     fun animal_construct(number_animal_index: Int): ShablonAnimalDataClass {
-        if (number_animal_index != (-1) && number_animal_index <= imIdList.size) {
+        if (number_animal_index != (-1) && number_animal_index <= List_resours_an_totem.imIdList.size) {
             val animalRes = ShablonAnimalDataClass(
-                imIdList[number_animal_index], nameIdList[number_animal_index],
-                descriptIdList[number_animal_index]
+                List_resours_an_totem.imIdList[number_animal_index],
+                List_resours_an_totem.nameIdList[number_animal_index],
+                List_resours_an_totem.descriptIdList[number_animal_index]
             )
             return animalRes
         } else return ShablonAnimalDataClass(
@@ -230,51 +236,52 @@ class fragment_testResult : Fragment() {
 
 
     fun viewBindResultFromBungle(view: View, f_n: Int, f_v: Int, s_n: Int, s_v: Int, l_n: Int, a_v: Int) {
-        val f_vol_meas = (a_v / imIdList.size * f_v).toString()
-        val s_vol_meas = (a_v / imIdList.size * s_v).toString()
+        val f_vol_meas = (a_v / List_resours_an_totem.imIdList.size * f_v).toString()
+        val s_vol_meas = (a_v / List_resours_an_totem.imIdList.size * s_v).toString()
         val f_vol: String = f_vol_meas + "/" + a_v
         val s_vol: String = s_vol_meas + "/" + a_v
 
         if (f_n >= 0) {
-            view.im_testresult_n1.setImageResource(imIdList[f_n])
-            view.tv_testresult_title_n1.text = nameIdList[f_n]
+            view.im_testresult_n1.setImageResource(List_resours_an_totem.imIdList[f_n])
+            view.tv_testresult_title_n1.text = List_resours_an_totem.nameIdList[f_n]
             view.tv_testresult_perc_n1.text = f_vol
             view.LinearLayout_result1.visibility = View.VISIBLE
         } else view.LinearLayout_result1.visibility = View.GONE
 
         if (s_n >= 0) {
-            view.im_testresult_n2.setImageResource(imIdList[s_n])
-            view.tv_testresult_title_n2.text = nameIdList[s_n]
+            view.im_testresult_n2.setImageResource(List_resours_an_totem.imIdList[s_n])
+            view.tv_testresult_title_n2.text = List_resours_an_totem.nameIdList[s_n]
             view.tv_testresult_perc_n2.text = s_vol
             view.LinearLayout_result2.visibility = View.VISIBLE
         } else view.LinearLayout_result2.visibility = View.GONE
 
         if (l_n >= 0) {
-            view.im_testresult_n3.setImageResource(imIdList[l_n])
-            view.tv_testresult_title_n3.text = nameIdList[l_n]
+            view.im_testresult_n3.setImageResource(List_resours_an_totem.imIdList[l_n])
+            view.tv_testresult_title_n3.text = List_resours_an_totem.nameIdList[l_n]
             view.LinearLayout_result3.visibility = View.VISIBLE
         } else view.LinearLayout_result3.visibility = View.GONE
 
     }
 
 
-    fun viewBindResultDoshaFromBungle(pieChart: PieChart){
-        val pieDataSet = PieDataSet(listResultDoshi,"")
+    fun viewBindResultDoshaFromBungle(pieChart: PieChart) {
+        val pieDataSet = PieDataSet(listResultDoshi, "")
         val colors = mutableListOf<Int>(
             resources.getColor(R.color.dosha_vata_blue),
             resources.getColor(R.color.dosha_pitta_red),
-            resources.getColor(R.color.dosha_kapha_green))
+            resources.getColor(R.color.dosha_kapha_green)
+        )
 
-        val mypieChart : PieChart = pieChart
-            mypieChart.apply {
+        val mypieChart: PieChart = pieChart
+        mypieChart.apply {
             setUsePercentValues(true)
-                description.isEnabled = false
-            val legend : Legend = pieChart.legend
-                legend.textSize = 14f
-                legend.setDrawInside(false)
-                legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP
-                legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
-            setExtraOffsets(5F,10F,5F,5F)
+            description.isEnabled = false
+            val legend: Legend = pieChart.legend
+            legend.textSize = 14f
+            legend.setDrawInside(false)
+            legend.verticalAlignment = Legend.LegendVerticalAlignment.TOP
+            legend.horizontalAlignment = Legend.LegendHorizontalAlignment.CENTER
+            setExtraOffsets(5F, 10F, 5F, 5F)
             centerText = getString(R.string.name_diagramm)
             isClickable = true
             setCenterTextSize(16F)
@@ -297,16 +304,17 @@ class fragment_testResult : Fragment() {
         mypieChart.data = pieData
 
 
-
-
     }
 
     companion object {
         @JvmStatic
-        fun newInstance(pref0: Array<Int>, pref1 : Array<Float>): fragment_testResult {
+        fun newInstance(pref0: Array<Int>, pref1: Array<Float>): fragment_testResult {
             val fragment = fragment_testResult()
             val args = Bundle()
-            args.putInt("state_open_close_res", pref0[0].toInt()) // состояние теста - откр/закрыты подробнее в BaseActivity
+            args.putInt(
+                "state_open_close_res",
+                pref0[0].toInt()
+            ) // состояние теста - откр/закрыты подробнее в BaseActivity
             args.putInt("first_name", pref0[1].toInt())
             args.putInt("first_volume", pref0[2].toInt())
             args.putInt("second_name", pref0[3].toInt())
@@ -319,8 +327,8 @@ class fragment_testResult : Fragment() {
             args.putFloat("dosha_pitta", pref1[1])
             args.putFloat("dosha_kapha", pref1[2])
 
-        Log.d("MyLog", pref0.contentToString())
-        Log.d("MyLog", pref1.contentToString())
+            Log.d("MyLog", pref0.contentToString())
+            Log.d("MyLog", pref1.contentToString())
 
             fragment.arguments = args
             return fragment

@@ -2,7 +2,7 @@ package com.totems.totemanimals.resoursesTests
 
 import com.totems.totemanimals.R
 
-object list_resours : ListResourseClass() {
+object List_resours_an_totem : ListResourseClass() {
 
     override val imIdList = arrayOf<Int>(
         R.drawable.smallbelka, R.drawable.smallbober, R.drawable.smallezh,

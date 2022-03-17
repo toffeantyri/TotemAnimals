@@ -79,6 +79,13 @@
     <string name="dosha_title_vata">Vata</string>
     <string name="dosha_title_pitta">Pitta</string>
     <string name="dosha_title_kapha">Kapha</string>
+
+    <string name="dosha_level">level</string>
+    <string name="dosha_level_bal">balanced</string>
+    <string name="dosha_level_h">high</string>
+    <string name="dosha_level_l">low</string>
+
+
 </resources>
 
 

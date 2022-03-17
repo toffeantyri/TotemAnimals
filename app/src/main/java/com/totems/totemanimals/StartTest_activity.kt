@@ -9,7 +9,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.preference.PreferenceManager
-import com.totems.totemanimals.resoursesTests.list_resours.imIdList
+import com.totems.totemanimals.resoursesTests.List_Resours_Doshi
+import com.totems.totemanimals.resoursesTests.List_resours_an_totem
+import com.totems.totemanimals.resoursesTests.questionListDoshi
 import com.totems.totemanimals.resoursesTests.questionListsTotemAnimal
 import com.totems.totemanimals.view.mainQuestion.Animations
 import com.totems.totemanimals.view.mainQuestion.questionsBindShablon
@@ -66,8 +68,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
         index = 0 // индекс (number_q номер)вопроса
         n_q_index = 0 // индекс номера количества ответов
         testNextQuestion(index)//Добавляем первый вопрос во вью
-        animat_var =
-            Animations() // создаем обьект класса анимации
+        animat_var = Animations() // создаем обьект класса анимации
         handler = Handler() // создаем обьект Handlera
         btn = findViewById(R.id.btn_close_test)
         r = Runnable {  // создаем запускающийся код
@@ -92,27 +93,36 @@ class StartTest_activity : BaseActivity_ApComAct() {
 
     fun checkBind_WhatTheTest(intent: String) {
         if (intent == "new_animaltotem_test") {
-
             when (questionListsTotemAnimal.im_background) {
                 null, 0 -> {
                     im_background = R.drawable.background_night
-                }
-                else -> im_background =
+                } else -> im_background =
                     questionListsTotemAnimal.im_background
             }
             layout_test.setBackgroundResource(im_background)
-            list_results_counts = imIdList
-            quests =
-                questionListsTotemAnimal.quest_totem_animal
+            list_results_counts = List_resours_an_totem.imIdList
+            quests = questionListsTotemAnimal.quest_totem_animal
             minimum_answ = questionListsTotemAnimal.min_nums_ans
-            numbers_buttons =
-                questionListsTotemAnimal.answer_nums
-            lists_result_add =
-                questionListsTotemAnimal.answer_right_check
-            name_button_list =
-                questionListsTotemAnimal.button_name_list
+            numbers_buttons = questionListsTotemAnimal.answer_nums
+            lists_result_add = questionListsTotemAnimal.answer_right_check
+            name_button_list = questionListsTotemAnimal.button_name_list
             nums_max_quests = quests.count()
 
+        } else if (intent == "new_dosha_test") {
+            when (questionListDoshi.im_background) {
+                null, 0 -> {
+                    im_background = R.drawable.background_night
+                } else -> im_background =
+                    questionListDoshi.im_background
+            }
+            layout_test.setBackgroundResource(im_background)
+            list_results_counts = List_Resours_Doshi.imIdList
+            quests = questionListDoshi.quest_totem_animal
+            minimum_answ = questionListDoshi.min_nums_ans
+            numbers_buttons = questionListDoshi.answer_nums
+            lists_result_add = questionListDoshi.answer_right_check
+            name_button_list = questionListDoshi.button_name_list
+            nums_max_quests = quests.count()
         } else {
             Toast.makeText(this, R.string.Test_no_found, Toast.LENGTH_SHORT).show()
             finish()
@@ -493,11 +503,11 @@ class StartTest_activity : BaseActivity_ApComAct() {
     }
 
 
-    private fun loadRewardAdYandex(){
+    private fun loadRewardAdYandex() {
         yandexRewardAd = RewardedAd(this)
         yandexRewardAd.setAdUnitId(getString(R.string.yandex_reward_id_test))
-        val adRequest : AdRequest = AdRequest.Builder().build()
-        yandexRewardAd.setRewardedAdEventListener(object : RewardedAdEventListener{
+        val adRequest: AdRequest = AdRequest.Builder().build()
+        yandexRewardAd.setRewardedAdEventListener(object : RewardedAdEventListener {
             override fun onAdLoaded() {
                 Log.d("MyLogAd", "Ad Reward is Loaded")
             }
@@ -539,7 +549,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
         Log.d("MyLogAd", "reward ad Loading")
     }
 
-    private fun showRewardAdYandex(){
+    private fun showRewardAdYandex() {
         if (yandexRewardAd.isLoaded) {
             if (what_the_test == "new_animaltotem_test") {
                 yandexRewardAd.show()

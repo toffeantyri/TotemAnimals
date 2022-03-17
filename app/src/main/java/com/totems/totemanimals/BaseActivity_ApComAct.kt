@@ -30,9 +30,9 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         //состояние открытости закрытости результатов теста - в SetUpPreference()
         //префы для теста Доши
-        val pref1 = pref.getFloat("dosha_vata", 1.0001f)
-        val pref2 = pref.getFloat("dosha_pitta", 1.0002f)
-        val pref3 = pref.getFloat("dosha_kapha", 1.0003f)
+        val pref1 = pref.getFloat("dosha_vata", 0.999f)
+        val pref2 = pref.getFloat("dosha_pitta", 0.998f)
+        val pref3 = pref.getFloat("dosha_kapha", 0.997f)
         //
         return arrayOf(pref1,pref2,pref3)
     }

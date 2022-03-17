@@ -10,7 +10,9 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.GridLayoutManager
-import com.totems.totemanimals.resoursesTests.list_resours
+import com.totems.totemanimals.resoursesTests.List_resours_an_totem
+
+import com.totems.totemanimals.resoursesTests.questionListDoshi.checkAllCountQuestion
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.AnimalsAdaptList
 import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
@@ -33,27 +35,21 @@ class MainActivity : BaseActivity_ApComAct() {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         initRV()
         addAllAnimalOnRV()
+        handler = Handler()
+
         rcView_AnList.visibility = View.GONE
         my_info_frame.visibility = View.GONE
 
         setUpBottomNavigationMenu()
-//        supportFragmentManager.beginTransaction()
-//            .replace(
-//                R.id.my_testResult_frame,
-//                fragment_testResult.newInstance(
-//                    setUpPreference()
-//                )
-//            ).commit()
         my_testResult_frame.visibility = View.VISIBLE
 
         initMobileAdsYandex()
         loadAndShowBanner()
 
 
+        Log.d("MyLog", "проверка количества вопросов дош" + checkAllCountQuestion().toString())
 
-
-        handler = Handler()
-        Log.d("MyLog", "OnCreate MainActivity")
+       // Log.d("MyLog", "OnCreate MainActivity")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -85,16 +81,16 @@ class MainActivity : BaseActivity_ApComAct() {
     }
 
     fun addAllAnimalOnRV() {
-        if (list_resours.imIdList.count() != rcView_AnList.layoutManager?.itemCount) {
+        if (List_resours_an_totem.imIdList.count() != rcView_AnList.layoutManager?.itemCount) {
             var a: Int
             var b: String
             var c: String
             var animalAdd: ShablonAnimalDataClass
             var index = 0
-            for (i in list_resours.imIdList) {
-                a = list_resours.imIdList[index]
-                b = list_resours.nameIdList[index]
-                c = list_resours.descriptIdList[index]
+            for (i in List_resours_an_totem.imIdList) {
+                a = List_resours_an_totem.imIdList[index]
+                b = List_resours_an_totem.nameIdList[index]
+                c = List_resours_an_totem.descriptIdList[index]
                 animalAdd = ShablonAnimalDataClass(a, b, c)
                 adapter1.addAnimal(animalAdd)
                 index++
