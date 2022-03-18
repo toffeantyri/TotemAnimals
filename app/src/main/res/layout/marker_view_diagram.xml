@@ -28,10 +28,10 @@
             />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:id="@+id/ivMarkerView_image"
-            android:src="@drawable/ic_arrow_high_24dp"
+            android:src="@drawable/image_btn_selector_om"
             android:layout_marginBottom="3dp"/>
         <TextView
             android:id="@+id/tvMarkerViewLevel"
@@ -43,17 +43,6 @@
             android:textSize="8sp"
             android:textStyle="bold"
 
-            />
-        <TextView
-            android:id="@+id/tvMarkerViewLevelConst"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/dosha_level"
-            android:textColor="@color/result_green"
-            android:textSize="8sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="3dp"
             />
 
     </LinearLayout>
