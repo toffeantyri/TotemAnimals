@@ -42,6 +42,7 @@ class fragment_testResult : Fragment() {
     lateinit var myChartListener: PieValueSelect.PieChartTouchListener
     lateinit var myMarkerView: MarkerView
 
+    var state_op_close_res : Int = 0
     lateinit var listResultDoshi: ArrayList<PieEntry>
     val myHandler : Handler = Handler()
 
@@ -52,7 +53,7 @@ class fragment_testResult : Fragment() {
     ): View? {
         val view0: View =
             LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result, container, false)
-        var state_op_close_res = arguments?.getInt("state_open_close_res") ?: 0
+        state_op_close_res = arguments?.getInt("state_open_close_res") ?: 0
         val first_name: Int = arguments?.getInt("first_name") ?: -1
         val first_volume: Int = arguments?.getInt("first_volume") ?: -1
         val second_name: Int = arguments?.getInt("second_name") ?: -1
@@ -203,8 +204,10 @@ class fragment_testResult : Fragment() {
         viewBindResultDoshaFromBungle(chart)
         chart.onChartGestureListener = myChartListener
         chart.setOnChartValueSelectedListener(myValueListener)
-        val werwe = myValueListener.enteryValue
+        //val werwe = myValueListener.enteryValue
 
+        if(state_op_close_res==1) {view.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal)}
+        if(state_op_close_res==2) {view.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi)}
     }
 
     fun bindAllButtonStartTest(view: View){
