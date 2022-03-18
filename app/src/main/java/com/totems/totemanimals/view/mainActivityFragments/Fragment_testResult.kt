@@ -1,5 +1,6 @@
 package com.totems.totemanimals.view.mainActivityFragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -10,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
@@ -41,7 +43,9 @@ class fragment_testResult : Fragment() {
     lateinit var myMarkerView: MarkerView
 
     lateinit var listResultDoshi: ArrayList<PieEntry>
+    val myHandler : Handler = Handler()
 
+    @SuppressLint("NewApi")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -128,7 +132,7 @@ class fragment_testResult : Fragment() {
             View.GONE
         }
 
-        allButtonStartTest(view0)
+        bindAllButtonStartTest(view0)
 
         view0.LinearLayout_result1.setOnClickListener {
             animat_var.anim_Testresult(im_testresult_n1)
@@ -166,9 +170,9 @@ class fragment_testResult : Fragment() {
                 animat_var.down_result(view0.ContainerLayout_Res_Animal)
                 if (first_name == -1) view0.tv_no_results.visibility = View.VISIBLE
             }
-
-
+            view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal)
         }
+
         view0.im_arrow_down_dosh_result.setOnClickListener {
             if (view0.ContainerLayout_Res_Doshi.visibility == View.VISIBLE || view0.tv_no_results_dosha.visibility == View.VISIBLE) {
                 view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
@@ -182,13 +186,16 @@ class fragment_testResult : Fragment() {
                 animat_var.down_result(view0.ContainerLayout_Res_Doshi)
                 if (first_name == -1) view0.tv_no_results_dosha.visibility = View.VISIBLE
             }
+            view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi)
         }
 
-        Log.d("MyLog", "OnCreateView Fragment_testResult ")
+        Log.d("MyLog", "OnCreateView Fragment_testResult Created ")
         return view0
-
     }
 
+    fun ScrollView.scrollToCenterView(targetView : View){
+        myHandler.postDelayed({this.testResScrollView.smoothScrollBy(0, targetView.top+250)},10)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -200,7 +207,7 @@ class fragment_testResult : Fragment() {
 
     }
 
-    fun allButtonStartTest(view: View){
+    fun bindAllButtonStartTest(view: View){
         view.btn_start_test.setOnClickListener {
             val intent = Intent(
                 activity,
@@ -344,6 +351,9 @@ class fragment_testResult : Fragment() {
         super.onDetach()
         // Log.d("MyLog","fragm testresult onDetach")
     }
+
+
+
 }
 
 

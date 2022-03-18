@@ -8,6 +8,8 @@
     tools:background="@color/black">
 
     <ScrollView
+        android:nestedScrollingEnabled="true"
+        android:id="@+id/testResScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -109,6 +111,9 @@
                     android:visibility="gone" />
 
                 <LinearLayout
+                    android:focusableInTouchMode="true"
+                    android:clickable="true"
+                    android:focusable="true"
                     android:id="@+id/ContainerLayout_Res_Animal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -440,6 +445,9 @@
                     android:visibility="visible" />
 
                 <LinearLayout
+                    android:focusableInTouchMode="true"
+                    android:focusable="true"
+                    android:clickable="true"
                     android:id="@+id/ContainerLayout_Res_Doshi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
