@@ -49,6 +49,17 @@ class fragment_info : Fragment() {
                 val br_intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.totems.totemanimals"))
                 startActivity(br_intent)
             }
+
+            btn_share_app.setOnClickListener {
+                val link = getString(R.string.only_link_app)
+                val text = getString(R.string.text_share_link_app)
+                val intent = Intent()
+                intent.setAction(Intent.ACTION_SEND)
+                intent.putExtra(Intent.EXTRA_TEXT, text + "\n" + link )
+                intent.setType("text/plain")
+                Log.d("MyLog", text + "\n" + link)
+                startActivity(Intent.createChooser(intent, getString(R.string.share_totem)))
+            }
         }
     }
 

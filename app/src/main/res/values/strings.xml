@@ -18,9 +18,12 @@
 
 
     <string name="link_on_my_app_for_share">Do you want to know your totem animal? \n Take the app test:\n https://play.google.com/store/apps/details?id=com.totems.totemanimals \n</string>
+    <string name="only_link_app" translatable="false">https://play.google.com/store/apps/details?id=com.totems.totemanimals \n</string>
+    <string name="text_share_link_app">Do you want to know your totem animal and take various personality tests?</string>
     <string name="my_totem_text_result">My test result: </string>
     <string name="my_totem_text_search">Description: </string>
     <string name="share_totem"> Share: </string>
+    <string name="share_app_info"> Share app </string>
 
     <string name="app_name">Totem animals</string>
     <string name="Alert_title_exit">Exit</string>

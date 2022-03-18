@@ -47,7 +47,7 @@ class MainActivity : BaseActivity_ApComAct() {
         loadAndShowBanner()
 
 
-        Log.d("MyLog", "проверка количества вопросов дош" + checkAllCountQuestion().toString())
+        //Log.d("MyLog", "проверка количества вопросов дош " + checkAllCountQuestion().toString())
 
        // Log.d("MyLog", "OnCreate MainActivity")
     }

@@ -57,4 +57,6 @@
     <string name="dosha_level_bal">Сбалансированный</string>
     <string name="dosha_level_h">Высокий</string>
     <string name="dosha_level_l">Низкий</string>
+    <string name="share_app_info">Поделиться приложением</string>
+    <string name="text_share_link_app">Хочешь узнать своё тотемное животное и пройти различные тесты личности?</string>
 </resources>
