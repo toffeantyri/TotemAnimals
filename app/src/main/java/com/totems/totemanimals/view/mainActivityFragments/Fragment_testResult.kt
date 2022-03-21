@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import com.github.mikephil.charting.charts.PieChart
@@ -79,7 +80,6 @@ class fragment_testResult : StateOpenCloseFragment() {
         rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
 
         //TODO TEST
-        //state_op_close_res = 2
         view0.tvNoResultsVisibility(first_name, vataResult)
 
         //TODO
@@ -115,35 +115,35 @@ class fragment_testResult : StateOpenCloseFragment() {
 
 
         view0.im_arrow_down_an_result.setOnClickListener {
-            val context = context ?: requireActivity()
-            if (view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE || view0.tv_no_results.visibility == View.VISIBLE) {
+
+            if (view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE ) {
                 view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
                 view0.ContainerLayout_Res_Animal.visibility = View.GONE
-                view0.tv_no_results.visibility = View.GONE
                 view0.im_arrow_down_an_result.background = rect_r10_all
-            } else if (view0.ContainerLayout_Res_Animal.visibility == View.GONE || view0.tv_no_results.visibility == View.GONE) {
+            } else if (view0.ContainerLayout_Res_Animal.visibility == View.GONE) {
                 view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
                 view0.ContainerLayout_Res_Animal.visibility = View.VISIBLE
                 view0.im_arrow_down_an_result.background = rect_r10_up
                 animat_var.down_result(view0.ContainerLayout_Res_Animal)
-                if (first_name == -1) view0.tv_no_results.visibility = View.VISIBLE
             }
+            view0.tv_no_results.visibility = if (first_name == -1) View.VISIBLE else View.GONE
             view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal)
+
         }
 
         view0.im_arrow_down_dosh_result.setOnClickListener {
-            if (view0.ContainerLayout_Res_Doshi.visibility == View.VISIBLE || view0.tv_no_results_dosha.visibility == View.VISIBLE) {
+            if (view0.ContainerLayout_Res_Doshi.visibility == View.VISIBLE) {
                 view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
                 view0.ContainerLayout_Res_Doshi.visibility = View.GONE
-                view0.tv_no_results_dosha.visibility = View.GONE
                 view0.im_arrow_down_dosh_result.background = rect_r10_all
-            } else if (view0.ContainerLayout_Res_Doshi.visibility == View.GONE || view0.tv_no_results_dosha.visibility == View.GONE) {
+            } else if (view0.ContainerLayout_Res_Doshi.visibility == View.GONE ) {
                 view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
                 view0.ContainerLayout_Res_Doshi.visibility = View.VISIBLE
                 view0.im_arrow_down_dosh_result.background = rect_r10_up
                 animat_var.down_result(view0.ContainerLayout_Res_Doshi)
-                if (first_name == -1) view0.tv_no_results_dosha.visibility = View.VISIBLE
+
             }
+            view0.tv_no_results_dosha.visibility = if (vataResult == -1) View.VISIBLE else View.GONE
             view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi)
         }
 
@@ -163,12 +163,10 @@ class fragment_testResult : StateOpenCloseFragment() {
         dosha_result_diagram.onChartGestureListener = myChartListener
         dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
 
-        if(state_op_close_res==1) {view.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal)}
-        if(state_op_close_res==2) {view.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi)}
 
+        if(state_op_close_res==1) {view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal)}
+        if(state_op_close_res==2) {view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi)}
     }
-
-
 
 
 

@@ -17,21 +17,13 @@ open class StateOpenCloseFragment : Fragment() {
 
     fun View.tvNoResultsVisibility(first_name_animal: Int, any_dosha: Int) {
         this.tv_no_results.visibility = if (first_name_animal == -1) {
-            if (state_op_close_res == 1) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
+            View.VISIBLE
         } else {
             View.GONE
         }
 
         this.tv_no_results_dosha.visibility = if (any_dosha == -1) {
-            if (state_op_close_res == 2) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
+           View.VISIBLE
         } else {
             View.GONE
         }

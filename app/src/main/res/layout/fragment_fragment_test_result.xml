@@ -99,16 +99,7 @@
                         tools:ignore="SpeakableTextPresentCheck" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tv_no_results"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/no_totem_animals"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:visibility="gone" />
+
 
                 <LinearLayout
                     android:focusableInTouchMode="true"
@@ -119,6 +110,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tv_no_results"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/no_totem_animals"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
 
                     <LinearLayout
                         android:id="@+id/LinearLayout_result1"
@@ -434,16 +436,6 @@
                         tools:ignore="SpeakableTextPresentCheck" />
 
                 </LinearLayout>
-                <TextView
-                    android:id="@+id/tv_no_results_dosha"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="@string/no_totem_animals"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:visibility="visible" />
 
                 <LinearLayout
                     android:focusableInTouchMode="true"
@@ -454,6 +446,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tv_no_results_dosha"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/no_totem_animals"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:visibility="visible" />
 
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/dosha_result_diagram"
