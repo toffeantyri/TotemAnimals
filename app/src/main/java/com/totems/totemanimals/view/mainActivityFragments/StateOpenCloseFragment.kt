@@ -1,17 +1,22 @@
 package com.totems.totemanimals.view.mainActivityFragments
 
+import android.os.Handler
+
 import android.view.View
+import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import com.totems.totemanimals.R
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
+
 open class StateOpenCloseFragment : Fragment() {
 
     open var state_op_close_res: Int = 0
+    open var handler : Handler = Handler()
 
 
     fun View.tvNoResultsVisibility(first_name_animal: Int, any_dosha: Int) {
-        this.tv_no_results.visibility = if (first_name_animal < 0) {
+        this.tv_no_results.visibility = if (first_name_animal == -1) {
             if (state_op_close_res == 1) {
                 View.VISIBLE
             } else {
@@ -21,7 +26,7 @@ open class StateOpenCloseFragment : Fragment() {
             View.GONE
         }
 
-        this.tv_no_results_dosha.visibility = if (any_dosha < 0) {
+        this.tv_no_results_dosha.visibility = if (any_dosha == -1) {
             if (state_op_close_res == 2) {
                 View.VISIBLE
             } else {
@@ -57,4 +62,10 @@ open class StateOpenCloseFragment : Fragment() {
             View.GONE
         }
     }
+
+    fun ScrollView.scrollToCenterView(targetView : View){
+        handler.postDelayed({this.smoothScrollBy(0, targetView.top+250)},10)
+    }
+
+
 }

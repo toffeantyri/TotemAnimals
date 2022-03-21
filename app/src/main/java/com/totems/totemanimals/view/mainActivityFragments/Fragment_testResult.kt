@@ -34,7 +34,6 @@ import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 class fragment_testResult : StateOpenCloseFragment() {
 
     lateinit var animat_var: Animations
-    lateinit var handler: Handler
     lateinit var rect_r10_all: Drawable
     lateinit var rect_r10_up: Drawable
 
@@ -43,7 +42,6 @@ class fragment_testResult : StateOpenCloseFragment() {
     lateinit var myMarkerView: MarkerView
     override var state_op_close_res: Int = super.state_op_close_res
     lateinit var listResultDoshi: ArrayList<PieEntry>
-    val myHandler : Handler = Handler()
 
     @SuppressLint("NewApi")
     override fun onCreateView(
@@ -60,7 +58,7 @@ class fragment_testResult : StateOpenCloseFragment() {
         val last_name: Int = arguments?.getInt("last_name") ?: -1
         val all_volume: Int = arguments?.getInt("all_volume") ?: -1
 
-        val vataResult = arguments?.getInt("dosha_vata")   ?: -1
+        val vataResult = arguments?.getInt("dosha_vata") ?: -1
         val pittaResult = arguments?.getInt("dosha_pitta") ?: -1
         val kaphaResult = arguments?.getInt("dosha_kapha") ?: -1
 
@@ -77,22 +75,19 @@ class fragment_testResult : StateOpenCloseFragment() {
         myChartListener = myValueListener.PieChartTouchListener()
         myMarkerView = DiagramMarkerView(context!!, R.layout.marker_view_diagram)
 
-
         rect_r10_all = resources.getDrawable(R.drawable.shape_rectangle_r10)
         rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
-
 
         //TODO TEST
         //state_op_close_res = 2
         view0.tvNoResultsVisibility(first_name, vataResult)
 
         //TODO
-       view0.arrowUpDownStateView()
+        view0.arrowUpDownStateView()
 
-        viewBindResultFromBungle(view0, first_name, first_volume, second_name, second_volume, last_name, all_volume)
+        view0.containersVisibilityState()
 
-        //в зависимости от состояния прохождения теста - те или иные результаты открыты
-       view0.containersVisibilityState()
+        view0.viewBindResultFromBungle(first_name, first_volume, second_name, second_volume, last_name, all_volume)
 
         bindAllButtonStartTest(view0)
 
@@ -156,22 +151,29 @@ class fragment_testResult : StateOpenCloseFragment() {
         return view0
     }
 
-    fun ScrollView.scrollToCenterView(targetView : View){
-        myHandler.postDelayed({this.testResScrollView.smoothScrollBy(0, targetView.top+250)},10)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val chart = view.findViewById<PieChart>(R.id.dosha_result_diagram)
-        viewBindResultDoshaFromBungle(chart)
-        chart.onChartGestureListener = myChartListener
-        chart.setOnChartValueSelectedListener(myValueListener)
+
+        view.viewBindResultDoshaFromBungle(
+            dosha_result_diagram,
+            listResultDoshi[0].y.toInt(),
+            listResultDoshi[1].y.toInt(),
+            listResultDoshi[2].y.toInt()
+        )
+        dosha_result_diagram.onChartGestureListener = myChartListener
+        dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
 
         if(state_op_close_res==1) {view.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal)}
         if(state_op_close_res==2) {view.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi)}
+
     }
 
-    fun bindAllButtonStartTest(view: View){
+
+
+
+
+
+    fun bindAllButtonStartTest(view: View) {
         view.btn_start_test.setOnClickListener {
             val intent = Intent(
                 activity,
@@ -206,36 +208,41 @@ class fragment_testResult : StateOpenCloseFragment() {
     }
 
 
-    fun viewBindResultFromBungle(view: View, f_n: Int, f_v: Int, s_n: Int, s_v: Int, l_n: Int, a_v: Int) {
+    fun View.viewBindResultFromBungle(f_n: Int, f_v: Int, s_n: Int, s_v: Int, l_n: Int, a_v: Int) {
         val f_vol_meas = (a_v / List_resours_an_totem.imIdList.size * f_v).toString()
         val s_vol_meas = (a_v / List_resours_an_totem.imIdList.size * s_v).toString()
         val f_vol: String = f_vol_meas + "/" + a_v
         val s_vol: String = s_vol_meas + "/" + a_v
 
         if (f_n >= 0) {
-            view.im_testresult_n1.setImageResource(List_resours_an_totem.imIdList[f_n])
-            view.tv_testresult_title_n1.text = List_resours_an_totem.nameIdList[f_n]
-            view.tv_testresult_perc_n1.text = f_vol
-            view.LinearLayout_result1.visibility = View.VISIBLE
-        } else view.LinearLayout_result1.visibility = View.GONE
+            this.im_testresult_n1.setImageResource(List_resours_an_totem.imIdList[f_n])
+            this.tv_testresult_title_n1.text = List_resours_an_totem.nameIdList[f_n]
+            this.tv_testresult_perc_n1.text = f_vol
+            this.LinearLayout_result1.visibility = View.VISIBLE
+        } else this.LinearLayout_result1.visibility = View.GONE
 
         if (s_n >= 0) {
-            view.im_testresult_n2.setImageResource(List_resours_an_totem.imIdList[s_n])
-            view.tv_testresult_title_n2.text = List_resours_an_totem.nameIdList[s_n]
-            view.tv_testresult_perc_n2.text = s_vol
-            view.LinearLayout_result2.visibility = View.VISIBLE
-        } else view.LinearLayout_result2.visibility = View.GONE
+            this.im_testresult_n2.setImageResource(List_resours_an_totem.imIdList[s_n])
+            this.tv_testresult_title_n2.text = List_resours_an_totem.nameIdList[s_n]
+            this.tv_testresult_perc_n2.text = s_vol
+            this.LinearLayout_result2.visibility = View.VISIBLE
+        } else this.LinearLayout_result2.visibility = View.GONE
 
         if (l_n >= 0) {
-            view.im_testresult_n3.setImageResource(List_resours_an_totem.imIdList[l_n])
-            view.tv_testresult_title_n3.text = List_resours_an_totem.nameIdList[l_n]
-            view.LinearLayout_result3.visibility = View.VISIBLE
-        } else view.LinearLayout_result3.visibility = View.GONE
+            this.im_testresult_n3.setImageResource(List_resours_an_totem.imIdList[l_n])
+            this.tv_testresult_title_n3.text = List_resours_an_totem.nameIdList[l_n]
+            this.LinearLayout_result3.visibility = View.VISIBLE
+        } else this.LinearLayout_result3.visibility = View.GONE
 
     }
 
 
-    fun viewBindResultDoshaFromBungle(pieChart: PieChart) {
+    fun View.viewBindResultDoshaFromBungle(pieChart: PieChart, vataRes: Int, pittaRes: Int, kaphaRes: Int) {
+
+        if (vataRes >= 0 && pittaRes >= 0 && kaphaRes >= 0) {
+            this.dosha_result_diagram.visibility = View.VISIBLE
+        } else this.dosha_result_diagram.visibility = View.GONE
+
         val pieDataSet = PieDataSet(listResultDoshi, "")
         val colors = mutableListOf<Int>(
             resources.getColor(R.color.dosha_vata_blue),
@@ -273,8 +280,6 @@ class fragment_testResult : StateOpenCloseFragment() {
         mypieChart.setDrawMarkers(true)
         mypieChart.markerView = myMarkerView
         mypieChart.data = pieData
-
-
     }
 
     companion object {
@@ -315,7 +320,6 @@ class fragment_testResult : StateOpenCloseFragment() {
         super.onDetach()
         // Log.d("MyLog","fragm testresult onDetach")
     }
-
 
 
 }
