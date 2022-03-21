@@ -399,7 +399,8 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:background="@drawable/shape_rectangle_r10"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginHorizontal="5dp">
 
                     <TextView
                         android:id="@+id/textView_doshilook"

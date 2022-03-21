@@ -11,8 +11,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.GridLayoutManager
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
-
-import com.totems.totemanimals.resoursesTests.questionListDoshi.checkAllCountQuestion
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.AnimalsAdaptList
 import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
@@ -46,8 +44,6 @@ class MainActivity : BaseActivity_ApComAct() {
         initMobileAdsYandex()
         loadAndShowBanner()
 
-
-        //Log.d("MyLog", "проверка количества вопросов дош " + checkAllCountQuestion().toString())
 
        // Log.d("MyLog", "OnCreate MainActivity")
     }

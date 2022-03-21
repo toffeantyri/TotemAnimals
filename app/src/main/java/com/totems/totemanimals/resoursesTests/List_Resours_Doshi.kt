@@ -7,6 +7,9 @@ object List_Resours_Doshi : ListResourseClass() {
     const val MAX_POINTS = 41
     val BALANCE_LEVEL_MIN = 11.66f
     val BALANCE_LEVEL_MAX = 15.66f
+    const val VATA_KEY = "VATA"
+    const val PITTA_KEY = "PITTA"
+    const val KAPHA_KEY = "KAPHA"
 
     override val imIdList: Array<Int> = arrayOf(R.drawable.dosha_vata_image, R.drawable.dosha_pitta_image, R.drawable.dosha_kapha_image)
 

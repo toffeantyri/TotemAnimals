@@ -22,7 +22,7 @@
     <string name="char_from">из</string>
     <string name="Test_no_found">Тест не найден</string>
 
-    <string name="close_get_result_test">Расчитать результат теста</string>
+    <string name="close_get_result_test">Получить результат теста</string>
 
     <string name="measuring_result">Расчёт займет не более 30 секунд, пожалуйста поблагодарите разработчика просмотрев рекламу :)</string>
     <string name="close_test">Закрыть тест</string>
