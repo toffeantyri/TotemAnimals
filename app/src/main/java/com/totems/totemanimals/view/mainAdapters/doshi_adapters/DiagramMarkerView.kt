@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
+import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.github.mikephil.charting.components.IMarker
@@ -22,11 +24,13 @@ class DiagramMarkerView(context: Context, layoutResours: Int) : MarkerView(conte
     val tvLelvel = findViewById<TextView>(R.id.tvMarkerViewLevel)
 
 
+
     override fun refreshContent(e: Entry?, highlight: Highlight?) {
         titleView.text = e?.let { entryOfMaxPoint(it) }
         tvLelvel.text = e?.let { textOfLevelDesc(it) }
         e?.let { tvLelvel.textColorOfLevelDesc(it) }
         e?.let { image.imageOfLevel(e) }
+
 
 
     }

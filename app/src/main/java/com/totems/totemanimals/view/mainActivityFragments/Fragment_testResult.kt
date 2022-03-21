@@ -113,6 +113,10 @@ class fragment_testResult : StateOpenCloseFragment() {
             handler.postDelayed({ startActivity(intent) }, 300)
         }
 
+        view0.btn_read_dosha_res.setOnClickListener {
+            Log.d("MyLog", "Read more btn clicked")
+
+        }
 
         view0.im_arrow_down_an_result.setOnClickListener {
 
@@ -130,7 +134,6 @@ class fragment_testResult : StateOpenCloseFragment() {
             view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal)
 
         }
-
         view0.im_arrow_down_dosh_result.setOnClickListener {
             if (view0.ContainerLayout_Res_Doshi.visibility == View.VISIBLE) {
                 view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
@@ -163,9 +166,8 @@ class fragment_testResult : StateOpenCloseFragment() {
         dosha_result_diagram.onChartGestureListener = myChartListener
         dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
 
-
-        if(state_op_close_res==1) {view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal)}
-        if(state_op_close_res==2) {view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi)}
+        if(state_op_close_res==1) {view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal)}
+        if(state_op_close_res==2) {view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi)}
     }
 
 
@@ -205,7 +207,6 @@ class fragment_testResult : StateOpenCloseFragment() {
         )
     }
 
-
     fun View.viewBindResultFromBungle(f_n: Int, f_v: Int, s_n: Int, s_v: Int, l_n: Int, a_v: Int) {
         val f_vol_meas = (a_v / List_resours_an_totem.imIdList.size * f_v).toString()
         val s_vol_meas = (a_v / List_resours_an_totem.imIdList.size * s_v).toString()
@@ -233,7 +234,6 @@ class fragment_testResult : StateOpenCloseFragment() {
         } else this.LinearLayout_result3.visibility = View.GONE
 
     }
-
 
     fun View.viewBindResultDoshaFromBungle(pieChart: PieChart, vataRes: Int, pittaRes: Int, kaphaRes: Int) {
 
@@ -280,6 +280,7 @@ class fragment_testResult : StateOpenCloseFragment() {
         mypieChart.data = pieData
     }
 
+
     companion object {
         @JvmStatic
         fun newInstance(pref0: Array<Int>, pref1: Array<Int>): fragment_testResult {
@@ -308,18 +309,6 @@ class fragment_testResult : StateOpenCloseFragment() {
             return fragment
         }
     }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        // Log.d("MyLog","fragm testresult onAttach")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        // Log.d("MyLog","fragm testresult onDetach")
-    }
-
-
 }
 
 

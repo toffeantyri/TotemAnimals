@@ -458,12 +458,28 @@
                         android:textSize="16sp"
                         android:visibility="visible" />
 
+                    <Button
+                        android:backgroundTint="@color/green_style_btn_doshatest"
+                        android:id="@+id/btn_read_dosha_res"
+                        style="@style/Button_Style_other"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:drawablePadding="10dp"
+                        android:padding="5dp"
+                        android:paddingHorizontal="20dp"
+                        android:text="@string/btn_read_dosha_res"
+
+                        />
+
                     <com.github.mikephil.charting.charts.PieChart
                         android:id="@+id/dosha_result_diagram"
                         android:layout_width="match_parent"
                         android:layout_height="400dp"
                         android:layout_marginBottom="10dp"
                         />
+
 
                     </LinearLayout>
 
