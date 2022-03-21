@@ -31,7 +31,7 @@ import com.totems.totemanimals.view.mainQuestion.Animations
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
-class fragment_testResult : Fragment() {
+class fragment_testResult : StateOpenCloseFragment() {
 
     lateinit var animat_var: Animations
     lateinit var handler: Handler
@@ -41,8 +41,7 @@ class fragment_testResult : Fragment() {
     lateinit var myValueListener: PieValueSelect
     lateinit var myChartListener: PieValueSelect.PieChartTouchListener
     lateinit var myMarkerView: MarkerView
-
-    var state_op_close_res : Int = 0
+    override var state_op_close_res: Int = super.state_op_close_res
     lateinit var listResultDoshi: ArrayList<PieEntry>
     val myHandler : Handler = Handler()
 
@@ -61,11 +60,9 @@ class fragment_testResult : Fragment() {
         val last_name: Int = arguments?.getInt("last_name") ?: -1
         val all_volume: Int = arguments?.getInt("all_volume") ?: -1
 
-
         val vataResult = arguments?.getInt("dosha_vata")   ?: -1
         val pittaResult = arguments?.getInt("dosha_pitta") ?: -1
         val kaphaResult = arguments?.getInt("dosha_kapha") ?: -1
-
 
         listResultDoshi = arrayListOf(
             PieEntry(vataResult.toFloat(), getString(R.string.dosha_title_vata)),
@@ -73,65 +70,29 @@ class fragment_testResult : Fragment() {
             PieEntry(kaphaResult.toFloat(), getString(R.string.dosha_title_kapha))
         )
 
+        animat_var = Animations()
+        handler = Handler()
+
         myValueListener = PieValueSelect(listResultDoshi)
         myChartListener = myValueListener.PieChartTouchListener()
         myMarkerView = DiagramMarkerView(context!!, R.layout.marker_view_diagram)
 
-        animat_var = Animations()
-        handler = Handler()
+
         rect_r10_all = resources.getDrawable(R.drawable.shape_rectangle_r10)
         rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
 
+
         //TODO TEST
         //state_op_close_res = 2
+        view0.tvNoResultsVisibility(first_name, vataResult)
 
-        view0.tv_no_results.visibility = if (first_name == -1) {
-            if (state_op_close_res == 1) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-        } else {
-            View.GONE
-        }
-
-        view0.tv_no_results_dosha.visibility = if (vataResult < 1f && pittaResult < 1f && kaphaResult < 1f ) {
-            if (state_op_close_res == 2) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-        } else {
-            View.GONE
-        }
-
-
-        //TODO Стрелка будет работать нормально когда Видимость контейнера будет соответсововать дейтсвительности сейчас он висибл
-        if (state_op_close_res == 1) {
-            view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
-            view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
-        } else if (state_op_close_res == 2) {
-            view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
-            view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
-        } else {
-            view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
-            view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
-        }
+        //TODO
+       view0.arrowUpDownStateView()
 
         viewBindResultFromBungle(view0, first_name, first_volume, second_name, second_volume, last_name, all_volume)
 
-
         //в зависимости от состояния прохождения теста - те или иные результаты открыты
-        view0.ContainerLayout_Res_Animal.visibility = if (state_op_close_res == 1) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
-        view0.ContainerLayout_Res_Doshi.visibility = if (state_op_close_res == 2) {
-            View.VISIBLE
-        } else {
-            View.GONE
-        }
+       view0.containersVisibilityState()
 
         bindAllButtonStartTest(view0)
 
@@ -156,6 +117,7 @@ class fragment_testResult : Fragment() {
             intent.putExtra(last_animal.INTENT_KEY_RESULT, last_animal)
             handler.postDelayed({ startActivity(intent) }, 300)
         }
+
 
         view0.im_arrow_down_an_result.setOnClickListener {
             val context = context ?: requireActivity()
@@ -204,7 +166,6 @@ class fragment_testResult : Fragment() {
         viewBindResultDoshaFromBungle(chart)
         chart.onChartGestureListener = myChartListener
         chart.setOnChartValueSelectedListener(myValueListener)
-        //val werwe = myValueListener.enteryValue
 
         if(state_op_close_res==1) {view.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal)}
         if(state_op_close_res==2) {view.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi)}
