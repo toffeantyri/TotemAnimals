@@ -20,7 +20,8 @@
             android:background="@drawable/shape_rectangle_r10"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingVertical="5dp">
+            android:paddingVertical="5dp"
+            android:layout_marginBottom="10dp">
 
             <TextView
                 android:id="@+id/tv_pref_result"
@@ -478,6 +479,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="400dp"
                         android:layout_marginBottom="10dp"
+                        android:paddingBottom="20dp"
                         />
 
 
