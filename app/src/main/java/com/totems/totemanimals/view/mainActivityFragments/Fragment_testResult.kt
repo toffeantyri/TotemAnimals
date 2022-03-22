@@ -23,6 +23,7 @@ import com.github.mikephil.charting.data.PieEntry
 import com.totems.totemanimals.ActivityDescptView
 import com.totems.totemanimals.R
 import com.totems.totemanimals.StartTest_activity
+import com.totems.totemanimals.resoursesTests.List_Resours_Doshi
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
 import com.totems.totemanimals.view.mainAdapters.doshi_adapters.DiagramMarkerView
 import com.totems.totemanimals.view.mainAdapters.doshi_adapters.PieValueSelect
@@ -32,6 +33,7 @@ import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnim
 import com.totems.totemanimals.view.mainQuestion.Animations
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
+import java.lang.StringBuilder
 
 class fragment_testResult : StateOpenCloseFragment() {
 
@@ -80,14 +82,10 @@ class fragment_testResult : StateOpenCloseFragment() {
         rect_r10_all = resources.getDrawable(R.drawable.shape_rectangle_r10)
         rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
 
-        //TODO TEST
+
         view0.tvNoResultsVisibility(first_name, vataResult)
-
-        //TODO
         view0.arrowUpDownStateView()
-
         view0.containersVisibilityState()
-
         view0.viewBindResultFromBungle(first_name, first_volume, second_name, second_volume, last_name, all_volume)
 
         bindAllButtonStartTest(view0)
@@ -115,14 +113,15 @@ class fragment_testResult : StateOpenCloseFragment() {
         }
 
         view0.btn_read_dosha_res.setOnClickListener {
-            Log.d("MyLog", "Read more btn clicked")
-            //TODO
-
+            val resultConstruct = doshaDescrClassConstructor(vataResult, pittaResult, kaphaResult)
+            val intent = Intent(activity, ActivityDescptView::class.java)
+            intent.putExtra(resultConstruct.INTENT_KEY_RESULT, resultConstruct)
+            startActivity(intent)
         }
 
         view0.im_arrow_down_an_result.setOnClickListener {
 
-            if (view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE ) {
+            if (view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE) {
                 view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
                 view0.ContainerLayout_Res_Animal.visibility = View.GONE
                 view0.im_arrow_down_an_result.background = rect_r10_all
@@ -141,7 +140,7 @@ class fragment_testResult : StateOpenCloseFragment() {
                 view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
                 view0.ContainerLayout_Res_Doshi.visibility = View.GONE
                 view0.im_arrow_down_dosh_result.background = rect_r10_all
-            } else if (view0.ContainerLayout_Res_Doshi.visibility == View.GONE ) {
+            } else if (view0.ContainerLayout_Res_Doshi.visibility == View.GONE) {
                 view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
                 view0.ContainerLayout_Res_Doshi.visibility = View.VISIBLE
                 view0.im_arrow_down_dosh_result.background = rect_r10_up
@@ -168,11 +167,13 @@ class fragment_testResult : StateOpenCloseFragment() {
         dosha_result_diagram.onChartGestureListener = myChartListener
         dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
 
-        if(state_op_close_res==1) {view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal)}
-        if(state_op_close_res==2) {view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi)}
+        if (state_op_close_res == 1) {
+            view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal)
+        }
+        if (state_op_close_res == 2) {
+            view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi)
+        }
     }
-
-
 
 
     fun bindAllButtonStartTest(view: View) {
@@ -209,11 +210,68 @@ class fragment_testResult : StateOpenCloseFragment() {
         )
     }
 
-    fun doshaDescrClassConstructor(vataRes: Int, pittaRes: Int, kaphaRes: Int) : ShablonDoshaDataClass {
-        //TODO
+    fun doshaDescrClassConstructor(vataRes: Int, pittaRes: Int, kaphaRes: Int): ShablonDoshaDataClass {
 
 
-        return ShablonDoshaDataClass(1,"","")
+        val image: Int = List_Resours_Doshi.imIdList[0]
+
+        //title appender
+        val title = StringBuilder()
+        if (vataRes < List_Resours_Doshi.BALANCE_LEVEL_MIN || vataRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            title.append(List_Resours_Doshi.nameIdList[0])
+        }
+        if (pittaRes < List_Resours_Doshi.BALANCE_LEVEL_MIN || pittaRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            title.append(List_Resours_Doshi.nameIdList[1])
+        }
+        if (kaphaRes < List_Resours_Doshi.BALANCE_LEVEL_MIN || kaphaRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            title.append(List_Resours_Doshi.nameIdList[2])
+        }
+        if (vataRes.toFloat() in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX && pittaRes.toFloat() in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX && kaphaRes.toFloat() in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            title.append(List_Resours_Doshi.nameIdList[3])
+        }
+        //description appender addList
+        // 0-low 1-high 2-bal vata || 3-low 4-high 5-bal pitta|| 6-low 7-high 8-bal kapha
+        val desc = StringBuilder()
+        if (vataRes.toFloat() in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            desc.append(List_Resours_Doshi.addDescriptionList[2])
+        }
+        if (pittaRes.toFloat() in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            desc.append(List_Resours_Doshi.addDescriptionList[5])
+        }
+        if (kaphaRes.toFloat() in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            desc.append(List_Resours_Doshi.addDescriptionList[8])
+        }
+        if (vataRes < List_Resours_Doshi.BALANCE_LEVEL_MIN) {
+            desc.append(List_Resours_Doshi.addDescriptionList[0])
+        }
+        if (vataRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            desc.append(List_Resours_Doshi.addDescriptionList[1])
+        }
+        if (pittaRes < List_Resours_Doshi.BALANCE_LEVEL_MIN) {
+            desc.append(List_Resours_Doshi.addDescriptionList[3])
+        }
+        if (pittaRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            desc.append(List_Resours_Doshi.addDescriptionList[4])
+        }
+        if (kaphaRes < List_Resours_Doshi.BALANCE_LEVEL_MIN) {
+            desc.append(List_Resours_Doshi.addDescriptionList[6])
+        }
+        if (kaphaRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            desc.append(List_Resours_Doshi.addDescriptionList[7])
+        }
+
+        //description appender desc List
+        if (vataRes < List_Resours_Doshi.BALANCE_LEVEL_MIN || vataRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            desc.append(List_Resours_Doshi.descriptIdList[0])
+        }
+        if (pittaRes < List_Resours_Doshi.BALANCE_LEVEL_MIN || pittaRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            desc.append(List_Resours_Doshi.descriptIdList[1])
+        }
+        if (kaphaRes < List_Resours_Doshi.BALANCE_LEVEL_MIN || kaphaRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
+            desc.append(List_Resours_Doshi.descriptIdList[2])
+        }
+
+        return ShablonDoshaDataClass(image, title.toString(), desc.toString())
     }
 
     fun View.viewBindResultFromBungle(f_n: Int, f_v: Int, s_n: Int, s_v: Int, l_n: Int, a_v: Int) {
