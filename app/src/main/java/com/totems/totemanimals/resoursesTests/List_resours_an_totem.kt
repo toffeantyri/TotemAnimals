@@ -4,6 +4,9 @@ import com.totems.totemanimals.R
 
 object List_resours_an_totem : ListResourseClass() {
 
+
+
+
     override val imIdList = arrayOf<Int>(
         R.drawable.smallbelka, R.drawable.smallbober, R.drawable.smallezh,
         R.drawable.smallfilin, R.drawable.smallkon, R.drawable.smalllebed, R.drawable.smalllisa,
@@ -195,4 +198,6 @@ object List_resours_an_totem : ListResourseClass() {
                 "\n" +
                 "Волк - это воин смелый, умный, самоотверженный, который всегда бьется до конца. Но волк никогда не будет вступать в ненужный и пустой конфликт. Основной конфликт, который решает волк — это, конечно, баланс между свободой и принадлежностью. У такого человека очень развито чувство долга. И в то же время ему необходимо чувствовать себя независимым. Если удастся удержать этот баланс, то он будет счастлив.\n"
     )
+
+    override val addDescriptionList: Array<String> = arrayOf()
 }

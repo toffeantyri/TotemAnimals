@@ -4,4 +4,5 @@ abstract class ListResourseClass {
     abstract val imIdList : Array<Int>
     abstract val nameIdList : Array<String>
     abstract val descriptIdList : Array<String>
+    abstract val addDescriptionList : Array<String>
 }

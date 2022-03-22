@@ -26,6 +26,7 @@ import com.totems.totemanimals.StartTest_activity
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
 import com.totems.totemanimals.view.mainAdapters.doshi_adapters.DiagramMarkerView
 import com.totems.totemanimals.view.mainAdapters.doshi_adapters.PieValueSelect
+import com.totems.totemanimals.view.mainAdapters.doshi_adapters.ShablonDoshaDataClass
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
 
 import com.totems.totemanimals.view.mainQuestion.Animations
@@ -115,6 +116,7 @@ class fragment_testResult : StateOpenCloseFragment() {
 
         view0.btn_read_dosha_res.setOnClickListener {
             Log.d("MyLog", "Read more btn clicked")
+            //TODO
 
         }
 
@@ -205,6 +207,13 @@ class fragment_testResult : StateOpenCloseFragment() {
             "null_construct",
             "null_construct"
         )
+    }
+
+    fun doshaDescrClassConstructor(vataRes: Int, pittaRes: Int, kaphaRes: Int) : ShablonDoshaDataClass {
+        //TODO
+
+
+        return ShablonDoshaDataClass(1,"","")
     }
 
     fun View.viewBindResultFromBungle(f_n: Int, f_v: Int, s_n: Int, s_v: Int, l_n: Int, a_v: Int) {
