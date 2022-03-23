@@ -14,6 +14,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleOwner
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.components.MarkerView
@@ -31,11 +33,14 @@ import com.totems.totemanimals.view.mainAdapters.doshi_adapters.ShablonDoshaData
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
 
 import com.totems.totemanimals.view.mainQuestion.Animations
+import com.totems.totemanimals.viewModel.DataModelTestResult
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.*
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 import java.lang.StringBuilder
 
 class fragment_testResult : StateOpenCloseFragment() {
+
+    private val dataModel : DataModelTestResult by activityViewModels()
 
     lateinit var animat_var: Animations
     lateinit var rect_r10_all: Drawable
@@ -54,7 +59,13 @@ class fragment_testResult : StateOpenCloseFragment() {
     ): View? {
         val view0: View =
             LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result, container, false)
-        state_op_close_res = arguments?.getInt("state_open_close_res") ?: 0
+
+        dataModel.stateOpenTestAnimal.observe(activity as LifecycleOwner, {
+            state_op_close_res = it
+        })
+        Log.d("MyLog", "onCreateView State : $state_op_close_res")
+
+        //state_op_close_res = arguments?.getInt("state_open_close_res") ?: 0
         val first_name: Int = arguments?.getInt("first_name") ?: -1
         val first_volume: Int = arguments?.getInt("first_volume") ?: -1
         val second_name: Int = arguments?.getInt("second_name") ?: -1
@@ -82,10 +93,7 @@ class fragment_testResult : StateOpenCloseFragment() {
         rect_r10_all = resources.getDrawable(R.drawable.shape_rectangle_r10)
         rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
 
-
         view0.tvNoResultsVisibility(first_name, vataResult)
-        view0.arrowUpDownStateView()
-        view0.containersVisibilityState()
         view0.viewBindResultFromBungle(first_name, first_volume, second_name, second_volume, last_name, all_volume)
 
         bindAllButtonStartTest(view0)
@@ -151,13 +159,12 @@ class fragment_testResult : StateOpenCloseFragment() {
             if (vataResult != -1 ) {view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi,300)}
         }
 
-        Log.d("MyLog", "OnCreateView Fragment_testResult Created ")
+        Log.d("MyLog", "OnCreateView testResult ")
         return view0
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         view.viewBindResultDoshaFromBungle(
             dosha_result_diagram,
             listResultDoshi[0].y.toInt(),
@@ -167,14 +174,21 @@ class fragment_testResult : StateOpenCloseFragment() {
         dosha_result_diagram.onChartGestureListener = myChartListener
         dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
 
-        if (state_op_close_res == 1) {
-            view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal,0)
-        }
-        if (state_op_close_res == 2) {
-            view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi,300)
-        }
+
     }
 
+    override fun onResume() {
+        super.onResume()
+        //все проверки состояний во фрагменте. только в onResume!
+        view?.arrowUpDownStateView()
+        view?.containersVisibilityState()
+        if (state_op_close_res == 1) {
+            view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal,0)
+        }
+        if (state_op_close_res == 2) {
+            view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi,300)
+        }
+    }
 
     fun bindAllButtonStartTest(view: View) {
         view.btn_start_test.setOnClickListener {
@@ -353,17 +367,13 @@ class fragment_testResult : StateOpenCloseFragment() {
         fun newInstance(pref0: Array<Int>, pref1: Array<Int>): fragment_testResult {
             val fragment = fragment_testResult()
             val args = Bundle()
-            args.putInt(
-                "state_open_close_res",
-                pref0[0].toInt()
-            ) // состояние теста - откр/закрыты подробнее в BaseActivity
-            args.putInt("first_name", pref0[1].toInt())
-            args.putInt("first_volume", pref0[2].toInt())
-            args.putInt("second_name", pref0[3].toInt())
-            args.putInt("second_volume", pref0[4].toInt())
-            args.putInt("last_name", pref0[5].toInt())
-            args.putInt("all_volume", pref0[6].toInt())
 
+            args.putInt("first_name", pref0[0].toInt())
+            args.putInt("first_volume", pref0[1].toInt())
+            args.putInt("second_name", pref0[2].toInt())
+            args.putInt("second_volume", pref0[3].toInt())
+            args.putInt("last_name", pref0[4].toInt())
+            args.putInt("all_volume", pref0[5].toInt())
 
             args.putInt("dosha_vata", pref1[0])
             args.putInt("dosha_pitta", pref1[1])

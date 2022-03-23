@@ -2,13 +2,18 @@ package com.totems.totemanimals
 import android.content.DialogInterface
 import androidx.preference.PreferenceManager
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.totems.totemanimals.view.mainActivityFragments.fragment_info
 import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
+import com.totems.totemanimals.viewModel.DataModelTestResult
 import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseActivity_ApComAct : AppCompatActivity() {
+
+    val dataModel: DataModelTestResult by viewModels()
+    // инициализация ВьюМоделКласса для активити! - от viewModels!!!!!!! фрагмент будет от activityViewModels
 
     fun setUpPreference(): Array<Int> {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
@@ -23,8 +28,13 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         val pref4 = pref.getInt("last_name", -1)
         val pref5 = pref.getInt("all_volume", -1)
         //
-        return arrayOf(pref_state,pref0,pref1,pref2,pref3,pref4,pref5)
+        //todo test livedata
+        dataModel.stateOpenTestAnimal.value = pref_state
+
+        return arrayOf(pref0,pref1,pref2,pref3,pref4,pref5)
     }
+
+
 
     fun setUpPreferenceTwo(): Array<Int> {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)

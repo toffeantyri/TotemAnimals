@@ -5,14 +5,19 @@ import android.os.Handler
 import android.view.View
 import android.widget.ScrollView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.totems.totemanimals.R
+import com.totems.totemanimals.viewModel.DataModelTestResult
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
 
 open class StateOpenCloseFragment : Fragment() {
 
+
     open var state_op_close_res: Int = 0
     open var handler : Handler = Handler()
+
+
 
 
     fun View.tvNoResultsVisibility(first_name_animal: Int, any_dosha: Int) {

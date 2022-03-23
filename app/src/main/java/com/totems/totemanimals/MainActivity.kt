@@ -7,13 +7,16 @@ import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.AnimalsAdaptList
 import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
+import com.totems.totemanimals.viewModel.DataModelTestResult
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdEventListener
 import com.yandex.mobile.ads.common.AdRequest
@@ -45,7 +48,12 @@ class MainActivity : BaseActivity_ApComAct() {
         loadAndShowBanner()
 
 
-       // Log.d("MyLog", "OnCreate MainActivity")
+       Log.d("MyLog", "OnCreate MainActivity state: ${dataModel.stateOpenTestAnimal.value.toString()}")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("MyLog", "OnResume MainActivity state: ${dataModel.stateOpenTestAnimal.value.toString()}")
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -60,8 +68,9 @@ class MainActivity : BaseActivity_ApComAct() {
             val s_v = data.getIntExtra("second_volume", -1)
             val l_n = data.getIntExtra("last_name", -1)
             val a_v = data.getIntExtra("all_volume", -1)
-            val result_array = arrayOf(1, f_n, f_v, s_n, s_v, l_n, a_v)                 //первая цифра - состояние открытости закрытости результатов теста (подробнее в Base_activity)
-            Log.d("MyLog", "onActivityResult $f_n $f_v $s_n $s_v $l_n $a_v ")
+            dataModel.stateOpenTestAnimal.value = 1
+            val result_array = arrayOf(f_n, f_v, s_n, s_v, l_n, a_v)                 //первая цифра - состояние открытости закрытости результатов теста (подробнее в Base_activity)
+            Log.d("MyLog", "onActivityResult Animals Result:  $f_n $f_v $s_n $s_v $l_n $a_v ")
             supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.my_testResult_frame,
@@ -74,12 +83,13 @@ class MainActivity : BaseActivity_ApComAct() {
             val pittaValue = data.getIntExtra("dosha_pitta", 1)
             val kaphaValue = data.getIntExtra("dosha_kapha", 1)
 
+            dataModel.stateOpenTestAnimal.value = 2
             val result_array2 = arrayOf(vataValue,pittaValue,kaphaValue)
-            Log.d("MyLog", "onActivityResult $vataValue , $pittaValue , $kaphaValue ")
+            Log.d("MyLog", "onActivityResult Doshas Result:  $vataValue , $pittaValue , $kaphaValue ")
             supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.my_testResult_frame,
-                    fragment_testResult.newInstance( arrayOf(2,lAP[1],lAP[2],lAP[3],lAP[4],lAP[5],lAP[6],)   ,result_array2)
+                    fragment_testResult.newInstance(arrayOf(lAP[0],lAP[1],lAP[2],lAP[3],lAP[4],lAP[5]),result_array2)
                 ).commit()
         } else {
             Log.d(
