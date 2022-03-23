@@ -62,8 +62,8 @@ open class StateOpenCloseFragment : Fragment() {
         }
     }
 
-    fun ScrollView.scrollToCenterView(targetView : View){
-        handler.postDelayed({this.smoothScrollBy(0, targetView.top+250)},10)
+    fun ScrollView.scrollToCenterView(targetView : View, addY : Int){
+        handler.postDelayed({this.smoothScrollBy(0, targetView.top+addY)},10)
     }
 
 

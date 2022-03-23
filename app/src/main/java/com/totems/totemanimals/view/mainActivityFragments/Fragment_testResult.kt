@@ -132,7 +132,7 @@ class fragment_testResult : StateOpenCloseFragment() {
                 animat_var.down_result(view0.ContainerLayout_Res_Animal)
             }
             view0.tv_no_results.visibility = if (first_name == -1) View.VISIBLE else View.GONE
-            view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal)
+            if(first_name != -1) { view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal,0) }
 
         }
         view0.im_arrow_down_dosh_result.setOnClickListener {
@@ -148,7 +148,7 @@ class fragment_testResult : StateOpenCloseFragment() {
 
             }
             view0.tv_no_results_dosha.visibility = if (vataResult == -1) View.VISIBLE else View.GONE
-            view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi)
+            if (vataResult != -1 ) {view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi,300)}
         }
 
         Log.d("MyLog", "OnCreateView Fragment_testResult Created ")
@@ -168,10 +168,10 @@ class fragment_testResult : StateOpenCloseFragment() {
         dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
 
         if (state_op_close_res == 1) {
-            view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal)
+            view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal,0)
         }
         if (state_op_close_res == 2) {
-            view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi)
+            view.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi,300)
         }
     }
 
