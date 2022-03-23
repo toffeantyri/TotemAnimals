@@ -19,14 +19,14 @@ import com.totems.totemanimals.resoursesTests.List_Resours_Doshi.BALANCE_LEVEL_M
 
 
 class DiagramMarkerView(context: Context, layoutResours: Int) : MarkerView(context, layoutResours) {
-    val titleView = findViewById<TextView>(R.id.tvMarkerViewTitle)
+    //val titleView = findViewById<TextView>(R.id.tvMarkerViewTitle)
     val image = findViewById<ImageView>(R.id.ivMarkerView_image)
     val tvLelvel = findViewById<TextView>(R.id.tvMarkerViewLevel)
 
 
 
     override fun refreshContent(e: Entry?, highlight: Highlight?) {
-        titleView.text = e?.let { entryOfMaxPoint(it) }
+        //titleView.text = e?.let { entryPointLevel(it) }
         tvLelvel.text = e?.let { textOfLevelDesc(it) }
         e?.let { tvLelvel.textColorOfLevelDesc(it) }
         e?.let { image.imageOfLevel(e) }
@@ -39,7 +39,7 @@ class DiagramMarkerView(context: Context, layoutResours: Int) : MarkerView(conte
         return MPPointF((-(width / 2)).toFloat(), (-250.0f))
     }
 
-    private fun entryOfMaxPoint(e: Entry): String = resources.getString(R.string.dosha_level) + " : " + e.y.toString()
+    private fun entryPointLevel(e: Entry): String = resources.getString(R.string.dosha_level) + " : " + e.y.toString()
 
     private fun ImageView.imageOfLevel(e: Entry) {
         when {

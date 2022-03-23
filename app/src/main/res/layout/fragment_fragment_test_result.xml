@@ -17,476 +17,490 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="@drawable/shape_rectangle_r10"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:paddingVertical="5dp"
-            android:layout_marginBottom="10dp">
+            android:paddingVertical="5dp">
 
-            <TextView
-                android:id="@+id/tv_pref_result"
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
+                android:layout_height="match_parent"
                 android:layout_marginVertical="5dp"
-                android:background="@drawable/shape_rectangle_r10"
-                android:gravity="center"
-                android:paddingHorizontal="5dp"
-                android:paddingVertical="5dp"
-                android:paddingLeft="10dp"
-                android:text="@string/begin_test_totem_animal"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <Button
-                android:id="@+id/btn_start_test"
-                style="@style/Button_Style_other"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="10dp"
-                android:drawableLeft="@drawable/image_btn_selector"
-                android:drawablePadding="10dp"
-                android:gravity="right|center_vertical"
-                android:padding="5dp"
-                android:paddingHorizontal="20dp"
-                android:paddingEnd="20dp"
-                android:text="@string/start_new_test"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:orientation="vertical">
+                app:cardBackgroundColor="@color/card_white_grey_alpha"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
 
                 <LinearLayout
-                    android:id="@+id/explainer_custom_linear"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_rectangle_r10"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="15dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:paddingHorizontal="5dp"
-                        android:paddingVertical="10dp"
-                        android:text="@string/look_totem_blank"
-                        android:textColor="@color/black" />
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/button_an_test" />
-
-                    <ImageButton
-                        android:id="@+id/im_arrow_down_an_result"
-                        android:layout_width="32dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="0.2"
-                        android:background="@drawable/shape_rectangle_r10"
-                        android:backgroundTint="@color/green_style_btn"
-                        android:src="@drawable/ic_expand_more_black_32dp"
-                        tools:ignore="SpeakableTextPresentCheck" />
-                </LinearLayout>
-
-
-
-                <LinearLayout
-                    android:focusableInTouchMode="true"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:id="@+id/ContainerLayout_Res_Animal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/tv_no_results"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="@string/no_totem_animals"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:visibility="visible" />
-
-                    <LinearLayout
-                        android:id="@+id/LinearLayout_result1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_rectangle_r10_topleft_off"
-                        android:backgroundTint="#66FF66"
-                        android:clickable="true"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/im_testresult_n1"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/smallbelka" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tv_testresult_title_n1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="5dp"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/decor_initial"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:text="Белка"
-                                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/textView1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="5dp"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="@string/testres_your_type"
-                                android:textColor="@color/black" />
-
-                            <TextView
-                                android:id="@+id/tv_testresult_perc_n1"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginVertical="5dp"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="100%"
-                                android:textColor="@color/result_green"
-                                android:textSize="24sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="3dp"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_separator" />
-
-                        <ImageView
-                            android:id="@+id/imageButton1"
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:background="@drawable/shape_rectangle_right_bottom_r15"
-                            android:backgroundTint="#4CAF50"
-                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/LinearLayout_result2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_rectangle_r10"
-                        android:backgroundTint="#B2FFED72"
-                        android:clickable="true"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/im_testresult_n2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/smallbelka" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tv_testresult_title_n2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="5dp"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/decor_initial"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:text="Белка"
-                                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/textView3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="5dp"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="@string/testres_your_type"
-                                android:textColor="@color/black" />
-
-                            <TextView
-                                android:id="@+id/tv_testresult_perc_n2"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginVertical="5dp"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="100%"
-                                android:textColor="@color/result_green"
-                                android:textSize="24sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="3dp"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_separator" />
-
-                        <ImageView
-                            android:id="@+id/imageButton3"
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:background="@drawable/shape_rectangle_right_r15"
-                            android:backgroundTint="#AFA54C"
-                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/LinearLayout_result3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_rectangle_r10"
-                        android:backgroundTint="#BFFF6666"
-                        android:clickable="true"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:id="@+id/im_testresult_n3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginHorizontal="2dp"
-                            android:layout_weight="1"
-                            android:src="@drawable/smallbelka" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tv_testresult_title_n3"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="5dp"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/decor_initial"
-                                android:gravity="center"
-                                android:maxLines="1"
-                                android:text="Белка"
-                                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                                android:textSize="18sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/textView4"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginVertical="5dp"
-                                android:layout_weight="1"
-                                android:gravity="center"
-                                android:text="@string/testres_antipode"
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-
-                        <View
-                            android:layout_width="3dp"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/shape_separator" />
-
-                        <ImageView
-                            android:id="@+id/imageButton4"
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:background="@drawable/shape_rectangle_right_r15"
-                            android:backgroundTint="#AF4C4C"
-                            android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/black"
-                android:layout_marginVertical="10dp"
-                android:layout_margin="5dp"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/dosha_pretest_desc"
-                    android:textColor="@color/black"
-                    android:paddingHorizontal="5dp"
-                    android:gravity="center"
                     android:layout_marginHorizontal="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="@drawable/shape_rectangle_r10"
-                    android:paddingVertical="5dp"
-                    android:textSize="16sp"/>
-
-                <Button
-                    android:id="@+id/btn_start_test_dosha"
-                    style="@style/Button_Style_other"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:layout_marginVertical="10dp"
-                    android:drawableLeft="@drawable/image_btn_selector_om"
-                    android:drawablePadding="10dp"
-                    android:gravity="right|center_vertical"
-                    android:padding="5dp"
-                    android:paddingHorizontal="20dp"
-                    android:paddingEnd="20dp"
-                    android:text="@string/start_new_dosha_test"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/explainer_custom_linear_doshi"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/shape_rectangle_r10"
-                    android:orientation="horizontal"
-                    android:layout_marginHorizontal="5dp">
-
-                    <TextView
-                        android:id="@+id/textView_doshilook"
-                        android:layout_width="15dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:paddingHorizontal="5dp"
-                        android:paddingVertical="10dp"
-                        android:text="@string/look_dosha_blank"
-                        android:textColor="@color/black" />
-
-                    <ImageView
-                        android:id="@+id/imageView_doshi_look"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="0.5"
-                        android:src="@drawable/image_btn_selector_om" />
-
-                    <ImageButton
-                        android:id="@+id/im_arrow_down_dosh_result"
-                        android:layout_width="32dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="0.2"
-                        android:background="@drawable/shape_rectangle_r10"
-                        android:backgroundTint="@color/green_style_btn"
-                        android:src="@drawable/ic_expand_more_black_32dp"
-                        tools:ignore="SpeakableTextPresentCheck" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:focusableInTouchMode="true"
-                    android:focusable="true"
-                    android:clickable="true"
-                    android:id="@+id/ContainerLayout_Res_Doshi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone">
+                    android:paddingVertical="10dp">
 
                     <TextView
-                        android:id="@+id/tv_no_results_dosha"
+                        android:id="@+id/tv_pref_result"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginVertical="5dp"
+                        android:background="@drawable/shape_rectangle_r10"
                         android:gravity="center"
-                        android:text="@string/no_totem_animals"
+                        android:paddingVertical="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="5dp"
+                        android:text="@string/begin_test_totem_animal"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:visibility="visible" />
+                        android:textSize="16sp" />
 
                     <Button
-                        android:backgroundTint="@color/green_style_btn_doshatest"
-                        android:id="@+id/btn_read_dosha_res"
+                        android:id="@+id/btn_start_test"
                         style="@style/Button_Style_other"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
                         android:layout_marginVertical="10dp"
+                        android:drawableLeft="@drawable/image_btn_selector"
                         android:drawablePadding="10dp"
+                        android:gravity="right|center_vertical"
                         android:padding="5dp"
                         android:paddingHorizontal="20dp"
-                        android:text="@string/btn_read_dosha_res"
+                        android:paddingEnd="20dp"
+                        android:text="@string/start_new_test"
+                        android:textStyle="bold" />
 
-                        />
-
-                    <com.github.mikephil.charting.charts.PieChart
-                        android:id="@+id/dosha_result_diagram"
+                    <LinearLayout
+                        android:id="@+id/explainer_custom_linear"
                         android:layout_width="match_parent"
-                        android:layout_height="400dp"
-                        android:layout_marginBottom="10dp"
-                        android:paddingBottom="20dp"
-                        />
+                        android:layout_height="100dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="15dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingHorizontal="5dp"
+                            android:paddingVertical="10dp"
+                            android:text="@string/look_totem_blank"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/button_an_test" />
+
+                        <ImageButton
+                            android:id="@+id/im_arrow_down_an_result"
+                            android:layout_width="32dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.2"
+                            android:background="@drawable/shape_rectangle_r10"
+                            android:backgroundTint="@color/green_style_btn_lite"
+                            android:src="@drawable/ic_expand_more_black_32dp"
+                            tools:ignore="SpeakableTextPresentCheck" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/ContainerLayout_Res_Animal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_no_results"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/no_totem_animals"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:visibility="visible" />
+
+                        <LinearLayout
+                            android:id="@+id/LinearLayout_result1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_rectangle_r10_topleft_off"
+                            android:backgroundTint="#66FF66"
+                            android:clickable="true"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/im_testresult_n1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="2dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/smallbelka" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_testresult_title_n1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/decor_initial"
+                                    android:gravity="center"
+                                    android:maxLines="1"
+                                    android:text="Белка"
+                                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textView1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="@string/testres_your_type"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/tv_testresult_perc_n1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="100%"
+                                    android:textColor="@color/result_green"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="3dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/shape_separator" />
+
+                            <ImageView
+                                android:id="@+id/imageButton1"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:background="@drawable/shape_rectangle_right_bottom_r15"
+                                android:backgroundTint="#4CAF50"
+                                android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/LinearLayout_result2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_rectangle_r10"
+                            android:backgroundTint="#B2FFED72"
+                            android:clickable="true"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/im_testresult_n2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="2dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/smallbelka" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_testresult_title_n2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/decor_initial"
+                                    android:gravity="center"
+                                    android:maxLines="1"
+                                    android:text="Белка"
+                                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textView3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="@string/testres_your_type"
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/tv_testresult_perc_n2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="100%"
+                                    android:textColor="@color/result_green"
+                                    android:textSize="24sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="3dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/shape_separator" />
+
+                            <ImageView
+                                android:id="@+id/imageButton3"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:background="@drawable/shape_rectangle_right_r15"
+                                android:backgroundTint="#AFA54C"
+                                android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/LinearLayout_result3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/shape_rectangle_r10"
+                            android:backgroundTint="#BFFF6666"
+                            android:clickable="true"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/im_testresult_n3"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="2dp"
+                                android:layout_weight="1"
+                                android:src="@drawable/smallbelka" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_testresult_title_n3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/decor_initial"
+                                    android:gravity="center"
+                                    android:maxLines="1"
+                                    android:text="Белка"
+                                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textView4"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginVertical="5dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="@string/testres_antipode"
+                                    android:textColor="@color/black"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="3dp"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/shape_separator" />
+
+                            <ImageView
+                                android:id="@+id/imageButton4"
+                                android:layout_width="40dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:background="@drawable/shape_rectangle_right_r15"
+                                android:backgroundTint="#AF4C4C"
+                                android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="5dp"
+                app:cardBackgroundColor="@color/card_white_grey_alpha"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:gravity="center"
+                        android:paddingVertical="5dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="5dp"
+                        android:text="@string/dosha_pretest_desc"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <Button
+                        android:id="@+id/btn_start_test_dosha"
+                        style="@style/Button_Style_other"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginVertical="10dp"
+                        android:drawableLeft="@drawable/image_btn_selector_om"
+                        android:drawablePadding="10dp"
+                        android:gravity="right|center_vertical"
+                        android:padding="5dp"
+                        android:paddingHorizontal="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="@string/start_new_dosha_test"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/explainer_custom_linear_doshi"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_rectangle_r10"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView_doshilook"
+                            android:layout_width="15dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingHorizontal="5dp"
+                            android:paddingVertical="10dp"
+                            android:text="@string/look_dosha_blank"
+                            android:textColor="@color/black" />
+
+                        <ImageView
+                            android:id="@+id/imageView_doshi_look"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/image_btn_selector_om" />
+
+                        <ImageButton
+                            android:id="@+id/im_arrow_down_dosh_result"
+                            android:layout_width="32dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.2"
+                            android:background="@drawable/shape_rectangle_r10"
+                            android:backgroundTint="@color/green_style_btn_lite"
+                            android:src="@drawable/ic_expand_more_black_32dp"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ContainerLayout_Res_Doshi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_no_results_dosha"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="@string/no_totem_animals"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"
+                            android:visibility="visible" />
+
+                        <Button
+                            android:id="@+id/btn_read_dosha_res"
+                            style="@style/Button_Style_other"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="10dp"
+                            android:layout_marginVertical="10dp"
+                            android:backgroundTint="@color/green_style_btn_doshatest"
+                            android:drawablePadding="10dp"
+                            android:padding="5dp"
+                            android:paddingHorizontal="20dp"
+                            android:text="@string/btn_read_dosha_res"
+                            android:textColor="@color/darkblue"
+                            android:textStyle="bold" />
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/dosha_result_diagram"
+                            android:layout_width="match_parent"
+                            android:layout_height="400dp"
+                            android:layout_marginBottom="10dp"
+                            android:paddingBottom="20dp" />
 
 
                     </LinearLayout>
 
 
-            </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
         </LinearLayout>

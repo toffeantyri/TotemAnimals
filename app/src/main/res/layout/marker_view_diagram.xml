@@ -25,6 +25,7 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             android:layout_marginBottom="3dp"
+            android:visibility="gone"
             />
 
         <ImageView

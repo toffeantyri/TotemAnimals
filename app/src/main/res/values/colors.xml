@@ -10,6 +10,7 @@
     <color name="white">#FFFFFF</color>
 
     <color name="green_style_btn">#77FFF4</color>
+    <color name="green_style_btn_lite">#8077FFF4</color>
     <color name="green_style_btn_doshatest">#77FF7E</color>
     <color name="green_style_btn_press">#E877E4FF</color>
 
@@ -31,5 +32,6 @@
     <color name="hole_white_alpha">#80FFFFFF</color>
     <color name="markerview_white_alpha">#32FFFFFF</color>
 
+    <color name="card_white_grey_alpha">#B2F0F0F0</color>
 
 </resources>
