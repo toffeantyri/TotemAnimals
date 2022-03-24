@@ -27,9 +27,15 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         val pref3 = pref.getInt("second_volume", -1)
         val pref4 = pref.getInt("last_name", -1)
         val pref5 = pref.getInt("all_volume", -1)
-        //
-        //todo test livedata
         dataModel.stateOpenTestAnimal.value = pref_state
+
+        dataModel.resultTotemTest.value?.clear()
+        dataModel.resultTotemTest.value?.add(pref0)
+        dataModel.resultTotemTest.value?.add(pref1)
+        dataModel.resultTotemTest.value?.add(pref2)
+        dataModel.resultTotemTest.value?.add(pref3)
+        dataModel.resultTotemTest.value?.add(pref4)
+        dataModel.resultTotemTest.value?.add(pref5)
 
         return arrayOf(pref0,pref1,pref2,pref3,pref4,pref5)
     }
@@ -43,7 +49,10 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         val pref1 = pref.getInt("dosha_vata", -1)
         val pref2 = pref.getInt("dosha_pitta", -1)
         val pref3 = pref.getInt("dosha_kapha", -1)
-        //
+        dataModel.resultDoshaTest.value?.clear()
+        dataModel.resultDoshaTest.value?.add(pref1)
+        dataModel.resultDoshaTest.value?.add(pref2)
+        dataModel.resultDoshaTest.value?.add(pref3)
         return arrayOf(pref1,pref2,pref3)
     }
 

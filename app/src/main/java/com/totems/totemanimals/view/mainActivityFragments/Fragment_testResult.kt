@@ -40,64 +40,59 @@ import java.lang.StringBuilder
 
 class fragment_testResult : StateOpenCloseFragment() {
 
-    private val dataModel : DataModelTestResult by activityViewModels()
-
     lateinit var animat_var: Animations
     lateinit var rect_r10_all: Drawable
     lateinit var rect_r10_up: Drawable
 
+    override var state_op_close_res: Int = super.state_op_close_res
+    var first_name: Int = -1
+    var first_volume: Int = -1
+    var second_name: Int = -1
+    var second_volume: Int = -1
+    var last_name: Int = -1
+    var all_volume: Int = -1
+
     lateinit var myValueListener: PieValueSelect
     lateinit var myChartListener: PieValueSelect.PieChartTouchListener
     lateinit var myMarkerView: MarkerView
-    override var state_op_close_res: Int = super.state_op_close_res
+
+    var vataResult: Int = -1
+    var pittaResult: Int = -1
+    var kaphaResult: Int = -1
     lateinit var listResultDoshi: ArrayList<PieEntry>
 
-    @SuppressLint("NewApi")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view0: View =
             LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result, container, false)
+        animat_var = Animations()
+        handler = Handler()
+        rect_r10_all = resources.getDrawable(R.drawable.shape_rectangle_r10)
+        rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
 
         dataModel.stateOpenTestAnimal.observe(activity as LifecycleOwner, {
             state_op_close_res = it
         })
-        Log.d("MyLog", "onCreateView State : $state_op_close_res")
+        dataModel.resultTotemTest.observe(activity as LifecycleOwner, {
+            first_name = it[0]
+            first_volume = it[1]
+            second_name = it[2]
+            second_volume = it[3]
+            last_name = it[4]
+            all_volume = it[5]
+        })
+        dataModel.resultDoshaTest.observe(activity as LifecycleOwner, {
+            vataResult = it[0]
+            pittaResult = it[1]
+            kaphaResult = it[2]
+        })
 
-        //state_op_close_res = arguments?.getInt("state_open_close_res") ?: 0
-        val first_name: Int = arguments?.getInt("first_name") ?: -1
-        val first_volume: Int = arguments?.getInt("first_volume") ?: -1
-        val second_name: Int = arguments?.getInt("second_name") ?: -1
-        val second_volume: Int = arguments?.getInt("second_volume") ?: -1
-        val last_name: Int = arguments?.getInt("last_name") ?: -1
-        val all_volume: Int = arguments?.getInt("all_volume") ?: -1
-
-        val vataResult = arguments?.getInt("dosha_vata") ?: -1
-        val pittaResult = arguments?.getInt("dosha_pitta") ?: -1
-        val kaphaResult = arguments?.getInt("dosha_kapha") ?: -1
-
-        listResultDoshi = arrayListOf(
-            PieEntry(vataResult.toFloat(), getString(R.string.dosha_title_vata)),
-            PieEntry(pittaResult.toFloat(), getString(R.string.dosha_title_pitta)),
-            PieEntry(kaphaResult.toFloat(), getString(R.string.dosha_title_kapha))
-        )
-
-        animat_var = Animations()
-        handler = Handler()
-
-        myValueListener = PieValueSelect(listResultDoshi)
-        myChartListener = myValueListener.PieChartTouchListener()
-        myMarkerView = DiagramMarkerView(context!!, R.layout.marker_view_diagram)
-
-        rect_r10_all = resources.getDrawable(R.drawable.shape_rectangle_r10)
-        rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
-
-        view0.tvNoResultsVisibility(first_name, vataResult)
-        view0.viewBindResultFromBungle(first_name, first_volume, second_name, second_volume, last_name, all_volume)
 
         bindAllButtonStartTest(view0)
 
+        //todo fun bind resultbutton and go in onResume
         view0.LinearLayout_result1.setOnClickListener {
             animat_var.anim_Testresult(im_testresult_n1)
             val first_animal: ShablonAnimalDataClass = animal_construct(first_name)
@@ -140,7 +135,9 @@ class fragment_testResult : StateOpenCloseFragment() {
                 animat_var.down_result(view0.ContainerLayout_Res_Animal)
             }
             view0.tv_no_results.visibility = if (first_name == -1) View.VISIBLE else View.GONE
-            if(first_name != -1) { view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal,0) }
+            if (first_name != -1) {
+                view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal, 0)
+            }
 
         }
         view0.im_arrow_down_dosh_result.setOnClickListener {
@@ -156,7 +153,9 @@ class fragment_testResult : StateOpenCloseFragment() {
 
             }
             view0.tv_no_results_dosha.visibility = if (vataResult == -1) View.VISIBLE else View.GONE
-            if (vataResult != -1 ) {view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi,300)}
+            if (vataResult != -1) {
+                view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi, 300)
+            }
         }
 
         Log.d("MyLog", "OnCreateView testResult ")
@@ -165,14 +164,6 @@ class fragment_testResult : StateOpenCloseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.viewBindResultDoshaFromBungle(
-            dosha_result_diagram,
-            listResultDoshi[0].y.toInt(),
-            listResultDoshi[1].y.toInt(),
-            listResultDoshi[2].y.toInt()
-        )
-        dosha_result_diagram.onChartGestureListener = myChartListener
-        dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
 
 
     }
@@ -180,14 +171,41 @@ class fragment_testResult : StateOpenCloseFragment() {
     override fun onResume() {
         super.onResume()
         //все проверки состояний во фрагменте. только в onResume!
+
         view?.arrowUpDownStateView()
         view?.containersVisibilityState()
+        view?.tvNoResultsVisibility(first_name, vataResult)
+        view?.viewBindResultFromBungle(first_name, first_volume, second_name, second_volume, last_name, all_volume)
+
+        listResultDoshi = arrayListOf(
+            PieEntry(vataResult.toFloat(), getString(R.string.dosha_title_vata)),
+            PieEntry(pittaResult.toFloat(), getString(R.string.dosha_title_pitta)),
+            PieEntry(kaphaResult.toFloat(), getString(R.string.dosha_title_kapha))
+        )
+
+        view?.viewBindResultDoshaFromBungle(
+            dosha_result_diagram,
+            listResultDoshi[0].y.toInt(),
+            listResultDoshi[1].y.toInt(),
+            listResultDoshi[2].y.toInt()
+        )
+
+        myValueListener = PieValueSelect(listResultDoshi)
+        myChartListener = myValueListener.PieChartTouchListener()
+        myMarkerView = DiagramMarkerView(context!!, R.layout.marker_view_diagram)
+        dosha_result_diagram.onChartGestureListener = myChartListener
+        dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
+
+
         if (state_op_close_res == 1) {
-            view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal,0)
+            view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal, 0)
         }
         if (state_op_close_res == 2) {
-            view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi,300)
+            view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi, 300)
         }
+
+        Log.d("MyLog", "TestResultFr  onResume: $vataResult , $pittaResult, $kaphaResult")
+        Log.d("MyLog", "TestResultFr onResume: ${dataModel.resultDoshaTest.value.toString()}")
     }
 
     fun bindAllButtonStartTest(view: View) {
@@ -361,6 +379,9 @@ class fragment_testResult : StateOpenCloseFragment() {
         mypieChart.data = pieData
     }
 
+    fun View.bindResultReadButtons() {
+
+    }
 
     companion object {
         @JvmStatic

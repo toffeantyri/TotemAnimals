@@ -13,12 +13,9 @@ import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
 open class StateOpenCloseFragment : Fragment() {
 
-
+    val dataModel : DataModelTestResult by activityViewModels()
     open var state_op_close_res: Int = 0
     open var handler : Handler = Handler()
-
-
-
 
     fun View.tvNoResultsVisibility(first_name_animal: Int, any_dosha: Int) {
         this.apply {
