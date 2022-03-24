@@ -439,22 +439,6 @@ class StartTest_activity : BaseActivity_ApComAct() {
         val last_min_name = MinMaxMaxTwoResult()[4]
         val all_volume = MinMaxMaxTwoResult()[5]
 
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-//        pref.edit().putInt("first_name", first_max_name).apply()
-//        pref.edit().putInt("first_volume", first_max_volume).apply()
-//        pref.edit().putInt("second_name", second_max_name).apply()
-//        pref.edit().putInt("second_volume", second_max_volume).apply()
-//        pref.edit().putInt("last_name", last_min_name).apply()
-//        pref.edit().putInt("all_volume", all_volume).apply()
-
-        dataModel.resultTotemTest.value?.clear()
-        dataModel.resultTotemTest.value?.add(first_max_name)
-        dataModel.resultTotemTest.value?.add(first_max_volume)
-        dataModel.resultTotemTest.value?.add(second_max_name)
-        dataModel.resultTotemTest.value?.add(second_max_volume)
-        dataModel.resultTotemTest.value?.add(last_min_name)
-        dataModel.resultTotemTest.value?.add(all_volume)
-
         intent.putExtra("first_name", first_max_name)
         intent.putExtra("first_volume", first_max_volume)
         intent.putExtra("second_name", second_max_name)
@@ -472,15 +456,6 @@ class StartTest_activity : BaseActivity_ApComAct() {
         Log.d("MyLog","prepareSavePutResDoshaTest : $vataValue, $pittaValue, $kaphaValue" +
                 "" )
 
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        //pref.edit().putInt("dosha_vata", vataValue).apply()
-        //pref.edit().putInt("dosha_pitta", pittaValue).apply()
-        //pref.edit().putInt("dosha_kapha", kaphaValue).apply()
-
-        dataModel.resultDoshaTest.value?.clear()
-        dataModel.resultDoshaTest.value?.add(vataValue)
-        dataModel.resultDoshaTest.value?.add(pittaValue)
-        dataModel.resultDoshaTest.value?.add(kaphaValue)
 
         intent.putExtra("dosha_vata", vataValue)
         intent.putExtra("dosha_pitta", pittaValue)

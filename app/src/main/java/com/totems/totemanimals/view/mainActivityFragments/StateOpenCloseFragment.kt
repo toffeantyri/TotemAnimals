@@ -1,5 +1,6 @@
 package com.totems.totemanimals.view.mainActivityFragments
 
+import android.content.Intent
 import android.os.Handler
 
 import android.view.View
@@ -7,13 +8,13 @@ import android.widget.ScrollView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.totems.totemanimals.R
+import com.totems.totemanimals.StartTest_activity
 import com.totems.totemanimals.viewModel.DataModelTestResult
 import kotlinx.android.synthetic.main.fragment_fragment_test_result.view.*
 
 
 open class StateOpenCloseFragment : Fragment() {
 
-    val dataModel : DataModelTestResult by activityViewModels()
     open var state_op_close_res: Int = 0
     open var handler : Handler = Handler()
 
@@ -68,5 +69,23 @@ open class StateOpenCloseFragment : Fragment() {
         handler.postDelayed({this.smoothScrollBy(0, targetView.top+addY)},10)
     }
 
+    fun View.bindAllButtonStartTest() {
+        this.btn_start_test.setOnClickListener {
+            val intent = Intent(
+                activity,
+                StartTest_activity::class.java
+            )
+            intent.putExtra("new_test", "new_animaltotem_test")
+            activity?.startActivityForResult(intent, 100)
+        }
+        this.btn_start_test_dosha.setOnClickListener {
+            val intent = Intent(
+                activity,
+                StartTest_activity::class.java
+            )
+            intent.putExtra("new_test", "new_dosha_test")
+            activity?.startActivityForResult(intent, 200)
+        }
+    }
 
 }

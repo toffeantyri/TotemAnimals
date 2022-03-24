@@ -30,6 +30,7 @@ class MainActivity : BaseActivity_ApComAct() {
     private val adapter1 = AnimalsAdaptList()
     lateinit var handler: Handler
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,10 +39,12 @@ class MainActivity : BaseActivity_ApComAct() {
         addAllAnimalOnRV()
         handler = Handler()
 
+        setUpPreference()
+        setUpPreferenceTwo()
         rcView_AnList.visibility = View.GONE
         my_info_frame.visibility = View.GONE
-
         setUpBottomNavigationMenu()
+
         my_testResult_frame.visibility = View.VISIBLE
 
         initMobileAdsYandex()
@@ -59,8 +62,6 @@ class MainActivity : BaseActivity_ApComAct() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("MyLog", "OnActivityResult MainActivity")
-        val lAP = setUpPreference()
-        val listDoshPref = setUpPreferenceTwo()
         if (requestCode == 100 && resultCode == Activity.RESULT_OK && data != null) {
             val f_n = data.getIntExtra("first_name", -1)
             val f_v = data.getIntExtra("first_volume", -1)
@@ -68,28 +69,42 @@ class MainActivity : BaseActivity_ApComAct() {
             val s_v = data.getIntExtra("second_volume", -1)
             val l_n = data.getIntExtra("last_name", -1)
             val a_v = data.getIntExtra("all_volume", -1)
+
+            dataModel.resultTotemTest.value?.clear()
+            dataModel.resultTotemTest.value?.add(f_n)
+            dataModel.resultTotemTest.value?.add(f_v)
+            dataModel.resultTotemTest.value?.add(s_n)
+            dataModel.resultTotemTest.value?.add(s_v)
+            dataModel.resultTotemTest.value?.add(l_n)
+            dataModel.resultTotemTest.value?.add(a_v)
             dataModel.stateOpenTestAnimal.value = 1
-            val result_array = arrayOf(f_n, f_v, s_n, s_v, l_n, a_v)                 //первая цифра - состояние открытости закрытости результатов теста (подробнее в Base_activity)
+
+            dataModel.saveResultsToPreference(this)
+
             Log.d("MyLog", "onActivityResult Animals Result:  $f_n $f_v $s_n $s_v $l_n $a_v ")
             supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.my_testResult_frame,
-                    fragment_testResult.newInstance(
-                        result_array, listDoshPref
-                    )
+                    fragment_testResult.newInstance()
                 ).commit()
         } else if (requestCode == 200 && resultCode == Activity.RESULT_OK && data != null) {
             val vataValue = data.getIntExtra("dosha_vata", 1)
             val pittaValue = data.getIntExtra("dosha_pitta", 1)
             val kaphaValue = data.getIntExtra("dosha_kapha", 1)
 
+            dataModel.resultDoshaTest.value?.clear()
+            dataModel.resultDoshaTest.value?.add(vataValue)
+            dataModel.resultDoshaTest.value?.add(pittaValue)
+            dataModel.resultDoshaTest.value?.add(kaphaValue)
             dataModel.stateOpenTestAnimal.value = 2
-            val result_array2 = arrayOf(vataValue,pittaValue,kaphaValue)
+
+            dataModel.saveResultsToPreference(this)
+
             Log.d("MyLog", "onActivityResult Doshas Result:  $vataValue , $pittaValue , $kaphaValue ")
             supportFragmentManager.beginTransaction()
                 .replace(
                     R.id.my_testResult_frame,
-                    fragment_testResult.newInstance(arrayOf(lAP[0],lAP[1],lAP[2],lAP[3],lAP[4],lAP[5]),result_array2)
+                    fragment_testResult.newInstance()
                 ).commit()
         } else {
             Log.d(

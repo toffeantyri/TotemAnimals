@@ -1,4 +1,5 @@
 package com.totems.totemanimals
+
 import android.content.DialogInterface
 import androidx.preference.PreferenceManager
 import android.view.View
@@ -15,9 +16,10 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
     val dataModel: DataModelTestResult by viewModels()
     // инициализация ВьюМоделКласса для активити! - от viewModels!!!!!!! фрагмент будет от activityViewModels
 
-    fun setUpPreference(): Array<Int> {
+    fun setUpPreference() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
-        val pref_state = 0 // состояние фрагмента тест результ. 0 - все результаты закрыты, 1 - результат AnimalResult - Открыт
+        val pref_state = 0 //
+        // состояние фрагмента тест результ. 0 - все результаты закрыты, 1 - результат AnimalResult - Открыт
         //2- результат теста дош открыт
         //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
         //префы для теста Тотемное животное
@@ -36,13 +38,10 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         dataModel.resultTotemTest.value?.add(pref3)
         dataModel.resultTotemTest.value?.add(pref4)
         dataModel.resultTotemTest.value?.add(pref5)
-
-        return arrayOf(pref0,pref1,pref2,pref3,pref4,pref5)
     }
 
 
-
-    fun setUpPreferenceTwo(): Array<Int> {
+    fun setUpPreferenceTwo() {
         val pref = PreferenceManager.getDefaultSharedPreferences(this)
         //состояние открытости закрытости результатов теста - в SetUpPreference()
         //префы для теста Доши
@@ -53,9 +52,7 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         dataModel.resultDoshaTest.value?.add(pref1)
         dataModel.resultDoshaTest.value?.add(pref2)
         dataModel.resultDoshaTest.value?.add(pref3)
-        return arrayOf(pref1,pref2,pref3)
     }
-
 
 
     //установка действия для кнопок боттом меню
@@ -64,10 +61,8 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
             .replace(R.id.my_info_frame, fragment_info()) // это для прогрузки фрагмент инфо до загрузки
         supportFragmentManager.beginTransaction()
             .replace(
-                R.id.my_testResult_frame,               // сначала грузим тест_результ
-                fragment_testResult.newInstance(
-                    setUpPreference(), setUpPreferenceTwo()
-                )
+                R.id.my_testResult_frame,
+                fragment_testResult.newInstance()
             ).commit()
 
         nav_bottom_menu.setOnNavigationItemSelectedListener {
@@ -77,35 +72,42 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
                     my_info_frame.visibility = View.GONE
 
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.my_testResult_frame,
-                            fragment_testResult.newInstance(
-                                setUpPreference(), setUpPreferenceTwo()
-                            )
+                        .replace(
+                            R.id.my_testResult_frame,
+                            fragment_testResult.newInstance()
                         ).commit()
                     my_testResult_frame.visibility = View.VISIBLE
                 }
                 R.id.search_menu_id -> {
+                    dataModel.stateOpenTestAnimal.value = 0
                     rcView_AnList.visibility = View.VISIBLE
                     my_info_frame.visibility = View.GONE
                     my_testResult_frame.visibility = View.GONE
                 }
                 R.id.info_menu_id -> {
+                    dataModel.stateOpenTestAnimal.value = 0
                     my_testResult_frame.visibility = View.GONE
                     rcView_AnList.visibility = View.GONE
 
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.my_info_frame,
+                        .replace(
+                            R.id.my_info_frame,
                             fragment_info()
                         ).commit()
                     my_info_frame.visibility = View.VISIBLE
                 }
                 R.id.exit_menu_id -> {
+                    dataModel.stateOpenTestAnimal.value = 0
                     val aDialog = AlertDialog.Builder(this)
 
                     aDialog.setMessage(R.string.Alert_message_exit)
                         .setCancelable(false)
-                        .setNegativeButton(R.string.Alert_no,DialogInterface.OnClickListener{dialog, id -> dialog.cancel()  })
-                        .setPositiveButton(R.string.Alert_yes,DialogInterface.OnClickListener { dialog, id -> finish() })
+                        .setNegativeButton(
+                            R.string.Alert_no,
+                            DialogInterface.OnClickListener { dialog, id -> dialog.cancel() })
+                        .setPositiveButton(
+                            R.string.Alert_yes,
+                            DialogInterface.OnClickListener { dialog, id -> finish() })
 
                     val alert = aDialog.create()
                     alert.show()

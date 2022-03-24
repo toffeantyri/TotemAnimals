@@ -40,6 +40,17 @@ import java.lang.StringBuilder
 
 class fragment_testResult : StateOpenCloseFragment() {
 
+    companion object {
+        @JvmStatic
+        fun newInstance(): fragment_testResult {
+            val fragment = fragment_testResult()
+            val args = Bundle()
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
+    val dataModel : DataModelTestResult by activityViewModels()
     lateinit var animat_var: Animations
     lateinit var rect_r10_all: Drawable
     lateinit var rect_r10_up: Drawable
@@ -75,6 +86,7 @@ class fragment_testResult : StateOpenCloseFragment() {
         dataModel.stateOpenTestAnimal.observe(activity as LifecycleOwner, {
             state_op_close_res = it
         })
+
         dataModel.resultTotemTest.observe(activity as LifecycleOwner, {
             first_name = it[0]
             first_volume = it[1]
@@ -83,98 +95,28 @@ class fragment_testResult : StateOpenCloseFragment() {
             last_name = it[4]
             all_volume = it[5]
         })
+
         dataModel.resultDoshaTest.observe(activity as LifecycleOwner, {
             vataResult = it[0]
             pittaResult = it[1]
             kaphaResult = it[2]
         })
 
-
-        bindAllButtonStartTest(view0)
-
-        //todo fun bind resultbutton and go in onResume
-        view0.LinearLayout_result1.setOnClickListener {
-            animat_var.anim_Testresult(im_testresult_n1)
-            val first_animal: ShablonAnimalDataClass = animal_construct(first_name)
-            val intent = Intent(activity, ActivityDescptView::class.java)
-            intent.putExtra(first_animal.INTENT_KEY_RESULT, first_animal)
-            handler.postDelayed({ startActivity(intent) }, 300)
-        }
-        view0.LinearLayout_result2.setOnClickListener {
-            animat_var.anim_Testresult(im_testresult_n2)
-            val second_animal = animal_construct(second_name)
-            val intent = Intent(activity, ActivityDescptView::class.java)
-            intent.putExtra(second_animal.INTENT_KEY_RESULT, second_animal)
-            handler.postDelayed({ startActivity(intent) }, 300)
-        }
-        view0.LinearLayout_result3.setOnClickListener {
-            animat_var.anim_Testresult(im_testresult_n3)
-            val last_animal = animal_construct(last_name)
-            val intent = Intent(activity, ActivityDescptView::class.java)
-            intent.putExtra(last_animal.INTENT_KEY_RESULT, last_animal)
-            handler.postDelayed({ startActivity(intent) }, 300)
-        }
-
-        view0.btn_read_dosha_res.setOnClickListener {
-            val resultConstruct = doshaDescrClassConstructor(vataResult, pittaResult, kaphaResult)
-            val intent = Intent(activity, ActivityDescptView::class.java)
-            intent.putExtra(resultConstruct.INTENT_KEY_RESULT, resultConstruct)
-            startActivity(intent)
-        }
-
-        view0.im_arrow_down_an_result.setOnClickListener {
-
-            if (view0.ContainerLayout_Res_Animal.visibility == View.VISIBLE) {
-                view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
-                view0.ContainerLayout_Res_Animal.visibility = View.GONE
-                view0.im_arrow_down_an_result.background = rect_r10_all
-            } else if (view0.ContainerLayout_Res_Animal.visibility == View.GONE) {
-                view0.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
-                view0.ContainerLayout_Res_Animal.visibility = View.VISIBLE
-                view0.im_arrow_down_an_result.background = rect_r10_up
-                animat_var.down_result(view0.ContainerLayout_Res_Animal)
-            }
-            view0.tv_no_results.visibility = if (first_name == -1) View.VISIBLE else View.GONE
-            if (first_name != -1) {
-                view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal, 0)
-            }
-
-        }
-        view0.im_arrow_down_dosh_result.setOnClickListener {
-            if (view0.ContainerLayout_Res_Doshi.visibility == View.VISIBLE) {
-                view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
-                view0.ContainerLayout_Res_Doshi.visibility = View.GONE
-                view0.im_arrow_down_dosh_result.background = rect_r10_all
-            } else if (view0.ContainerLayout_Res_Doshi.visibility == View.GONE) {
-                view0.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
-                view0.ContainerLayout_Res_Doshi.visibility = View.VISIBLE
-                view0.im_arrow_down_dosh_result.background = rect_r10_up
-                animat_var.down_result(view0.ContainerLayout_Res_Doshi)
-
-            }
-            view0.tv_no_results_dosha.visibility = if (vataResult == -1) View.VISIBLE else View.GONE
-            if (vataResult != -1) {
-                view0.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi, 300)
-            }
-        }
-
         Log.d("MyLog", "OnCreateView testResult ")
         return view0
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
     }
 
     override fun onResume() {
         super.onResume()
         //все проверки состояний во фрагменте. только в onResume!
+        Log.d("MyLog", "TestResultFr  onResume: $vataResult , $pittaResult, $kaphaResult")
+        Log.d("MyLog", "TestResultFr onResume Doshas: ${dataModel.resultDoshaTest.value.toString()}")
+        Log.d("MyLog", "TestResultFr onResume Animals: ${dataModel.resultTotemTest.value.toString()}")
 
         view?.arrowUpDownStateView()
         view?.containersVisibilityState()
         view?.tvNoResultsVisibility(first_name, vataResult)
+
         view?.viewBindResultFromBungle(first_name, first_volume, second_name, second_volume, last_name, all_volume)
 
         listResultDoshi = arrayListOf(
@@ -183,12 +125,8 @@ class fragment_testResult : StateOpenCloseFragment() {
             PieEntry(kaphaResult.toFloat(), getString(R.string.dosha_title_kapha))
         )
 
-        view?.viewBindResultDoshaFromBungle(
-            dosha_result_diagram,
-            listResultDoshi[0].y.toInt(),
-            listResultDoshi[1].y.toInt(),
-            listResultDoshi[2].y.toInt()
-        )
+        view?.bindAllButtonStartTest()
+        view?.bindResultReadButtons()
 
         myValueListener = PieValueSelect(listResultDoshi)
         myChartListener = myValueListener.PieChartTouchListener()
@@ -196,34 +134,18 @@ class fragment_testResult : StateOpenCloseFragment() {
         dosha_result_diagram.onChartGestureListener = myChartListener
         dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
 
+        view?.viewBindResultDoshaFromBungle(
+            dosha_result_diagram,
+            listResultDoshi[0].y.toInt(),
+            listResultDoshi[1].y.toInt(),
+            listResultDoshi[2].y.toInt()
+        )
 
         if (state_op_close_res == 1) {
             view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Animal, 0)
         }
         if (state_op_close_res == 2) {
             view?.testResScrollView?.scrollToCenterView(ContainerLayout_Res_Doshi, 300)
-        }
-
-        Log.d("MyLog", "TestResultFr  onResume: $vataResult , $pittaResult, $kaphaResult")
-        Log.d("MyLog", "TestResultFr onResume: ${dataModel.resultDoshaTest.value.toString()}")
-    }
-
-    fun bindAllButtonStartTest(view: View) {
-        view.btn_start_test.setOnClickListener {
-            val intent = Intent(
-                activity,
-                StartTest_activity::class.java
-            )
-            intent.putExtra("new_test", "new_animaltotem_test")
-            activity?.startActivityForResult(intent, 100)
-        }
-        view.btn_start_test_dosha.setOnClickListener {
-            val intent = Intent(
-                activity,
-                StartTest_activity::class.java
-            )
-            intent.putExtra("new_test", "new_dosha_test")
-            activity?.startActivityForResult(intent, 200)
         }
     }
 
@@ -243,10 +165,7 @@ class fragment_testResult : StateOpenCloseFragment() {
     }
 
     fun doshaDescrClassConstructor(vataRes: Int, pittaRes: Int, kaphaRes: Int): ShablonDoshaDataClass {
-
-
         val image: Int = List_Resours_Doshi.imIdList[0]
-
         //title appender
         val title = StringBuilder()
         if (vataRes < List_Resours_Doshi.BALANCE_LEVEL_MIN || vataRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
@@ -380,33 +299,72 @@ class fragment_testResult : StateOpenCloseFragment() {
     }
 
     fun View.bindResultReadButtons() {
+        this.LinearLayout_result1.setOnClickListener {
+            animat_var.anim_Testresult(im_testresult_n1)
+            val first_animal: ShablonAnimalDataClass = animal_construct(first_name)
+            val intent = Intent(activity, ActivityDescptView::class.java)
+            intent.putExtra(first_animal.INTENT_KEY_RESULT, first_animal)
+            handler.postDelayed({ startActivity(intent) }, 300)
+        }
+        this.LinearLayout_result2.setOnClickListener {
+            animat_var.anim_Testresult(im_testresult_n2)
+            val second_animal = animal_construct(second_name)
+            val intent = Intent(activity, ActivityDescptView::class.java)
+            intent.putExtra(second_animal.INTENT_KEY_RESULT, second_animal)
+            handler.postDelayed({ startActivity(intent) }, 300)
+        }
+        this.LinearLayout_result3.setOnClickListener {
+            animat_var.anim_Testresult(im_testresult_n3)
+            val last_animal = animal_construct(last_name)
+            val intent = Intent(activity, ActivityDescptView::class.java)
+            intent.putExtra(last_animal.INTENT_KEY_RESULT, last_animal)
+            handler.postDelayed({ startActivity(intent) }, 300)
+        }
 
-    }
+        this.btn_read_dosha_res.setOnClickListener {
+            val resultConstruct = doshaDescrClassConstructor(vataResult, pittaResult, kaphaResult)
+            val intent = Intent(activity, ActivityDescptView::class.java)
+            intent.putExtra(resultConstruct.INTENT_KEY_RESULT, resultConstruct)
+            startActivity(intent)
+        }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(pref0: Array<Int>, pref1: Array<Int>): fragment_testResult {
-            val fragment = fragment_testResult()
-            val args = Bundle()
+        this.im_arrow_down_an_result.setOnClickListener {
+            if (this.ContainerLayout_Res_Animal.visibility == View.VISIBLE) {
+                this.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
+                this.ContainerLayout_Res_Animal.visibility = View.GONE
+                this.im_arrow_down_an_result.background = rect_r10_all
+            } else if (this.ContainerLayout_Res_Animal.visibility == View.GONE) {
+                this.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
+                this.ContainerLayout_Res_Animal.visibility = View.VISIBLE
+                this.im_arrow_down_an_result.background = rect_r10_up
+                animat_var.down_result(this.ContainerLayout_Res_Animal)
+            }
+            this.tv_no_results.visibility = if (first_name == -1) View.VISIBLE else View.GONE
+            if (first_name != -1) {
+                this.testResScrollView.scrollToCenterView(ContainerLayout_Res_Animal, 0)
+            }
 
-            args.putInt("first_name", pref0[0].toInt())
-            args.putInt("first_volume", pref0[1].toInt())
-            args.putInt("second_name", pref0[2].toInt())
-            args.putInt("second_volume", pref0[3].toInt())
-            args.putInt("last_name", pref0[4].toInt())
-            args.putInt("all_volume", pref0[5].toInt())
+        }
+        this.im_arrow_down_dosh_result.setOnClickListener {
+            if (this.ContainerLayout_Res_Doshi.visibility == View.VISIBLE) {
+                this.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
+                this.ContainerLayout_Res_Doshi.visibility = View.GONE
+                this.im_arrow_down_dosh_result.background = rect_r10_all
+            } else if (this.ContainerLayout_Res_Doshi.visibility == View.GONE) {
+                this.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
+                this.ContainerLayout_Res_Doshi.visibility = View.VISIBLE
+                this.im_arrow_down_dosh_result.background = rect_r10_up
+                animat_var.down_result(this.ContainerLayout_Res_Doshi)
 
-            args.putInt("dosha_vata", pref1[0])
-            args.putInt("dosha_pitta", pref1[1])
-            args.putInt("dosha_kapha", pref1[2])
-
-            Log.d("MyLog", pref0.contentToString())
-            Log.d("MyLog", pref1.contentToString())
-
-            fragment.arguments = args
-            return fragment
+            }
+            this.tv_no_results_dosha.visibility = if (vataResult == -1) View.VISIBLE else View.GONE
+            if (vataResult != -1) {
+                this.testResScrollView.scrollToCenterView(ContainerLayout_Res_Doshi, 300)
+            }
         }
     }
+
+
 }
 
 
