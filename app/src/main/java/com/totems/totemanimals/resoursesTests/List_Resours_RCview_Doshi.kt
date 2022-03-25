@@ -7,7 +7,7 @@ object List_Resours_RCview_Doshi : ListResourseClass() {
 
     override val imIdList: Array<Int> = arrayOf(R.drawable.dosha_vata_image,R.drawable.dosha_vata_image, R.drawable.dosha_pitta_image, R.drawable.dosha_kapha_image)
 
-    override val nameIdList: Array<String> = arrayOf("Концепция Дош", "Вата-доша", "Питта-доша", "Капха-доша")
+    override val nameIdList: Array<String> = arrayOf("Концепция", "Вата-доша", "Питта-доша", "Капха-доша")
 
     override val descriptIdList: Array<String> = arrayOf(
         "\n\t\t\t\t\t Концепция \n\n" +

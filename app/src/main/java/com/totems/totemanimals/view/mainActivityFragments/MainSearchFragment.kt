@@ -9,18 +9,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.totems.totemanimals.ActivityDescptView
 import com.totems.totemanimals.R
+import com.totems.totemanimals.resoursesTests.List_Resours_RCview_Doshi
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
+import com.totems.totemanimals.view.mainAdapters.doshi_adapters.DoshaAdaptList
+import com.totems.totemanimals.view.mainAdapters.doshi_adapters.ShablonDoshaDataClass
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.AnimalsAdaptList
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main_search.*
+import kotlinx.android.synthetic.main.fragment_main_search.rcView_AnList
+import kotlinx.android.synthetic.main.fragment_main_search.rcView_Doshas
+import kotlinx.android.synthetic.main.fragment_main_search.view.*
 
 
 class MainSearchFragment : Fragment() {
+
+    companion object {
+        @JvmStatic
+        fun newInstance(){}
+    }
+
     private val adapter1 = AnimalsAdaptList()
+    private val adapter2 = DoshaAdaptList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,12 +45,15 @@ class MainSearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.initRV()
-        adapter1.addAllAnimalOnRV(view, listOfShablonsBuilder() )
+        view.initRVAnimals()
+        view.initRVDoshas()
+        //adapter1.addAllAnimalOnRV(view, listOfShablonsBuilderAnimal() )
+        //adapter2.addAllDoshaDescrOnRV(view, listOfShablonsBuilderDosha())
+        view.bindAllOpenLists()
     }
 
 
-    private fun View.initRV() {
+    private fun View.initRVAnimals() {
         rcView_AnList.layoutManager = GridLayoutManager(activity, 3)
         rcView_AnList.adapter = adapter1
         adapter1.onItemClick = { Animal : ShablonAnimalDataClass ->
@@ -46,7 +63,18 @@ class MainSearchFragment : Fragment() {
         }
     }
 
-    fun listOfShablonsBuilder(): ArrayList<ShablonAnimalDataClass>{
+    private fun View.initRVDoshas() {
+        rcView_Doshas.layoutManager = GridLayoutManager(activity, 2)
+        rcView_Doshas.adapter = adapter2
+        adapter2.onItemClick = { Dosha : ShablonDoshaDataClass ->
+            val intent = Intent(activity, ActivityDescptView::class.java)
+            intent.putExtra(Dosha.INTENT_KEY_SEARCH, Dosha)
+            startActivity(intent)
+        }
+    }
+
+    //todo создать общий шаблон класс для дата класса
+    fun listOfShablonsBuilderAnimal(): ArrayList<ShablonAnimalDataClass>{
         var a: Int
         var b: String
         var c: String
@@ -64,11 +92,42 @@ class MainSearchFragment : Fragment() {
         return list
     }
 
+    fun listOfShablonsBuilderDosha(): ArrayList<ShablonDoshaDataClass>{
+        var a: Int
+        var b: String
+        var c: String
+        var doshaAdd: ShablonDoshaDataClass
+        var index = 0
+        val list = arrayListOf<ShablonDoshaDataClass>()
+        for (i in List_Resours_RCview_Doshi.imIdList) {
+            a = List_Resours_RCview_Doshi.imIdList[index]
+            b = List_Resours_RCview_Doshi.nameIdList[index]
+            c = List_Resours_RCview_Doshi.descriptIdList[index]
+            doshaAdd = ShablonDoshaDataClass(a, b, c)
+            list.add(doshaAdd)
+            index++
+        }
+        return list
+    }
 
-
-    companion object {
-       @JvmStatic
-        fun newInstance(){}
+    fun View.bindAllOpenLists() {
+        this.apply {
+            btn_open_an_rclist.setOnClickListener {
+                adapter1.addAllAnimalOnRV(this, listOfShablonsBuilderAnimal() )
+                if(rcView_AnList.visibility == View.GONE) {rcView_AnList.visibility = View.VISIBLE
+                btn_open_an_rclist.setImageResource(R.drawable.ic_expand_less_black_32dp)}
+                else {rcView_AnList.visibility = View.GONE
+                    btn_open_an_rclist.setImageResource(R.drawable.ic_expand_more_black_32dp)}
             }
+
+            btn_open_dosh_rclist.setOnClickListener {
+                adapter2.addAllDoshaDescrOnRV(this, listOfShablonsBuilderDosha())
+                if(rcView_Doshas.visibility == View.GONE) {rcView_Doshas.visibility = View.VISIBLE
+                    btn_open_dosh_rclist.setImageResource(R.drawable.ic_expand_less_black_32dp)}
+                else {rcView_Doshas.visibility = View.GONE
+                    btn_open_dosh_rclist.setImageResource(R.drawable.ic_expand_more_black_32dp)}
+            }
+        }
+    }
 
 }

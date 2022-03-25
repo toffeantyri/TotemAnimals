@@ -7,7 +7,7 @@
     <string name="Alert_no">Нет</string>
 
     <string name="nav_menu_test">Тесты</string>
-    <string name="nav_menu_search">Поиск</string>
+    <string name="nav_menu_search">Описания</string>
     <string name="nav_menu_info">Инфо</string>
     <string name="nav_menu_exit">Выход</string>
 
@@ -60,4 +60,6 @@
     <string name="share_app_info">Поделиться приложением</string>
     <string name="text_share_link_app">Хочешь узнать своё тотемное животное и пройти различные тесты личности?</string>
     <string name="btn_read_dosha_res">Как сбалансировать доши</string>
+    <string name="rc_text_all_animals">Описание всех Тотемных Животных</string>
+    <string name="rc_text_all_doshas">Концепция Дош в Аюрведе</string>
 </resources>

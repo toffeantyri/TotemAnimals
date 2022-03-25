@@ -10,7 +10,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.totems.totemanimals.R
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
-import kotlinx.android.synthetic.main.fragment_main_search.*
 import kotlinx.android.synthetic.main.fragment_main_search.view.*
 
 class AnimalsAdaptList(var onItemClick: ((ShablonAnimalDataClass) -> Unit)? = null) :
@@ -37,7 +36,7 @@ class AnimalsAdaptList(var onItemClick: ((ShablonAnimalDataClass) -> Unit)? = nu
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.animal_shablon_xml, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.rc_desc_shablon_xml, parent, false)
         return AnimalHolder(view)
     }
 
@@ -50,11 +49,7 @@ class AnimalsAdaptList(var onItemClick: ((ShablonAnimalDataClass) -> Unit)? = nu
                     itemView.setAnimationInsert()
                 }, 0
             )
-
-
         }
-
-
     }
 
     override fun getItemCount(): Int {
@@ -64,7 +59,7 @@ class AnimalsAdaptList(var onItemClick: ((ShablonAnimalDataClass) -> Unit)? = nu
 
     fun View.setAnimationInsert() {
         val anim = AlphaAnimation(0.0f, 1.0f)
-        anim.duration = 1500
+        anim.duration = 1000
         this.startAnimation(anim)
         this.alpha = 1f
     }

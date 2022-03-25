@@ -34,7 +34,7 @@
     <string name="close_test_alert">Close test?</string>
     <string name="close_test">Close test</string>
     <string name="nav_menu_test">Tests</string>
-    <string name="nav_menu_search">Search</string>
+    <string name="nav_menu_search">Descriptions</string>
     <string name="nav_menu_info">Info</string>
     <string name="nav_menu_exit">Exit</string>
 
@@ -89,6 +89,9 @@
     <string name="dosha_level_l">low</string>
 
     <string name="btn_read_dosha_res">How to balance doshas</string>
+    
+    <string name="rc_text_all_animals">Descriptions all Totem Animals</string>
+    <string name="rc_text_all_doshas">Concept of Doshas in Ayurveda</string>
 
 
 </resources>

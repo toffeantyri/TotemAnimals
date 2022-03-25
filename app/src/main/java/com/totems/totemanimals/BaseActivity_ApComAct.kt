@@ -62,6 +62,9 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
             .replace(R.id.my_info_frame, Fragment_info()) // это для прогрузки фрагмент инфо до загрузки
         supportFragmentManager.beginTransaction()
             .replace(R.id.my_testResult_frame,fragment_testResult.newInstance()).commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.my_search_frame,MainSearchFragment()).commit()
+
 
         nav_bottom_menu.setOnNavigationItemSelectedListener {
             when (it.itemId) {
