@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : BaseActivity_ApComAct() {
-    private val adapter1 = AnimalsAdaptList()
+
     lateinit var handler: Handler
 
 
@@ -35,13 +35,12 @@ class MainActivity : BaseActivity_ApComAct() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        initRV()
-        addAllAnimalOnRV()
+
         handler = Handler()
 
         setUpPreference()
         setUpPreferenceTwo()
-        rcView_AnList.visibility = View.GONE
+        my_search_frame.visibility = View.GONE
         my_info_frame.visibility = View.GONE
         setUpBottomNavigationMenu()
 
@@ -51,7 +50,7 @@ class MainActivity : BaseActivity_ApComAct() {
         loadAndShowBanner()
 
 
-       Log.d("MyLog", "OnCreate MainActivity state: ${dataModel.stateOpenTestAnimal.value.toString()}")
+       //Log.d("MyLog", "OnCreate MainActivity state: ${dataModel.stateOpenTestAnimal.value.toString()}")
     }
 
     override fun onResume() {
@@ -114,35 +113,6 @@ class MainActivity : BaseActivity_ApComAct() {
         }
     }
 
-    fun addAllAnimalOnRV() {
-        if (List_resours_an_totem.imIdList.count() != rcView_AnList.layoutManager?.itemCount) {
-            var a: Int
-            var b: String
-            var c: String
-            var animalAdd: ShablonAnimalDataClass
-            var index = 0
-            for (i in List_resours_an_totem.imIdList) {
-                a = List_resours_an_totem.imIdList[index]
-                b = List_resours_an_totem.nameIdList[index]
-                c = List_resours_an_totem.descriptIdList[index]
-                animalAdd = ShablonAnimalDataClass(a, b, c)
-                adapter1.addAnimal(animalAdd)
-                index++
-            }
-        }
-    }
-
-    private fun initRV() {
-        rcView_AnList.layoutManager = GridLayoutManager(this@MainActivity, 3)
-        rcView_AnList.adapter = adapter1
-        adapter1.onItemClick = { Animal : ShablonAnimalDataClass ->
-            val intent = Intent(this, ActivityDescptView::class.java)
-            intent.putExtra(Animal.INTENT_KEY_SEARCH, Animal)
-            startActivity(intent)
-
-        }
-    }
-
     var double_back_press = false
     override fun onBackPressed() {
 
@@ -169,7 +139,6 @@ class MainActivity : BaseActivity_ApComAct() {
 
 
     }
-
 
     fun initMobileAdsYandex() {
         MobileAds.initialize(this) { Log.d("MyLog", "SDK Initialised OK") }

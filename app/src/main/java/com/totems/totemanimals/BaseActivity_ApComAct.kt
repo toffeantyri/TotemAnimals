@@ -6,7 +6,8 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import com.totems.totemanimals.view.mainActivityFragments.fragment_info
+import com.totems.totemanimals.view.mainActivityFragments.Fragment_info
+import com.totems.totemanimals.view.mainActivityFragments.MainSearchFragment
 import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
 import com.totems.totemanimals.viewModel.DataModelTestResult
 import kotlinx.android.synthetic.main.activity_main.*
@@ -58,48 +59,55 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
     //установка действия для кнопок боттом меню
     fun setUpBottomNavigationMenu() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.my_info_frame, fragment_info()) // это для прогрузки фрагмент инфо до загрузки
+            .replace(R.id.my_info_frame, Fragment_info()) // это для прогрузки фрагмент инфо до загрузки
         supportFragmentManager.beginTransaction()
-            .replace(
-                R.id.my_testResult_frame,
-                fragment_testResult.newInstance()
-            ).commit()
+            .replace(R.id.my_testResult_frame,fragment_testResult.newInstance()).commit()
 
         nav_bottom_menu.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.home_menu_id -> {
-                    rcView_AnList.visibility = View.GONE
-                    my_info_frame.visibility = View.GONE
-
-                    supportFragmentManager.beginTransaction()
-                        .replace(
-                            R.id.my_testResult_frame,
-                            fragment_testResult.newInstance()
-                        ).commit()
                     my_testResult_frame.visibility = View.VISIBLE
+                    my_info_frame.visibility = View.GONE
+                    my_search_frame.visibility = View.GONE
+                    if(supportFragmentManager.findFragmentById(R.id.my_testResult_frame) == null) {
+                        supportFragmentManager.beginTransaction()
+                            .replace(
+                                R.id.my_testResult_frame,
+                                fragment_testResult.newInstance()
+                            ).commit()
+                    }
                 }
+
                 R.id.search_menu_id -> {
                     dataModel.stateOpenTestAnimal.value = 0
-                    rcView_AnList.visibility = View.VISIBLE
+                    my_search_frame.visibility = View.VISIBLE
                     my_info_frame.visibility = View.GONE
                     my_testResult_frame.visibility = View.GONE
+                    if(supportFragmentManager.findFragmentById(R.id.my_search_frame) == null) {
+                        supportFragmentManager.beginTransaction()
+                            .replace(
+                                R.id.my_search_frame,
+                                MainSearchFragment()
+                            ).commit()
+                    }
                 }
+
                 R.id.info_menu_id -> {
                     dataModel.stateOpenTestAnimal.value = 0
-                    my_testResult_frame.visibility = View.GONE
-                    rcView_AnList.visibility = View.GONE
-
-                    supportFragmentManager.beginTransaction()
-                        .replace(
-                            R.id.my_info_frame,
-                            fragment_info()
-                        ).commit()
                     my_info_frame.visibility = View.VISIBLE
+                    my_testResult_frame.visibility = View.GONE
+                    my_search_frame.visibility = View.GONE
+                    if(supportFragmentManager.findFragmentById(R.id.my_info_frame) == null) {
+                        supportFragmentManager.beginTransaction()
+                            .replace(
+                                R.id.my_info_frame,
+                                Fragment_info()
+                            ).commit()
+                    }
                 }
                 R.id.exit_menu_id -> {
                     dataModel.stateOpenTestAnimal.value = 0
                     val aDialog = AlertDialog.Builder(this)
-
                     aDialog.setMessage(R.string.Alert_message_exit)
                         .setCancelable(false)
                         .setNegativeButton(

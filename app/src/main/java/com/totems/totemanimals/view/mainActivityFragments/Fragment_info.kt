@@ -12,7 +12,7 @@ import com.totems.totemanimals.R
 import kotlinx.android.synthetic.main.fragment_fragment_info.view.*
 
 
-class fragment_info : Fragment() {
+class Fragment_info : Fragment() {
 
 
     override fun onCreateView(
@@ -65,7 +65,7 @@ class fragment_info : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = fragment_info()
+        fun newInstance() = Fragment_info()
     }
 
 
