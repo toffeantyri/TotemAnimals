@@ -20,12 +20,14 @@
             android:paddingBottom="20dp">
 
             <LinearLayout
+                android:id="@+id/btn_linearContainer_open_Animal"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_rectangle_r10"
                 android:layout_marginHorizontal="5dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:clickable="true">
 
                 <TextView
                     android:id="@+id/textView"
@@ -56,12 +58,14 @@
             </androidx.recyclerview.widget.RecyclerView>
 
             <LinearLayout
+                android:id="@+id/btn_linearContainer_open_Doshas"
                 android:background="@drawable/shape_rectangle_r10"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="5dp"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                android:clickable="true">
 
                 <TextView
                     android:id="@+id/textView6"

@@ -19,6 +19,7 @@ import com.totems.totemanimals.view.mainAdapters.doshi_adapters.DoshaAdaptList
 import com.totems.totemanimals.view.mainAdapters.doshi_adapters.ShablonDoshaDataClass
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.AnimalsAdaptList
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
+import com.totems.totemanimals.view.mainQuestion.Animations
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_main_search.*
 import kotlinx.android.synthetic.main.fragment_main_search.rcView_AnList
@@ -32,7 +33,7 @@ class MainSearchFragment : Fragment() {
         @JvmStatic
         fun newInstance(){}
     }
-
+    val animat_var: Animations = Animations()
     private val adapter1 = AnimalsAdaptList()
     private val adapter2 = DoshaAdaptList()
 
@@ -112,22 +113,39 @@ class MainSearchFragment : Fragment() {
 
     fun View.bindAllOpenLists() {
         this.apply {
+            btn_linearContainer_open_Animal.setOnClickListener {
+               this.openFirstDescriptions()
+            }
             btn_open_an_rclist.setOnClickListener {
-                adapter1.addAllAnimalOnRV(this, listOfShablonsBuilderAnimal() )
-                if(rcView_AnList.visibility == View.GONE) {rcView_AnList.visibility = View.VISIBLE
-                btn_open_an_rclist.setImageResource(R.drawable.ic_expand_less_black_32dp)}
-                else {rcView_AnList.visibility = View.GONE
-                    btn_open_an_rclist.setImageResource(R.drawable.ic_expand_more_black_32dp)}
+                this.openFirstDescriptions()
             }
 
+            btn_linearContainer_open_Doshas.setOnClickListener {
+                this.openSecondDescriptions()
+            }
             btn_open_dosh_rclist.setOnClickListener {
-                adapter2.addAllDoshaDescrOnRV(this, listOfShablonsBuilderDosha())
-                if(rcView_Doshas.visibility == View.GONE) {rcView_Doshas.visibility = View.VISIBLE
-                    btn_open_dosh_rclist.setImageResource(R.drawable.ic_expand_less_black_32dp)}
-                else {rcView_Doshas.visibility = View.GONE
-                    btn_open_dosh_rclist.setImageResource(R.drawable.ic_expand_more_black_32dp)}
+                this.openSecondDescriptions()
             }
         }
+    }
+
+    fun View.openFirstDescriptions(){
+        adapter1.addAllAnimalOnRV(this, listOfShablonsBuilderAnimal() )
+        if(rcView_AnList.visibility == View.GONE) {rcView_AnList.visibility = View.VISIBLE
+            btn_open_an_rclist.setImageResource(R.drawable.ic_expand_less_black_32dp)
+        animat_var.down_result(this.rcView_AnList)}
+        else {rcView_AnList.visibility = View.GONE
+            btn_open_an_rclist.setImageResource(R.drawable.ic_expand_more_black_32dp)}
+
+    }
+
+    fun View.openSecondDescriptions(){
+        adapter2.addAllDoshaDescrOnRV(this, listOfShablonsBuilderDosha())
+        if(rcView_Doshas.visibility == View.GONE) {rcView_Doshas.visibility = View.VISIBLE
+            btn_open_dosh_rclist.setImageResource(R.drawable.ic_expand_less_black_32dp)
+        animat_var.down_result(this.rcView_Doshas)}
+        else {rcView_Doshas.visibility = View.GONE
+            btn_open_dosh_rclist.setImageResource(R.drawable.ic_expand_more_black_32dp)}
     }
 
 }

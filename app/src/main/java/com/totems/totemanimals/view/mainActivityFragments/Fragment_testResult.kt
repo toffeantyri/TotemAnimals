@@ -329,6 +329,7 @@ class fragment_testResult : StateOpenCloseFragment() {
         }
 
         this.im_arrow_down_an_result.setOnClickListener {
+            dataModel.stateOpenTestAnimal.value = 0
             if (this.ContainerLayout_Res_Animal.visibility == View.VISIBLE) {
                 this.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
                 this.ContainerLayout_Res_Animal.visibility = View.GONE
@@ -346,6 +347,7 @@ class fragment_testResult : StateOpenCloseFragment() {
 
         }
         this.im_arrow_down_dosh_result.setOnClickListener {
+            dataModel.stateOpenTestAnimal.value = 0
             if (this.ContainerLayout_Res_Doshi.visibility == View.VISIBLE) {
                 this.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
                 this.ContainerLayout_Res_Doshi.visibility = View.GONE
