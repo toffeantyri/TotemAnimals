@@ -51,7 +51,7 @@ class Animations {
             translationY(-600f)
         }.withEndAction {
             view.animate().apply {
-                duration = 150
+                duration = 200
                 scaleY(1f)
                 translationY(0f)
             }

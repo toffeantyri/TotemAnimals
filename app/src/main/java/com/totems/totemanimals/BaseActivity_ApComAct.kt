@@ -1,24 +1,24 @@
 package com.totems.totemanimals
 
+
 import android.content.DialogInterface
-import androidx.preference.PreferenceManager
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.totems.totemanimals.view.mainActivityFragments.Fragment_info
 import com.totems.totemanimals.view.mainActivityFragments.MainSearchFragment
 import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
 import com.totems.totemanimals.viewModel.DataModelTestResult
 import kotlinx.android.synthetic.main.activity_main.*
 
-abstract class BaseActivity_ApComAct : AppCompatActivity() {
+abstract class BaseActivity_ApComAct : FragmentActivity() {
 
     val dataModel: DataModelTestResult by viewModels()
     // инициализация ВьюМоделКласса для активити! - от viewModels!!!!!!! фрагмент будет от activityViewModels
 
     fun setUpPreference() {
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
         val pref_state = 0 //
         // состояние фрагмента тест результ. 0 - все результаты закрыты, 1 - результат AnimalResult - Открыт
         //2- результат теста дош открыт
@@ -41,9 +41,8 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         dataModel.resultTotemTest.value?.add(pref5)
     }
 
-
     fun setUpPreferenceTwo() {
-        val pref = PreferenceManager.getDefaultSharedPreferences(this)
+        val pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
         //состояние открытости закрытости результатов теста - в SetUpPreference()
         //префы для теста Доши
         val pref1 = pref.getInt("dosha_vata", -1)
@@ -54,7 +53,6 @@ abstract class BaseActivity_ApComAct : AppCompatActivity() {
         dataModel.resultDoshaTest.value?.add(pref2)
         dataModel.resultDoshaTest.value?.add(pref3)
     }
-
 
     //установка действия для кнопок боттом меню
     fun setUpBottomNavigationMenu() {

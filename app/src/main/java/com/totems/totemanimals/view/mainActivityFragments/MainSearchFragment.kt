@@ -74,7 +74,6 @@ class MainSearchFragment : Fragment() {
         }
     }
 
-    //todo создать общий шаблон класс для дата класса
     fun listOfShablonsBuilderAnimal(): ArrayList<ShablonAnimalDataClass>{
         var a: Int
         var b: String

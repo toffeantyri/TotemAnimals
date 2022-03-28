@@ -226,10 +226,10 @@ class fragment_testResult : StateOpenCloseFragment() {
     }
 
     fun View.viewBindResultFromBungle(f_n: Int, f_v: Int, s_n: Int, s_v: Int, l_n: Int, a_v: Int) {
-        val f_vol_meas = (a_v / List_resours_an_totem.imIdList.size * f_v).toString()
-        val s_vol_meas = (a_v / List_resours_an_totem.imIdList.size * s_v).toString()
-        val f_vol: String = f_vol_meas + "/" + a_v
-        val s_vol: String = s_vol_meas + "/" + a_v
+        val f_vol_meas = ((f_v*100/28).toInt()).toString()
+        val s_vol_meas = ((s_v*100/28).toInt()).toString()
+        val f_vol: String = f_vol_meas + " %"
+        val s_vol: String = s_vol_meas + " %"
 
         if (f_n >= 0) {
             this.im_testresult_n1.setImageResource(List_resours_an_totem.imIdList[f_n])

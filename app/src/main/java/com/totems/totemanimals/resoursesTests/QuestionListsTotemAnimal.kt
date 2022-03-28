@@ -5,6 +5,8 @@ import com.totems.totemanimals.R
 object questionListsTotemAnimal {
     val im_background = R.drawable.background_test1
         //лист с текстом вопросов
+
+    val MAX_POINTS_FROM_ONE_ANIMAL = 28
     val quest_totem_animal = arrayOf("Какой чувственный аспект вам ближе?",
             "В какое время дня вы чувствуете наибольшую активность?",
             "Какой чертой характера вас чаще характеризуют окружающие? " + "\n \n (3 варианта ответа)",

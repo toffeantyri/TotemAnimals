@@ -98,7 +98,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/desc_act_btn_back"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_share_black_24dp"/>
+                    android:src="@drawable/ic_share_black_24dp"
+                    />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
