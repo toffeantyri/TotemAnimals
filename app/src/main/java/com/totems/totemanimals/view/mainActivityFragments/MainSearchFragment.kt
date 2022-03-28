@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.fragment_main_search.rcView_Doshas
 import kotlinx.android.synthetic.main.fragment_main_search.view.*
 
 
-class MainSearchFragment : Fragment() {
+class MainSearchFragment : StateOpenCloseFragment() {
 
     companion object {
         @JvmStatic
@@ -135,7 +135,7 @@ class MainSearchFragment : Fragment() {
         animat_var.down_result(this.rcView_AnList)}
         else {rcView_AnList.visibility = View.GONE
             btn_open_an_rclist.setImageResource(R.drawable.ic_expand_more_black_32dp)}
-
+        this.ScrollView_Searcher.scrollToCenterView(this.rcView_AnList,0)
     }
 
     fun View.openSecondDescriptions(){
@@ -145,6 +145,7 @@ class MainSearchFragment : Fragment() {
         animat_var.down_result(this.rcView_Doshas)}
         else {rcView_Doshas.visibility = View.GONE
             btn_open_dosh_rclist.setImageResource(R.drawable.ic_expand_more_black_32dp)}
+        this.ScrollView_Searcher.scrollToCenterView(rcView_Doshas, 100)
     }
 
 }
