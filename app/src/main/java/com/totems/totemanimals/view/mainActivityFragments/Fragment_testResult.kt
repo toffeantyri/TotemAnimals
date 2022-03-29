@@ -1,7 +1,5 @@
 package com.totems.totemanimals.view.mainActivityFragments
 
-import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -11,9 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.ScrollView
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.LifecycleOwner
 import com.github.mikephil.charting.charts.PieChart
@@ -24,7 +19,6 @@ import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.totems.totemanimals.ActivityDescptView
 import com.totems.totemanimals.R
-import com.totems.totemanimals.StartTest_activity
 import com.totems.totemanimals.resoursesTests.List_Resours_Doshi
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
 import com.totems.totemanimals.view.mainAdapters.doshi_adapters.DiagramMarkerView
@@ -50,7 +44,7 @@ class fragment_testResult : StateOpenCloseFragment() {
         }
     }
 
-    val dataModel : DataModelTestResult by activityViewModels()
+    val dataModel: DataModelTestResult by activityViewModels()
     lateinit var animat_var: Animations
     lateinit var rect_r10_all: Drawable
     lateinit var rect_r10_up: Drawable
@@ -165,7 +159,35 @@ class fragment_testResult : StateOpenCloseFragment() {
     }
 
     fun doshaDescrClassConstructor(vataRes: Int, pittaRes: Int, kaphaRes: Int): ShablonDoshaDataClass {
-        val image: Int = List_Resours_Doshi.imIdList[0]
+        var image: Int = 0
+        when {
+            vataRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX && pittaRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX -> {
+                image = List_Resours_Doshi.imIdList[3]
+            }
+            vataRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX && kaphaRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX -> {
+                image = List_Resours_Doshi.imIdList[4]
+            }
+            pittaRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX && kaphaRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX -> {
+                image = List_Resours_Doshi.imIdList[5]
+            }
+            else -> {
+                when {
+                    vataRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX -> {
+                        image = List_Resours_Doshi.imIdList[0]
+                    }
+                    pittaRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX -> {
+                        image = List_Resours_Doshi.imIdList[1]
+                    }
+                    kaphaRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX -> {
+                        image = List_Resours_Doshi.imIdList[2]
+                    }
+                    else -> {
+                        image = List_Resours_Doshi.imIdList[6]
+                    }
+                }
+            }
+        }
+
         //title appender
         val title = StringBuilder()
         if (vataRes < List_Resours_Doshi.BALANCE_LEVEL_MIN || vataRes > List_Resours_Doshi.BALANCE_LEVEL_MAX) {
@@ -226,8 +248,8 @@ class fragment_testResult : StateOpenCloseFragment() {
     }
 
     fun View.viewBindResultFromBungle(f_n: Int, f_v: Int, s_n: Int, s_v: Int, l_n: Int, a_v: Int) {
-        val f_vol_meas = ((f_v*100/28).toInt()).toString()
-        val s_vol_meas = ((s_v*100/28).toInt()).toString()
+        val f_vol_meas = ((f_v * 100 / 28).toInt()).toString()
+        val s_vol_meas = ((s_v * 100 / 28).toInt()).toString()
         val f_vol: String = f_vol_meas + " %"
         val s_vol: String = s_vol_meas + " %"
 

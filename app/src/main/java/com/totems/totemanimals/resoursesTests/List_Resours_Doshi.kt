@@ -13,7 +13,15 @@ object List_Resours_Doshi : ListResourseClass() {
 
 
     //todo картинки 2х дош
-    override val imIdList: Array<Int> = arrayOf(R.drawable.dosha_vata_image, R.drawable.dosha_pitta_image, R.drawable.dosha_kapha_image)
+    override val imIdList: Array<Int> = arrayOf(
+        R.drawable.im_vata,
+        R.drawable.im_pitta,
+        R.drawable.im_kapha,
+        R.drawable.im_pitta_vata,
+        R.drawable.im_vata_kapha,
+        R.drawable.im_pitta_kapha,
+        R.drawable.im_sama_doshas
+    )
 
     override val nameIdList: Array<String> = arrayOf("\nДисбаланс Вата-Доши\n", "\nДисбаланс Питта-Доши\n", "\nДисбаланс Капха-Доши\n","Баланс всех дош")
 

@@ -5,7 +5,7 @@ import com.totems.totemanimals.R
 object List_Resours_RCview_Doshi : ListResourseClass() {
 
 
-    override val imIdList: Array<Int> = arrayOf(R.drawable.dosha_vata_image,R.drawable.dosha_vata_image, R.drawable.dosha_pitta_image, R.drawable.dosha_kapha_image)
+    override val imIdList: Array<Int> = arrayOf(R.drawable.im_sama_doshas,R.drawable.im_vata, R.drawable.im_pitta, R.drawable.im_kapha)
 
     override val nameIdList: Array<String> = arrayOf("Концепция", "Вата-доша", "Питта-доша", "Капха-доша")
 
