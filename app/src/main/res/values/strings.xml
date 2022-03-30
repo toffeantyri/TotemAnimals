@@ -1,13 +1,4 @@
 <resources>
-    <string name="application_id_name" translatable="false">com.google.android.gms.ads.APPLICATION_ID</string>
-   <string name="my_app_id_value_test" translatable="false">ca-app-pub-3940256099942544~3347511713</string>
-    <!--
-    <string name="my_app_id_value" translatable="false">ca-app-pub-3712591331020847~6900850072</string>
-    <string name="banner_id_test" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="banner_id" translatable="false">ca-app-pub-3712591331020847/6517706695</string>
-    <string name="reques_id_test" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="reques_id" translatable="false">ca-app-pub-3712591331020847/9690664946</string>
-    -->
 
     <string name="yandex_banner_id_test" translatable="false">R-M-DEMO-320x50</string>
     <string name="yandex_banner_id" translatable="false">R-M-1588009-1</string>
