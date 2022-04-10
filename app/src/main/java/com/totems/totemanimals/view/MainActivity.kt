@@ -1,4 +1,4 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view
 
 import android.app.Activity
 import android.content.DialogInterface
@@ -10,12 +10,9 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.ViewModel
-import androidx.recyclerview.widget.GridLayoutManager
-import com.totems.totemanimals.resoursesTests.List_resours_an_totem
-import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
-import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.AnimalsAdaptList
+import com.totems.totemanimals.R
 import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
+import com.totems.totemanimals.view.mainAdapters.Preference.AppPreference
 import com.totems.totemanimals.viewModel.DataModelTestResult
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdEventListener
@@ -28,21 +25,25 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity_ApComAct() {
 
-    lateinit var handler: Handler
 
+    // инициализация ВьюМоделКласса для активити! - от viewModels!!!!!!! фрагмент будет от activityViewModels
+    val dataModel: DataModelTestResult by viewModels()
+    lateinit var handler: Handler
+    lateinit var preference : AppPreference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
+        preference = AppPreference(this, dataModel)
         handler = Handler()
 
-        setUpPreference()
-        setUpPreferenceTwo()
+        setUpPreferenceToViewModel(preference)
+
+
         my_search_frame.visibility = View.GONE
         my_info_frame.visibility = View.GONE
-        setUpBottomNavigationMenu()
+        setUpBottomNavigationMenu(dataModel)
 
         my_testResult_frame.visibility = View.VISIBLE
 
@@ -53,6 +54,11 @@ class MainActivity : BaseActivity_ApComAct() {
        //Log.d("MyLog", "OnCreate MainActivity state: ${dataModel.stateOpenTestAnimal.value.toString()}")
     }
 
+    override fun onStart() {
+        super.onStart()
+
+    }
+
     override fun onResume() {
         super.onResume()
         Log.d("MyLog", "OnResume MainActivity state: ${dataModel.stateOpenTestAnimal.value.toString()}")
@@ -61,6 +67,7 @@ class MainActivity : BaseActivity_ApComAct() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         Log.d("MyLog", "OnActivityResult MainActivity")
+        val preference = AppPreference(this, dataModel)
         if (requestCode == 100 && resultCode == Activity.RESULT_OK && data != null) {
             val f_n = data.getIntExtra("first_name", -1)
             val f_v = data.getIntExtra("first_volume", -1)
@@ -78,7 +85,7 @@ class MainActivity : BaseActivity_ApComAct() {
             dataModel.resultTotemTest.value?.add(a_v)
             dataModel.stateOpenTestAnimal.value = 1
 
-            dataModel.saveResultsToPreference(this)
+            preference.saveAllResultsToPreference()
 
             Log.d("MyLog", "onActivityResult Animals Result:  $f_n $f_v $s_n $s_v $l_n $a_v ")
             supportFragmentManager.beginTransaction()
@@ -97,7 +104,7 @@ class MainActivity : BaseActivity_ApComAct() {
             dataModel.resultDoshaTest.value?.add(kaphaValue)
             dataModel.stateOpenTestAnimal.value = 2
 
-            dataModel.saveResultsToPreference(this)
+            preference.saveAllResultsToPreference()
 
             Log.d("MyLog", "onActivityResult Doshas Result:  $vataValue , $pittaValue , $kaphaValue ")
             supportFragmentManager.beginTransaction()
@@ -140,13 +147,14 @@ class MainActivity : BaseActivity_ApComAct() {
 
     }
 
-    fun initMobileAdsYandex() {
+   private fun initMobileAdsYandex() {
         MobileAds.initialize(this) { Log.d("MyLog", "SDK Initialised OK") }
     }
 
-    fun loadAndShowBanner() {
+    //TODO main banner i
+    private fun loadAndShowBanner() {
         adViewYandex.apply {
-            setAdUnitId(getString(R.string.yandex_banner_id))
+            setAdUnitId(getString(R.string.yandex_banner_id_test))
             setAdSize(AdSize.BANNER_320x50)
         }
         val adRequest = AdRequest.Builder().build()

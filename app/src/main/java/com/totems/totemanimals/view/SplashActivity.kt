@@ -1,10 +1,9 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
-import android.view.WindowManager
+import com.totems.totemanimals.R
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {

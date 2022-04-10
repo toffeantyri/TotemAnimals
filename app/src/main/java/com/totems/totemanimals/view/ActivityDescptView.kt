@@ -1,10 +1,11 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view
 
 import android.content.ContentResolver
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import com.totems.totemanimals.R
 import com.totems.totemanimals.view.mainAdapters.ShablonClassDescription
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdEventListener
@@ -12,7 +13,6 @@ import com.yandex.mobile.ads.common.AdRequest
 import com.yandex.mobile.ads.common.AdRequestError
 import com.yandex.mobile.ads.common.ImpressionData
 import kotlinx.android.synthetic.main.activity_animal_descpt_view.*
-import kotlinx.android.synthetic.main.activity_main.*
 
 class ActivityDescptView : BaseActivity_ApComAct() {
 
@@ -50,7 +50,9 @@ class ActivityDescptView : BaseActivity_ApComAct() {
 
     fun shareDescAnyClass(){
         val link = getString(R.string.link_on_my_app_for_share)
-        val my_totem = if(intent.getSerializableExtra(description_data.INTENT_KEY_RESULT)==null) {getString(R.string.my_totem_text_result)} else {getString(R.string.my_totem_text_search)}
+        val my_totem = if(intent.getSerializableExtra(description_data.INTENT_KEY_RESULT)==null) {getString(
+            R.string.my_totem_text_result
+        )} else {getString(R.string.my_totem_text_search)}
         val title = description_data.title + "\n"
         val descr = description_data.description
 
@@ -73,9 +75,11 @@ class ActivityDescptView : BaseActivity_ApComAct() {
         return image_uri
     }
 
+
+    //TODO Description Banner id
     fun loadAndShowBanner() {
         descr_banner_yandex.apply {
-            setAdUnitId(getString(R.string.yandex_banner_desc_id))
+            setAdUnitId(getString(R.string.yandex_banner_desc_id_test))
             setAdSize(AdSize.BANNER_320x50)
         }
         val adRequest = AdRequest.Builder().build()

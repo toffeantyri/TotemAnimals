@@ -2,16 +2,11 @@ package com.totems.totemanimals.view.mainActivityFragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.totems.totemanimals.ActivityDescptView
+import com.totems.totemanimals.view.ActivityDescptView
 import com.totems.totemanimals.R
 import com.totems.totemanimals.resoursesTests.List_Resours_RCview_Doshi
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
@@ -20,10 +15,6 @@ import com.totems.totemanimals.view.mainAdapters.doshi_adapters.ShablonDoshaData
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.AnimalsAdaptList
 import com.totems.totemanimals.view.mainAdapters.totemanimaladapters.ShablonAnimalDataClass
 import com.totems.totemanimals.view.mainQuestion.Animations
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_main_search.*
-import kotlinx.android.synthetic.main.fragment_main_search.rcView_AnList
-import kotlinx.android.synthetic.main.fragment_main_search.rcView_Doshas
 import kotlinx.android.synthetic.main.fragment_main_search.view.*
 
 

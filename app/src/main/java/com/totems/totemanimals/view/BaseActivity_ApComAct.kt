@@ -1,61 +1,31 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view
 
 
 import android.content.DialogInterface
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import com.totems.totemanimals.R
 import com.totems.totemanimals.view.mainActivityFragments.Fragment_info
 import com.totems.totemanimals.view.mainActivityFragments.MainSearchFragment
 import com.totems.totemanimals.view.mainActivityFragments.fragment_testResult
+import com.totems.totemanimals.view.mainAdapters.Preference.AppPreference
 import com.totems.totemanimals.viewModel.DataModelTestResult
 import kotlinx.android.synthetic.main.activity_main.*
 
-abstract class BaseActivity_ApComAct : FragmentActivity() {
+abstract class BaseActivity_ApComAct : AppCompatActivity() {
 
-    val dataModel: DataModelTestResult by viewModels()
-    // инициализация ВьюМоделКласса для активити! - от viewModels!!!!!!! фрагмент будет от activityViewModels
 
-    fun setUpPreference() {
-        val pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
-        val pref_state = 0 //
-        // состояние фрагмента тест результ. 0 - все результаты закрыты, 1 - результат AnimalResult - Открыт
-        //2- результат теста дош открыт
-        //берем строку из preference (в первый раз - будет дефолтное значение) пока не пройдешь Тест
-        //префы для теста Тотемное животное
-        val pref0 = pref.getInt("first_name", -1)
-        val pref1 = pref.getInt("first_volume", -1)
-        val pref2 = pref.getInt("second_name", -1)
-        val pref3 = pref.getInt("second_volume", -1)
-        val pref4 = pref.getInt("last_name", -1)
-        val pref5 = pref.getInt("all_volume", -1)
-        dataModel.stateOpenTestAnimal.value = pref_state
-
-        dataModel.resultTotemTest.value?.clear()
-        dataModel.resultTotemTest.value?.add(pref0)
-        dataModel.resultTotemTest.value?.add(pref1)
-        dataModel.resultTotemTest.value?.add(pref2)
-        dataModel.resultTotemTest.value?.add(pref3)
-        dataModel.resultTotemTest.value?.add(pref4)
-        dataModel.resultTotemTest.value?.add(pref5)
+    fun setUpPreferenceToViewModel(preference : AppPreference) {
+        preference.loadPreferenceResultAnimalsToViewModel()
+        preference.loadPreferenceResultDoshiToViewModel()
     }
 
-    fun setUpPreferenceTwo() {
-        val pref = androidx.preference.PreferenceManager.getDefaultSharedPreferences(this)
-        //состояние открытости закрытости результатов теста - в SetUpPreference()
-        //префы для теста Доши
-        val pref1 = pref.getInt("dosha_vata", -1)
-        val pref2 = pref.getInt("dosha_pitta", -1)
-        val pref3 = pref.getInt("dosha_kapha", -1)
-        dataModel.resultDoshaTest.value?.clear()
-        dataModel.resultDoshaTest.value?.add(pref1)
-        dataModel.resultDoshaTest.value?.add(pref2)
-        dataModel.resultDoshaTest.value?.add(pref3)
-    }
 
     //установка действия для кнопок боттом меню
-    fun setUpBottomNavigationMenu() {
+    fun setUpBottomNavigationMenu(dataModel : DataModelTestResult ) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.my_info_frame, Fragment_info()) // это для прогрузки фрагмент инфо до загрузки
         supportFragmentManager.beginTransaction()

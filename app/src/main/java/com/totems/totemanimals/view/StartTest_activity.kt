@@ -1,4 +1,4 @@
-package com.totems.totemanimals
+package com.totems.totemanimals.view
 
 import android.app.Activity
 import android.content.DialogInterface
@@ -8,7 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.preference.PreferenceManager
+import com.totems.totemanimals.R
 import com.totems.totemanimals.resoursesTests.List_Resours_Doshi
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
 import com.totems.totemanimals.resoursesTests.questionListDoshi
@@ -16,14 +16,12 @@ import com.totems.totemanimals.resoursesTests.questionListsTotemAnimal
 import com.totems.totemanimals.view.mainQuestion.Animations
 import com.totems.totemanimals.view.mainQuestion.questionsBindShablon
 import com.totems.totemanimals.view.mainQuestion.resultBindShablon
-import com.totems.totemanimals.viewModel.DataModelTestResult
 import com.yandex.mobile.ads.banner.AdSize
 import com.yandex.mobile.ads.banner.BannerAdEventListener
 import com.yandex.mobile.ads.common.AdRequest
 import com.yandex.mobile.ads.common.AdRequestError
 import com.yandex.mobile.ads.common.ImpressionData
 import com.yandex.mobile.ads.common.MobileAds
-import com.yandex.mobile.ads.interstitial.InterstitialAd
 import com.yandex.mobile.ads.rewarded.Reward
 import com.yandex.mobile.ads.rewarded.RewardedAd
 import com.yandex.mobile.ads.rewarded.RewardedAdEventListener
@@ -74,12 +72,14 @@ class StartTest_activity : BaseActivity_ApComAct() {
         animat_var = Animations() // создаем обьект класса анимации
         handler = Handler() // создаем обьект Handlera
         btn = findViewById(R.id.btn_close_test)
-        r = Runnable {  // создаем запускающийся код
+
+        // код - переключающий вопрос на следующий
+        r = Runnable {
             //Log.d("MyLog", "ИНДЕКС КОЛ-ВА ответов $n_q_index")
             index++ // типа добалвение индекса и смена вопроса для вью
             testNextQuestion(index)
             n_q_index = 0
-        } // код - переключающий вопрос на следующий
+        }
 
         bindingButtonsListeners() // биндит слушатели кнопок
 
@@ -456,7 +456,6 @@ class StartTest_activity : BaseActivity_ApComAct() {
         Log.d("MyLog","prepareSavePutResDoshaTest : $vataValue, $pittaValue, $kaphaValue" +
                 "" )
 
-
         intent.putExtra("dosha_vata", vataValue)
         intent.putExtra("dosha_pitta", pittaValue)
         intent.putExtra("dosha_kapha", kaphaValue)
@@ -523,10 +522,10 @@ class StartTest_activity : BaseActivity_ApComAct() {
         MobileAds.initialize(this) { Log.d("MyLog", "SDK Initialised OK") }
     }
 
-
+    // TODO Result Test Reward ID
     private fun loadRewardAdYandex() {
         yandexRewardAd = RewardedAd(this)
-        yandexRewardAd.setAdUnitId(getString(R.string.yandex_reward_id))
+        yandexRewardAd.setAdUnitId(getString(R.string.yandex_reward_id_test))
         val adRequest: AdRequest = AdRequest.Builder().build()
         yandexRewardAd.setRewardedAdEventListener(object : RewardedAdEventListener {
             override fun onAdLoaded() {

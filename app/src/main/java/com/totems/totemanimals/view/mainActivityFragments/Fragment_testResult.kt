@@ -17,7 +17,7 @@ import com.github.mikephil.charting.components.MarkerView
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
-import com.totems.totemanimals.ActivityDescptView
+import com.totems.totemanimals.view.ActivityDescptView
 import com.totems.totemanimals.R
 import com.totems.totemanimals.resoursesTests.List_Resours_Doshi
 import com.totems.totemanimals.resoursesTests.List_resours_an_totem
@@ -71,30 +71,42 @@ class fragment_testResult : StateOpenCloseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view0: View =
-            LayoutInflater.from(container?.context).inflate(R.layout.fragment_fragment_test_result, container, false)
+            LayoutInflater.from(container?.context)
+                .inflate(R.layout.fragment_fragment_test_result, container, false)
         animat_var = Animations()
         handler = Handler()
         rect_r10_all = resources.getDrawable(R.drawable.shape_rectangle_r10)
         rect_r10_up = resources.getDrawable(R.drawable.shape_rectangle_r10_up)
 
-        dataModel.stateOpenTestAnimal.observe(activity as LifecycleOwner, {
+        dataModel.stateOpenTestAnimal.observe(activity as LifecycleOwner) {
             state_op_close_res = it
-        })
+            view0.ContainerLayout_Res_Animal.visibility = if (it == 1) View.VISIBLE else View.GONE
+            view0.ContainerLayout_Res_Doshi.visibility = if (it == 2) View.VISIBLE else View.GONE
+        }
 
-        dataModel.resultTotemTest.observe(activity as LifecycleOwner, {
+        dataModel.resultTotemTest.observe(activity as LifecycleOwner) {
             first_name = it[0]
             first_volume = it[1]
             second_name = it[2]
             second_volume = it[3]
             last_name = it[4]
             all_volume = it[5]
-        })
+        }
 
-        dataModel.resultDoshaTest.observe(activity as LifecycleOwner, {
+        dataModel.resultDoshaTest.observe(activity as LifecycleOwner) {
             vataResult = it[0]
             pittaResult = it[1]
             kaphaResult = it[2]
-        })
+        }
+
+        dataModel.resultTotemTest.observe(activity as LifecycleOwner) {
+            view0.tv_no_results.visibility = if (it[0] > 0) View.GONE else View.VISIBLE
+        }
+
+        dataModel.resultDoshaTest.observe(activity as LifecycleOwner) {
+            view0.tv_no_results_dosha.visibility = if (it[0] > 1) View.GONE else View.VISIBLE
+            view0.btn_read_dosha_res.visibility = if (it[0] > 1) View.VISIBLE else View.GONE
+        }
 
         Log.d("MyLog", "OnCreateView testResult ")
         return view0
@@ -104,14 +116,24 @@ class fragment_testResult : StateOpenCloseFragment() {
         super.onResume()
         //все проверки состояний во фрагменте. только в onResume!
         Log.d("MyLog", "TestResultFr  onResume: $vataResult , $pittaResult, $kaphaResult")
-        Log.d("MyLog", "TestResultFr onResume Doshas: ${dataModel.resultDoshaTest.value.toString()}")
-        Log.d("MyLog", "TestResultFr onResume Animals: ${dataModel.resultTotemTest.value.toString()}")
+        Log.d(
+            "MyLog",
+            "TestResultFr onResume Doshas: ${dataModel.resultDoshaTest.value.toString()}"
+        )
+        Log.d(
+            "MyLog",
+            "TestResultFr onResume Animals: ${dataModel.resultTotemTest.value.toString()}"
+        )
 
         view?.arrowUpDownStateView()
-        view?.containersVisibilityState()
-        view?.tvNoResultsVisibility(first_name, vataResult)
-
-        view?.viewBindResultFromBungle(first_name, first_volume, second_name, second_volume, last_name, all_volume)
+        view?.viewBindResultFromBungle(
+            first_name,
+            first_volume,
+            second_name,
+            second_volume,
+            last_name,
+            all_volume
+        )
 
         listResultDoshi = arrayListOf(
             PieEntry(vataResult.toFloat(), getString(R.string.dosha_title_vata)),
@@ -124,7 +146,7 @@ class fragment_testResult : StateOpenCloseFragment() {
 
         myValueListener = PieValueSelect(listResultDoshi)
         myChartListener = myValueListener.PieChartTouchListener()
-        myMarkerView = DiagramMarkerView(context!!, R.layout.marker_view_diagram)
+        myMarkerView = DiagramMarkerView(requireContext(), R.layout.marker_view_diagram)
         dosha_result_diagram.onChartGestureListener = myChartListener
         dosha_result_diagram.setOnChartValueSelectedListener(myValueListener)
 
@@ -158,7 +180,11 @@ class fragment_testResult : StateOpenCloseFragment() {
         )
     }
 
-    fun doshaDescrClassConstructor(vataRes: Int, pittaRes: Int, kaphaRes: Int): ShablonDoshaDataClass {
+    fun doshaDescrClassConstructor(
+        vataRes: Int,
+        pittaRes: Int,
+        kaphaRes: Int
+    ): ShablonDoshaDataClass {
         var image: Int = 0
         when {
             vataRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX && pittaRes.toFloat() !in List_Resours_Doshi.BALANCE_LEVEL_MIN..List_Resours_Doshi.BALANCE_LEVEL_MAX -> {
@@ -275,7 +301,12 @@ class fragment_testResult : StateOpenCloseFragment() {
 
     }
 
-    fun View.viewBindResultDoshaFromBungle(pieChart: PieChart, vataRes: Int, pittaRes: Int, kaphaRes: Int) {
+    fun View.viewBindResultDoshaFromBungle(
+        pieChart: PieChart,
+        vataRes: Int,
+        pittaRes: Int,
+        kaphaRes: Int
+    ) {
 
         if (vataRes >= 0 && pittaRes >= 0 && kaphaRes >= 0) {
             this.dosha_result_diagram.visibility = View.VISIBLE
@@ -351,16 +382,15 @@ class fragment_testResult : StateOpenCloseFragment() {
         }
 
         this.im_arrow_down_an_result.setOnClickListener {
-            dataModel.stateOpenTestAnimal.value = 0
             if (this.ContainerLayout_Res_Animal.visibility == View.VISIBLE) {
                 this.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
-                this.ContainerLayout_Res_Animal.visibility = View.GONE
                 this.im_arrow_down_an_result.background = rect_r10_all
+                dataModel.stateOpenTestAnimal.value = 0
             } else if (this.ContainerLayout_Res_Animal.visibility == View.GONE) {
                 this.im_arrow_down_an_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
-                this.ContainerLayout_Res_Animal.visibility = View.VISIBLE
                 this.im_arrow_down_an_result.background = rect_r10_up
                 animat_var.down_result(this.ContainerLayout_Res_Animal)
+                dataModel.stateOpenTestAnimal.value = 1
             }
             this.tv_no_results.visibility = if (first_name == -1) View.VISIBLE else View.GONE
             if (first_name != -1) {
@@ -369,17 +399,15 @@ class fragment_testResult : StateOpenCloseFragment() {
 
         }
         this.im_arrow_down_dosh_result.setOnClickListener {
-            dataModel.stateOpenTestAnimal.value = 0
             if (this.ContainerLayout_Res_Doshi.visibility == View.VISIBLE) {
                 this.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_more_black_32dp)
-                this.ContainerLayout_Res_Doshi.visibility = View.GONE
                 this.im_arrow_down_dosh_result.background = rect_r10_all
+                dataModel.stateOpenTestAnimal.value = 0
             } else if (this.ContainerLayout_Res_Doshi.visibility == View.GONE) {
                 this.im_arrow_down_dosh_result.setImageResource(R.drawable.ic_expand_less_black_32dp)
-                this.ContainerLayout_Res_Doshi.visibility = View.VISIBLE
                 this.im_arrow_down_dosh_result.background = rect_r10_up
                 animat_var.down_result(this.ContainerLayout_Res_Doshi)
-
+                dataModel.stateOpenTestAnimal.value = 2
             }
             this.tv_no_results_dosha.visibility = if (vataResult == -1) View.VISIBLE else View.GONE
             if (vataResult != -1) {
