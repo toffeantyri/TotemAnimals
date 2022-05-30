@@ -525,7 +525,7 @@ class StartTest_activity : BaseActivity_ApComAct() {
     // TODO Result Test Reward ID
     private fun loadRewardAdYandex() {
         yandexRewardAd = RewardedAd(this)
-        yandexRewardAd.setAdUnitId(getString(R.string.yandex_reward_id_test))
+        yandexRewardAd.setAdUnitId(getString(R.string.yandex_reward_id))
         val adRequest: AdRequest = AdRequest.Builder().build()
         yandexRewardAd.setRewardedAdEventListener(object : RewardedAdEventListener {
             override fun onAdLoaded() {

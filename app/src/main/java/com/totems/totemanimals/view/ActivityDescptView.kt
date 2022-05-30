@@ -79,7 +79,7 @@ class ActivityDescptView : BaseActivity_ApComAct() {
     //TODO Description Banner id
     fun loadAndShowBanner() {
         descr_banner_yandex.apply {
-            setAdUnitId(getString(R.string.yandex_banner_desc_id_test))
+            setAdUnitId(getString(R.string.yandex_banner_desc_id))
             setAdSize(AdSize.BANNER_320x50)
         }
         val adRequest = AdRequest.Builder().build()
